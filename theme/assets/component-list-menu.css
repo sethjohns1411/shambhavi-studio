@@ -5,8 +5,9 @@
 .list-menu--disclosure {
   position: absolute;
   min-width: 100%;
-  width: 20rem;
-  border: 1px solid rgba(var(--color-foreground), 0.2);
+  width: 28rem;
+  font-weight: 500;
+  box-shadow: -4px 6px 7px #00000017 !important;
 }
 
 .list-menu--disclosure:focus {

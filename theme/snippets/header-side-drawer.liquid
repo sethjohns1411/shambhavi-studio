@@ -1,11 +1,11 @@
 {% comment %}
-  Renders a header drawer menu for mobile and desktop.
+  Renders a header side drawer menu for mobile and desktop.
 
   Usage:
-  {% render 'header-drawer' %}
+  {% render 'header-side-drawer' %}
 {% endcomment %}
 
-<header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
+<header-side-drawer class="small-hide">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
     <summary
       class="header__icon header__icon--menu header__icon--summary link focus-inset"
@@ -302,4 +302,4 @@
       </div>
     </div>
   </details>
-</header-drawer>
+</header-side-drawer>
