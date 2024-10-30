@@ -1,6 +1,6 @@
 development:
   password: shptka_706e95a7d69e6d6307b748d835e670a7
-  theme_id: "145675780319"
+  theme_id: "145796235487"
   store: shambhavi-studio.myshopify.com
   ignore_files:
   - config/settings_data.json
