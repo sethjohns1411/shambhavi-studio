@@ -2138,8 +2138,7 @@ input[type='checkbox'] {
     grid-template-areas: 'social-icons language-currency';
   }
 
-  .announcement-bar.announcement-bar--one-announcement,
-  .announcement-bar--one-announcement .announcement-bar__link {
+  .announcement-bar.announcement-bar--one-announcement {
     width: fit-content;
     margin: auto;
   }
@@ -2177,12 +2176,12 @@ input[type='checkbox'] {
 
 .announcement-bar .slider-button--next {
   margin-right: -1.5rem;
-  min-width: 44px;
+  min-width: 2.5px;
 }
 
 .announcement-bar .slider-button--prev {
   margin-left: -1.5rem;
-  min-width: 44px;
+  min-width: 2.5px;
 }
 
 .announcement-bar .slider-button--next:focus-visible,
@@ -2219,37 +2218,25 @@ input[type='checkbox'] {
   }
 
   .announcement-bar .slider-button {
-    height: 3.8rem;
+    height: 2.5rem;
   }
-}
-
-.announcement-bar__link {
-  display: flex;
-  width: 100%;
-  text-decoration: none;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.announcement-bar__link:hover {
-  text-decoration: underline;
-}
-
-.announcement-bar__link .icon-arrow {
-  display: inline-block;
-  pointer-events: none;
-  margin-left: 0.8rem;
-  vertical-align: middle;
-  margin-bottom: 0.2rem;
 }
 
 .announcement-bar__message {
   text-align: center;
-  padding: 1rem 0;
+  padding: 0.6rem 0;
   margin: 0;
+  font-size: 1.1rem;
   letter-spacing: 0.1rem;
-  min-height: 3.8rem;
+  min-height: 2.5rem;
+}
+
+.announcement-bar__message p {
+  margin: 0rem;
+}
+
+.announcement-bar__message * {
+  color: rgb(var(--color-foreground));
 }
 
 .announcement-bar-slider--fade-in-next .announcement-bar__message,
@@ -2385,7 +2372,7 @@ input[type='checkbox'] {
 
   .header--middle-left {
     grid-template-areas: 'heading navigation icons';
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto 1fr auto;
     column-gap: 2rem;
   }
 
@@ -2771,7 +2758,12 @@ details[open] > .header__submenu {
 
 @media screen and (min-width: 990px) {
   .header__inline-menu {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .header .list-menu {
+    column-gap: 4.6rem;
   }
 
   .header--top-center .header__inline-menu {
@@ -2792,30 +2784,34 @@ details[open] > .header__submenu {
 }
 
 .header__menu-item {
-  padding: 1.2rem;
+  padding: 0rem;
   text-decoration: none;
-  color: rgba(var(--color-foreground), 0.75);
+  color: var(--color-grey10);
 }
 
 .header__menu-item:hover {
-  color: rgb(var(--color-foreground));
+  color: var(--color-primary);
 }
 
 .header__menu-item span {
-  transition: text-decoration var(--duration-short) ease;
+  position: relative;
+  padding-block: 2.4rem;
+  text-decoration: none;
 }
 
-.header__menu-item:hover span {
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
+.header__menu-item span:before {
+  position: absolute;
+  content: "";
+  left: 0rem;
+  bottom: 0rem;
+  width: 0%;
+  height: 0.2rem;
+  background: var(--color-primary);
+  transition: all .3s ease-in-out;
 }
 
-details[open] > .header__menu-item {
-  text-decoration: underline;
-}
-
-details[open]:hover > .header__menu-item {
-  text-decoration-thickness: 0.2rem;
+.header__menu-item:hover span:before {
+  width: 100%;
 }
 
 details[open] > .header__menu-item .icon-caret {
@@ -2823,14 +2819,11 @@ details[open] > .header__menu-item .icon-caret {
 }
 
 .header__active-menu-item {
-  transition: text-decoration-thickness var(--duration-short) ease;
-  color: rgb(var(--color-foreground));
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
+  color: var(--color-primary);
 }
 
-.header__menu-item:hover .header__active-menu-item {
-  text-decoration-thickness: 0.2rem;
+span.header__active-menu-item:before {
+  width: 100%;
 }
 
 .header__submenu {
@@ -2849,7 +2842,8 @@ details[open] > .header__menu-item .icon-caret {
 }
 
 .header__submenu.list-menu {
-  padding: 1rem 0;
+  padding: 3rem 0;
+  border: 0rem;
 }
 
 .header__submenu .header__submenu {
@@ -2864,11 +2858,14 @@ details[open] > .header__menu-item .icon-caret {
 
 .header__submenu .header__menu-item {
   justify-content: space-between;
-  padding: 0.8rem 2rem;
+  padding: 1.4rem 4rem;
+  font-weight: 500;
+  color: var(--color-eerie-black);
 }
 
 .header__submenu .header__menu-item:hover {
   text-decoration-line: underline;
+  color: var(--color-primary);
 }
 
 .header__menu-item .icon-caret {

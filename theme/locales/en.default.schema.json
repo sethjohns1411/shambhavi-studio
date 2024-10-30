@@ -257,6 +257,10 @@
           "label": "Facebook",
           "info": "https:\/\/facebook.com\/shopify"
         },
+        "social_linkedin_link": {
+          "label": "LinkedIn",
+          "info": "https:\/\/linkedin.com\/shopify"
+        },
         "social_pinterest_link": {
           "label": "Pinterest",
           "info": "https:\/\/pinterest.com\/shopify"
