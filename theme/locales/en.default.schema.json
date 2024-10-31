@@ -399,6 +399,9 @@
         "padding_top": "Top padding",
         "padding_bottom": "Bottom padding"
       },
+      "full_width": {
+        "label": "Make section full width"
+      },
       "spacing": "Spacing",
       "colors": {
         "label": "Color scheme",
@@ -421,6 +424,26 @@
         "options__5": {
           "label": "Extra extra large"
         }
+      },
+      "text_style": {
+        "label": "Text style",
+        "options__1": {
+          "label": "Body"
+        },
+        "options__2": {
+          "label": "Subtitle"
+        },
+        "options__3": {
+          "label": "Uppercase"
+        },
+        "options__4": {
+          "label": "Caption"
+        }
+      },
+      "image": {
+        "label": "Image",
+        "name": "Image",
+        "content": "Image"
       },
       "image_shape": {
         "options__1": {
@@ -449,6 +472,25 @@
         },
         "label": "Image shape",
         "info": "Standard-styled cards have no borders when an image shape is active."
+      },
+      "button_style": {
+        "label": "Button style",
+        "option_1": {
+          "label": "Primary button"
+        },
+        "option_2": {
+          "label": "Secondary button"
+        },
+        "option_3": {
+          "label": "Underline button"
+        }
+      },
+      "collection": {
+        "label": "Collection",
+        "title": {
+          "label": "Title",
+          "info": "Leave blank to use collection's title"
+        }
       }
     },
     "announcement-bar": {
@@ -638,6 +680,9 @@
         },
         "columns_desktop": {
           "label": "Number of columns on desktop"
+        },
+        "swipe_on_desktop": {
+          "label": "Enable swipe on desktop"
         },
         "show_view_all": {
           "label": "Enable \"View all\" button if list includes more collections than shown"
@@ -854,6 +899,9 @@
               },
               "options__3": {
                 "label": "Uppercase"
+              },
+              "options__4": {
+                "label": "Caption"
               }
             }
           }
@@ -916,6 +964,9 @@
               },
               "options__3": {
                 "label": "Uppercase"
+              },
+              "options__4": {
+                "label": "Caption"
               }
             }
           }
@@ -1312,6 +1363,9 @@
               "options__3": {
                 "label": "Uppercase"
               },
+              "options__4": {
+                "label": "Caption"
+              },
               "label": "Text style"
             }
           }
@@ -1462,6 +1516,9 @@
               },
               "options__2": {
                 "label": "Uppercase"
+              },
+              "options__3": {
+                "label": "Caption"
               }
             },
             "caption_size": {
@@ -1492,6 +1549,9 @@
               },
               "options__2": {
                 "label": "Subtitle"
+              },
+              "options__3": {
+                "label": "Caption"
               }
             }
           }
@@ -1557,6 +1617,9 @@
           },
           "options__2": {
             "label": "Subtitle"
+          },
+          "options__3": {
+            "label": "Caption"
           },
           "label": "Text style"
         },
@@ -1989,6 +2052,9 @@
               },
               "options__3": {
                 "label": "Uppercase"
+              },
+              "options__4": {
+                "label": "Caption"
               }
             }
           }
@@ -2012,6 +2078,9 @@
               },
               "options__3": {
                 "label": "Uppercase"
+              },
+              "options__4": {
+                "label": "Caption"
               }
             },
             "inventory_threshold": {
@@ -2085,6 +2154,9 @@
               },
               "options__3": {
                 "label": "Uppercase"
+              },
+              "options__4": {
+                "label": "Caption"
               }
             }
           }
@@ -2790,6 +2862,9 @@
               "options__2": {
                 "label": "Subtitle"
               },
+              "options__3": {
+                "label": "Caption"
+              },
               "label": "Text style"
             }
           }
@@ -2938,6 +3013,9 @@
               },
               "options__2": {
                 "label": "Uppercase"
+              },
+              "options__3": {
+                "label": "Caption"
               }
             },
             "caption_size": {
