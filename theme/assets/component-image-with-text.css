@@ -332,16 +332,20 @@
 
 @media screen and (min-width: 990px) {
   .image-with-text__content {
-    padding: 6rem 7rem 7rem;
+    padding: 8.8rem;
+  }
+
+  .image-with-text__heading + .image-with-text__text {
+    margin-top: 2rem;
   }
 }
 
 .image-with-text__content > * + * {
-  margin-top: 2rem;
+  margin-top: 1.2rem;
 }
 
 .image-with-text__content > .image-with-text__text:empty ~ a {
-  margin-top: 2rem;
+  margin-top: 1.2rem;
 }
 
 .image-with-text__content > :first-child:is(.image-with-text__heading),
@@ -360,7 +364,7 @@
 }
 
 .image-with-text__content .image-with-text__text + .button {
-  margin-top: 3rem;
+  margin-top: 2.2rem;
 }
 
 .image-with-text__heading {
