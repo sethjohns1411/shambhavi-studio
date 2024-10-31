@@ -151,9 +151,7 @@
 }
 
 .background-none .multicolumn-card__info {
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0px;
 }
 
 .background-none .slider .multicolumn-card__info {
@@ -202,6 +200,8 @@
 
 .multicolumn-card {
   position: relative;
+  width: 100%;
+  height: 100%;
   box-sizing: border-box;
 }
 
@@ -213,6 +213,10 @@
 
 .multicolumn.background-none .multicolumn-card {
   border-radius: 0;
+}
+
+.multicolumn.background-none .multicolumn-list__item[data-right-border="true"] .multicolumn-card {
+  border-right: 1px dashed var(--color-primary);
 }
 
 .multicolumn-card__info .link {
