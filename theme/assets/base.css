@@ -142,7 +142,7 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 }
 
 .text-lora {
-  font-family: Lora, serif;
+  font-family: Lora, serif !important;
 }
 
 .text-left {
@@ -1593,14 +1593,14 @@ details[open] > .share-button__fallback {
 .select__select,
 .customer .field input,
 .customer select {
-  -webkit-appearance: none;
-  appearance: none;
+  /* -webkit-appearance: none;
+  appearance: none; */
   background-color: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
   font-weight: var(--font-body-weight);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   width: 100%;
   box-sizing: border-box;
   transition: box-shadow var(--duration-short) ease;
@@ -1748,9 +1748,13 @@ details[open] > .share-button__fallback {
   transition: box-shadow var(--duration-short) ease;
 }
 
+.field__label {
+  display: none;
+}
+
 .field__label,
 .customer .field label {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   left: calc(var(--inputs-border-width) + 2rem);
   top: calc(1rem + var(--inputs-border-width));
   margin-bottom: 0;
@@ -1787,10 +1791,10 @@ details[open] > .share-button__fallback {
   display: none;
 }
 
-.field__input::placeholder,
+/* .field__input::placeholder,
 .customer .field input::placeholder {
   opacity: 0;
-}
+} */
 
 .field__button {
   align-items: center;
