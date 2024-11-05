@@ -3,6 +3,20 @@
   padding-left: calc(4rem / var(--font-body-scale));
 }
 
+.newsletter-card {
+  display: inline-block;
+  max-width: 55rem;
+}
+
+.newsletter-card .newsletter-card-body {
+  padding: 7rem;
+}
+
+.inline-richtext  {
+  margin: 0rem;
+  margin-bottom: 1rem;
+}
+
 @media screen and (min-width: 750px) {
   .newsletter__wrapper {
     padding-right: 9rem;
@@ -27,6 +41,7 @@
   max-width: 70rem;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 3.2rem;
 }
 
 .newsletter__wrapper .newsletter-form__field-wrapper {
@@ -35,6 +50,42 @@
 
 .newsletter-form__field-wrapper .newsletter-form__message {
   margin-top: 1.5rem;
+}
+
+.newsletter-form__field-wrapper .field:before,
+.newsletter-form__field-wrapper .field:after {
+  display: none;
+}
+
+.newsletter-form__field-wrapper .field__input {
+  min-height: 3.9rem;
+  height: 3.9rem;
+  outline: none;
+  box-shadow: none;
+  padding-block: 1rem;
+  padding-left: 0rem;
+  padding-right: 7rem !important;
+  border-bottom: 0.1rem solid var(--color-primary);
+}
+
+.newsletter-form__field-wrapper .field__label {
+  left: 0rem !important;
+}
+
+.newsletter-form__button.field__button {
+  width: auto;
+  font-size: 1.2rem;
+  min-height: 3.9rem;
+  height: 3.9rem;
+  display: flex;
+  font-family: var(--font-body-family);
+  color: var(--color-primary);
+  gap: 5px;
+}
+
+.newsletter-form__button.field__button .svg-wrapper {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .newsletter__button {

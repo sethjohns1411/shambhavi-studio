@@ -438,6 +438,9 @@
         },
         "options__4": {
           "label": "Caption"
+        },
+        "option_5": {
+          "label": "default"
         }
       },
       "image": {
@@ -555,6 +558,43 @@
       },
       "presets": {
         "name": "Announcement bar"
+      }
+    },
+    "text-slider": {
+      "name": "Text slider",
+      "settings": {
+        "auto_rotate": {
+          "label": "Auto-rotate slide"
+        },
+        "change_slides_speed": {
+          "label": "Change every"
+        }
+      },
+      "blocks": {
+        "slide": {
+          "name": "Slide",
+          "settings": {
+            "text": {
+              "label": "Text",
+              "default": "Welcome to our store"
+            },
+            "text_alignment": {
+              "label": "Text alignment",
+              "options__1": {
+                "label": "Left"
+              },
+              "options__2": {
+                "label": "Center"
+              },
+              "options__3": {
+                "label": "Right"
+              }
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Text slider"
       }
     },
     "apps": {

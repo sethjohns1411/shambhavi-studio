@@ -1,0 +1,191 @@
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'text-slider.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  if section.blocks.size > 0
+    assign text_slider = true
+  endif
+-%}
+
+<div
+  class="text-slider color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} text-slider--bottom-border{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  <div class="page-width text-slider__grid{% if text_slider %} text-slider__grid--3-col{% else %} text-slider__grid--2-col{% endif %}">
+    {%- if section.blocks.size == 1 -%}
+      <div
+        class="text-slider"
+        role="region"
+        aria-label="{{ 'sections.header.text' | t }}"
+        {{ block.shopify_attributes }}
+      >
+        {%- if section.blocks.first.settings.text != blank -%}
+          <div class="text-slider__message h5">
+            {{ section.blocks.first.settings.text }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- elsif section.blocks.size > 1 -%}
+      <slideshow-component
+        class="text-slider"
+        role="region"
+        aria-roledescription="{{ 'sections.texts.carousel' | t }}"
+        aria-label="{{ 'sections.texts.text_slider' | t }}"
+      >
+        <div class="text-slider-slider">
+          <div
+            class="grid grid--1-col slider slider--everywhere"
+            id="Slider-{{ section.id }}"
+            aria-live="polite"
+            aria-atomic="true"
+            data-autoplay="{{ section.settings.auto_rotate }}"
+            data-speed="{{ section.settings.change_slides_speed }}"
+          >
+            {%- for block in section.blocks -%}
+              <div
+                class="slideshow__slide slider__slide grid__item grid--1-col"
+                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                {{ block.shopify_attributes }}
+                role="group"
+                aria-roledescription="{{ 'sections.texts.text' | t }}"
+                aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                tabindex="-1"
+              >
+                <div
+                  class="text-slider__text"
+                  role="region"
+                  aria-label="{{ 'sections.header.text' | t }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- if block.settings.text != blank -%}
+                    <div class="text-slider__message h5">
+                      {{ block.settings.text }}
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+        <div class="slider-buttons">
+          <button
+            type="button"
+            class="slider-button slider-button--prev"
+            name="previous"
+            aria-label="{{ 'general.slider.previous_slide' | t }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
+          <div class="slider-counter caption">
+            <span class="slider-counter--current">1</span>
+            <span aria-hidden="true"> / </span>
+            <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+            <span class="slider-counter--total">{{ section.blocks.size }}</span>
+          </div>
+          <button
+            type="button"
+            class="slider-button slider-button--next"
+            name="next"
+            aria-label="{{ 'general.slider.next_slide' | t }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
+        </div>
+      </slideshow-component>
+      {%- if request.design_mode -%}
+        <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+        <style>
+          /* theme editor power preview fix */
+          .text-slider-slider .slider__slide[aria-hidden='true'] {
+            visibility: hidden;
+          }
+        </style>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.text-slider.name",
+  "max_blocks": 12,
+  "class": "text-slider-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-4"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_separator",
+      "default": true,
+      "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.text-slider.settings.header__1.content",
+      "info": "t:sections.text-slider.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": false,
+      "label": "t:sections.text-slider.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.text-slider.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.text-slider.settings.auto_rotate.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.text-slider.settings.change_slides_speed.label",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "t:sections.text-slider.blocks.text.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>t:sections.text-slider.blocks.text.settings.text.default</p>",
+          "label": "t:sections.text-slider.blocks.text.settings.text.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.text-slider.presets.name",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
