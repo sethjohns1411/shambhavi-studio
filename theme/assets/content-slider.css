@@ -1,0 +1,12 @@
+.content-slider .content-slider__message > p {
+  margin: 0rem;
+}
+
+.content-slider .content-slider-component .slider-buttons {
+  margin-top: 2.2rem;
+}
+
+.content-slider .content-slider-component .slider-counter__link--dots .dot {
+  width: 0.8rem;
+  height: 0.8rem;
+}

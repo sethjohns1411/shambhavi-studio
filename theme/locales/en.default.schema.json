@@ -494,6 +494,18 @@
           "label": "Title",
           "info": "Leave blank to use collection's title"
         }
+      },
+      "slider_visual": {
+        "label": "Pagination style",
+        "options__1": {
+          "label": "Counter"
+        },
+        "options__2": {
+          "label": "Dots"
+        },
+        "options__3": {
+          "label": "Numbers"
+        }
       }
     },
     "announcement-bar": {
@@ -560,8 +572,8 @@
         "name": "Announcement bar"
       }
     },
-    "text-slider": {
-      "name": "Text slider",
+    "content-slider": {
+      "name": "Content slider",
       "settings": {
         "auto_rotate": {
           "label": "Auto-rotate slide"
@@ -575,8 +587,7 @@
           "name": "Slide",
           "settings": {
             "text": {
-              "label": "Text",
-              "default": "Welcome to our store"
+              "label": "Text"
             },
             "text_alignment": {
               "label": "Text alignment",
@@ -594,7 +605,7 @@
         }
       },
       "presets": {
-        "name": "Text slider"
+        "name": "Content slider"
       }
     },
     "apps": {
