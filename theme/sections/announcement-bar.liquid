@@ -22,7 +22,7 @@
   class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
   {{ block.shopify_attributes }}
 >
-  <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
+  <div class="{% if section.settings.full_width %}page-full-width{% else %}page-width{% endif %} utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
     {%- if section.settings.show_social and social_icons -%}
       {%- render 'social-icons' -%}
     {%- endif -%}
@@ -34,7 +34,7 @@
         {{ block.shopify_attributes }}
       >
         {%- if section.blocks.first.settings.text != blank -%}
-          <div class="announcement-bar__message h5">
+          <div class="announcement-bar__message">
             {{ section.blocks.first.settings.text }}
           </div>
         {%- endif -%}
@@ -72,7 +72,7 @@
                   {{ block.shopify_attributes }}
                 >
                   {%- if block.settings.text != blank -%}
-                    <div class="announcement-bar__message h5">
+                    <div class="announcement-bar__message">
                       {{ block.settings.text }}
                     </div>
                   {%- endif -%}
@@ -84,7 +84,7 @@
         <div class="slider-buttons">
           <button
             type="button"
-            class="slider-button slider-button--prev"
+            class="slider-button slider-button--prev{% if section.settings.enable_arrow %} {% else %} hidden{% endif %}"
             name="previous"
             aria-label="{{ 'general.slider.previous_slide' | t }}"
           >
@@ -100,7 +100,7 @@
           </div>
           <button
             type="button"
-            class="slider-button slider-button--next"
+            class="slider-button slider-button--next{% if section.settings.enable_arrow %} {% else %} hidden{% endif %}"
             name="next"
             aria-label="{{ 'general.slider.next_slide' | t }}"
           >
@@ -156,6 +156,12 @@
   },
   "settings": [
     {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.all.full_width.label"
+    },
+    {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
@@ -164,7 +170,7 @@
     {
       "type": "checkbox",
       "id": "show_line_separator",
-      "default": true,
+      "default": false,
       "label": "t:sections.header.settings.show_line_separator.label"
     },
     {
@@ -197,6 +203,12 @@
       "unit": "s",
       "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
       "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_arrow",
+      "label": "Enable arrow",
+      "default": false
     },
     {
       "type": "header",
