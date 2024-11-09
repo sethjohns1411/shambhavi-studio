@@ -1,0 +1,123 @@
+{{ 'section-separator.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  if section.blocks.size > 0
+    assign text_slider = true
+  endif
+-%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  class="section-{{ section.id }} section-separator color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding"
+  {{ block.shopify_attributes }}
+>
+  <div class="{% if section.settings.full_width %}page-full-width{% else %}page-width{% endif %}">
+    <div class="seprator-media">
+      {% if section.settings.image != blank %}
+        {{
+          section.settings.image
+          | image_url: width: 1920
+          | image_tag: class: "seprator-image", sizes: "100%", fetchpriority: fetch_priority
+        }}
+      {% else %}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0726/2057/2895/files/seprator.png?v=1731087928"
+          alt="seprator"
+          class="motion-reduce"
+          {% unless lazy_load == false %}
+            loading="lazy"
+          {% endunless %}
+          width="100%"
+          height="auto"
+        >
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Section seprator",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.all.full_width.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile padding top",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile padding bottom",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section seprator"
+    }
+  ]
+}
+{% endschema %}

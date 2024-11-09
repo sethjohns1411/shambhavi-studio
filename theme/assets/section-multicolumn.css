@@ -48,9 +48,17 @@
   margin-top: 1.5rem;
 }
 
+.multicolumn .button.button--underline {
+  color: var(--color-grey10);
+}
+
+.multicolumn .button.button--underline:hover {
+  color: var(--color-primary);
+}
+
 @media screen and (min-width: 750px) {
   .multicolumn .button {
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 }
 
@@ -62,6 +70,10 @@
 
 .multicolumn-list__item:only-child {
   max-width: 72rem;
+}
+
+.multicolumn-list h3 {
+  font-size: 1.6rem;
 }
 
 .multicolumn-list__item--empty {
@@ -85,6 +97,11 @@
 .multicolumn-list h3,
 .multicolumn-list p {
   margin: 0;
+  color: rgb(var(--color-foreground));
+}
+
+.multicolumn-list p {
+  line-height: 2.5rem;
 }
 
 .multicolumn-card-spacing {
@@ -114,8 +131,8 @@
   }
 
   .multicolumn-list:not(.slider) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
   }
 }
 
@@ -215,10 +232,6 @@
   border-radius: 0;
 }
 
-.multicolumn.background-none .multicolumn-list__item[data-right-border="true"] .multicolumn-card {
-  border-right: 1px dashed var(--color-primary);
-}
-
 .multicolumn-card__info .link {
   text-decoration: none;
   font-size: inherit;
@@ -230,8 +243,20 @@
   white-space: nowrap;
 }
 
+@media screen and (max-width: 989px) {
+  .multicolumn.background-none .multicolumn-list:not(.slider) .multicolumn-list__item:not(:last-child) {
+    margin-bottom: 4.2rem;
+    padding-bottom: 4.2rem;
+    border-bottom: 1px dashed var(--color-primary);
+  }
+}
+
 @media screen and (min-width: 990px) {
   .multicolumn-list__item--empty {
     display: list-item;
+  }
+
+  .multicolumn.background-none .multicolumn-list__item[data-right-border="true"] .multicolumn-card {
+    border-right: 1px dashed var(--color-primary);
   }
 }

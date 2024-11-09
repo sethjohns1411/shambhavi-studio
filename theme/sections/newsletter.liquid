@@ -3,8 +3,8 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
   }
 
   {% if section.settings.image_mobile != blank %}
@@ -119,7 +119,7 @@
                       </button>
                     </div>
                     {%- if form.errors -%}
-                      <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">
+                      <small class="newsletter-form__message text-lora form__message" id="Newsletter-error--{{ section.id }}">
                         <span class="svg-wrapper">
                           {{- 'icon-error.svg' | inline_asset_content -}}
                         </span>
@@ -130,10 +130,9 @@
                   </div>
                   {%- if form.posted_successfully? -%}
                     <h3
-                      class="newsletter-form__message newsletter-form__message--success form__message"
+                      class="newsletter-form__message text-lora newsletter-form__message--success form__message"
                       id="Newsletter-success--{{ section.id }}"
                       tabindex="-1"
-                      autofocus
                     >
                       <span class="svg-wrapper">
                         {{- 'icon-success.svg' | inline_asset_content -}}
@@ -211,8 +210,8 @@
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 100,
-      "step": 4,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
       "default": 40
@@ -221,10 +220,30 @@
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 100,
-      "step": 4,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile padding bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile padding bottom",
       "default": 52
     }
   ],

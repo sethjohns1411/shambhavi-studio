@@ -60,7 +60,7 @@
   },
   "newsletter": {
     "label": "Enter Email ID*",
-    "success": "Thanks for subscribing",
+    "success": "Thank you for joining.",
     "button_label": "Subscribe",
     "submit_label": "SUBMIT"
   },

@@ -294,7 +294,7 @@ slider-component.slider-component-full-width {
 .slider-counter__link--active.slider-counter__link--numbers,
 .slider-counter__link--dots:not(.slider-counter__link--active):hover .dot,
 .slider-counter__link--numbers:hover {
-  transform: scale(1.1);
+  transform: scale(1);
 }
 
 .slider-counter__link--numbers {
@@ -336,7 +336,7 @@ slider-component.slider-component-full-width {
 }
 
 .slider-button {
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(var(--color-foreground), 1);
   background: transparent;
   border: none;
   cursor: pointer;
