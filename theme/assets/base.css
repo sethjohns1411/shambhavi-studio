@@ -95,9 +95,12 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   margin: 0 auto;
 }
 
-.utility-bar__grid.page-width {
-  padding-left: 3rem;
-  padding-right: 3rem;
+.header.page-width,
+.header.page-full-width,
+.utility-bar__grid.page-width,
+.utility-bar__grid.page-full-width {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 @media screen and (min-width: 750px) {
@@ -106,9 +109,11 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   }
 
   .header.page-width,
-  .utility-bar__grid.page-width {
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
+  .header.page-full-width,
+  .utility-bar__grid.page-width,
+  .utility-bar__grid.page-full-width {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .page-width--narrow {
@@ -2194,13 +2199,17 @@ input[type='checkbox'] {
   }
 }
 
+.announcement-bar {
+  position: relative;
+}
+
 .announcement-bar,
 .announcement-bar__announcement {
   color: rgb(var(--color-foreground));
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   align-content: center;
   grid-area: announcements;
@@ -2222,6 +2231,18 @@ input[type='checkbox'] {
 .announcement-bar-slider,
 .announcement-bar-slider .slider {
   width: 100%;
+}
+
+.announcement-bar .slider-buttons {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.announcement-bar .slider-buttons .slider-counter {
+  font-size: 1rem;
+  column-gap: 2px;
 }
 
 .announcement-bar .slider-button--next {
@@ -2258,13 +2279,19 @@ input[type='checkbox'] {
 }
 
 @media screen and (min-width: 990px) {
-  body:has(.section-header .header:not(.drawer-menu)) .utility-bar .page-width {
-    padding-left: 5rem;
-    padding-right: 5rem;
+  body:has(.section-header .header:not(.drawer-menu)) .utility-bar .page-width,
+  body:has(.section-header .header:not(.drawer-menu)) .utility-bar .page-full-width {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .announcement-bar-slider {
     width: 60%;
+  }
+
+  .announcement-bar,
+  .announcement-bar__announcement {
+    justify-content: center;
   }
 
   .announcement-bar .slider-button {
@@ -2282,6 +2309,11 @@ input[type='checkbox'] {
 
 .announcement-bar__message p {
   margin: 0rem;
+  line-height: normal;
+}
+
+.announcement-bar__message p a {
+  margin-left: 0.5rem;
 }
 
 .announcement-bar__message * {

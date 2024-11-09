@@ -7,6 +7,14 @@
   margin: 0;
 }
 
+.section-collection-list .collection-list-wrapper .title-wrapper .collection-list-title.text-body {
+  font-size: 1.5rem;
+  line-height: calc(1 + .8 / var(--font-body-scale));
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-weight);
+}
+
 .section-collection-list .collection-list-wrapper .button-wrapper {
   margin-top: 6rem;
 }
