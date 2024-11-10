@@ -16,12 +16,14 @@
         {{- 'icon-close.svg' | inline_asset_content -}}
       </span>
     </summary>
-    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}"
+      data-submenu-style="dropdown"
+    >
       <div class="menu-drawer__inner-container">
         <div class="menu-drawer__navigation-container">
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
-              {%- for link in section.settings.menu.links -%}
+              {%- for link in section.settings.menu_mobile.links -%}
                 <li>
                   {%- if link.links != blank -%}
                     <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
@@ -43,7 +45,7 @@
                         tabindex="-1"
                       >
                         <div class="menu-drawer__inner-submenu">
-                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                          <button class="menu-drawer__close-button hidden link link--text focus-inset" aria-expanded="true">
                             <span class="svg-wrapper">
                               {{- 'icon-arrow.svg' | inline_asset_content -}}
                             </span>
@@ -82,7 +84,7 @@
                                       class="menu-drawer__submenu has-submenu gradient motion-reduce"
                                     >
                                       <button
-                                        class="menu-drawer__close-button link link--text focus-inset"
+                                        class="menu-drawer__close-button hidden link link--text focus-inset"
                                         aria-expanded="true"
                                       >
                                         <span class="svg-wrapper">
@@ -135,7 +137,7 @@
               {%- endfor -%}
             </ul>
           </nav>
-          <div class="menu-drawer__utility-links">
+          <div class="menu-drawer__utility-links hidden">
             {%- if shop.customer_accounts_enabled -%}
               <a
                 href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
@@ -297,6 +299,56 @@
                 </li>
               {%- endif -%}
             </ul>
+          </div>
+          <div class="menu-drawer-footer">
+            <div class="sie-drawer-media">
+              <div
+                class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings{% if section.settings.image != blank or section.settings.image_mobile != blank %} media{% else %} image-with-text__media--placeholder placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
+                {% if section.settings.height == 'adapt' and section.settings.image != blank or section.settings.image_mobile != blank %}
+                  style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+                {% endif %}
+              >
+                {%- if section.settings.image != blank or section.settings.image_mobile != blank -%}
+                  {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                    {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                    {%- capture sizes -%}
+                  (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                  (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                {%- endcapture -%}
+                  {%- else -%}
+                    {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                    {%- capture sizes -%}
+                  (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                  (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                {%- endcapture -%}
+                  {%- endif -%}
+                  {% if section.settings.image != blank %}
+                    {{
+                      section.settings.image
+                      | image_url: width: 1500
+                      | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                      class: 'small-hide medium-hide'
+                    }}
+                  {% endif %}
+        
+                  {% if section.settings.image_mobile != blank %}
+                    {{
+                      section.settings.image_mobile
+                      | image_url: width: 1500
+                      | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                      class: 'large-up-hide'
+                    }}
+                  {% else %}
+                    {{
+                      section.settings.image
+                      | image_url: width: 1500
+                      | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                      class: 'large-up-hide'
+                    }}
+                  {% endif %}
+                {%- endif -%}
+              </div>
+            </div>
           </div>
         </div>
       </div>
