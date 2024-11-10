@@ -32,7 +32,8 @@
     }
   {%- endif -%}
 
-  .menu-drawer-container {
+  .menu-drawer-container,
+  .menu-side-drawer-container {
     display: flex;
   }
 
@@ -54,9 +55,16 @@
   .list-menu__item {
     display: flex;
     align-items: center;
-    font-size: 12px;
-    line-height: 15px;
+    font-size: 14px;
+    line-height: 18px;
     text-transform: uppercase;
+  }
+
+  @media screen and (min-width: 990px) {
+    .list-menu__item {
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
 
   .list-menu__item--link {
@@ -121,7 +129,7 @@
       assign localization_forms = true
     endif
   -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
+  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-full-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
     {%- liquid
       if section.settings.menu != blank
         render 'header-drawer'
@@ -281,7 +289,9 @@
         {%- endif -%}
       </a>
 
-      {% render 'header-side-drawer' %}
+      {% if section.settings.menu_side_drawer != blank %}
+        {% render 'header-side-drawer' %}
+      {% endif %}
     </div>
   </header>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
@@ -446,7 +456,6 @@
 {
   "name": "t:sections.header.name",
   "class": "section-header",
-  "max_blocks": 3,
   "settings": [
     {
       "type": "select",
@@ -478,6 +487,12 @@
       "id": "menu",
       "default": "main-menu",
       "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_mobile",
+      "default": "main-menu",
+      "label": "Mobile menu"
     },
     {
       "type": "select",
@@ -529,6 +544,67 @@
       "id": "show_line_separator",
       "default": true,
       "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "header",
+      "content": "Side drawer menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_side_drawer",
+      "label": "Side drawer Menu"
+    },
+    {
+      "type": "color_scheme",
+      "id": "menu_side_drawer_color_scheme",
+      "label": "Color side drawer",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "studio_hq_title",
+      "label": "Studio HQ title",
+      "default": "Studio HQ"
+    },
+    {
+      "type": "richtext",
+      "id": "studio_hq",
+      "label": "Studio HQ",
+      "default": "<p>B 12, Chomu House circle, behind Starbucks, Jaipur, Rajasthan 302001</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.image-with-text.settings.height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.image-with-text.settings.height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.image-with-text.settings.height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.image-with-text.settings.height.options__4.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.image-with-text.settings.height.label"
     },
     {
       "type": "header",
@@ -640,9 +716,7 @@
     }
   ],
   "blocks": [
-    {
-      "type": "@app"
-    }
+
   ]
 }
 {% endschema %}
