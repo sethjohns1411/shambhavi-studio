@@ -8,6 +8,7 @@
   width: 28rem;
   font-weight: 500;
   box-shadow: -4px 6px 7px #00000017 !important;
+  background: #FFF;
 }
 
 .list-menu--disclosure:focus {
