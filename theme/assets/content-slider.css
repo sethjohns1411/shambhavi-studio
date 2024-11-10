@@ -1,5 +1,10 @@
+.content-slider .content-slider__message {
+  line-height: 3.2rem;
+}
+
 .content-slider .content-slider__message > p {
   margin: 0rem;
+  line-height: 3.2rem;
 }
 
 .content-slider .content-slider-component .slider-buttons {

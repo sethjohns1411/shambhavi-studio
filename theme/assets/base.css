@@ -95,9 +95,12 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   margin: 0 auto;
 }
 
-.utility-bar__grid.page-width {
-  padding-left: 3rem;
-  padding-right: 3rem;
+.header.page-width,
+.header.page-full-width,
+.utility-bar__grid.page-width,
+.utility-bar__grid.page-full-width {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 @media screen and (min-width: 750px) {
@@ -106,9 +109,11 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   }
 
   .header.page-width,
-  .utility-bar__grid.page-width {
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
+  .header.page-full-width,
+  .utility-bar__grid.page-width,
+  .utility-bar__grid.page-full-width {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .page-width--narrow {
@@ -364,14 +369,14 @@ h5,
 
 h6,
 .h6 {
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(var(--color-foreground), 1);
   margin-block-start: 1.67em;
   margin-block-end: 1.67em;
 }
 
 blockquote {
   font-style: italic;
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(var(--color-foreground), 1);
   border-left: 0.2rem solid rgba(var(--color-foreground), 0.2);
   padding-left: 1rem;
 }
@@ -512,7 +517,7 @@ h6:empty {
 }
 
 .link--text:hover {
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(var(--color-foreground), 1);
 }
 
 .link-with-icon {
@@ -726,11 +731,11 @@ summary::-webkit-details-marker {
   box-shadow: none;
 }
 
-*:focus-visible {
+/* *:focus-visible {
   outline: var(--focused-base-outline);
   outline-offset: var(--focused-base-outline-offset);
   box-shadow: var(--focused-base-box-shadow);
-}
+} */
 
 /* Fallback - for browsers that don't support :focus-visible, a fallback is set for :focus */
 .focused {
@@ -997,6 +1002,16 @@ summary::-webkit-details-marker {
 }
 
 @media screen and (min-width: 990px) {
+  .grid--8-col-desktop .grid__item {
+    width: calc(12.5% - var(--grid-desktop-horizontal-spacing) * 7 / 8);
+    max-width: calc(12.5% - var(--grid-desktop-horizontal-spacing) * 7 / 8);
+  }
+
+  .grid--7-col-desktop .grid__item {
+    width: calc(14.2857% - var(--grid-desktop-horizontal-spacing) * 6 / 7);
+    max-width: calc(14.2857% - var(--grid-desktop-horizontal-spacing) * 6 / 7);
+}
+
   .grid--6-col-desktop .grid__item {
     width: calc(16.66% - var(--grid-desktop-horizontal-spacing) * 5 / 6);
     max-width: calc(16.66% - var(--grid-desktop-horizontal-spacing) * 5 / 6);
@@ -1112,6 +1127,12 @@ summary::-webkit-details-marker {
 }
 
 /* component-media */
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 .media {
   display: block;
   background-color: rgba(var(--color-foreground), 0.1);
@@ -1223,7 +1244,7 @@ button.shopify-payment-button__button--unbranded {
   justify-content: center;
   align-items: center;
   border: 0;
-  padding: 0 3rem;
+  padding: 0 2.6rem;
   cursor: pointer;
   font: inherit;
   font-size: 1.5rem;
@@ -1233,6 +1254,12 @@ button.shopify-payment-button__button--unbranded {
   -webkit-appearance: none;
   appearance: none;
   background-color: rgba(var(--color-button), var(--alpha-button-background));
+}
+
+.button:hover,
+.shopify-challenge__button:hover,
+.customer button:hover {
+  color: var(--color-primary);
 }
 
 .button:before,
@@ -1275,7 +1302,7 @@ button.shopify-payment-button__button--unbranded {
 .shopify-payment-button__button--unbranded:hover::after {
   --border-offset: 0px;
   box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
-      rgba(var(--color-button-text), var(--border-opacity)),
+  var(--color-primary),
     0 0 0 calc(var(--buttons-border-width) + 1px) rgba(var(--color-button), var(--alpha-button-background));
 }
 
@@ -1502,7 +1529,7 @@ details[open] > .share-button__fallback {
 }
 
 .share-button__fallback button:hover {
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(var(--color-foreground), 1);
 }
 
 .share-button__fallback button:hover .svg-wrapper {
@@ -1654,7 +1681,7 @@ details[open] > .share-button__fallback {
   font-style: var(--font-body-style);
   font-weight: var(--font-body-weight);
   font-size: 1.2rem;
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(var(--color-foreground), 1);
 }
 
 .field:hover.field:after,
@@ -1761,7 +1788,7 @@ details[open] > .share-button__fallback {
   pointer-events: none;
   position: absolute;
   transition: top var(--duration-short) ease, font-size var(--duration-short) ease;
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(var(--color-foreground), 1);
   line-height: 1.5;
 }
 
@@ -2172,13 +2199,17 @@ input[type='checkbox'] {
   }
 }
 
+.announcement-bar {
+  position: relative;
+}
+
 .announcement-bar,
 .announcement-bar__announcement {
   color: rgb(var(--color-foreground));
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   align-content: center;
   grid-area: announcements;
@@ -2200,6 +2231,18 @@ input[type='checkbox'] {
 .announcement-bar-slider,
 .announcement-bar-slider .slider {
   width: 100%;
+}
+
+.announcement-bar .slider-buttons {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.announcement-bar .slider-buttons .slider-counter {
+  font-size: 1rem;
+  column-gap: 2px;
 }
 
 .announcement-bar .slider-button--next {
@@ -2236,13 +2279,19 @@ input[type='checkbox'] {
 }
 
 @media screen and (min-width: 990px) {
-  body:has(.section-header .header:not(.drawer-menu)) .utility-bar .page-width {
-    padding-left: 5rem;
-    padding-right: 5rem;
+  body:has(.section-header .header:not(.drawer-menu)) .utility-bar .page-width,
+  body:has(.section-header .header:not(.drawer-menu)) .utility-bar .page-full-width {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .announcement-bar-slider {
     width: 60%;
+  }
+
+  .announcement-bar,
+  .announcement-bar__announcement {
+    justify-content: center;
   }
 
   .announcement-bar .slider-button {
@@ -2260,6 +2309,11 @@ input[type='checkbox'] {
 
 .announcement-bar__message p {
   margin: 0rem;
+  line-height: normal;
+}
+
+.announcement-bar__message p a {
+  margin-left: 0.5rem;
 }
 
 .announcement-bar__message * {
@@ -2461,7 +2515,7 @@ input[type='checkbox'] {
 
 .header__heading-link .h2 {
   line-height: 1;
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(var(--color-foreground), 1);
 }
 
 .header__heading-logo {
