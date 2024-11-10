@@ -1,0 +1,97 @@
+.discover-wrapper .img-vdo-discover-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.discover-wrapper .img-vdo-discover-wrapper .block-wrapper {
+  width: 50%;
+  height: 420px;
+}
+
+.discover-wrapper
+  .img-vdo-discover-wrapper
+  .block-wrapper
+  .img-discover-block
+  img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+.discover-wrapper {
+  position: relative;
+}
+
+.discover-wrapper .content-discover-warpper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2599;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.discover-wrapper .content-container {
+  width: 600px;
+  height: 324px;
+  display: flex;
+  padding: 19px 132px;
+  flex-direction: column;
+  align-items: center;
+  background-size: cover;
+}
+.discover-wrapper .content-discover-button {
+  margin-top: 30px;
+}
+
+.discover-wrapper .content-container .content-discover-logo .logo {
+  width: 140px;
+  height: 118px;
+}
+
+.discover-wrapper .content-container .content-discover-logo .logo img {
+  object-fit: cover;
+  width: 140px;
+  height: 118px;
+}
+.discover-wrapper .block-wrapper .video-discover-block {
+  width: 100%;
+  height: 420px;
+}
+.discover-wrapper .block-wrapper .video-discover-block deferred-media {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+.discover-wrapper .video-section__media {
+  padding-bottom: 0;
+}
+.discover-wrapper .content-discover-caption {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 749px) {
+  .discover-wrapper
+    .img-vdo-discover-wrapper
+    .block-wrapper
+    .img-discover-block
+    img,
+  .discover-wrapper .img-vdo-discover-wrapper .block-wrapper,
+  .discover-wrapper .block-wrapper .video-discover-block deferred-media,
+  .discover-wrapper .block-wrapper .video-discover-block {
+    height: 300px;
+  }
+  .discover-wrapper .content-container {
+    width: 365px;
+  }
+  .discover-wrapper .content-container {
+    padding: 19px 42px;
+  }
+}
