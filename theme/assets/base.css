@@ -149,7 +149,7 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 }
 
 .text-lora {
-  font-family: Lora, serif !important;
+  font-family: 'Lora-Italic', serif !important;
 }
 
 .text-left {
