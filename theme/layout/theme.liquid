@@ -56,6 +56,18 @@
   
         {% if settings.font_type == 'custom' %}
           @font-face {
+            font-family: 'Lora-Italic';
+            src: url(https://cdn.shopify.com/s/files/1/0726/2057/2895/files/Lora-Italic.otf?v=1731338177) format('otf'),
+                url(https://cdn.shopify.com/s/files/1/0726/2057/2895/files/Lora-Italic.ttf?v=1731338177) format('truetype'),
+                url(https://cdn.shopify.com/s/files/1/0726/2057/2895/files/Lora-Italic.woff?v=1731338176) format('woff'),
+                url(https://cdn.shopify.com/s/files/1/0726/2057/2895/files/Lora-Italic.woff2?v=1731338175) format('woff2');
+            font-display: swap;
+            font-style: italic;
+            font-weight: 400;
+            font-stretch: normal;
+          }
+
+          @font-face {
             font-family: 'Outfit-Light';
             src: url(https://cdn.shopify.com/s/files/1/0726/2057/2895/files/Outfit-Light.otf?v=1730265212) format('otf'),
                 url(https://cdn.shopify.com/s/files/1/0726/2057/2895/files/Outfit-Light.ttf?v=1730265212) format('truetype'),

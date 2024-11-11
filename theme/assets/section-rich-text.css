@@ -20,6 +20,20 @@
   margin-top: 1rem;
 }
 
+.rich-text__heading[data-heading-spacing="true"] > span {
+  padding-right: 6.5rem;
+}
+
+.rich-text__heading[data-heading-spacing="true"] .second-heading-richtext {
+  line-height: 1;
+}
+
+.rich-text__heading[data-heading-spacing="true"] .second-heading-richtext > span {
+  line-height: 1;
+  padding-left: 6.5rem;
+  color: var(--color-primary);
+}
+
 @media screen and (max-width: 749px) {
   .rich-text__blocks .rich-text__heading {
     font-size: 2rem;
