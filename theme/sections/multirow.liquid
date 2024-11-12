@@ -2,8 +2,8 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
   }
 
   @media screen and (min-width: 750px) {
@@ -43,7 +43,9 @@
 -%}
 
 <div class="multirow section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}">
-  <div class="multirow__inner page-width">
+  <div class="multirow__inner page-width"
+    data-blocks-border="{% if section.settings.enable_block_border %}true{% else %}false{% endif %}"
+  >
     {%- for block in section.blocks -%}
       <div
         class="image-with-text isolate{{ borders_class }}{{ corners_class }}{{ padding_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -51,13 +53,13 @@
       >
         <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.image_layout contains 'alternate' %}{% cycle odd_class, even_class %}{% else %}{{ odd_class }}{% endif %}">
           <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
-            <div
-              class="image-with-text__media image-with-text__media--{{ section.settings.image_height }} gradient color-{{ section.settings.row_color_scheme }} global-media-settings{% if block.settings.image != blank %} media{% else %} image-with-text__media--placeholder placeholder{% endif %}"
-              {% if section.settings.image_height == 'adapt' and block.settings.image != blank %}
-                style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
-              {% endif %}
-            >
-              {%- if block.settings.image != blank -%}
+            {%- if block.settings.image != blank -%}
+              <div class="image-with-text__media image-with-text__media--{{ section.settings.image_height }} gradient color-{{ section.settings.row_color_scheme }} global-media-settings{% if block.settings.image != blank %} media{% else %} image-with-text__media--placeholder placeholder{% endif %}"
+                {% if section.settings.image_height == 'adapt' and block.settings.image != blank %}
+                  style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                {% endif %}
+              >
+              
                 {%- capture sizes -%}
                   (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
                   (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
@@ -67,25 +69,44 @@
                   | image_url: width: 1500
                   | image_tag: sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500'
                 }}
-              {%- else -%}
-                {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-              {%- endif -%}
-            </div>
+              </div>
+            {% else %}
+              <div class="video-with-text__media image-with-text__media image-with-text__media--{{ section.settings.image_height }} gradient color-{{ section.settings.row_color_scheme }} global-media-settings"
+                {% if section.settings.image_height == 'adapt' and block.settings.cover_image != blank %}
+                  style="padding-bottom: {{ 1 | divided_by: block.settings.cover_image.aspect_ratio | times: 100 }}%;"
+                {% endif %}
+              >
+                {% render 'deferred-media',
+                  video: block.settings.video,
+                  video_url: block.settings.video_url,
+                  cover_image: block.settings.cover_image,
+                  enable_video_loop: block.settings.enable_video_looping
+                %}
+              </div>
+            {%- endif -%}
           </div>
           <div class="image-with-text__text-item grid__item">
             <div class="image-with-text__content image-with-text__content--{{ section.settings.desktop_content_position }} image-with-text__content--desktop-{{ section.settings.desktop_content_alignment }} image-with-text__content--mobile-{{ section.settings.mobile_content_alignment }} image-with-text__content--{{ section.settings.image_height }} content-container{% unless no_content_background and no_content_styles %} gradient color-{{ section.settings.row_color_scheme }}{% else %} background-transparent{% endunless %}">
-              {%- if block.settings.caption -%}
+              {%- if block.settings.caption != blank -%}
                 <p class="image-with-text__text image-with-text__text--caption caption-with-letter-spacing caption-with-letter-spacing--medium">
                   {{ block.settings.caption | escape }}
                 </p>
               {%- endif -%}
-              {%- if block.settings.heading -%}
+              {%- if block.settings.heading != blank -%}
                 <h2 class="image-with-text__heading {{ section.settings.heading_size }} rte">
                   {{ block.settings.heading }}
                 </h2>
               {%- endif -%}
-              {%- if block.settings.text -%}
-                <div class="image-with-text__text rte {{ section.settings.text_style }}">{{ block.settings.text }}</div>
+              {%- if block.settings.text != blank -%}
+                <div class="image-with-text__text rte {{ section.settings.text_style }}{% if block.settings.font_lora %} text-lora{% endif %}">
+                  {{ block.settings.text }}
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.text_2 != blank -%}
+                <div class="image-with-text__text rte {{ section.settings.text_style }}{% if block.settings.font_lora_2 %} text-lora{% endif %}">
+                  {{ block.settings.text_2 }}
+                </div>
               {%- endif -%}
               {%- if block.settings.button_label != blank -%}
                 <a
@@ -136,7 +157,7 @@
           "label": "t:sections.multirow.settings.image_height.options__4.label"
         }
       ],
-      "default": "medium",
+      "default": "small",
       "label": "t:sections.multirow.settings.image_height.label"
     },
     {
@@ -161,31 +182,37 @@
       "info": "t:sections.multirow.settings.desktop_image_width.info"
     },
     {
+      "type": "checkbox",
+      "id": "enable_block_border",
+      "label": "Enable blocks border",
+      "default": true
+    },
+    {
       "type": "select",
       "id": "heading_size",
       "options": [
         {
-          "value": "h2",
+          "value": "h3",
           "label": "t:sections.all.heading_size.options__1.label"
         },
         {
-          "value": "h1",
+          "value": "h2",
           "label": "t:sections.all.heading_size.options__2.label"
         },
         {
-          "value": "h0",
+          "value": "h1",
           "label": "t:sections.all.heading_size.options__3.label"
         },
         {
-          "value": "hxl",
+          "value": "h0",
           "label": "t:sections.all.heading_size.options__4.label"
         },
         {
-          "value": "hxxl",
+          "value": "hxl",
           "label": "t:sections.all.heading_size.options__5.label"
         }
       ],
-      "default": "h1",
+      "default": "h3",
       "label": "t:sections.all.heading_size.label"
     },
     {
@@ -330,8 +357,8 @@
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 100,
-      "step": 4,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
       "default": 36
@@ -340,10 +367,30 @@
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 100,
-      "step": 4,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile padding bottom",
       "default": 36
     }
   ],
@@ -356,6 +403,46 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.multirow.blocks.row.settings.image.label"
+        },
+        {
+          "type": "header",
+          "content": "Video instead of image"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_video_looping",
+          "label": "t:sections.video.settings.enable_video_looping.label",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "t:sections.video.settings.header__1.content"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:sections.video.settings.video.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.video.settings.header__2.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.video.settings.paragraph.content"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+          "label": "t:sections.video.settings.video_url.label",
+          "info": "t:sections.video.settings.video_url.info"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "t:sections.video.settings.cover_image.label"
         },
         {
           "type": "text",
@@ -374,6 +461,23 @@
           "id": "text",
           "default": "t:sections.multirow.blocks.row.settings.text.default",
           "label": "t:sections.multirow.blocks.row.settings.text.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "font_lora",
+          "label": "Enable lora font family",
+          "default": true
+        },
+        {
+          "type": "richtext",
+          "id": "text_2",
+          "label": "t:sections.multirow.blocks.row.settings.text.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "font_lora_2",
+          "label": "Enable lora font family",
+          "default": false
         },
         {
           "type": "text",
