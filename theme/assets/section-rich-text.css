@@ -45,6 +45,7 @@
 
   .rich-text__heading + .rich-text__text {
     font-size: 1.6rem;
+    line-height: 2.8rem;
   }
 }
 
