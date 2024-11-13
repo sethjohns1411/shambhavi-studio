@@ -3673,3 +3673,24 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+.blog .slider-buttons {
+  display: none;
+}
+
+.blog .title-wrapper--self-padded-tablet-down, .title-wrapper--self-padded-mobile {
+ padding: 0 0 18px;
+ border-bottom:  1px solid rgba(var(--color-foreground), 0.5);
+}
+
+@media screen and (max-width: 990px) {
+  .blog .title-wrapper--self-padded-tablet-down, .title-wrapper--self-padded-mobile {
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+  }
+}
+.blog .card .card__inner .card__media {
+  --image-padding:5px;
+  --border-radius:5px;
+  border-radius: calc(var(--border-radius) - var(--border-width) - var(--image-padding));
+}
