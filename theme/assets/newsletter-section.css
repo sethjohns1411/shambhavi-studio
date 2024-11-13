@@ -89,6 +89,7 @@
   box-shadow: none;
   padding-block: 1rem;
   padding-left: 0rem;
+  color: rgba(var(--color-foreground), 1);
   padding-right: 7rem !important;
   border-bottom: 0.1rem solid var(--color-primary);
 }

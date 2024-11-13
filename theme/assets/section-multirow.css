@@ -1,0 +1,14 @@
+.multirow .multirow__inner .image-with-text__media {
+  border-radius: 0.5rem;
+}
+
+.multirow .multirow__inner .image-with-text__content {
+  padding: 2rem;
+}
+
+@media screen and (min-width: 990px) {
+  .multirow .multirow__inner .image-with-text__content {
+    padding: 3.5rem;
+    padding-bottom: 0rem;
+  }
+}
