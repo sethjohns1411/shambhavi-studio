@@ -50,7 +50,7 @@ class multiSlider {
             spaceBetween: 13,
             centeredSlides: true,
             initialSlide: 1,
-            loop: true,
+            loop: true, 
             breakpoints: {
               // For screens smaller than 768px (mobile)
               768: {
