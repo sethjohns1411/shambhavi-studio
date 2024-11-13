@@ -1,0 +1,177 @@
+{{ 'multi-slider-section.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'multi-slider-section.js' |  asset_url }}" type="module" defer ></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding">
+  <div class="{% if section.settings.full_width %}page-full-width{% else %}page-width{% endif %}">
+    <div class="multi-slider-wrapper">
+      <div class="year-wrapper">
+        <div class="year-name">
+            {% assign is_first_active_set = false %}
+            {% for i in (1..7) %}
+              {% assign year_name = 'year_name_' | append: i %}
+              {% if section.settings[year_name] != blank %}
+                <div class="year{% if is_first_active_set == false %} active{% assign is_first_active_set = true %}{% endif %}" 
+                     data-year="{{ section.settings[year_name] }}">
+                  {{ section.settings[year_name] }}
+                </div>
+              {% endif %}
+            {% endfor %}            
+        </div>
+      </div>
+      <div class="slider-wrapper">
+        <div class="slider-wrapper-container">
+         {% assign is_first_block_active_set = false %}
+          {% for block in section.blocks %}
+            <div class="multi-wrappers {{ block.settings.year }} {% if is_first_block_active_set == false %} active{% assign is_first_block_active_set = true %}{% endif %}">
+              <div class="swiper myMultiSwiper">
+                <div class="multi-slider swiper-wrapper">
+                  {% for j in (1..7) %}
+                    {% assign image_field = 'image_' | append: j %}
+                    {% if block.settings[image_field] != blank %}
+                      <div class="swiper-slide">
+                        <div class=" image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }}">
+                          <div
+                            class="
+                              image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings
+                              {% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme }}{% else %} background-transparent{% endunless %}
+                              media {% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}
+                            "
+                            {% if section.settings.height == 'adapt' %}
+                              style="padding-bottom: {{ 1 | divided_by: block.settings[image_field].aspect_ratio | times: 100 }}%;"
+                            {% endif %}
+                          >
+                            {% if section.settings.image_behavior == 'ambient'
+                              or section.settings.image_behavior == 'zoom-in'
+                            %}
+                              {% assign widths = '198, 432, 642, 900, 1284, 1800' %}
+                              {% capture sizes %}
+                            (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                            (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                          {% endcapture %}
+                            {% else %}
+                              {% assign widths = '165, 360, 535, 750, 1070, 1500' %}
+                              {% capture sizes %}
+                            (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                            (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                          {% endcapture %}
+                            {% endif %}
+                            {{
+                              block.settings[image_field]
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
+                            }}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Multi Slider",
+  "class": "multi-slider section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.all.full_width.label"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "options": [
+        { "value": "adapt", "label": "t:sections.image-with-text.settings.height.options__1.label" },
+        { "value": "small", "label": "t:sections.image-with-text.settings.height.options__2.label" },
+        { "value": "medium", "label": "t:sections.image-with-text.settings.height.options__3.label" },
+        { "value": "large", "label": "t:sections.image-with-text.settings.height.options__4.label" }
+      ],
+      "default": "adapt",
+      "label": "t:sections.image-with-text.settings.height.label"
+    },
+    {
+      "type": "select",
+      "id": "desktop_image_width",
+      "options": [
+        { "value": "small", "label": "t:sections.image-with-text.settings.desktop_image_width.options__1.label" },
+        { "value": "medium", "label": "t:sections.image-with-text.settings.desktop_image_width.options__2.label" },
+        { "value": "large", "label": "t:sections.image-with-text.settings.desktop_image_width.options__3.label" }
+      ],
+      "default": "medium",
+      "label": "t:sections.image-with-text.settings.desktop_image_width.label",
+      "info": "t:sections.image-with-text.settings.desktop_image_width.info"
+    },
+    { "type": "text", "id": "year_name_1", "label": "Year name 1" },
+    { "type": "text", "id": "year_name_2", "label": "Year name 2" },
+    { "type": "text", "id": "year_name_3", "label": "Year name 3" },
+    { "type": "text", "id": "year_name_4", "label": "Year name 4" },
+    { "type": "text", "id": "year_name_5", "label": "Year name 5" },
+    { "type": "text", "id": "year_name_6", "label": "Year name 6" },
+    { "type": "text", "id": "year_name_7", "label": "Year name 7" },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slider",
+      "name": "Slider",
+      "settings": [
+        { "type": "text", "id": "year", "label": "Year" },
+        { "type": "image_picker", "id": "image_1", "label": "Image 1" },
+        { "type": "image_picker", "id": "image_2", "label": "Image 2" },
+        { "type": "image_picker", "id": "image_3", "label": "Image 3" },
+        { "type": "image_picker", "id": "image_4", "label": "Image 4" },
+        { "type": "image_picker", "id": "image_5", "label": "Image 5" },
+        { "type": "image_picker", "id": "image_6", "label": "Image 6" },
+        { "type": "image_picker", "id": "image_7", "label": "Image 7" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Multi Slider" }]
+}
+{% endschema %}

@@ -1,0 +1,97 @@
+.journey-section {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.journey-section .journey-image-wrapper-1,
+.journey-section .journey-image-wrapper-2 {
+  width: 40%;
+}
+
+.journey-section .journey-content-wrapper {
+  width: 60%;
+}
+
+.journey-section .journey-content-wrapper.extra-width {
+  width: 40%;
+}
+.journey-section .journey-content-wrapper .journey-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.journey-section .journey-content-wrapper .journey-content .journey-text,
+.journey-section .journey-content-wrapper .journey-content .journey-caption {
+  text-align: center;
+}
+.journey-section .journey-content-wrapper .journey-content .journey-text {
+  margin-top: 40px;
+}
+
+.journey-section .journey-logo {
+  width: 214px;
+}
+
+.journey-section .image-with-text__media--small {
+  height: 31.4rem;
+}
+
+.journey-section .image-with-text__media--medium {
+  height: 46rem;
+}
+
+.journey-section .image-with-text__media--large {
+  height: 69.5rem;
+}
+
+.journey-section .journey-image-wrapper-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 769px) {
+  .journey-section .image-with-text__media--small {
+    height: 19.4rem;
+  }
+
+  .journey-section .image-with-text__media--medium {
+    height: 29.6rem;
+  }
+
+  .journey-section .image-with-text__media--large {
+    height: 43.5rem;
+  }
+  .journey-section {
+    flex-direction: column;
+  }
+  .journey-section .journey-image-wrapper-1,
+  .journey-section .journey-image-wrapper-2,
+  .journey-section .journey-content-wrapper {
+    width: 100%;
+  }
+ 
+  .journey-section .image-wrapper{
+    width: 100%;
+  } 
+
+  .journey-section .journey-image-wrapper-1,
+  .journey-section .journey-image-wrapper-2 {
+    display: none;
+  }
+
+  .journey-section .journey-image-wrapper-mobile .journey-image-wrapper-1,
+  .journey-section .journey-image-wrapper-mobile .journey-image-wrapper-2 {
+    display: block;
+  }
+  .journey-section .journey-image-wrapper-mobile {
+    display: flex;
+    gap: 10px; 
+    width: 100%;
+  }
+  .journey-section .journey-content-wrapper.extra-width {
+    width: 100%;
+  }
+}
