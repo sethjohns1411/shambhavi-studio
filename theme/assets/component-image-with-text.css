@@ -14,7 +14,7 @@
 
 .image-with-text__media {
   min-height: 100%;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .image-with-text__media--small {
@@ -87,7 +87,7 @@
   height: 100%;
   justify-content: center;
   align-self: center;
-  padding: 5rem 2.4rem;
+  padding: 5.4rem 2.4rem;
   position: relative;
   z-index: 1;
 }
@@ -330,6 +330,11 @@
   word-break: break-word;
 }
 
+/* Video with text content */
+.video-with-text__media .video-section__media {
+  height: 100%;
+}
+
 @media screen and (max-width: 1023px) {
   .image-with-text__content .image-with-text__text--caption {
     margin-top: 2rem;
@@ -354,6 +359,10 @@
 }
 
 .image-with-text__content > .image-with-text__text:empty ~ a {
+  margin-top: 1.2rem;
+}
+
+.image-with-text__content .image-with-text__text + .image-with-text__text {
   margin-top: 1.2rem;
 }
 
@@ -418,13 +427,37 @@
   note: consider removing from this stylesheet if multirow-specific styles increase signficantly
 */
 .multirow__inner {
+  --grid-mobile-vertical-spacing: 4rem;
   display: flex;
   flex-direction: column;
   row-gap: var(--grid-mobile-vertical-spacing);
 }
 
+.multirow__inner[data-blocks-border="true"] {
+  --grid-desktop-vertical-spacing: 0rem;
+  --grid-mobile-vertical-spacing: 0rem;
+}
+
+.multirow__inner[data-blocks-border="true"] .image-with-text:not(:last-child) {
+  padding-bottom: 5rem;
+  margin-bottom: 5rem;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
 @media screen and (min-width: 750px) {
   .multirow__inner {
+    --grid-desktop-vertical-spacing: 4rem;
     row-gap: var(--grid-desktop-vertical-spacing);
+  }
+
+  .multirow__inner[data-blocks-border="true"] .image-with-text:not(:last-child) {
+    padding-bottom: 10rem;
+    margin-bottom: 10rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .multirow__inner .image-with-text {
+    padding-inline: 3rem;
   }
 }

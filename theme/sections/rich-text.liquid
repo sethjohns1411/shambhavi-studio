@@ -27,13 +27,20 @@
             {%- when 'heading' -%}
               <h2
                 class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                data-heading-spacing="{% if block.settings.enable_left_space %}true{% else %}false{% endif %}"
                 {{ block.shopify_attributes }}
                 {% if settings.animations_reveal_on_scroll %}
                   data-cascade
                   style="--animation-order: {{ forloop.index }};"
                 {% endif %}
               >
-                {{ block.settings.heading }}
+                <span>{{ block.settings.heading }}</span>
+                
+                {% if block.settings.heading_second != blank %}
+                  <div class="second-heading-richtext {{ block.settings.second_heading_size }}{% if block.settings.font_lora %} text-lora{% endif %}">
+                    <span class="second-heading-text">{{ block.settings.heading_second }}</span>
+                  </div>
+                {% endif %}
               </h2>
             {%- when 'caption' -%}
               <p
@@ -254,6 +261,50 @@
           ],
           "default": "h1",
           "label": "t:sections.all.heading_size.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading_second",
+          "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "second_heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h0",
+          "label": "t:sections.all.heading_size.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "font_lora",
+          "label": "Enable lora font family",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_left_space",
+          "label": "Enable left space"
         }
       ]
     },

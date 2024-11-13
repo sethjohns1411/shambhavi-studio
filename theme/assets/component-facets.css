@@ -986,7 +986,8 @@ details.menu-opening .mobile-facets__close .svg-wrapper {
   visibility: visible;
 }
 
-.js .menu-drawer__submenu .mobile-facets__submenu {
+.js .menu-drawer__submenu .mobile-facets__submenu,
+.js .menu-side-drawer__submenu .mobile-facets__submenu {
   overflow-y: auto;
 }
 

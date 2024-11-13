@@ -9,7 +9,7 @@
 
 .section-collection-list .collection-list-wrapper .title-wrapper .collection-list-title.text-body {
   font-size: 1.5rem;
-  line-height: calc(1 + .8 / var(--font-body-scale));
+  line-height: 2rem;
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
   font-weight: var(--font-body-weight);
@@ -31,14 +31,20 @@
   }
 
   .section-collection-list .collection-list:not(.slider) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 9.4rem;
+    padding-right: 9.4rem;
   }
 }
 
 .collection-list__item:only-child {
   max-width: 100%;
   width: 100%;
+}
+
+.collection-list__item .card__heading.text-body,
+.collection-list__item .card__heading.text-body .full-unstyled-link {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
 }
 
 @media screen and (max-width: 749px) {

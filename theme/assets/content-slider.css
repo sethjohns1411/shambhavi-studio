@@ -8,10 +8,17 @@
 }
 
 .content-slider .content-slider-component .slider-buttons {
-  margin-top: 2.2rem;
+  margin-top: 2rem;
 }
 
 .content-slider .content-slider-component .slider-counter__link--dots .dot {
   width: 0.8rem;
   height: 0.8rem;
+}
+
+@media screen and (max-width: 749px) {
+  .content-slider .content-slider-component {
+    max-width: 100% !important;
+    padding-inline: 2.5rem;
+  }
 }

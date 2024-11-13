@@ -10,7 +10,7 @@
 }
 
 .newsletter-card .newsletter-card-body {
-  padding: 5.4rem 4.6rem;
+  padding: 4rem 2.5rem;
 }
 
 .newsletter__wrapper .inline-richtext  {
@@ -29,6 +29,12 @@
     margin-bottom: 1rem;
   }
 
+  .newsletter-card .newsletter-card-body {
+    padding: 5.4rem 4.6rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
   .newsletter-card .newsletter-card-body {
     padding: 7rem 7.6rem;
   }
@@ -89,6 +95,7 @@
   box-shadow: none;
   padding-block: 1rem;
   padding-left: 0rem;
+  color: rgba(var(--color-foreground), 1);
   padding-right: 7rem !important;
   border-bottom: 0.1rem solid var(--color-primary);
 }
