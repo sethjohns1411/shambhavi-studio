@@ -158,6 +158,10 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   font-weight: 700;
 }
 
+.text-outfit-normal {
+  font-family: 'Outfit-Regular' !important;
+}
+
 .text-left {
   text-align: left;
 }
