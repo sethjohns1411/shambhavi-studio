@@ -6,6 +6,10 @@
   padding: 2rem;
 }
 
+.multirow .multirow__inner .image-with-text__text.text-lora {
+  font-size: 1.6rem;
+}
+
 @media screen and (min-width: 990px) {
   .multirow .multirow__inner .image-with-text__content {
     padding: 3.5rem;

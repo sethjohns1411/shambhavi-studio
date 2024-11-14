@@ -3230,8 +3230,8 @@
         }
       },
       "blocks": {
-        "slide": {
-          "name": "Slide",
+        "image": {
+          "name": "Image",
           "settings": {
             "image": {
               "label": "Image"
@@ -3315,6 +3315,44 @@
               "options__3": {
                 "label": "Right"
               }
+            }
+          }
+        },
+        "video": {
+          "name": "Video",
+          "settings": {
+            "heading": {
+              "label": "Heading",
+              "default": "Video"
+            },
+            "cover_image": {
+              "label": "Cover image"
+            },
+            "video": {
+              "label": "Video"
+            },
+            "enable_video_looping": {
+              "label": "Play video on loop"
+            },
+            "header__1": {
+              "content": "Shopify-hosted video"
+            },
+            "header__2": {
+              "content": "Or embed video from URL"
+            },
+            "header__3": {
+              "content": "Style"
+            },
+            "paragraph": {
+              "content": "Shows when no Shopify-hosted video is selected."
+            },
+            "video_url": {
+              "label": "URL",
+              "info": "Use a YouTube or Vimeo URL"
+            },
+            "description": {
+              "label": "Video alt text",
+              "info": "Describe the video for customers using screen readers. [Learn more](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video)"
             }
           }
         }
