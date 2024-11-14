@@ -153,6 +153,12 @@
             --font-heading-style: normal;
             --font-heading-weight: 500;
           }
+
+          /* custom font family */
+        :root {
+          --font-outfit-normal: 'Outfit-Regular';
+          --font-outfit-bold: 'Outfit-Bold';
+        }
         {% else %}
           :root {
             --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
@@ -327,6 +333,8 @@
 
         /* Custom color variable */
         :root {
+          --color-white: #FFFFFF;
+          --color-black: #000000;
           --color-primary: #9F886A;
           --color-grey10: #1A1A1A;
           --color-eerie-black: #191919;
