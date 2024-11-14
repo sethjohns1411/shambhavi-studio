@@ -72,24 +72,44 @@
         </div>
         <div class="content-wrapper">
           {% if section.settings.gif != blank %}
-          <div class="gif-wrapper">
-            {{
-              section.settings.gif
-              | image_url: width: 1500
-              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
-            }}
-          </div>
+            <div class="gif-wrapper">
+              {{
+                section.settings.gif
+                | image_url: width: 1500
+                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
+              }}
+            </div>
           {% endif %}
-          {% if  section.settings.heading != blank %}
-          <div class="heading-wrapper {{ section.settings.text_style }}">
-            {{ section.settings.heading }}
-          </div>
+          {% if section.settings.heading != blank %}
+            <div class="heading-wrapper {{ section.settings.text_style }}">
+              {{ section.settings.heading }}
+            </div>
           {% endif %}
           {% if section.settings.text %}
-          <div class="text-wrapper">
-            {{ section.settings.text }}
-          </div>
+            <div class="text-wrapper">
+              {{ section.settings.text }}
+            </div>
           {% endif %}
+          {%- if section.settings.button_label != blank -%}
+            <div class="image-wt-discover-button">
+              <a
+                {% if section.settings.button_link == blank %}
+                  role="link" aria-disabled="true"
+                {% else %}
+                  href="{{ section.settings.button_link }}"
+                {% endif %}
+                class="button button--{{ section.settings.button_style }}"
+                {{ section.shopify_attributes }}
+              >
+                {{ section.settings.button_label | escape }}
+              </a>
+              {% if section.settings.button_style == "underline" %}
+                <span class="btn-svg-style">
+                  <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z"></path><path fill="none" d="M0,0h24v24H0V0z"></path></svg>
+                </span>
+              {% endif %}
+            </div>
+          {%- endif -%}
         </div>
       </div>
     </div>
@@ -192,6 +212,38 @@
       "type": "text",
       "id": "text",
       "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "t:sections.image-with-text.blocks.button.settings.button_label.default",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
+      "info": "t:sections.image-with-text.blocks.button.settings.button_label.info"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.all.button_style.label",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button_style.option_1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button_style.option_2.label"
+        },
+        {
+          "value": "underline",
+          "label": "t:sections.all.button_style.option_3.label"
+        }
+      ],
+      "default": "primary"
     },
     {
       "type": "header",

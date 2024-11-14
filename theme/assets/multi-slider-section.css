@@ -28,3 +28,33 @@
 .multi-slider-wrapper .slider-wrapper-container img {
   border-radius: 5px;
 }
+
+.multi-slider-wrapper  .image-with-text__media--small {
+  height: 31.4rem;
+}
+
+.multi-slider-wrapper  .image-with-text__media--medium {
+  height: 46rem;
+}
+
+.multi-slider-wrapper  .image-with-text__media--large {
+  height: 69.5rem;
+}
+
+.multi-slider-wrapper  .journey-image-wrapper-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 769px) {
+  .multi-slider-wrapper  .image-with-text__media--small {
+    height: 19.4rem;
+  }
+
+  .multi-slider-wrapper  .image-with-text__media--medium {
+    height: 29.6rem;
+  }
+
+  .multi-slider-wrapper  .image-with-text__media--large {
+    height: 43.5rem;
+  }
+}

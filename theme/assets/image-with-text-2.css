@@ -15,6 +15,16 @@
   object-fit: cover;
 }
 
+.imagewithtext2-wrapper .btn-svg-style {
+  margin-left: 20px;
+  background: transparent;
+  color: rgba(var(--color-button), var(--alpha-button-background));
+}
+.image-wt-discover-button {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
 .imagewithtext2-wrapper .image-with-text__media--small {
   height: 19.4rem;
 }
