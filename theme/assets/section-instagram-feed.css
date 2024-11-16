@@ -1,0 +1,81 @@
+.instagram-feed {
+  position: relative;
+}
+
+.instagram-feed__title {
+  margin-bottom: 2.2rem;
+}
+
+.instagram-feed__title .title {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: 'Outfit-Regular' !important;
+}
+
+.instagram-feed__title .title .title-icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+.instagram-feed__media--placeholder {
+  position: relative;
+  overflow: hidden;
+}
+
+.instagram-feed__media--placeholder:after {
+  content: '';
+  position: absolute;
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.instagram-feed__media--placeholder.instagram-feed__media--adapt {
+  height: 20rem;
+}
+
+@media screen and (min-width: 750px) {
+  .instagram-feed__media--placeholder.instagram-feed__media--adapt {
+    height: 30rem;
+  }
+}
+
+.instagram-feed__media--placeholder > svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.instagram-feed__media--placeholder:is(.animate--ambient, .animate--zoom-in) > .svg-wrapper {
+  top: 0;
+  left: 0;
+  transform: translate(0);
+}
+
+@media screen and (max-width: 749px) {
+  .instagram-feed__title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .instagram-feed__title .title {
+    gap: 1rem;
+  }
+
+  .instagram-feed__title .title .title-icon {
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+
+  .instagram-feed__title.title-wrapper-with-link a {
+    font-size: 1.2rem;
+  }
+
+  .instagram-feed .instagram-feed-list .grid {
+    --grid-mobile-horizontal-spacing: 0.3rem;
+    --grid-mobile-vertical-spacing: 0.3rem;
+  }
+}
