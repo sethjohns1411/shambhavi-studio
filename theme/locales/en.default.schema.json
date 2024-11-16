@@ -2930,6 +2930,72 @@
         "name": "Our team"
       }
     },
+    "our-tribe": {
+      "name": "Join our tribe",
+      "settings": {
+        "title": {
+          "label": "Heading",
+          "default": "Join Our Tribe"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "columns_desktop": {
+          "label": "Number of columns on desktop"
+        },
+        "column_alignment": {
+          "label": "Column alignment",
+          "options__1": {
+            "label": "Left"
+          },
+          "options__2": {
+            "label": "Center"
+          }
+        },
+        "background_style": {
+          "label": "Secondary background",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "Show as column background"
+          }
+        },
+        "header_mobile": {
+          "content": "Mobile Layout"
+        },
+        "columns_mobile": {
+          "label": "Number of columns on mobile",
+          "options__1": {
+            "label": "1 column"
+          },
+          "options__2": {
+            "label": "2 columns"
+          }
+        }
+      },
+      "blocks": {
+        "column": {
+          "name": "Column",
+          "settings": {
+            "title": {
+              "label": "Heading",
+              "default": "Join our tribe"
+            },
+            "text": {
+              "label": "Description",
+              "default": "<p>Pair text with an image.<\/p>"
+            },
+            "link": {
+              "label": "Link"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Our tribe"
+      }
+    },
     "instagram-feed": {
       "name": "Instagram feed",
       "settings": {
