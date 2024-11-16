@@ -1,4 +1,5 @@
 body.open-menu-side-drawer .header .header__heading,
+body.open-menu-side-drawer .header .header__heading-link,
 body.open-menu-side-drawer .header .header__inline-menu,
 body.open-menu-side-drawer .header .header__icons .header__search {
   visibility: hidden;

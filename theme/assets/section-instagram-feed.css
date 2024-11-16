@@ -57,11 +57,11 @@
 
 @media screen and (max-width: 749px) {
   .instagram-feed__title {
-    font-size: 1.2rem;
     margin-bottom: 1rem;
   }
-
+  
   .instagram-feed__title .title {
+    font-size: 1.2rem;
     gap: 1rem;
   }
 

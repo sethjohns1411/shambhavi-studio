@@ -30,7 +30,7 @@
   endif
 -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
+<div class="color-{{ section.settings.color_scheme }} gradient{% if section.settings.desktop_hide %} medium-hide large-up-hide{% endif %}{% if section.settings.mobile_hide %} small-hide{% endif %}">
   <div class="collection-list-wrapper page-width isolate{% if show_mobile_slider %} page-width-desktop{% endif %}{% if section.settings.title == blank %} no-heading{% endif %} section-{{ section.id }}-padding">
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper text-{{ section.settings.heading_alignment }} title-wrapper--no-top-margin">
@@ -146,6 +146,16 @@
   },
   "settings": [
     {
+      "type": "checkbox",
+      "id": "desktop_hide",
+      "label": "Hide on desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_hide",
+      "label": "Hide on mobile"
+    },
+    {
       "type": "inline_richtext",
       "id": "title",
       "default": "t:sections.collection-list.settings.title.default",
@@ -249,7 +259,7 @@
           "label": "t:sections.all.image_shape.options__8.label"
         }
       ],
-      "default": "default",
+      "default": "round",
       "label": "t:sections.all.image_shape.label",
       "info": "t:sections.all.image_shape.info"
     },
@@ -332,7 +342,7 @@
           "label": "t:sections.collection-list.settings.columns_mobile.options__2.label"
         }
       ],
-      "default": "1",
+      "default": "2",
       "label": "t:sections.collection-list.settings.columns_mobile.label"
     },
     {
