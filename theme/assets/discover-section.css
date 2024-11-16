@@ -39,9 +39,9 @@
 }
 
 .discover-wrapper .content-container {
-  width: 600px;
+  max-width: 60rem;
+  padding: 2rem 13.2rem 4.3rem 13.2rem;
   display: flex;
-  padding: 19px 132px;
   flex-direction: column;
   align-items: center;
   background-size: cover;
@@ -73,6 +73,13 @@
 .discover-wrapper .video-section__media {
   padding-bottom: 0;
 }
+.discover-wrapper .content-discover-content {
+  margin-top: 1.3rem;
+  margin-bottom: 0.9rem;
+}
+.discover-wrapper .content-discover-content > p {
+  margin: 0rem;
+}
 .discover-wrapper .content-discover-caption {
   font-size: 16px;
 }
@@ -92,6 +99,15 @@
     width: 365px;
   }
   .discover-wrapper .content-container {
-    padding: 19px 42px;
+    padding: 5.8rem 4.2rem 10rem 4.2rem;
+  }
+
+  .discover-wrapper .content-discover-content {
+    margin-top: 2.3rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .discover-wrapper .content-discover-button {
+    margin-top: 4.1rem;
   }
 }
