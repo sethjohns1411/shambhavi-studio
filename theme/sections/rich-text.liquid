@@ -80,7 +80,7 @@
                     {% else %}
                       href="{{ block.settings.button_link }}"
                     {% endif %}
-                    class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                    class="button button--{{ block.settings.button_style }}"
                   >
                     {{- block.settings.button_label | escape -}}
                   </a>
@@ -92,7 +92,7 @@
                     {% else %}
                       href="{{ block.settings.button_link_2 }}"
                     {% endif %}
-                    class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
+                    class="button button--{{ block.settings.button_style_2 }}"
                   >
                     {{- block.settings.button_label_2 | escape -}}
                   </a>
@@ -416,10 +416,24 @@
           "label": "t:sections.rich-text.blocks.buttons.settings.button_link_1.label"
         },
         {
-          "type": "checkbox",
-          "id": "button_style_secondary",
-          "default": false,
-          "label": "t:sections.rich-text.blocks.buttons.settings.button_style_secondary_1.label"
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary button"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary button"
+            },
+            {
+              "value": "underline",
+              "label": "Underline button"
+            }
+          ],
+          "default": "underline"
         },
         {
           "type": "text",
@@ -433,10 +447,24 @@
           "label": "t:sections.rich-text.blocks.buttons.settings.button_link_2.label"
         },
         {
-          "type": "checkbox",
-          "id": "button_style_secondary_2",
-          "default": false,
-          "label": "t:sections.rich-text.blocks.buttons.settings.button_style_secondary_2.label"
+          "type": "select",
+          "id": "button_style_2",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary button"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary button"
+            },
+            {
+              "value": "underline",
+              "label": "Underline button"
+            }
+          ],
+          "default": "underline"
         }
       ]
     }

@@ -16,12 +16,9 @@
 }
 
 .list-menu__item--active {
+  color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 0.3rem;
-}
-
-.list-menu__item--active:hover {
-  text-decoration-thickness: 0.2rem;
 }
 
 .list-menu--disclosure.localization-selector {

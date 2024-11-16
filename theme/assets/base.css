@@ -2924,7 +2924,8 @@ details[open] > .header__menu-item .icon-caret {
   transform: rotate(180deg);
 }
 
-.header__active-menu-item {
+.header__active-menu-item,
+.header__active-menu-item + .icon-caret {
   color: var(--color-primary);
 }
 
@@ -2967,6 +2968,10 @@ span.header__active-menu-item:before {
   padding: 1.4rem 4rem;
   font-weight: 500;
   color: var(--color-eerie-black);
+}
+
+.header__submenu .header__menu-item.list-menu__item--active {
+  color: var(--color-primary);
 }
 
 .header__submenu .header__menu-item:hover {
@@ -3709,8 +3714,8 @@ details-disclosure > details {
 
 @media screen and (max-width: 990px) {
   .blog .title-wrapper--self-padded-tablet-down, .title-wrapper--self-padded-mobile {
-    margin-right: 1.5rem;
-    margin-left: 1.5rem;
+    margin-right: 2.4rem;
+    margin-left: 2.4rem;
   }
 }
 .blog .card .card__inner .card__media {
