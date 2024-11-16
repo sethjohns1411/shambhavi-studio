@@ -115,7 +115,7 @@
         </div>
 
         <div class="content-discover-warpper">
-          <div class="discover-content-box">
+          <div class="discover-content-box{% if section.settings.image == blank and section.settings.image_mobile == blank %} no-discover-media-with-media{% endif %}">
             {%- if section.settings.image != blank and section.settings.image_mobile != blank -%}
               <div class="discover-media-with-media">
                 <div
@@ -171,7 +171,7 @@
                 </div>
               </div>
             {% endif %}
-            <div class="discover-media-with-content text-{{ section.settings.text_alignment }} {% if section.settings.image == blank and section.settings.mobile_image == blank %} gradient color-{{ section.settings.color_scheme_1 }}{% endif %}">
+            <div class="discover-media-with-content text-{{ section.settings.text_alignment }}{% if section.settings.image == blank and section.settings.mobile_image == blank %} gradient color-{{ section.settings.color_scheme_1 }}{% endif %}">
               <div class="discover-content-card">
                 {% if section.settings.logo != blank %}
                   <div class="content-discover-logo">

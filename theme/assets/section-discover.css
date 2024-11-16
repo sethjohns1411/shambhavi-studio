@@ -38,7 +38,7 @@
   width: 100%;
 }
 
-.discover-content-box .discover-media-with-content {
+.discover-content-box:not(.no-discover-media-with-media) .discover-media-with-content {
   position: absolute;
   top: 0rem;
   left: 0rem;
@@ -47,6 +47,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2rem 13.2rem 4.2rem 13.2rem;
+}
+
+.discover-content-box.no-discover-media-with-media .discover-media-with-content {
   padding: 2rem 13.2rem 4.2rem 13.2rem;
 }
 
@@ -94,7 +98,8 @@
     max-width: 36.5rem;
   }
 
-  .discover-content-box .discover-media-with-content {
+  .discover-content-box .discover-media-with-content,
+  .discover-content-box.no-discover-media-with-media .discover-media-with-content {
     padding: 5.8rem 4.2rem 10rem 4.2rem;
   }
 
