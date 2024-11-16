@@ -524,7 +524,7 @@
   .banner:not(.slideshow) .rte a,
   .banner:not(.slideshow) .inline-richtext a:hover,
   .banner:not(.slideshow) .rte a:hover {
-    color: currentColor;
+    color: var(--color-primary);
   }
 }
 
@@ -532,6 +532,6 @@
   .banner--desktop-transparent .rte a,
   .banner--desktop-transparent .inline-richtext a:hover,
   .banner--desktop-transparent .rte a:hover {
-    color: currentColor;
+    color: var(--color-primary);
   }
 }

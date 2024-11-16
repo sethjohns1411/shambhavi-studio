@@ -639,8 +639,7 @@ details > * {
 .underlined-link:hover,
 .customer a:hover,
 .inline-richtext a:hover {
-  color: rgb(var(--color-link));
-  text-decoration-thickness: 0.2rem;
+  color: var(--color-primary);
 }
 
 .icon-arrow {
@@ -820,7 +819,7 @@ summary::-webkit-details-marker {
 .title-wrapper-with-link {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
@@ -2522,7 +2521,7 @@ input[type='checkbox'] {
 
 .header__heading-link {
   display: inline-block;
-  padding: 1rem 0rem;
+  padding: 0.5rem 0rem;
   text-decoration: none;
   word-break: break-word;
 }
@@ -2548,6 +2547,10 @@ input[type='checkbox'] {
 }
 
 @media screen and (max-width: 989px) {
+  .header__heading-link {
+    padding: 1rem 0rem;
+  }
+
   .header__heading,
   .header__heading-link {
     text-align: center;
@@ -2569,10 +2572,6 @@ input[type='checkbox'] {
 }
 
 @media screen and (min-width: 990px) {
-  .header__heading-link {
-    padding-block: 0.7rem;
-  }
-
   .header__heading,
   .header__heading-link {
     justify-self: start;
@@ -2900,7 +2899,7 @@ details[open] > .header__submenu {
 
 .header__menu-item span {
   position: relative;
-  padding-block: 2.4rem;
+  padding-block: 2.5rem;
   text-decoration: none;
 }
 
@@ -3284,8 +3283,7 @@ details-disclosure > details {
 }
 
 .rte a:hover {
-  color: rgb(var(--color-link));
-  text-decoration-thickness: 0.2rem;
+  color: rgb(var(--color-primary));
 }
 
 .rte blockquote {
