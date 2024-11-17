@@ -12,8 +12,8 @@
       aria-label="{{ 'sections.header.menu' | t }}"
     >
       <span>
-        {{- 'icon-hamburger.svg' | inline_asset_content -}}
-        {{- 'icon-close.svg' | inline_asset_content -}}
+        {% render 'icon-hamburger' %}
+        {% render 'icon-close' %}
       </span>
     </summary>
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}"
@@ -202,7 +202,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
                     <span class="svg-wrapper">
-                      {{- 'icon-instagram.svg' | inline_asset_content -}}
+                      {% render 'icon-instagram' %}
                     </span>
                     <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
                   </a>
@@ -212,7 +212,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_facebook_link }}" class="list-social__link link">
                     <span class="svg-wrapper">
-                      {{- 'icon-facebook.svg' | inline_asset_content -}}
+                      {% render 'icon-facebook' %}
                     </span>
                     <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
                   </a>
@@ -222,7 +222,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_linkedin_link }}" class="list-social__link link">
                     <span class="svg-wrapper">
-                      {{- 'icon-linkedin.svg' | inline_asset_content -}}
+                      {% render 'icon-linkedin' %}
                     </span>
                     <span class="visually-hidden">{{ 'general.social.links.linkedin' | t }}</span>
                   </a>

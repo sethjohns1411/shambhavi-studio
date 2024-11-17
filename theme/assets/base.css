@@ -81,7 +81,7 @@ body.overflow-hidden-undefined {
 .page-width {
   max-width: var(--page-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2.4rem;
 }
 
 body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
@@ -2121,8 +2121,8 @@ input[type='checkbox'] {
 }
 
 .modal__close-button .icon {
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 .modal__content {
@@ -2647,8 +2647,8 @@ input[type='checkbox'] {
 }
 
 .header__icon .icon.icon-close {
-  height: 1.8rem;
-  width: 1.8rem;
+  height: 2rem;
+  width: 2rem;
 }
 
 .header__icon,
@@ -2816,7 +2816,6 @@ details[open] .modal-overlay::after {
   display: block;
   position: absolute;
   opacity: 1;
-  transform: scale(1);
   transition: transform 150ms ease, opacity 150ms ease;
 }
 
@@ -2824,7 +2823,6 @@ details:not([open]) > .header__icon--menu .icon-close,
 details[open] > .header__icon--menu .icon-hamburger {
   visibility: hidden;
   opacity: 0;
-  transform: scale(0.8);
 }
 
 .js details[open]:not(.menu-opening) > .header__icon--menu .icon-close {
@@ -2834,7 +2832,6 @@ details[open] > .header__icon--menu .icon-hamburger {
 .js details[open]:not(.menu-opening) > .header__icon--menu .icon-hamburger {
   visibility: visible;
   opacity: 1;
-  transform: scale(1.07);
 }
 
 .js details > .header__submenu {

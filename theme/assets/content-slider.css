@@ -19,6 +19,5 @@
 @media screen and (max-width: 749px) {
   .content-slider .content-slider-component {
     max-width: 100% !important;
-    padding-inline: 2.5rem;
   }
 }
