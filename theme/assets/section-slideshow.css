@@ -1,0 +1,17 @@
+@media screen and (max-width: 749px) {
+  .section-slideshow .banner__box {
+    padding: 3rem 2.5rem;
+  }
+  .section-slideshow slideshow-component.mobile-text-below .slideshow__controls {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .section-slideshow slideshow-component:not(.mobile-text-below) .slideshow__controls {
+    position: absolute;
+    bottom: 3rem;
+    right: 2.5rem;
+  }
+}
