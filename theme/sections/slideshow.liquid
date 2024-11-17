@@ -1,15 +1,20 @@
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'section-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
 
-{%- if section.settings.slide_height == 'adapt_image' and section.blocks.first.settings.image != blank -%}
+{%- if section.settings.slide_height == 'adapt_image' and section.blocks.first.settings.image != blank or section.blocks.first.settings.image_mobile != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
       #Slider-{{ section.id }}::before,
       #Slider-{{ section.id }} .media::before,
       #Slider-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
-        padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
+        {% if section.blocks.first.settings.image_mobile != blank %}
+          padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image_mobile.aspect_ratio | times: 100 }}%;
+        {% else %}
+          padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
+        {% endif %}
         content: '';
         display: block;
       }
@@ -123,10 +128,11 @@
       >
         {%- case block.type -%}
           {%- when 'image' -%}
-          <div class="slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
-            {%- if block.settings.image -%}
+          <div class="slideshow__media banner__media media{% if block.settings.image == blank and block.settings.image_mobile == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+            {%- if block.settings.image != blank or block.settings.image_mobile != blank -%}
               {%- liquid
                 assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
+                assign height_mobile = block.settings.image_mobile.width | divided_by: block.settings.image_mobile.aspect_ratio | round
                 if section.settings.image_behavior == 'ambient'
                   assign sizes = '120vw'
                   assign widths = '450, 660, 900, 1320, 1800, 2136, 2400, 3600, 7680'
@@ -140,17 +146,55 @@
                 endif
               -%}
               {%- if forloop.first %}
-                {{
-                  block.settings.image
-                  | image_url: width: 3840
-                  | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority
-                }}
+                {% if block.settings.image != blank %}
+                  {{
+                    block.settings.image
+                    | image_url: width: 3840
+                    | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                    class: 'small-hide medium-hide'
+                  }}
+                {% endif %}
+
+                {% if block.settings.image_mobile != blank %}
+                  {{
+                    block.settings.image_mobile
+                    | image_url: width: 3840
+                    | image_tag: height: height_mobile, sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                    class: 'large-up-hide'
+                  }}
+                {% else %}
+                  {{
+                    block.settings.image
+                    | image_url: width: 3840
+                    | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                    class: 'large-up-hide'
+                  }}
+                {% endif %}
               {%- else -%}
-                {{
-                  block.settings.image
-                  | image_url: width: 3840
-                  | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
-                }}
+                {% if block.settings.image != blank %}
+                  {{
+                    block.settings.image
+                    | image_url: width: 3840
+                    | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths,
+                    class: 'small-hide medium-hide'
+                  }}
+                {% endif %}
+
+                {% if block.settings.image_mobile != blank %}
+                  {{
+                    block.settings.image_mobile
+                    | image_url: width: 3840
+                    | image_tag: loading: 'lazy', height: height_mobile, sizes: sizes, widths: widths,
+                    class: 'large-up-hide'
+                  }}
+                {% else %}
+                  {{
+                    block.settings.image
+                    | image_url: width: 3840
+                    | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths,
+                    class: 'large-up-hide'
+                  }}
+                {% endif %}
               {%- endif -%}
             {%- else -%}
               {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
@@ -279,7 +323,7 @@
 {
   "name": "t:sections.slideshow.name",
   "tag": "section",
-  "class": "section",
+  "class": "section section-slideshow",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
@@ -411,6 +455,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.slideshow.blocks.image.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile image"
         },
         {
           "type": "inline_richtext",
