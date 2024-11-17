@@ -7,13 +7,13 @@
   }
 
   {% if section.settings.height == 'adapt' %}
-    {% if section.settings.image_mobile != blank %}
+    {% if section.settings.bg_image_mobile != blank %}
       .section-{{ section.id }} .discover-media-with-media .discover__media {
-        padding-bottom: {{ 1 | divided_by: section.settings.image_mobile.aspect_ratio | times: 100 }}%;
+        padding-bottom: {{ 1 | divided_by: section.settings.bg_image_mobile.aspect_ratio | times: 100 }}%;
       }
     {% else %}
       .section-{{ section.id }} .discover-media-with-media .discover__media {
-        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+        padding-bottom: {{ 1 | divided_by: section.settings.bg_image.aspect_ratio | times: 100 }}%;
       }
     {% endif %}
   {% endif %}
@@ -24,9 +24,9 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
 
-    {% if section.settings.height == 'adapt' and section.settings.image != blank %}
+    {% if section.settings.height == 'adapt' and section.settings.bg_image != blank %}
       .section-{{ section.id }} .discover-media-with-media .discover__media {
-        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+        padding-bottom: {{ 1 | divided_by: section.settings.bg_image.aspect_ratio | times: 100 }}%;
       }
     {% endif %}
   }
@@ -54,7 +54,7 @@
                         and block.settings.image != blank
                         or block.settings.image_mobile != blank
                       %}
-                        style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+                        style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
                       {% endif %}
                     >
                       {%- if block.settings.image != blank or block.settings.image_mobile != blank -%}
@@ -115,13 +115,13 @@
         </div>
 
         <div class="content-discover-warpper">
-          <div class="discover-content-box{% if section.settings.image == blank and section.settings.image_mobile == blank %} no-discover-media-with-media{% endif %}">
-            {%- if section.settings.image != blank and section.settings.image_mobile != blank -%}
+          <div class="discover-content-box{% if section.settings.bg_image == blank %} no-discover-media-with-media{% endif %}">
+            {%- if section.settings.bg_image != blank -%}
               <div class="discover-media-with-media">
                 <div
-                  class="discover__media discover__media--{{ section.settings.height }} global-media-settings{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme_1 }}{% else %} background-transparent{% endunless %}{% if section.settings.image != blank or section.settings.image_mobile != blank %} media{% else %} discover__media--placeholder placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
+                  class="discover__media discover__media--{{ section.settings.height }} global-media-settings{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme_1 }}{% else %} background-transparent{% endunless %}{% if section.settings.bg_image != blank or section.settings.bg_image_mobile != blank %} media{% else %} discover__media--placeholder placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
                 >
-                  {%- if section.settings.image != blank or section.settings.image_mobile != blank -%}
+                  {%- if section.settings.bg_image != blank or section.settings.bg_image_mobile != blank -%}
                     {%- if section.settings.image_behavior == 'ambient'
                       or section.settings.image_behavior == 'zoom-in'
                     -%}
@@ -137,18 +137,18 @@
                         (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
                       {%- endcapture -%}
                     {%- endif -%}
-                    {% if section.settings.image != blank %}
+                    {% if section.settings.bg_image != blank %}
                       {{
-                        section.settings.image
+                        section.settings.bg_image
                         | image_url: width: 1500
                         | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
                         class: 'small-hide'
                       }}
                     {% endif %}
     
-                    {% if section.settings.image_mobile != blank %}
+                    {% if section.settings.bg_image_mobile != blank %}
                       {{
-                        section.settings.image_mobile
+                        section.settings.bg_image_mobile
                         | image_url: width: 1500
                         | image_tag:
                           sizes: sizes,
@@ -158,7 +158,7 @@
                       }}
                     {% else %}
                       {{
-                        section.settings.image
+                        section.settings.bg_image
                         | image_url: width: 1500
                         | image_tag:
                           sizes: sizes,
@@ -171,7 +171,7 @@
                 </div>
               </div>
             {% endif %}
-            <div class="discover-media-with-content text-{{ section.settings.text_alignment }}{% if section.settings.image == blank and section.settings.mobile_image == blank %} gradient color-{{ section.settings.color_scheme_1 }}{% endif %}">
+            <div class="discover-media-with-content text-{{ section.settings.text_alignment }}{% if section.settings.bg_image == blank %} gradient color-{{ section.settings.color_scheme_1 }}{% endif %}">
               <div class="discover-content-card">
                 {% if section.settings.logo != blank %}
                   <div class="content-discover-logo">
@@ -358,12 +358,12 @@
     },
     {
       "type": "image_picker",
-      "id": "image",
+      "id": "bg_image",
       "label": "Image"
     },
     {
       "type": "image_picker",
-      "id": "image_mobile",
+      "id": "bg_image_mobile",
       "label": "Mobile image"
     },
     {
