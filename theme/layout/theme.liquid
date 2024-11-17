@@ -53,6 +53,12 @@
         {{ body_font_italic | font_face: font_display: 'swap' }}
         {{ body_font_bold_italic | font_face: font_display: 'swap' }}
         {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+        :root {
+          --logo-width-mobile: {{ settings.mobile_logo_width }}px;
+        }
+
+        @media screen and (min-width: )
   
         {% if settings.font_type == 'custom' %}
           @font-face {
@@ -155,10 +161,10 @@
           }
 
           /* custom font family */
-        :root {
-          --font-outfit-normal: 'Outfit-Regular';
-          --font-outfit-bold: 'Outfit-Bold';
-        }
+          :root {
+            --font-outfit-normal: 'Outfit-Regular';
+            --font-outfit-bold: 'Outfit-Bold';
+          }
         {% else %}
           :root {
             --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};

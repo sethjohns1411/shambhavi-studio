@@ -111,6 +111,12 @@
   }
 }
 
+@media screen and (min-width: 1365px) {
+  .footer .page-full-width {
+    padding-right: 15.2rem;
+  }
+}
+
 .footer .footer__blocks-wrapper .footer-block.footer-block--menu {
   max-width: max-content;
   flex: 2;
