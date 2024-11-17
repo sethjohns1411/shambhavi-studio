@@ -144,9 +144,14 @@
         "logo_image": {
           "label": "Logo"
         },
+        "mobile_logo": {
+          "label": "Mobile logo"
+        },
         "logo_width": {
-          "label": "Desktop logo width",
-          "info": "Logo width is automatically optimized for mobile."
+          "label": "Desktop logo width"
+        },
+        "mobile_logo_width": {
+          "label": "Mobile logo width"
         },
         "favicon": {
           "label": "Favicon image",

@@ -16,14 +16,29 @@
         "label": "t:settings_schema.logo.settings.logo_image.label"
       },
       {
+        "type": "image_picker",
+        "id": "mobile_logo",
+        "label": "t:settings_schema.logo.settings.mobile_logo.label"
+      },
+      {
         "type": "range",
         "id": "logo_width",
-        "min": 50,
+        "min": 100,
         "max": 300,
-        "step": 10,
-        "default": 100,
+        "step": 2,
+        "default": 158,
         "unit": "px",
         "label": "t:settings_schema.logo.settings.logo_width.label"
+      },
+      {
+        "type": "range",
+        "id": "mobile_logo_width",
+        "min": 100,
+        "max": 300,
+        "step": 2,
+        "default": 116,
+        "unit": "px",
+        "label": "t:settings_schema.logo.settings.mobile_logo_width.label"
       },
       {
         "type": "image_picker",
