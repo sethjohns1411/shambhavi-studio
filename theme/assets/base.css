@@ -1392,9 +1392,17 @@ button.shopify-payment-button__button--unbranded {
   padding: 1.2rem 2.6rem;
 }
 
+.button--secondary {
+  color: var(--color-primary);
+}
+
 .button--primary:hover, .button--secondary:hover {
   background: var(--color-primary);
   color: var(--color-white);
+}
+
+.button--secondary:after {
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) var(--color-primary),0 0 0 var(--buttons-border-width) var(--color-primary);
 }
 
 /* Shopify Accelerated Checkout */
