@@ -296,3 +296,14 @@ details[open].menu-opening > .menu-drawer__submenu {
     transition: none !important;
   }
 }
+
+.menu-drawer .menu-drawer-seprator {
+  padding: 0.5rem 3rem 2rem 3rem;
+  display: inline-flex;
+}
+
+.menu-drawer .menu-drawer-seprator .seprator {
+  border-top: 1px solid var(--color-grey-af);
+  display: inline-block;
+  width: 100%;
+}
