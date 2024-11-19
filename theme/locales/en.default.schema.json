@@ -2943,7 +2943,8 @@
           "default": "Join Our Tribe"
         },
         "text": {
-          "label": "Text"
+          "label": "Text",
+          "default": "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit REACH OUT TO US : If you are interested in our open positions or have any questions, please feel free to contact us using the details - hr@studiost.com</p>"
         },
         "columns_desktop": {
           "label": "Number of columns on desktop"
@@ -2984,15 +2985,8 @@
           "name": "Column",
           "settings": {
             "title": {
-              "label": "Heading",
-              "default": "Join our tribe"
-            },
-            "text": {
-              "label": "Description",
-              "default": "<p>Pair text with an image.<\/p>"
-            },
-            "link": {
-              "label": "Link"
+              "label": "Job title",
+              "default": "Junior Print Designer"
             }
           }
         }
