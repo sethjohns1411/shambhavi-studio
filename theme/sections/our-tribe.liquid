@@ -14,6 +14,10 @@
   }
 {%- endstyle -%}
 
+{% liquid
+  assign item_per_page = section.settings.columns_desktop | times: section.settings.item_per_page
+%}
+
 <div class="our-tribe color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
   <div
     class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -46,44 +50,49 @@
         </div>
       {% endif %}
 
-      <div class="our-tribe-list contains-content-container grid grid--2-col-tablet grid--{{ section.settings.columns_mobile }}-col grid--{{ section.settings.columns_desktop }}-col-desktop">
-        {%- for block in section.blocks -%}
-          <div class="our-tribe-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-            {{ block.shopify_attributes }}
-            {% if settings.animations_reveal_on_scroll %}
-              data-cascade
-              style="--animation-order: {{ forloop.index }};"
-            {% endif %}
-          >
-            <div class="our-tribe-card content-container text-{{ section.settings.column_alignment }} color-{{ section.settings.color_scheme_1 }} gradient">
-              <div class="our-tribe-card__heading">
-                {%- if block.settings.job_title != blank -%}
-                  <h3 class="inline-richtext tribe-heading">{{ block.settings.job_title }}</h3>
-                {%- endif -%}
-                <a href="{% if block.settings.page_url != blank %}{{ block.settings.page_url }}{% else %}javascript:void(0);{% endif %}" class="page-link-btn">
-                  {% render 'icon-right-arrow' %}
-                </a>
-              </div>
-              <div class="our-tribe-card-body">
-                <div class="our-tribe-card-content">
-                  {%- if block.settings.job_department != blank -%}
-                    <p class="our-tribe-content-item tribe-job-department"><span>Department:</span> {{ block.settings.job_department }}</p>
+      {% comment %} {%- paginate item by paginate_by -%} {% endcomment %}
+        <div class="our-tribe-list contains-content-container grid grid--2-col-tablet grid--{{ section.settings.columns_mobile }}-col grid--{{ section.settings.columns_desktop }}-col-desktop">
+          {%- for block in section.blocks -%}
+            <div class="our-tribe-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              {{ block.shopify_attributes }}
+              {% if settings.animations_reveal_on_scroll %}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+              {% endif %}
+            >
+              <div class="our-tribe-card content-container text-{{ section.settings.column_alignment }} color-{{ section.settings.color_scheme_1 }} gradient">
+                <div class="our-tribe-card__heading">
+                  {%- if block.settings.job_title != blank -%}
+                    <h3 class="inline-richtext tribe-heading">{{ block.settings.job_title }}</h3>
                   {%- endif -%}
-                  {%- if block.settings.job_type != blank -%}
-                    <p class="our-tribe-content-item tribe-job-type"><span>Type:</span> {{ block.settings.job_type }}</p>
-                  {%- endif -%}
-                  {%- if block.settings.job_location != blank -%}
-                    <p class="our-tribe-content-item tribe-job-location"><span>Location:</span> {{ block.settings.job_location }}</p>
-                  {%- endif -%}
-                  {%- if block.settings.vacant_position != blank -%}
-                    <p class="our-tribe-content-item tribe-job-position"><span>Positions Vacant:</span> {{ block.settings.vacant_position }}</p>
-                  {%- endif -%}
+                  <a href="{% if block.settings.page_url != blank %}{{ block.settings.page_url }}{% else %}javascript:void(0);{% endif %}" class="page-link-btn">
+                    {% render 'icon-right-arrow' %}
+                  </a>
+                </div>
+                <div class="our-tribe-card-body">
+                  <div class="our-tribe-card-content">
+                    {%- if block.settings.job_department != blank -%}
+                      <p class="our-tribe-content-item tribe-job-department"><span>Department:</span> {{ block.settings.job_department }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.job_type != blank -%}
+                      <p class="our-tribe-content-item tribe-job-type"><span>Type:</span> {{ block.settings.job_type }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.job_location != blank -%}
+                      <p class="our-tribe-content-item tribe-job-location"><span>Location:</span> {{ block.settings.job_location }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.vacant_position != blank -%}
+                      <p class="our-tribe-content-item tribe-job-position"><span>Positions Vacant:</span> {{ block.settings.vacant_position }}</p>
+                    {%- endif -%}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        {%- endfor -%}
-      </div>
+          {%- endfor -%}
+        </div>
+        {% comment %} {%- if paginate.pages > 1 -%}
+          {% render 'pagination', paginate: paginate, anchor: '' %}
+        {%- endif -%}
+      {%- endpaginate -%} {% endcomment %}
     </div>
   </div>
 </div>
