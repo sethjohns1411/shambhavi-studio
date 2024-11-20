@@ -525,7 +525,6 @@ h6:empty {
   color: rgb(var(--color-link));
   background-color: transparent;
   font-size: 1.4rem;
-  font-family: inherit;
 }
 
 .link--text {
@@ -2545,7 +2544,7 @@ input[type='checkbox'] {
 
 .header__heading-link {
   display: inline-block;
-  padding: 0.5rem 0rem 1rem 0rem;
+  padding: 1.2rem 0rem 0.4rem 0rem;
   text-decoration: none;
   word-break: break-word;
 }

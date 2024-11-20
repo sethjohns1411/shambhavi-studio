@@ -1,6 +1,6 @@
 .footer {
-  position: relative;
   border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  position: relative;
 }
 
 .footer .page-full-width {
@@ -51,6 +51,10 @@
 .footer .footer-legal-wrapper .footer-legal-item a {
   color: rgba(var(--color-foreground), 1);
   line-height: normal;
+}
+
+.footer-block.footer-brand-information {
+  max-width: unset;
 }
 
 @media screen and (max-width: 749px) {
