@@ -1,0 +1,209 @@
+.multi-image-with-text {
+  z-index: 1;
+}
+
+.multi-image-with-text__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.multi-image-with-text .multi-image-with-media-blocks, 
+.multi-image-with-text .multi-image-with-text__blocks {
+  flex: 1;
+}
+
+@media screen and (min-width: 750px) and (max-width: 1024px) {
+  .multi-image-with-text .multi-image-with-text__blocks {
+    flex: 2;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .multi-image-with-text__wrapper {
+    column-gap: 15rem;
+    row-gap: 0rem;
+  }
+
+  .multi-image-with-text .multi-image-with-text__blocks {
+    margin-top: -10%;
+    flex: 100%;
+    order: 3;
+    padding-inline: 3.4rem;
+  }
+}
+
+.multi-image-with-text__heading + .multi-image-with-text__text {
+  margin-top: 1rem;
+}
+
+.multi-image-with-text__heading[data-heading-spacing="true"] > span {
+  padding-right: 6.5rem;
+}
+
+.multi-image-with-text__heading[data-heading-spacing="true"] .second-heading-richtext {
+  line-height: 1;
+}
+
+.multi-image-with-text__heading[data-heading-spacing="true"] .second-heading-richtext > span {
+  padding-left: 6.5rem;
+}
+
+.multi-image-with-text__heading .second-heading-richtext > span {
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.multi-image-with__media {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.multi-image-with__media--small {
+  height: 19.4rem;
+}
+
+.multi-image-with__media--medium {
+  height: 29.6rem;
+}
+
+.multi-image-with__media--large {
+  height: 43.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .multi-image-with__media--small {
+    height: 31.4rem;
+  }
+
+  .multi-image-with__media--medium {
+    height: 46rem;
+  }
+
+  .multi-image-with__media--large {
+    height: 69.5rem;
+  }
+}
+
+.multi-image-with__media--placeholder {
+  position: relative;
+  overflow: hidden;
+}
+
+.multi-image-with__media--placeholder:after {
+  content: '';
+  position: absolute;
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.multi-image-with__media--placeholder.multi-image-with__media--adapt {
+  height: 20rem;
+}
+
+@media screen and (min-width: 750px) {
+  .multi-image-with__media--placeholder.multi-image-with__media--adapt {
+    height: 30rem;
+  }
+}
+
+.multi-image-with__media--placeholder > svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.multi-image-with__media--placeholder:is(.animate--ambient, .animate--zoom-in) > .svg-wrapper {
+  top: 0;
+  left: 0;
+  transform: translate(0);
+}
+
+@media screen and (max-width: 749px) {
+  .multi-image-with-text__blocks .multi-image-with-text__heading {
+    font-size: 2rem;
+  }
+
+  .multi-image-with-text__heading + .multi-image-with-text__text {
+    margin-top: 2rem;
+  }
+
+  .multi-image-with-text__heading + .multi-image-with-text__text {
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .multi-image-with-text__wrapper--left {
+    justify-content: flex-start;
+  }
+
+  .multi-image-with-text__wrapper--right {
+    justify-content: flex-end;
+  }
+
+  .multi-image-with-text .multi-image-with-text__blocks .multi-image-with-text__text p {
+    font-size: 1.6rem;
+  }
+
+  .multi-image-with-text__item--top {
+    align-items: flex-start;
+  }
+
+  .multi-image-with-text__item--middle {
+    align-items: center;
+  }
+
+  .multi-image-with-text__item--bottom {
+    align-items: flex-end;
+  }
+}
+
+.multi-image-with-text__blocks * {
+  overflow-wrap: break-word;
+}
+
+.multi-image-with-text__blocks > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.multi-image-with-text__blocks > * + * {
+  margin-top: 2rem;
+}
+
+.multi-image-with-text__blocks > * + a {
+  margin-top: 3rem;
+}
+
+.multi-image-with-text__buttons {
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  max-width: 45rem;
+  word-break: break-word;
+}
+
+.multi-image-with-text__buttons--multiple > * {
+  flex-grow: 1;
+  min-width: 22rem;
+}
+
+.multi-image-with-text__buttons + .multi-image-with-text__buttons {
+  margin-top: 1rem;
+}
+
+.multi-image-with-text__blocks.left .multi-image-with-text__buttons {
+  justify-content: flex-start;
+}
+
+.multi-image-with-text__blocks.right .multi-image-with-text__buttons {
+  justify-content: flex-end;
+}

@@ -1,5 +1,99 @@
 .page-title {
   margin-top: 0;
+  text-transform: uppercase;
+}
+
+.section-page .page-title[data-title-seprator="true"] {
+  padding-bottom: 2.2rem;
+  margin-bottom: 3.6rem;
+  border-bottom: 1px solid #CECECE;
+}
+
+.section-page .page-content-wrapper .list-content-wrapper {
+  margin-bottom: 3.9rem;
+}
+
+.section-page .page-content-wrapper .list-content-wrapper ul {
+  margin: 0rem;
+  padding: 0rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.section-page .page-content-wrapper .list-content-wrapper ul li {
+  position: relative;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+
+.section-page .page-content-wrapper .list-content-wrapper ul li span {
+  margin-right: 0.7rem;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  color: var(--color-primary);
+}
+
+.section-page .page-content-wrapper .list-content-wrapper ul li:not(:last-child) {
+  padding-right: 2.8rem;
+  margin-right: 2.8rem;
+}
+
+.section-page .page-content-wrapper .list-content-wrapper ul li:not(:last-child):after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  right: 0rem;
+  width: 0.1rem;
+  height: 65%;
+  background: #707070;
+  transform: translateY(-50%);
+}
+
+.section-page .page-content-wrapper .page-content .text-lora {
+  margin: 0rem;
+}
+
+.section-page .page-content-wrapper .page-content h5 {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: var(--color-primary);
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.section-page .page-content-wrapper .page-content ul {
+  margin: 0rem;
+  padding: 0rem 0rem 0rem 0.5rem;
+  list-style: none;
+}
+
+.section-page .page-content-wrapper .page-content ul li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.section-page .page-content-wrapper .page-content ul li:before {
+  position: absolute;
+  content: "";
+  top: 1.25rem;
+  left: 0rem;
+  width: 0.3rem;
+  height: 0.3rem;
+  background: rgba(var(--color-foreground), 1);
+  border-radius: 50%;
+}
+
+.section-page .page-content-wrapper .page-content .button-wrapper {
+  margin-top: 4rem;
+}
+
+.section-page .page-content-wrapper .page-content .button-wrapper .button--secondary {
+  color: var(--color-primary);
+}
+
+.section-page .page-content-wrapper .page-content .button-wrapper .button--secondary:hover {
+  color: var(--color-white);
 }
 
 .main-page-title {
