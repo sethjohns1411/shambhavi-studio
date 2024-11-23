@@ -26,7 +26,7 @@
     {% endif %}
   >
     {%- if section.settings.title != blank -%}
-      <div class="title-wrapper-with-link text-{{ section.settings.text_alignment }} title-wrapper--self-padded-mobile title-wrapper--no-top-margin our-tribe__title{% if section.settings.title_image %} title-wrapper--no-padding{% endif %}">
+      <div class="title-wrapper-with-link{% if section.settings.title_image != blank %} title-wrapper-with-image{% endif %} text-{{ section.settings.text_alignment }} title-wrapper--self-padded-mobile title-wrapper--no-top-margin our-tribe__title{% if section.settings.title_image %} title-wrapper--no-padding{% endif %}">
         <h2 class="title inline-richtext {{ section.settings.heading_size }}">
           {{ section.settings.title }}
         </h2>
@@ -65,7 +65,7 @@
                   {%- if block.settings.job_title != blank -%}
                     <h3 class="inline-richtext tribe-heading">{{ block.settings.job_title }}</h3>
                   {%- endif -%}
-                  <a href="{% if block.settings.page_url != blank %}{{ block.settings.page_url }}{% else %}javascript:void(0);{% endif %}" class="page-link-btn">
+                  <a href="{% if block.settings.page_url != blank %}{{ block.settings.page_url }}{% else %}javascript:void(0);{% endif %}" target="_blank" class="page-link-btn">
                     {% render 'icon-right-arrow' %}
                   </a>
                 </div>
