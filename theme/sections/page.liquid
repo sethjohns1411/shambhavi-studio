@@ -2,8 +2,8 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top_mobile }}px;
-    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
@@ -14,60 +14,23 @@
   }
 {%- endstyle -%}
 
-<div class="section-page color-{{ section.settings.color_scheme }} gradient">
-  <div class="{% if section.settings.full_width %}page-full-width{% else %}page-width page-width--narrow{% endif %} section-{{ section.id }}-padding">
-    <h2 class="page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-      data-title-seprator="{% if section.settings.title_seprator %}true{% else %}false{% endif %}"
-    >
-      {%- if section.settings.title != blank -%}
-        {{ section.settings.title }}
-      {%- elsif section.settings.page.title != blank -%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width page-width--narrow section-{{ section.id }}-padding">
+    <h2 class="page-title {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.page.title != blank -%}
         {{ section.settings.page.title | escape }}
       {%- else -%}
         {{ 'sections.page.title' | t }}
       {%- endif -%}
     </h2>
-    <div class="page-content-wrapper rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-      {% liquid
-        assign department = page.metafields.custom.job_positions.value
-        assign type = page.metafields.custom.job_type.value
-        assign job_location = page.metafields.custom.job_location.value
-        assign positions = page.metafields.custom.job_positions.value
-      %}
-      
-      {% if department != blank or type != blank or job_location != blank or positions != blank %}
-        <div class="list-content-wrapper">
-          <ul>
-            {% if department != blank %}
-              <li><span>Department</span> {{ department }}</li>
-            {% endif %}
-
-            {% if type != blank %}
-              <li><span>Type</span> {{ type }}</li>
-            {% endif %}
-
-            {% if job_location != blank %}
-              <li><span>Location</span> {{ job_location }}</li>
-            {% endif %}
-
-            {% if positions != blank %}
-              <li><span>Positions Vacant</span> {{ positions }}</li>
-            {% endif %}
-          </ul>
+    <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.page.content != blank -%}
+        {{ section.settings.page.content }}
+      {%- else -%}
+        <div class="page-placeholder-wrapper placeholder">
+          {{ 'page' | placeholder_svg_tag: 'page-placeholder' }}
         </div>
-      {% endif %}
-
-      <div class="page-content">
-        {%- if section.settings.content != blank -%}
-          {{ section.settings.content }}
-        {%- elsif section.settings.page.content != blank -%}
-          {{ section.settings.page.content }}
-        {%- else -%}
-          <div class="page-placeholder-wrapper placeholder">
-            {{ 'page' | placeholder_svg_tag: 'page-placeholder' }}
-          </div>
-        {%- endif -%}
-      </div>
+      {%- endif -%}
     </div>
   </div>
 </div>
@@ -82,59 +45,37 @@
   },
   "settings": [
     {
-      "type": "checkbox",
-      "id": "full_width",
-      "default": false,
-      "label": "t:sections.all.full_width.label"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "title",
-      "label": "Heading"
+      "type": "page",
+      "id": "page",
+      "label": "t:sections.page.settings.page.label"
     },
     {
       "type": "select",
       "id": "heading_size",
       "options": [
         {
-          "value": "h3",
+          "value": "h2",
           "label": "t:sections.all.heading_size.options__1.label"
         },
         {
-          "value": "h2",
+          "value": "h1",
           "label": "t:sections.all.heading_size.options__2.label"
         },
         {
-          "value": "h1",
+          "value": "h0",
           "label": "t:sections.all.heading_size.options__3.label"
         },
         {
-          "value": "h0",
+          "value": "hxl",
           "label": "t:sections.all.heading_size.options__4.label"
         },
         {
-          "value": "hxl",
+          "value": "hxxl",
           "label": "t:sections.all.heading_size.options__5.label"
         }
       ],
-      "default": "h3",
+      "default": "h1",
       "label": "t:sections.all.heading_size.label"
-    },
-    {
-      "type": "richtext",
-      "id": "content",
-      "label": "Content"
-    },
-    {
-      "type": "page",
-      "id": "page",
-      "label": "t:sections.page.settings.page.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "title_seprator",
-      "label": "Enable title seprator",
-      "default": true
     },
     {
       "type": "color_scheme",
@@ -150,40 +91,20 @@
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 200,
-      "step": 2,
+      "max": 100,
+      "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 100
+      "default": 36
     },
     {
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 200,
-      "step": 2,
+      "max": 100,
+      "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 76
-    },
-    {
-      "type": "range",
-      "id": "padding_top_mobile",
-      "min": 0,
-      "max": 200,
-      "step": 2,
-      "unit": "px",
-      "label": "Mobile padding top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom_mobile",
-      "min": 0,
-      "max": 200,
-      "step": 2,
-      "unit": "px",
-      "label": "Mobile padding bottom",
       "default": 36
     }
   ],

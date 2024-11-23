@@ -481,6 +481,14 @@
         "label": "Image shape",
         "info": "Standard-styled cards have no borders when an image shape is active."
       },
+      "button_label": {
+        "label": "Button label",
+        "info": "Leave the label blank to hide the button.",
+        "default": "Button label"
+      },
+      "button_link": {
+        "label": "Button link"
+      },
       "button_style": {
         "label": "Button style",
         "option_1": {

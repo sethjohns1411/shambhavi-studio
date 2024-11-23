@@ -1,0 +1,195 @@
+.job-description {
+  position: relative;
+}
+
+.job-description .btn-back {
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 1rem;
+  font-size: 1.4rem;
+  color: rgb(var(--color-foreground));
+  margin-bottom: 3rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.job-description .btn-back .icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  color: var(--color-primary);
+  background: var(--color-cultured);
+}
+
+.job-description .btn-back .icon-wrapper .icon {
+  width: 1.2rem;
+  height: auto;
+}
+
+.title {
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+.job-description .title-wrapper-with-link[data-title-seprator="true"] {
+  margin-bottom: 0rem;
+}
+
+.job-description .title-wrapper-with-link .title {
+  display: block;
+  width: 100%;
+}
+
+.job-description .title-wrapper-with-link[data-title-seprator="true"] .title {
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #CECECE;
+}
+
+.job-description .job-description-wrapper .list-content-wrapper {
+  margin-bottom: 3.9rem;
+}
+
+.job-description .job-description-wrapper .list-content-wrapper ul {
+  margin: 0rem;
+  padding: 0rem;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.job-description .job-description-wrapper .list-content-wrapper ul li {
+  position: relative;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+
+.job-description .job-description-wrapper .list-content-wrapper ul li span {
+  margin-right: 0.7rem;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  color: var(--color-primary);
+}
+
+.job-description .job-description-wrapper .description-content-wrapper .text-lora {
+  margin: 0rem;
+}
+
+.job-description .job-description-wrapper .description-content-wrapper h5 {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: var(--color-primary);
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.job-description .job-description-wrapper .description-content-wrapper ul {
+  margin: 0rem;
+  padding: 0rem 0rem 0rem 0.5rem;
+  list-style: none;
+}
+
+.job-description .job-description-wrapper .description-content-wrapper ul li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.job-description .job-description-wrapper .description-content-wrapper ul li:before {
+  position: absolute;
+  content: "";
+  top: 1.25rem;
+  left: 0rem;
+  width: 0.3rem;
+  height: 0.3rem;
+  background: rgba(var(--color-foreground), 1);
+  border-radius: 50%;
+}
+
+.job-description .job-description-wrapper .description-content-wrapper .button-wrapper {
+  margin-top: 4rem;
+}
+
+.job-description .job-description-wrapper .description-content-wrapper .button-wrapper .button--secondary {
+  color: var(--color-primary);
+}
+
+.job-description .job-description-wrapper .description-content-wrapper .button-wrapper .button--secondary:hover {
+  color: var(--color-white);
+}
+
+@media screen and (min-width: 750px) {
+  .job-description .title-wrapper-with-link[data-title-seprator="true"] .title {
+    padding-bottom: 2.2rem;
+    margin-bottom: 3.6rem;
+  }
+
+  .job-description .job-description-wrapper .list-content-wrapper ul {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .job-description .job-description-wrapper .list-content-wrapper ul li:not(:last-child) {
+    padding-right: 1.5rem;
+  }
+  
+  .job-description .job-description-wrapper .list-content-wrapper ul li:not(:last-child):after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    right: 0rem;
+    width: 0.1rem;
+    height: 65%;
+    background: #707070;
+    transform: translateY(-50%);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .job-description .btn-back {
+    position: absolute;
+    top: var(--position-top);
+    left: 5%;
+    margin-bottom: 0rem;
+  }
+
+  .job-description .btn-back .icon-wrapper {
+    width: 5.7rem;
+    height: 5.7rem;
+  }
+
+  .job-description .btn-back .icon-wrapper .icon {
+    width: 1.4rem;
+  }
+
+  .job-description .job-description-wrapper .list-content-wrapper ul {
+    gap: 2.8rem;
+  }
+
+  .job-description .job-description-wrapper .list-content-wrapper ul li:not(:last-child) {
+    padding-right: 2.8rem;
+  }
+}
+
+@media screen and (min-width: 1200px) { 
+  .job-description .btn-back {
+    left: 10%;
+  }
+}
+
+.page-placeholder-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.page-placeholder {
+  width: 52.5rem;
+  height: 52.5rem;
+}
