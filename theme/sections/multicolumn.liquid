@@ -120,6 +120,23 @@
                 </div>
               {%- endif -%}
               <div class="multicolumn-card__info">
+                {% if block.settings.image_icon != blank %}
+                  <div class="icon-image-wrapper"
+                  style="--icon-image-width: {{ block.settings.icon_image_width }}px;"
+                  >
+                    {% liquid
+                      assign width = block.settings.icon_image_width
+                    %}
+                    {{
+                      block.settings.image_icon
+                      | image_url: width: width
+                      | image_tag:
+                        widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                        sizes: sizes,
+                        class: 'icon-image'
+                    }}
+                  </div>
+                {% endif %}
                 {%- if block.settings.title != blank -%}
                   <h3 class="inline-richtext">{{ block.settings.title }}</h3>
                 {%- endif -%}
@@ -173,10 +190,11 @@
         </div>
       {%- endif -%}
     </slider-component>
-    <div class="center{% if show_mobile_slider %} small-hide medium-hide{% endif %}">
-      {%- if section.settings.button_label != blank -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <div class="button-wrapper section-button-wrapper center">
         <a
-          class="button button--primary"
+          class="button button--{{ section.settings.button_style }}"
           {% if section.settings.button_link == blank %}
             role="link" aria-disabled="true"
           {% else %}
@@ -185,8 +203,8 @@
         >
           {{ section.settings.button_label | escape }}
         </a>
-      {%- endif -%}
-    </div>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -330,6 +348,26 @@
       "label": "t:sections.multicolumn.settings.button_link.label"
     },
     {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary button"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary button"
+        },
+        {
+          "value": "underline",
+          "label": "Underline button"
+        }
+      ],
+      "default": "primary"
+    },
+    {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
@@ -421,6 +459,21 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_icon",
+          "label": "Icon image"
+        },
+        {
+          "type": "range",
+          "id": "icon_image_width",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Icon image width",
+          "default": 40
         },
         {
           "type": "inline_richtext",
