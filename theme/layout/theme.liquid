@@ -339,6 +339,8 @@
           --color-grey10: #1A1A1A;
           --color-eerie-black: #191919;
           --color-grey: #808080;
+          --color-grey-af: #AFAFAF;
+          --color-cultured: #FAF8F5;
         }
   
         *,
@@ -417,7 +419,7 @@
       </script>
     </head>
   
-    <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+    <body class="template-{{ template | replace: '.', '-' | replace: '/', '-' }} gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
       <a class="skip-to-content-link button visually-hidden" href="#MainContent">
         {{ 'accessibility.skip_to_text' | t }}
       </a>

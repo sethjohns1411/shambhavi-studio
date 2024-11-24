@@ -304,17 +304,14 @@ details[open].menu-opening > .menu-side-drawer__submenu {
   }
 }
 
-.menu-side-drawer__footer {
+.menu-side-drawer__footer .studio-headquarters {
   padding-inline: 4rem;
-}
-
-.menu-side-drawer__footer .menu-side-drawer__footer-card {
-  padding-top: 2.5rem;
-  border-top: 0.1rem solid rgb(var(--color-foreground), .2);
 }
 
 .menu-side-drawer__footer .studio-headquarters .headquarters-info {
   text-align: right;
+  padding-top: 2.5rem;
+  border-top: 0.1rem solid rgb(var(--color-foreground), .2);
 }
 
 .menu-side-drawer__footer .studio-headquarters .headquarter-title {

@@ -14,6 +14,10 @@
   }
 {%- endstyle -%}
 
+{% liquid
+  assign item_per_page = section.settings.columns_desktop | times: section.settings.item_per_page
+%}
+
 <div class="our-tribe color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
   <div
     class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -22,7 +26,7 @@
     {% endif %}
   >
     {%- if section.settings.title != blank -%}
-      <div class="title-wrapper-with-link text-{{ section.settings.text_alignment }} title-wrapper--self-padded-mobile title-wrapper--no-top-margin our-tribe__title{% if section.settings.title_image %} title-wrapper--no-padding{% endif %}">
+      <div class="title-wrapper-with-link{% if section.settings.title_image != blank %} title-wrapper-with-image{% endif %} text-{{ section.settings.text_alignment }} title-wrapper--self-padded-mobile title-wrapper--no-top-margin our-tribe__title{% if section.settings.title_image %} title-wrapper--no-padding{% endif %}">
         <h2 class="title inline-richtext {{ section.settings.heading_size }}">
           {{ section.settings.title }}
         </h2>
@@ -45,30 +49,50 @@
           {{ section.settings.text }}
         </div>
       {% endif %}
-    </div>
-    <div class="our-tribe-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop">
-      {%- for block in section.blocks -%}
-        <div class="our-tribe-list__item grid__item{% if section.settings.column_alignment == 'center' %} center{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {{ block.shopify_attributes }}
-          {% if settings.animations_reveal_on_scroll %}
-            data-cascade
-            style="--animation-order: {{ forloop.index }};"
-          {% endif %}
-        >
-          <div class="our-tribe-card content-container">
-            <div class="our-tribe-card__heading">
-              {%- if block.settings.title != blank -%}
-                <h3 class="inline-richtext tribe-heading">{{ block.settings.title }}</h3>
-              {%- endif -%}
+
+      {% comment %} {%- paginate item by paginate_by -%} {% endcomment %}
+        <div class="our-tribe-list contains-content-container grid grid--2-col-tablet grid--{{ section.settings.columns_mobile }}-col grid--{{ section.settings.columns_desktop }}-col-desktop">
+          {%- for block in section.blocks -%}
+            <div class="our-tribe-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              {{ block.shopify_attributes }}
+              {% if settings.animations_reveal_on_scroll %}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+              {% endif %}
+            >
+              <div class="our-tribe-card content-container text-{{ section.settings.column_alignment }} color-{{ section.settings.color_scheme_1 }} gradient">
+                <div class="our-tribe-card__heading">
+                  {%- if block.settings.job_title != blank -%}
+                    <h3 class="inline-richtext tribe-heading">{{ block.settings.job_title }}</h3>
+                  {%- endif -%}
+                  <a href="{% if block.settings.page_url != blank %}{{ block.settings.page_url }}{% else %}javascript:void(0);{% endif %}" target="_blank" class="page-link-btn">
+                    {% render 'icon-right-arrow' %}
+                  </a>
+                </div>
+                <div class="our-tribe-card-body">
+                  <div class="our-tribe-card-content">
+                    {%- if block.settings.job_department != blank -%}
+                      <p class="our-tribe-content-item tribe-job-department"><span>Department:</span> {{ block.settings.job_department }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.job_type != blank -%}
+                      <p class="our-tribe-content-item tribe-job-type"><span>Type:</span> {{ block.settings.job_type }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.job_location != blank -%}
+                      <p class="our-tribe-content-item tribe-job-location"><span>Location:</span> {{ block.settings.job_location }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.vacant_position != blank -%}
+                      <p class="our-tribe-content-item tribe-job-position"><span>Positions Vacant:</span> {{ block.settings.vacant_position }}</p>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="our-tribe-card-body">
-              {%- if block.settings.text != blank -%}
-                <div class="tribe-info rte">{{ block.settings.text }}</div>
-              {%- endif -%}
-            </div>
-          </div>
+          {%- endfor -%}
         </div>
-      {%- endfor -%}
+        {% comment %} {%- if paginate.pages > 1 -%}
+          {% render 'pagination', paginate: paginate, anchor: '' %}
+        {%- endif -%}
+      {%- endpaginate -%} {% endcomment %}
     </div>
   </div>
 </div>
@@ -128,8 +152,8 @@
     {
       "type": "richtext",
       "id": "text",
-      "default": "t:sections.our-tribe.blocks.column.settings.text.default",
-      "label": "t:sections.our-tribe.blocks.column.settings.text.label"
+      "default": "t:sections.our-tribe.settings.text.default",
+      "label": "t:sections.our-tribe.settings.text.label"
     },
     {
       "type": "text_alignment",
@@ -187,7 +211,7 @@
       "type": "color_scheme",
       "id": "color_scheme_1",
       "label": "Card color",
-      "default": "scheme-1"
+      "default": "scheme-6"
     },
     {
       "type": "header",
@@ -261,20 +285,34 @@
       "settings": [
         {
           "type": "inline_richtext",
-          "id": "title",
+          "id": "job_title",
           "default": "t:sections.our-tribe.blocks.column.settings.title.default",
           "label": "t:sections.our-tribe.blocks.column.settings.title.label"
         },
         {
-          "type": "richtext",
-          "id": "text",
-          "default": "t:sections.our-tribe.blocks.column.settings.text.default",
-          "label": "t:sections.our-tribe.blocks.column.settings.text.label"
+          "type": "text",
+          "id": "job_department",
+          "label": "Job department"
+        },
+        {
+          "type": "text",
+          "id": "job_type",
+          "label": "Job type"
+        },
+        {
+          "type": "text",
+          "id": "job_location",
+          "label": "Job location"
+        },
+        {
+          "type": "text",
+          "id": "vacant_position",
+          "label": "Positions Vacant"
         },
         {
           "type": "url",
-          "id": "link",
-          "label": "t:sections.our-tribe.blocks.column.settings.link.label"
+          "id": "page_url",
+          "label": "Page URL"
         }
       ]
     }

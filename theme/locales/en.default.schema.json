@@ -481,6 +481,14 @@
         "label": "Image shape",
         "info": "Standard-styled cards have no borders when an image shape is active."
       },
+      "button_label": {
+        "label": "Button label",
+        "info": "Leave the label blank to hide the button.",
+        "default": "Button label"
+      },
+      "button_link": {
+        "label": "Button link"
+      },
       "button_style": {
         "label": "Button style",
         "option_1": {
@@ -2943,7 +2951,8 @@
           "default": "Join Our Tribe"
         },
         "text": {
-          "label": "Text"
+          "label": "Text",
+          "default": "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit REACH OUT TO US : If you are interested in our open positions or have any questions, please feel free to contact us using the details - hr@studiost.com</p>"
         },
         "columns_desktop": {
           "label": "Number of columns on desktop"
@@ -2984,21 +2993,103 @@
           "name": "Column",
           "settings": {
             "title": {
-              "label": "Heading",
-              "default": "Join our tribe"
-            },
-            "text": {
-              "label": "Description",
-              "default": "<p>Pair text with an image.<\/p>"
-            },
-            "link": {
-              "label": "Link"
+              "label": "Job title",
+              "default": "Junior Print Designer"
             }
           }
         }
       },
       "presets": {
         "name": "Our tribe"
+      }
+    },
+    "contact-us": {
+      "name": "Contact us",
+      "settings": {
+        
+      },
+      "blocks": {
+        "heading": {
+          "name": "Heading",
+          "settings": {
+            "heading": {
+              "label": "Heading"
+            }
+          }
+        },
+        "caption": {
+          "name": "Caption",
+          "settings": {
+            "text": {
+              "label": "Text",
+              "default": "Add a tagline"
+            },
+            "text_style": {
+              "label": "Text style",
+              "options__1": {
+                "label": "Subtitle"
+              },
+              "options__2": {
+                "label": "Uppercase"
+              },
+              "options__3": {
+                "label": "Caption"
+              }
+            },
+            "caption_size": {
+              "label": "Text size",
+              "options__1": {
+                "label": "Small"
+              },
+              "options__2": {
+                "label": "Medium"
+              },
+              "options__3": {
+                "label": "Large"
+              }
+            }
+          }
+        },
+        "text": {
+          "name": "Text",
+          "settings": {
+            "text": {
+              "label": "Content",
+              "default": "<p>STUDIO HQB-12, behind Starbucks, Chomu House CircleJaipur, Rajasthan 30200110:30AM - 6:00PM, Mon - FriBy appointment only.Ph: +91 70734 61869Trade Account + Wholesale Enquiriessales@shambhavit.comPress contact@shambhavit.com Residency residency@shambhavit.comDesign and Print Services + Careers + All Collaborationsstudio@shambhavit.comFounder shambhavi@shambhavit.com<\/p>"
+            },
+            "text_style": {
+              "label": "Text style",
+              "options__1": {
+                "label": "Body"
+              },
+              "options__2": {
+                "label": "Subtitle"
+              },
+              "options__3": {
+                "label": "Caption"
+              }
+            }
+          }
+        },
+        "button": {
+          "name": "Button",
+          "settings": {
+            "button_label": {
+              "label": "Button label",
+              "info": "Leave the label blank to hide the button.",
+              "default": "Button label"
+            },
+            "button_link": {
+              "label": "Button link"
+            },
+            "outline_button": {
+              "label": "Use outline button style"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Contact us"
       }
     },
     "instagram-feed": {
@@ -3522,6 +3613,135 @@
       },
       "presets": {
         "name": "Richtext column"
+      }
+    },
+    "multi-image-with-text": {
+      "name": "Multi image with text",
+      "settings": {
+        "height": {
+          "options__1": {
+            "label": "Adapt to image"
+          },
+          "options__2": {
+            "label": "Small"
+          },
+          "options__3": {
+            "label": "Medium"
+          },
+          "options__4": {
+            "label": "Large"
+          },
+          "label": "Image height"
+        },
+        "desktop_content_position": {
+          "options__1": {
+            "label": "Top"
+          },
+          "options__2": {
+            "label": "Middle"
+          },
+          "options__3": {
+            "label": "Bottom"
+          },
+          "label": "Desktop content position"
+        },
+        "content_alignment": {
+          "options__1": {
+            "label": "Left"
+          },
+          "options__2": {
+            "label": "Center"
+          },
+          "options__3": {
+            "label": "Right"
+          },
+          "label": "Content alignment"
+        },
+        "full_width": {
+          "label": "Make section full width"
+        }
+      },
+      "blocks": {
+        "heading": {
+          "name": "Heading",
+          "settings": {
+            "heading": {
+              "label": "Heading",
+              "default": "Talk about your brand"
+            }
+          }
+        },
+        "caption": {
+          "name": "Caption",
+          "settings": {
+            "text": {
+              "label": "Text",
+              "default": "Add a tagline"
+            },
+            "text_style": {
+              "label": "Text style",
+              "options__1": {
+                "label": "Subtitle"
+              },
+              "options__2": {
+                "label": "Uppercase"
+              },
+              "options__3": {
+                "label": "Caption"
+              }
+            },
+            "caption_size": {
+              "label": "Text size",
+              "options__1": {
+                "label": "Small"
+              },
+              "options__2": {
+                "label": "Medium"
+              },
+              "options__3": {
+                "label": "Large"
+              }
+            }
+          }
+        },
+        "text": {
+          "name": "Text",
+          "settings": {
+            "text": {
+              "label": "Description",
+              "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            }
+          }
+        },
+        "buttons": {
+          "name": "Buttons",
+          "settings": {
+            "button_label_1": {
+              "label": "First button label",
+              "info": "Leave the label blank to hide the button.",
+              "default": "Button label"
+            },
+            "button_link_1": {
+              "label": "First button link"
+            },
+            "button_style_secondary_1": {
+              "label": "Use outline button style"
+            },
+            "button_label_2": {
+              "label": "Second button label",
+              "info": "Leave the label blank to hide the button."
+            },
+            "button_link_2": {
+              "label": "Second button link"
+            },
+            "button_style_secondary_2": {
+              "label": "Use outline button style"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Multi image with text"
       }
     },
     "video": {

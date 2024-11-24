@@ -442,6 +442,7 @@
 
 .banner__box > * + .banner__text {
   margin-top: 1.5rem;
+  font-weight: var(--font-lora-body-weight);
 }
 
 @media screen and (min-width: 750px) {
