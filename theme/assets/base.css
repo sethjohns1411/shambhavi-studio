@@ -5,7 +5,8 @@
   --alpha-badge-border: 0.1;
   --focused-base-outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   --focused-base-outline-offset: 0.3rem;
-  --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
 
 .product-card-wrapper .card,
@@ -148,22 +149,24 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   }
 }
 
-.text-lora, .text-lora * {
+.text-lora,
+.text-lora * {
   font-family: var(--font-lora-body-family) !important;
   font-style: var(--font-lora-body-style);
   font-weight: var(--font-lora-body-weight);
 }
 
-.text-lora strong, .text-lora b {
+.text-lora strong,
+.text-lora b {
   font-weight: 700;
 }
 
 .text-outfit-normal {
-  font-family: 'Outfit-Regular' !important;
+  font-family: "Outfit-Regular" !important;
 }
 
 .text-outfit-medium {
-  font-family: 'Outfit-Medium' !important;
+  font-family: "Outfit-Medium" !important;
 }
 
 .text-left {
@@ -303,7 +306,11 @@ h5,
 }
 
 .hxxl {
-  font-size: clamp(calc(var(--font-heading-scale) * 5.6rem), 14vw, calc(var(--font-heading-scale) * 7.2rem));
+  font-size: clamp(
+    calc(var(--font-heading-scale) * 5.6rem),
+    14vw,
+    calc(var(--font-heading-scale) * 7.2rem)
+  );
   line-height: 1.1;
 }
 
@@ -560,7 +567,7 @@ a:not([href]) {
 }
 
 .circle-divider::after {
-  content: '\2022';
+  content: "\2022";
   margin: 0 1.3rem 0 1.5rem;
 }
 
@@ -623,7 +630,8 @@ details > * {
   --duration-extra-longer: 750ms;
   --duration-extended: 3s;
   --ease-out-slow: cubic-bezier(0, 0, 0.3, 1);
-  --animation-slide-in: slideIn var(--duration-extra-long) var(--ease-out-slow) forwards;
+  --animation-slide-in: slideIn var(--duration-extra-long) var(--ease-out-slow)
+    forwards;
   --animation-fade-in: fadeIn var(--duration-extra-long) var(--ease-out-slow);
 }
 
@@ -695,7 +703,7 @@ summary .icon-caret {
   height: 0.6rem;
   right: 1.5rem;
   top: calc(50% - 0.2rem);
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 [open] > summary .icon-caret {
@@ -719,7 +727,7 @@ summary::-webkit-details-marker {
   z-index: 2;
   display: block;
   cursor: default;
-  content: ' ';
+  content: " ";
   background: transparent;
 }
 
@@ -1033,7 +1041,7 @@ summary::-webkit-details-marker {
   .grid--7-col-desktop .grid__item {
     width: calc(14.2857% - var(--grid-desktop-horizontal-spacing) * 6 / 7);
     max-width: calc(14.2857% - var(--grid-desktop-horizontal-spacing) * 6 / 7);
-}
+  }
 
   .grid--6-col-desktop .grid__item {
     width: calc(16.66% - var(--grid-desktop-horizontal-spacing) * 5 / 6);
@@ -1246,7 +1254,9 @@ button.shopify-payment-button__button--unbranded {
   --shadow-blur-radius: var(--buttons-shadow-blur-radius);
   --shadow-opacity: var(--buttons-shadow-opacity);
   --shadow-visible: var(--buttons-shadow-visible);
-  --border-offset: var(--buttons-border-offset); /* reduce radius edge artifacts */
+  --border-offset: var(
+    --buttons-border-offset
+  ); /* reduce radius edge artifacts */
   --border-opacity: calc(1 - var(--buttons-border-opacity));
   border-radius: var(--buttons-radius-outset);
   position: relative;
@@ -1289,7 +1299,7 @@ button.shopify-payment-button__button--unbranded {
 .shopify-challenge__button:before,
 .customer button:before,
 .shopify-payment-button__button--unbranded:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -1297,15 +1307,15 @@ button.shopify-payment-button__button--unbranded {
   left: 0;
   z-index: -1;
   border-radius: var(--buttons-radius-outset);
-  box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius)
-    rgba(var(--color-shadow), var(--shadow-opacity));
+  box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset)
+    var(--shadow-blur-radius) rgba(var(--color-shadow), var(--shadow-opacity));
 }
 
 .button:after,
 .shopify-challenge__button:after,
 .customer button:after,
 .shopify-payment-button__button--unbranded:after {
-  content: '';
+  content: "";
   position: absolute;
   top: var(--buttons-border-width);
   right: var(--buttons-border-width);
@@ -1315,7 +1325,8 @@ button.shopify-payment-button__button--unbranded {
   border-radius: var(--buttons-radius);
   box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
       rgba(var(--color-button-text), var(--border-opacity)),
-    0 0 0 var(--buttons-border-width) rgba(var(--color-button), var(--alpha-button-background));
+    0 0 0 var(--buttons-border-width)
+      rgba(var(--color-button), var(--alpha-button-background));
   transition: box-shadow var(--duration-short) ease;
 }
 
@@ -1325,7 +1336,7 @@ button.shopify-payment-button__button--unbranded {
 .shopify-payment-button__button--unbranded:hover::after {
   --border-offset: 0px;
   box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
-  var(--color-primary),
+      var(--color-primary),
     0 0 0 calc(var(--buttons-border-width)) var(--color-primary);
 }
 
@@ -1339,12 +1350,15 @@ button.shopify-payment-button__button--unbranded {
 .shopify-payment-button__button--unbranded:focus-visible,
 .shopify-payment-button__button--unbranded:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0 0.5rem rgba(var(--color-foreground), 0.5),
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0 0.5rem rgba(var(--color-foreground), 0.5),
     0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
 
 .button:focus:not(:focus-visible):not(.focused),
-.shopify-payment-button__button--unbranded:focus:not(:focus-visible):not(.focused) {
+.shopify-payment-button__button--unbranded:focus:not(:focus-visible):not(
+    .focused
+  ) {
   box-shadow: inherit;
 }
 
@@ -1375,7 +1389,7 @@ button.shopify-payment-button__button--unbranded {
   padding: 0;
   background: transparent;
   text-decoration: underline;
-  color: rgba(var(--color-button),var(--alpha-button-background));
+  color: rgba(var(--color-button), var(--alpha-button-background));
   text-underline-offset: 4px;
 }
 
@@ -1392,7 +1406,8 @@ button.shopify-payment-button__button--unbranded {
   padding: 1.2rem 2.6rem;
 }
 
-.button--primary:hover, .button--secondary:hover {
+.button--primary:hover,
+.button--secondary:hover {
   background: var(--color-primary);
   color: var(--color-white);
 }
@@ -1400,24 +1415,33 @@ button.shopify-payment-button__button--unbranded {
 /* Shopify Accelerated Checkout */
 
 shopify-accelerated-checkout {
-  --shopify-accelerated-checkout-button-border-radius: var(--buttons-radius-outset);
-  --shopify-accelerated-checkout-button-box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius)
-  rgba(var(--color-shadow), var(--shadow-opacity));
+  --shopify-accelerated-checkout-button-border-radius: var(
+    --buttons-radius-outset
+  );
+  --shopify-accelerated-checkout-button-box-shadow: var(
+      --shadow-horizontal-offset
+    )
+    var(--shadow-vertical-offset) var(--shadow-blur-radius)
+    rgba(var(--color-shadow), var(--shadow-opacity));
 }
 shopify-accelerated-checkout-cart {
-  --shopify-accelerated-checkout-button-border-radius: var(--buttons-radius-outset);
-  --shopify-accelerated-checkout-button-box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius)
-  rgba(var(--color-shadow), var(--shadow-opacity));
+  --shopify-accelerated-checkout-button-border-radius: var(
+    --buttons-radius-outset
+  );
+  --shopify-accelerated-checkout-button-box-shadow: var(
+      --shadow-horizontal-offset
+    )
+    var(--shadow-vertical-offset) var(--shadow-blur-radius)
+    rgba(var(--color-shadow), var(--shadow-opacity));
 }
-
 
 /* Button - other */
 
 .button:disabled,
-.button[aria-disabled='true'],
+.button[aria-disabled="true"],
 .button.disabled,
 .customer button:disabled,
-.customer button[aria-disabled='true'],
+.customer button[aria-disabled="true"],
 .customer button.disabled,
 .quantity__button.disabled {
   cursor: not-allowed;
@@ -1516,7 +1540,7 @@ details[open] > .share-button__fallback {
 
 .share-button__fallback:after {
   pointer-events: none;
-  content: '';
+  content: "";
   position: absolute;
   top: var(--inputs-border-width);
   right: var(--inputs-border-width);
@@ -1524,7 +1548,8 @@ details[open] > .share-button__fallback {
   left: var(--inputs-border-width);
   border: 0.1rem solid transparent;
   border-radius: var(--inputs-radius);
-  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
+  box-shadow: 0 0 0 var(--inputs-border-width)
+    rgba(var(--color-foreground), var(--inputs-border-opacity));
   transition: box-shadow var(--duration-short) ease;
   z-index: 1;
 }
@@ -1532,15 +1557,16 @@ details[open] > .share-button__fallback {
 .share-button__fallback:before {
   background: rgb(var(--color-background));
   pointer-events: none;
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   border-radius: var(--inputs-radius-outset);
-  box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset)
-    var(--inputs-shadow-blur-radius) rgba(var(--color-shadow), var(--inputs-shadow-opacity));
+  box-shadow: var(--inputs-shadow-horizontal-offset)
+    var(--inputs-shadow-vertical-offset) var(--inputs-shadow-blur-radius)
+    rgba(var(--color-shadow), var(--inputs-shadow-opacity));
   z-index: -1;
 }
 
@@ -1586,8 +1612,10 @@ details[open] > .share-button__fallback {
   z-index: 2;
 }
 
-.field:not(:focus-visible):not(.focused) + .share-button__copy:not(:focus-visible):not(.focused),
-.field:not(:focus-visible):not(.focused) + .share-button__close:not(:focus-visible):not(.focused) {
+.field:not(:focus-visible):not(.focused)
+  + .share-button__copy:not(:focus-visible):not(.focused),
+.field:not(:focus-visible):not(.focused)
+  + .share-button__close:not(:focus-visible):not(.focused) {
   background-color: inherit;
 }
 
@@ -1607,7 +1635,8 @@ details[open] > .share-button__fallback {
 .share-button__fallback .field__input:-webkit-autofill {
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   outline-offset: 0.1rem;
-  box-shadow: 0 0 0 0.1rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-background)),
+    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
 
 .share-button__fallback .field__input {
@@ -1673,15 +1702,16 @@ details[open] > .share-button__fallback {
 .customer select:before,
 .localization-form__select:before {
   pointer-events: none;
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   border-radius: var(--inputs-radius-outset);
-  box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset)
-    var(--inputs-shadow-blur-radius) rgba(var(--color-shadow), var(--inputs-shadow-opacity));
+  box-shadow: var(--inputs-shadow-horizontal-offset)
+    var(--inputs-shadow-vertical-offset) var(--inputs-shadow-blur-radius)
+    rgba(var(--color-shadow), var(--inputs-shadow-opacity));
   z-index: -1;
 }
 
@@ -1691,7 +1721,7 @@ details[open] > .share-button__fallback {
 .customer select:after,
 .localization-form__select:after {
   pointer-events: none;
-  content: '';
+  content: "";
   position: absolute;
   top: var(--inputs-border-width);
   right: var(--inputs-border-width);
@@ -1699,7 +1729,8 @@ details[open] > .share-button__fallback {
   left: var(--inputs-border-width);
   border: 0.1rem solid transparent;
   border-radius: var(--inputs-radius);
-  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
+  box-shadow: 0 0 0 var(--inputs-border-width)
+    rgba(var(--color-foreground), var(--inputs-border-opacity));
   transition: box-shadow var(--duration-short) ease;
   z-index: 1;
 }
@@ -1815,7 +1846,8 @@ details[open] > .share-button__fallback {
   margin-bottom: 0;
   pointer-events: none;
   position: absolute;
-  transition: top var(--duration-short) ease, font-size var(--duration-short) ease;
+  transition: top var(--duration-short) ease,
+    font-size var(--duration-short) ease;
   color: rgba(var(--color-foreground), 1);
   line-height: 1.5;
 }
@@ -1889,7 +1921,7 @@ details[open] > .share-button__fallback {
   resize: none;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   display: inline-block;
   width: auto;
   margin-right: 0.5rem;
@@ -1968,7 +2000,7 @@ input[type='checkbox'] {
 
 .quantity:after {
   pointer-events: none;
-  content: '';
+  content: "";
   position: absolute;
   top: var(--inputs-border-width);
   right: var(--inputs-border-width);
@@ -1976,7 +2008,8 @@ input[type='checkbox'] {
   left: var(--inputs-border-width);
   border: 0.1rem solid transparent;
   border-radius: var(--inputs-radius);
-  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
+  box-shadow: 0 0 0 var(--inputs-border-width)
+    rgba(var(--color-foreground), var(--inputs-border-opacity));
   transition: box-shadow var(--duration-short) ease;
   z-index: 1;
 }
@@ -1984,15 +2017,16 @@ input[type='checkbox'] {
 .quantity:before {
   background: rgb(var(--color-background));
   pointer-events: none;
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   border-radius: var(--inputs-radius-outset);
-  box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset)
-    var(--inputs-shadow-blur-radius) rgba(var(--color-shadow), var(--inputs-shadow-opacity));
+  box-shadow: var(--inputs-shadow-horizontal-offset)
+    var(--inputs-shadow-vertical-offset) var(--inputs-shadow-blur-radius)
+    rgba(var(--color-shadow), var(--inputs-shadow-opacity));
   z-index: -1;
 }
 
@@ -2072,7 +2106,7 @@ input[type='checkbox'] {
   margin: 0;
 }
 
-.quantity__input[type='number'] {
+.quantity__input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -2089,7 +2123,7 @@ input[type='checkbox'] {
 }
 
 .quantity__rules .divider + .divider::before {
-  content: '\2022';
+  content: "\2022";
   margin: 0 0.5rem;
 }
 
@@ -2190,7 +2224,7 @@ input[type='checkbox'] {
 .utility-bar__grid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: 'announcements';
+  grid-template-areas: "announcements";
 }
 
 .utility-bar__grid .list-social {
@@ -2213,12 +2247,12 @@ input[type='checkbox'] {
 @media screen and (min-width: 990px) {
   .utility-bar__grid--3-col {
     grid-template-columns: 3fr 4fr 3fr;
-    grid-template-areas: 'social-icons announcements language-currency';
+    grid-template-areas: "social-icons announcements language-currency";
   }
 
   .utility-bar__grid--2-col {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'social-icons language-currency';
+    grid-template-areas: "social-icons language-currency";
   }
 
   .announcement-bar.announcement-bar--one-announcement {
@@ -2308,7 +2342,9 @@ input[type='checkbox'] {
 
 @media screen and (min-width: 990px) {
   body:has(.section-header .header:not(.drawer-menu)) .utility-bar .page-width,
-  body:has(.section-header .header:not(.drawer-menu)) .utility-bar .page-full-width {
+  body:has(.section-header .header:not(.drawer-menu))
+    .utility-bar
+    .page-full-width {
     padding-left: 4rem;
     padding-right: 4rem;
   }
@@ -2448,7 +2484,7 @@ input[type='checkbox'] {
 
 .header {
   display: grid;
-  grid-template-areas: 'left-icons heading icons';
+  grid-template-areas: "left-icons heading icons";
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   box-shadow: 0px 0px 0.8rem rgba(var(--color-foreground), 0.08);
@@ -2468,26 +2504,26 @@ input[type='checkbox'] {
   .header--top-left,
   .header--middle-left:not(.header--has-menu) {
     grid-template-areas:
-      'heading icons'
-      'navigation navigation';
+      "heading icons"
+      "navigation navigation";
     grid-template-columns: 1fr auto;
   }
 
   .header--top-left.drawer-menu,
   .header--middle-left.drawer-menu {
-    grid-template-areas: 'navigation heading icons';
+    grid-template-areas: "navigation heading icons";
     grid-template-columns: auto 1fr auto;
     column-gap: 1rem;
   }
 
   .header--middle-left {
-    grid-template-areas: 'heading navigation icons';
+    grid-template-areas: "heading navigation icons";
     grid-template-columns: auto 1fr auto;
     column-gap: 2rem;
   }
 
   .header--middle-center:not(.drawer-menu) {
-    grid-template-areas: 'navigation heading icons';
+    grid-template-areas: "navigation heading icons";
     grid-template-columns: 1fr auto 1fr;
     column-gap: 2rem;
   }
@@ -2498,21 +2534,22 @@ input[type='checkbox'] {
 
   .header--top-center {
     grid-template-areas:
-      'left-icons heading icons'
-      'navigation navigation navigation';
+      "left-icons heading icons"
+      "navigation navigation navigation";
   }
 
   .header--top-center.drawer-menu {
-    grid-template-areas: 'left-icons heading icons';
+    grid-template-areas: "left-icons heading icons";
     grid-template-columns: 1fr auto 1fr;
   }
 
-  .header:not(.header--middle-left, .header--middle-center) .header__inline-menu {
+  .header:not(.header--middle-left, .header--middle-center)
+    .header__inline-menu {
     margin-top: 1.05rem;
   }
 }
 
-.header *[tabindex='-1']:focus {
+.header *[tabindex="-1"]:focus {
   outline: none;
 }
 
@@ -2664,11 +2701,13 @@ input[type='checkbox'] {
   margin-right: -1.2rem;
 }
 
-.header__icon--menu[aria-expanded='true']::before {
-  content: '';
+.header__icon--menu[aria-expanded="true"]::before {
+  content: "";
   top: 100%;
   left: 0;
-  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
+  height: calc(
+    var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%))
+  );
   width: 100%;
   display: block;
   position: absolute;
@@ -2755,19 +2794,21 @@ details[open] .modal-overlay {
 
 details[open] .modal-overlay::after {
   position: absolute;
-  content: '';
+  content: "";
   background-color: rgb(var(--color-foreground), 0.5);
   top: 100%;
   left: 0;
   right: 0;
   height: 100vh;
-  backdrop-filter: blur(.6rem);
+  backdrop-filter: blur(0.6rem);
 }
 
 .search-modal {
   opacity: 0;
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
-  min-height: calc(100% + var(--inputs-margin-offset) + (2 * var(--inputs-border-width)));
+  min-height: calc(
+    100% + var(--inputs-margin-offset) + (2 * var(--inputs-border-width))
+  );
   height: 100%;
 }
 
@@ -2920,7 +2961,7 @@ details[open] > .header__submenu {
   width: 0%;
   height: 0.2rem;
   background: var(--color-primary);
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .header__menu-item:hover span:before {
@@ -2941,7 +2982,8 @@ span.header__active-menu-item:before {
 }
 
 .header__submenu {
-  transition: opacity var(--duration-default) ease, transform var(--duration-default) ease;
+  transition: opacity var(--duration-default) ease,
+    transform var(--duration-default) ease;
 }
 
 .global-settings-popup,
@@ -2950,7 +2992,8 @@ span.header__active-menu-item:before {
   border-color: rgba(var(--color-foreground), var(--popup-border-opacity));
   border-style: solid;
   border-width: var(--popup-border-width);
-  box-shadow: var(--popup-shadow-horizontal-offset) var(--popup-shadow-vertical-offset) var(--popup-shadow-blur-radius)
+  box-shadow: var(--popup-shadow-horizontal-offset)
+    var(--popup-shadow-vertical-offset) var(--popup-shadow-blur-radius)
     rgba(var(--color-shadow), var(--popup-shadow-opacity));
   z-index: -1;
 }
@@ -2974,14 +3017,14 @@ span.header__active-menu-item:before {
   justify-content: space-between;
   padding: 1.4rem 4rem;
   font-weight: 400;
-  font-family: 'Outfit-Regular' !important;
+  font-family: "Outfit-Regular" !important;
   color: var(--color-eerie-black);
 }
 
 @media screen and (min-width: 990px) {
   .header__submenu .header__menu-item {
     font-weight: 500;
-    font-family: 'Outfit-Medium' !important;
+    font-family: "Outfit-Medium" !important;
   }
 }
 
@@ -3077,7 +3120,7 @@ details-disclosure > details {
 }
 
 .ratio::before {
-  content: '';
+  content: "";
   width: 0;
   height: 0;
   padding-bottom: var(--ratio-percent);
@@ -3085,20 +3128,23 @@ details-disclosure > details {
 
 .content-container {
   border-radius: var(--text-boxes-radius);
-  border: var(--text-boxes-border-width) solid rgba(var(--color-foreground), var(--text-boxes-border-opacity));
+  border: var(--text-boxes-border-width) solid
+    rgba(var(--color-foreground), var(--text-boxes-border-opacity));
   position: relative;
 }
 
 .content-container:after {
-  content: '';
+  content: "";
   position: absolute;
   top: calc(var(--text-boxes-border-width) * -1);
   right: calc(var(--text-boxes-border-width) * -1);
   bottom: calc(var(--text-boxes-border-width) * -1);
   left: calc(var(--text-boxes-border-width) * -1);
   border-radius: var(--text-boxes-radius);
-  box-shadow: var(--text-boxes-shadow-horizontal-offset) var(--text-boxes-shadow-vertical-offset)
-    var(--text-boxes-shadow-blur-radius) rgba(var(--color-shadow), var(--text-boxes-shadow-opacity));
+  box-shadow: var(--text-boxes-shadow-horizontal-offset)
+    var(--text-boxes-shadow-vertical-offset)
+    var(--text-boxes-shadow-blur-radius)
+    rgba(var(--color-shadow), var(--text-boxes-shadow-opacity));
   z-index: -1;
 }
 
@@ -3121,21 +3167,23 @@ details-disclosure > details {
 
 .global-media-settings {
   position: relative;
-  border: var(--media-border-width) solid rgba(var(--color-foreground), var(--media-border-opacity));
+  border: var(--media-border-width) solid
+    rgba(var(--color-foreground), var(--media-border-opacity));
   border-radius: var(--media-radius);
   overflow: visible !important;
-  background-color: rgb(var(--color-background), .0);
+  background-color: rgb(var(--color-background), 0);
 }
 
 .global-media-settings:after {
-  content: '';
+  content: "";
   position: absolute;
   top: calc(var(--media-border-width) * -1);
   right: calc(var(--media-border-width) * -1);
   bottom: calc(var(--media-border-width) * -1);
   left: calc(var(--media-border-width) * -1);
   border-radius: var(--media-radius);
-  box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
+  box-shadow: var(--media-shadow-horizontal-offset)
+    var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
     rgba(var(--color-shadow), var(--media-shadow-opacity));
   z-index: -1;
   pointer-events: none;
@@ -3228,9 +3276,9 @@ details-disclosure > details {
   .button:focus,
   .button.focused,
   .shopify-payment-button__button--unbranded:focus-visible,
-  .shopify-payment-button [role='button']:focus-visible,
+  .shopify-payment-button [role="button"]:focus-visible,
   .shopify-payment-button__button--unbranded:focus,
-  .shopify-payment-button [role='button']:focus {
+  .shopify-payment-button [role="button"]:focus {
     outline: solid transparent 1px;
   }
 
@@ -3249,7 +3297,7 @@ details-disclosure > details {
 
 .rte:after {
   clear: both;
-  content: '';
+  content: "";
   display: block;
 }
 
@@ -3275,9 +3323,11 @@ details-disclosure > details {
 .rte img {
   height: auto;
   max-width: 100%;
-  border: var(--media-border-width) solid rgba(var(--color-foreground), var(--media-border-opacity));
+  border: var(--media-border-width) solid
+    rgba(var(--color-foreground), var(--media-border-opacity));
   border-radius: var(--media-radius);
-  box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
+  box-shadow: var(--media-shadow-horizontal-offset)
+    var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
     rgba(var(--color-shadow), var(--media-shadow-opacity));
   margin-bottom: var(--media-shadow-vertical-offset);
 }
@@ -3324,7 +3374,7 @@ details-disclosure > details {
 }
 
 .shape--arch {
-  clip-path: url('#Shape-Arch');
+  clip-path: url("#Shape-Arch");
 }
 
 .shape--blob {
@@ -3458,7 +3508,8 @@ details-disclosure > details {
   .animate--hover-3d-lift .customer button,
   .animate--hover-3d-lift .shopify-payment-button__button,
   .animate--hover-3d-lift .deferred-media .deferred-media__poster-button {
-    transition: transform var(--duration-long) ease, box-shadow var(--duration-long) ease;
+    transition: transform var(--duration-long) ease,
+      box-shadow var(--duration-long) ease;
     transform-origin: center;
   }
 
@@ -3469,10 +3520,13 @@ details-disclosure > details {
   .animate--hover-3d-lift .customer button:not([disabled]):hover,
   .animate--hover-3d-lift .shopify-payment-button__button:hover,
   .animate--hover-3d-lift .deferred-media:hover .deferred-media__poster-button {
-    transition: transform var(--duration-extended) ease, box-shadow var(--duration-long) ease; /* Slow the card transition speed while hover is active. */
+    transition: transform var(--duration-extended) ease,
+      box-shadow var(--duration-long) ease; /* Slow the card transition speed while hover is active. */
     transform: rotate(1deg);
-    box-shadow: -1rem -1rem 1rem -1rem rgba(0, 0, 0, 0.05), 1rem 1rem 1rem -1rem rgba(0, 0, 0, 0.05),
-      0 0 0.5rem 0 rgba(255, 255, 255, 0), 0 2rem 3.5rem -2rem rgba(0, 0, 0, 0.5);
+    box-shadow: -1rem -1rem 1rem -1rem rgba(0, 0, 0, 0.05),
+      1rem 1rem 1rem -1rem rgba(0, 0, 0, 0.05),
+      0 0 0.5rem 0 rgba(255, 255, 255, 0),
+      0 2rem 3.5rem -2rem rgba(0, 0, 0, 0.5);
   }
 
   .animate--hover-3d-lift .deferred-media:hover .deferred-media__poster-button {
@@ -3480,7 +3534,11 @@ details-disclosure > details {
   }
 
   .animate--hover-3d-lift .collage__item .card-wrapper:hover .card--card,
-  .animate--hover-3d-lift .collage__item .card-wrapper:hover .card--standard .card__inner {
+  .animate--hover-3d-lift
+    .collage__item
+    .card-wrapper:hover
+    .card--standard
+    .card__inner {
     transform: rotate(0.5deg); /* Less intense rotation for collage items. */
   }
 
@@ -3496,18 +3554,30 @@ details-disclosure > details {
     isolation: isolate; /* Ensure z-index changes here don't negatively effect other UI stacking. */
   }
 
-  .animate--hover-3d-lift .card-wrapper .card--shape.card--standard:not(.card--text) .card__inner {
+  .animate--hover-3d-lift
+    .card-wrapper
+    .card--shape.card--standard:not(.card--text)
+    .card__inner {
     box-shadow: none;
-    transition: transform var(--duration-long) ease, filter var(--duration-long) ease;
+    transition: transform var(--duration-long) ease,
+      filter var(--duration-long) ease;
   }
 
-  .animate--hover-3d-lift .card-wrapper:hover .card--shape.card--standard:not(.card--text) .card__inner {
-    transition: transform calc(2 * var(--duration-extended)) ease, filter var(--duration-long) ease; /* Slow the card transition speed while hover is active. */
-    filter: drop-shadow(0rem 2rem 2rem rgba(0, 0, 0, 0.15)) drop-shadow(0rem 1rem 1rem rgba(0, 0, 0, 0.15));
+  .animate--hover-3d-lift
+    .card-wrapper:hover
+    .card--shape.card--standard:not(.card--text)
+    .card__inner {
+    transition: transform calc(2 * var(--duration-extended)) ease,
+      filter var(--duration-long) ease; /* Slow the card transition speed while hover is active. */
+    filter: drop-shadow(0rem 2rem 2rem rgba(0, 0, 0, 0.15))
+      drop-shadow(0rem 1rem 1rem rgba(0, 0, 0, 0.15));
   }
 
   .animate--hover-3d-lift .card-wrapper:hover .card--card:after,
-  .animate--hover-3d-lift .card-wrapper:hover .card--standard .card__inner:after,
+  .animate--hover-3d-lift
+    .card-wrapper:hover
+    .card--standard
+    .card__inner:after,
   .animate--hover-3d-lift
     .card-wrapper:hover
     .card--shape.card--standard:not(.card--text)
@@ -3525,7 +3595,7 @@ details-disclosure > details {
     .card--shape.card--standard:not(.card--text)
     .card__inner
     .card__media:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
@@ -3535,7 +3605,7 @@ details-disclosure > details {
 
   .animate--hover-3d-lift .card-wrapper .card--card:before,
   .animate--hover-3d-lift .card-wrapper .card--standard .card__media:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     right: 0;
@@ -3543,7 +3613,8 @@ details-disclosure > details {
     left: 0;
     opacity: 0;
     pointer-events: none;
-    transition: background-position calc(2 * var(--duration-extended)) ease, opacity var(--duration-default) ease;
+    transition: background-position calc(2 * var(--duration-extended)) ease,
+      opacity var(--duration-default) ease;
     mix-blend-mode: overlay;
     background-size: 400% 100%;
     background-position: 90% 0;
@@ -3557,7 +3628,10 @@ details-disclosure > details {
   }
 
   .animate--hover-3d-lift .card-wrapper:hover .card--card:before,
-  .animate--hover-3d-lift .card-wrapper:hover .card--standard .card__media:after {
+  .animate--hover-3d-lift
+    .card-wrapper:hover
+    .card--standard
+    .card__media:after {
     opacity: 0.2;
     transition: background-position 6s ease, opacity var(--duration-long) ease;
     background-position: left;
@@ -3566,7 +3640,7 @@ details-disclosure > details {
 
   :root {
     --easter-egg: none;
-    --sparkle: url('./sparkle.gif');
+    --sparkle: url("./sparkle.gif");
   }
 
   .animate--hover-vertical-lift .button:not(.button--tertiary),
@@ -3582,24 +3656,34 @@ details-disclosure > details {
   }
 
   .animate--hover-vertical-lift .card-wrapper:hover .card--card,
-  .animate--hover-vertical-lift .card-wrapper:hover .card--standard .card__inner {
+  .animate--hover-vertical-lift
+    .card-wrapper:hover
+    .card--standard
+    .card__inner {
     transform: translateY(-0.75rem);
   }
 
   .animate--hover-vertical-lift .card-wrapper:active .card--card,
-  .animate--hover-vertical-lift .card-wrapper:active .card--standard .card__inner {
+  .animate--hover-vertical-lift
+    .card-wrapper:active
+    .card--standard
+    .card__inner {
     transform: translateY(-0.5rem);
   }
 
-  .animate--hover-vertical-lift .button:not(.button--tertiary):not([disabled]):hover,
-  .animate--hover-vertical-lift .shopify-challenge__button:not([disabled]):hover,
+  .animate--hover-vertical-lift
+    .button:not(.button--tertiary):not([disabled]):hover,
+  .animate--hover-vertical-lift
+    .shopify-challenge__button:not([disabled]):hover,
   .animate--hover-vertical-lift .customer button:not([disabled]):hover,
   .animate--hover-vertical-lift .shopify-payment-button__button:hover {
     transform: translateY(-0.25rem);
   }
 
-  .animate--hover-vertical-lift .button:not(.button--tertiary):not([disabled]):active,
-  .animate--hover-vertical-lift .shopify-challenge__button:not([disabled]):active,
+  .animate--hover-vertical-lift
+    .button:not(.button--tertiary):not([disabled]):active,
+  .animate--hover-vertical-lift
+    .shopify-challenge__button:not([disabled]):active,
   .animate--hover-vertical-lift .customer button:not([disabled]):active,
   .animate--hover-vertical-lift .shopify-payment-button__button:active {
     transform: translateY(0);
@@ -3607,14 +3691,17 @@ details-disclosure > details {
 
   .animate--hover-vertical-lift .button:not([disabled]):hover:after,
   .animate--hover-vertical-lift .customer button:not([disabled]):hover:after,
-  .animate--hover-vertical-lift .shopify-payment-button__button:not([disabled]):hover:after {
+  .animate--hover-vertical-lift
+    .shopify-payment-button__button:not([disabled]):hover:after {
     --border-offset: 0.3px; /* Default is 1.3px as defined above in this file. This removes 1px to prevent the border from growing on buttons when this effect is on.  */
     box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
         rgba(var(--color-button-text), var(--border-opacity)),
-      0 0 0 var(--buttons-border-width) rgba(var(--color-button), var(--alpha-button-background));
+      0 0 0 var(--buttons-border-width)
+        rgba(var(--color-button), var(--alpha-button-background));
   }
 
-  .animate--hover-vertical-lift .button:not([disabled]).button--secondary:hover:after {
+  .animate--hover-vertical-lift
+    .button:not([disabled]).button--secondary:hover:after {
     --border-offset: 0px; /* Prevent the border from growing on buttons when this effect is on. */
   }
 }
@@ -3697,7 +3784,8 @@ details-disclosure > details {
   width: 100%;
   height: 100%;
   background-color: rgb(var(--color-foreground));
-  animation: indeterminateAnimation var(--duration-extra-longer) infinite ease-in-out;
+  animation: indeterminateAnimation var(--duration-extra-longer) infinite
+    ease-in-out;
   transform-origin: 0;
 }
 
@@ -3721,19 +3809,27 @@ details-disclosure > details {
   display: none;
 }
 
-.blog .title-wrapper--self-padded-tablet-down, .title-wrapper--self-padded-mobile {
- padding: 0 0 18px;
- border-bottom:  1px solid rgba(var(--color-foreground), 0.5);
+.blog .title-wrapper--self-padded-tablet-down,
+.title-wrapper--self-padded-mobile {
+  padding: 0 0 18px;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.5);
 }
 
 @media screen and (max-width: 990px) {
-  .blog .title-wrapper--self-padded-tablet-down, .title-wrapper--self-padded-mobile {
+  .blog .title-wrapper--self-padded-tablet-down,
+  .title-wrapper--self-padded-mobile {
     margin-right: 2.4rem;
     margin-left: 2.4rem;
   }
 }
 .blog .card .card__inner .card__media {
-  --image-padding:5px;
-  --border-radius:5px;
-  border-radius: calc(var(--border-radius) - var(--border-width) - var(--image-padding));
+  --image-padding: 5px;
+  --border-radius: 5px;
+  border-radius: calc(
+    var(--border-radius) - var(--border-width) - var(--image-padding)
+  );
+}
+
+.d-none {
+  display: none !important;
 }
