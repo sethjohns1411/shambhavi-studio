@@ -34,6 +34,10 @@
   color: var(--color-primary);
 }
 
+.rich-text .rich-text__blocks .rich-text__text:is(.h1, .h2, .h3, .h4, .h5, .h6) {
+  line-height: 2.5rem;
+}
+
 .rich-text .rich-text__blocks .rich-text__text.h3 p {
   font-size: calc(var(--font-heading-scale)* 2rem);
 }
