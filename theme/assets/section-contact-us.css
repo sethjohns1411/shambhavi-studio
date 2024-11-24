@@ -1,0 +1,72 @@
+.contact-us .title {
+  margin: 0;
+}
+
+.contact-us .contact-us-map {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.contact-us .mapouter {
+  position: relative;
+  text-align: right;
+  width: 100%;
+  height: var(--google-map-height);
+}
+
+.contact-us .gmap_canvas {
+  overflow: hidden;
+  background: none;
+  width: 100%;
+  height: var(--google-map-height);
+}
+
+.contact-us .gmap_iframe {
+  width: 100%;
+  height: var(--google-map-height);
+}
+
+.contact-us .contact-us__heading {
+  margin-bottom: 0;
+}
+
+.contact-us .contact-us__text p {
+  font-size: 1.4rem;
+  line-height: 2.3rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.contact-us .contact-us__text p:last-child {
+  margin-bottom: 0rem;
+}
+
+.contact-us .contact-us__text p strong {
+  font-family: 'Outfit-SemiBold';
+  font-weight: 600;
+}
+
+.contact-us .contact-us__content .contact-us__text + .button {
+  margin-top: 2.2rem;
+}
+
+@media screen and (max-width: 749px) {
+  .contact-us .contact-us-grid {
+    flex-direction: column-reverse;
+    --grid-mobile-horizontal-spacing: 3rem;
+    --grid-mobile-vertical-spacing: 3rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .contact-us .contact-us-grid.grid {
+    --grid-desktop-horizontal-spacing: 3rem;
+    --grid-desktop-vertical-spacing: 3rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .contact-us .contact-us__item .contact-us-card {
+    padding-left: 4.2rem;
+  }
+}

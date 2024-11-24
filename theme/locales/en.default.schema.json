@@ -3003,6 +3003,95 @@
         "name": "Our tribe"
       }
     },
+    "contact-us": {
+      "name": "Contact us",
+      "settings": {
+        
+      },
+      "blocks": {
+        "heading": {
+          "name": "Heading",
+          "settings": {
+            "heading": {
+              "label": "Heading"
+            }
+          }
+        },
+        "caption": {
+          "name": "Caption",
+          "settings": {
+            "text": {
+              "label": "Text",
+              "default": "Add a tagline"
+            },
+            "text_style": {
+              "label": "Text style",
+              "options__1": {
+                "label": "Subtitle"
+              },
+              "options__2": {
+                "label": "Uppercase"
+              },
+              "options__3": {
+                "label": "Caption"
+              }
+            },
+            "caption_size": {
+              "label": "Text size",
+              "options__1": {
+                "label": "Small"
+              },
+              "options__2": {
+                "label": "Medium"
+              },
+              "options__3": {
+                "label": "Large"
+              }
+            }
+          }
+        },
+        "text": {
+          "name": "Text",
+          "settings": {
+            "text": {
+              "label": "Content",
+              "default": "<p>STUDIO HQB-12, behind Starbucks, Chomu House CircleJaipur, Rajasthan 30200110:30AM - 6:00PM, Mon - FriBy appointment only.Ph: +91 70734 61869Trade Account + Wholesale Enquiriessales@shambhavit.comPress contact@shambhavit.com Residency residency@shambhavit.comDesign and Print Services + Careers + All Collaborationsstudio@shambhavit.comFounder shambhavi@shambhavit.com<\/p>"
+            },
+            "text_style": {
+              "label": "Text style",
+              "options__1": {
+                "label": "Body"
+              },
+              "options__2": {
+                "label": "Subtitle"
+              },
+              "options__3": {
+                "label": "Caption"
+              }
+            }
+          }
+        },
+        "button": {
+          "name": "Button",
+          "settings": {
+            "button_label": {
+              "label": "Button label",
+              "info": "Leave the label blank to hide the button.",
+              "default": "Button label"
+            },
+            "button_link": {
+              "label": "Button link"
+            },
+            "outline_button": {
+              "label": "Use outline button style"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Contact us"
+      }
+    },
     "instagram-feed": {
       "name": "Instagram feed",
       "settings": {
