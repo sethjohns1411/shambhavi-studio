@@ -12,6 +12,11 @@
   margin: 0;
 }
 
+.blog .blog__title {
+  font-weight: 400;
+  color: var(--color-black);
+}
+
 .blog__posts.articles-wrapper {
   margin-bottom: 1rem;
 }
@@ -44,7 +49,17 @@
   margin-top: 3rem;
 }
 
+.blog .blog__posts.articles-wrapper {
+  --grid-mobile-horizontal-spacing: 2rem;
+  --grid-mobile-vertical-spacing: 2rem;
+}
+
 @media screen and (min-width: 750px) {
+  .blog .blog__posts.articles-wrapper {
+    --grid-desktop-horizontal-spacing: 2rem;
+    --grid-desktop-vertical-spacing: 2rem;
+  }
+
   .blog__button {
     margin-top: 5rem;
   }

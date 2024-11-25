@@ -75,19 +75,28 @@
         {%- endif -%}
         <div class="card__content">
           <div class="card__information">
-            <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
-              <a href="{{ article.url }}" class="full-unstyled-link">
-                {{ article.title | truncate: 50 | escape }}
-              </a>
-            </h3>
             <div class="article-card__info caption-with-letter-spacing h5">
-              {%- if show_date -%}
-                <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
-              {%- endif -%}
               {%- if show_author -%}
                 <span>{{ article.author }}</span>
               {%- endif -%}
+
+              {%- if show_tags -%}
+                <span class="article-tags">
+                  {%- for tag in article.tags -%}
+                    <span>{{ tag }}{% unless forloop.last %}, {% endunless %}</span>
+                  {%- endfor -%}
+                </span>
+              {%- endif -%}
+
+              {%- if show_date -%}
+                <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
+              {%- endif -%}
             </div>
+            <p class="card__heading{% if show_excerpt %} h6{% endif %}">
+              <a href="{{ article.url }}" class="full-unstyled-link">
+                {{ article.title | escape }}
+              </a>
+            </p>
             {%- if show_excerpt -%}
               {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
                 <p class="article-card__excerpt rte-width">
@@ -104,6 +113,12 @@
                 {%- endif -%}
               </div>
             {%- endif -%}
+
+            <div class="button-wrapper">
+              <a href="{{ article.url }}" class="button button--underline">
+                {{ 'blogs.article.read_more' | t }}
+              </a>
+            </div>
           </div>
           {%- if show_badge -%}
             <div class="card__badge {{ settings.badge_position }}">
@@ -112,21 +127,29 @@
           {%- endif -%}
         </div>
       </div>
+
       <div class="card__content">
         <div class="card__information">
-          <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
-            <a href="{{ article.url }}" class="full-unstyled-link">
-              {{ article.title | truncate: 50 | escape }}
-            </a>
-          </h3>
-          <div class="article-card__info caption-with-letter-spacing h5">
-            {%- if show_date -%}
-              <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
-            {%- endif -%}
+          <div class="article-card__info">
             {%- if show_author -%}
               <span>{{ article.author }}</span>
             {%- endif -%}
+
+            {%- if show_tags -%}
+              <span class="article-card__tags">
+                {%- for tag in article.tags -%}
+                  <span>{{ tag }}{% unless forloop.last %}, {% endunless %}</span>
+                {%- endfor -%}
+              </span>
+            {%- endif -%}
+
+            {%- if show_date -%}
+              <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
+            {%- endif -%}
           </div>
+          <p class="card__heading{% if show_excerpt %} h6{% endif %}">
+            {{ article.title | escape }}
+          </p>
           {%- if show_excerpt -%}
             {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
               <p class="article-card__excerpt rte-width">
@@ -143,6 +166,12 @@
               {%- endif -%}
             </div>
           {%- endif -%}
+
+          <div class="button-wrapper">
+            <a href="{{ article.url }}" class="button button--underline">
+              {{ 'blogs.article.read_more' | t }}
+            </a>
+          </div>
         </div>
         {%- if show_badge -%}
           <div class="card__badge {{ settings.badge_position }}">
