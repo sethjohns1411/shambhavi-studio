@@ -5,8 +5,8 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
   }
 
   @media screen and (min-width: 750px) {
@@ -71,11 +71,12 @@
               {% render 'article-card',
                 blog: section.settings.blog,
                 article: article,
-                media_aspect_ratio: 1.66,
+                media_aspect_ratio: section.settings.media_aspect_ratio,
                 show_image: section.settings.show_image,
                 show_date: section.settings.show_date,
+                show_tags: section.settings.show_tags,
                 show_author: section.settings.show_author,
-                show_excerpt: true
+                show_excerpt: section.settings.show_excerpt
               %}
             </li>
           {%- endfor -%}
@@ -209,27 +210,31 @@
       "id": "heading_size",
       "options": [
         {
-          "value": "h2",
+          "value": "h5",
+          "label": "Extra small"
+        },
+        {
+          "value": "h4",
           "label": "t:sections.all.heading_size.options__1.label"
         },
         {
-          "value": "h1",
+          "value": "h3",
           "label": "t:sections.all.heading_size.options__2.label"
         },
         {
-          "value": "h0",
+          "value": "h2",
           "label": "t:sections.all.heading_size.options__3.label"
         },
         {
-          "value": "hxl",
+          "value": "h1",
           "label": "t:sections.all.heading_size.options__4.label"
         },
         {
-          "value": "hxxl",
+          "value": "h0",
           "label": "t:sections.all.heading_size.options__5.label"
         }
       ],
-      "default": "h1",
+      "default": "h5",
       "label": "t:sections.all.heading_size.label"
     },
     {
@@ -270,6 +275,24 @@
       "info": "t:sections.featured-blog.settings.show_image.info"
     },
     {
+      "type": "select",
+      "id": "media_aspect_ratio",
+      "label": "Media Aspect Ratio",
+      "options": [
+        { "value": "1", "label": "Square (1:1)" },
+        { "value": "1.25", "label": "Widescreen (16:9)" },
+        { "value": "1.5", "label": "Standard (4:3)" },
+        { "value": "1.65", "label": "Classic (3:2)" }
+      ],
+      "default": "1.25"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "default": false,
+      "label": "t:sections.featured-blog.settings.show_tags.label"
+    },
+    {
       "type": "checkbox",
       "id": "show_date",
       "default": true,
@@ -280,6 +303,12 @@
       "id": "show_author",
       "default": false,
       "label": "t:sections.featured-blog.settings.show_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "default": false,
+      "label": "t:sections.featured-blog.settings.show_excerpt.label"
     },
     {
       "type": "checkbox",
@@ -295,8 +324,8 @@
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 100,
-      "step": 4,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
       "default": 36
@@ -305,10 +334,30 @@
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 100,
-      "step": 4,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile padding bottom",
       "default": 36
     }
   ],

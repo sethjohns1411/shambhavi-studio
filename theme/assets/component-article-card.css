@@ -47,17 +47,43 @@
 }
 
 .article-card .card__heading {
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  color: var(--color-black);
 }
 
 .blog-articles .article-card .card__information,
 .blog__posts .article-card .card__information {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 1.5rem 1rem;
 }
 
 .article-card__info {
-  padding-top: 0.4rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+.circle-divider {
+  position: relative;
+  padding-left: 0.7rem;
+  margin-left: 0.7rem;
+  color: #ADADAD;
+}
+
+.circle-divider:before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 0rem;
+  width: 0.1rem;
+  height: 65%;
+  background: #ADADAD;
+  transform: translateY(-50%);
+}
+
+.article-card__tags {
+  color: var(--color-primary);
 }
 
 .article-card__footer {

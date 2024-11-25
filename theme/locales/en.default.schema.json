@@ -831,8 +831,14 @@
         "show_date": {
           "label": "Show date"
         },
+        "show_tags": {
+          "label": "Show tag"
+        },
         "show_author": {
           "label": "Show author"
+        },
+        "show_excerpt": {
+          "label": "Show Excerpt"
         }
       },
       "presets": {
@@ -1939,8 +1945,14 @@
         "show_date": {
           "label": "Show date"
         },
+        "show_tags": {
+          "label": "Show tag"
+        },
         "show_author": {
           "label": "Show author"
+        },
+        "show_excerpt": {
+          "label": "Show Excerpt"
         },
         "paragraph": {
           "content": "Change excerpts by editing your blog posts. [Learn more](https:\/\/help.shopify.com\/manual\/online-store\/blogs\/writing-blogs#display-an-excerpt-from-a-blog-post)"
