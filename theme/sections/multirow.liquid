@@ -45,7 +45,7 @@
 -%}
 
 <div class="multirow section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}">
-  <div class="multirow__inner page-width"
+  <div class="multirow__inner page-width{% if section.settings.enable_narrow_width %} page-width--narrow{% endif %}"
     data-blocks-border="{% if section.settings.enable_block_border %}true{% else %}false{% endif %}"
   >
     {%- for block in section.blocks -%}
@@ -53,7 +53,7 @@
         class="image-with-text isolate{{ borders_class }}{{ corners_class }}{{ padding_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
         {{ block.shopify_attributes }}
       >
-        <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.image_layout contains 'alternate' %}{% cycle odd_class, even_class %}{% else %}{{ odd_class }}{% endif %}">
+        <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.image_layout contains 'alternate' %}{% cycle odd_class, even_class %}{% else %}{{ odd_class }}{% endif %}{% if section.settings.image_layout_mobile %} grid-image-layout--{{ section.settings.image_layout_mobile }}{% endif %}">
           <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
             {%- if block.settings.image != blank -%}
               <div class="image-with-text__media image-with-text__media--{{ section.settings.image_height }} gradient color-{{ section.settings.row_color_scheme }} global-media-settings{% if block.settings.image != blank %} media{% else %} image-with-text__media--placeholder placeholder{% endif %}"
@@ -89,6 +89,19 @@
           </div>
           <div class="image-with-text__text-item grid__item">
             <div class="image-with-text__content image-with-text__content--{{ section.settings.desktop_content_position }} image-with-text__content--desktop-{{ section.settings.desktop_content_alignment }} image-with-text__content--mobile-{{ section.settings.mobile_content_alignment }} image-with-text__content--{{ section.settings.image_height }} content-container{% unless no_content_background and no_content_styles %} gradient color-{{ section.settings.row_color_scheme }}{% else %} background-transparent{% endunless %}">
+              {% if block.settings.icon_image != blank %}
+                <div class="image-with-text__image-media"
+                  style="--image-width: {{ block.settings.icon_image_width }}px; --mobile-image-width: {{ block.settings.mobile_icon_image_width }}px;"
+                >
+                  {{
+                    block.settings.icon_image
+                    | image_url: width: 1500
+                    | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                    class: 'media-icon-block'
+                  }}
+                </div>
+              {% endif %}
+
               {%- if block.settings.caption != blank -%}
                 <p class="image-with-text__text image-with-text__text--caption caption-with-letter-spacing caption-with-letter-spacing--medium">
                   {{ block.settings.caption | escape }}
@@ -138,6 +151,12 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_narrow_width",
+      "label": "Enable narrow width",
+      "default": false
+    },
     {
       "type": "select",
       "id": "image_height",
@@ -312,8 +331,23 @@
         }
       ],
       "default": "alternate-left",
-      "label": "t:sections.multirow.settings.image_layout.label",
-      "info": "t:sections.multirow.settings.image_layout.info"
+      "label": "t:sections.multirow.settings.image_layout.label"
+    },
+    {
+      "type": "select",
+      "id": "image_layout_mobile",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "top",
+      "label": "Mobile image placement"
     },
     {
       "type": "color_scheme",
@@ -445,6 +479,35 @@
           "type": "image_picker",
           "id": "cover_image",
           "label": "t:sections.video.settings.cover_image.label"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image"
+        },
+        {
+          "type": "range",
+          "id": "icon_image_width",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "Icon image width",
+          "default": 92
+        },
+        {
+          "type": "range",
+          "id": "mobile_icon_image_width",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "Mobile icon image width",
+          "default": 84
         },
         {
           "type": "text",

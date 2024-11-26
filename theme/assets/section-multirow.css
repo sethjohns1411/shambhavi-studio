@@ -3,16 +3,40 @@
 }
 
 .multirow .multirow__inner .image-with-text__content {
-  padding: 2rem;
+  padding: 2rem 0rem 0rem 0rem;
 }
 
 .multirow .multirow__inner .image-with-text__text.text-lora {
   font-size: 1.6rem;
 }
 
+.multirow .multirow__inner .image-with-text__text.text-lora h3 {
+  line-height: 3.2rem;
+}
+
+@media screen and (max-width: 749px) {  
+  .multirow .multirow__inner .grid.grid-image-layout--bottom .image-with-text__content {
+    padding-top: 0rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .multirow .multirow__inner .image-with-text__content {
+    padding: 2rem;
+    padding-bottom: 0rem;
+  }
+}
+
 @media screen and (min-width: 990px) {
   .multirow .multirow__inner .image-with-text__content {
     padding: 3.5rem;
     padding-bottom: 0rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .multirow .multirow__inner .image-with-text__grid.grid-image-layout--bottom {
+    flex-direction: column-reverse;
   }
 }

@@ -6,19 +6,18 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 3rem;
+  gap: 4rem;
 }
 
-.multi-image-with-text .multi-image-with-media-blocks, 
-.multi-image-with-text .multi-image-with-text__blocks {
+.multi-image-with-text .multi-image-with-media-blocks {
   flex: 1;
 }
 
-@media screen and (min-width: 750px) and (max-width: 1024px) {
+/* @media screen and (min-width: 750px) and (max-width: 1024px) {
   .multi-image-with-text .multi-image-with-text__blocks {
     flex: 2;
   }
-}
+} */
 
 @media screen and (max-width: 749px) {
   .multi-image-with-text__wrapper {
