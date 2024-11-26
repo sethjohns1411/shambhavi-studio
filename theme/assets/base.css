@@ -3842,3 +3842,6 @@ details-disclosure > details {
 .d-none {
   display: none !important;
 }
+.template-page-aboutus .slideshow.banner .banner__heading {
+      font-family: var(--font-lora-body-family) !important;
+}

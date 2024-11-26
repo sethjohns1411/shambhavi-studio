@@ -71,6 +71,7 @@
           </div>
         </div>
         <div class="content-wrapper">
+          <div class="content-wrapper-inner">
           {% if section.settings.gif != blank %}
             <div class="gif-wrapper">
               {{
@@ -110,6 +111,7 @@
               {% endif %}
             </div>
           {%- endif -%}
+        </div>
         </div>
       </div>
     </div>
@@ -209,7 +211,7 @@
       "label": "t:sections.image-with-text.blocks.text.settings.text_style.label"
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "text",
       "label": "Text"
     },
