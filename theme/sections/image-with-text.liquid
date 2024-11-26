@@ -85,6 +85,17 @@
           >
             {%- for block in section.blocks -%}
               {% case block.type %}
+                {%- when 'image' -%}
+                  <div class="image-with-text__image-media"
+                    style="--image-width: {{ block.settings.image_width }}px; --mobile-image-width: {{ block.settings.mobile_image_width }}px;"
+                  >
+                    {{
+                      block.settings.image
+                      | image_url: width: 1500
+                      | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                      class: 'media-icon-block'
+                    }}
+                  </div>
                 {%- when 'heading' -%}
                   <h2
                     class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
@@ -376,6 +387,38 @@
     }
   ],
   "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "Image width",
+          "default": 92
+        },
+        {
+          "type": "range",
+          "id": "mobile_image_width",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "Mobile image width",
+          "default": 84
+        }
+      ]
+    },
     {
       "type": "heading",
       "name": "t:sections.image-with-text.blocks.heading.name",
