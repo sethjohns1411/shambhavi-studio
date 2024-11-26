@@ -10,8 +10,7 @@
 }
 
 .imagewithtext2-wrapper .gif-wrapper {
-  width: 100px;
-  height: 100px;
+  width: 92px;
   object-fit: cover;
 }
 
@@ -24,6 +23,15 @@
   display: flex;
   align-items: center;
   margin-top: 30px;
+} 
+.imagewithtext2-wrapper .content-wrapper-inner{
+  max-width: 407px;
+}
+.imagewithtext2-wrapper .heading-wrapper.subtitle{
+  font-family: var(--font-lora-body-family) !important;
+  font-size:20px;
+    font-size: 20px;
+    line-height: 1.4;
 }
 .imagewithtext2-wrapper .image-with-text__media--small {
   height: 19.4rem;
