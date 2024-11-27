@@ -13,12 +13,6 @@
   flex: 1;
 }
 
-/* @media screen and (min-width: 750px) and (max-width: 1024px) {
-  .multi-image-with-text .multi-image-with-text__blocks {
-    flex: 2;
-  }
-} */
-
 @media screen and (max-width: 749px) {
   .multi-image-with-text__wrapper {
     column-gap: 15rem;
@@ -205,4 +199,23 @@
 
 .multi-image-with-text__blocks.right .multi-image-with-text__buttons {
   justify-content: flex-end;
+}
+
+
+/* About us page */
+@media screen and (max-width: 749px) {
+  .template-page-aboutus .multi-image-with-text .multi-image-with-text__blocks {
+    margin-top: 0rem;
+    order: inherit;
+  }
+
+  .template-page-aboutus .multi-image-with-text .multi-image-with-media-blocks:first-child {
+    display: none;
+  }
+
+  .template-page-aboutus .multi-image-with-text .multi-image-with-media-blocks:last-child .multi-image-with__media {
+    max-width: 13.1rem;
+    margin: 0 auto;
+    padding-bottom: 13.1rem !important;
+  }
 }
