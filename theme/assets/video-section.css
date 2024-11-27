@@ -46,3 +46,29 @@
 .video-section__media.media-fit-cover video {
   object-fit: cover;
 }
+
+@media screen and (max-width: 749px) {
+  .video-section__media.video-section__media--small {
+    height: 28rem;
+  }
+
+  .video-section__media.video-section__media--medium {
+    height: 34rem;
+  }
+
+  .video-section__media.video-section__media--large {
+    height: 39rem;
+  }
+}
+
+.video-section__media.video-section__media--small {
+  height: 42rem;
+}
+
+.video-section__media.video-section__media--medium {
+  height: 56rem;
+}
+
+.video-section__media.video-section__media--large {
+  height: 72rem;
+}

@@ -52,7 +52,7 @@
       {%- endunless -%}
     </div>
     <deferred-media
-      class="video-section__media deferred-media gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      class="video-section__media video-section__media--{{ section.settings.video_media_height }} deferred-media gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
       data-media-id="{{ video_id }}"
       {% if poster != null %}
         style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
@@ -89,7 +89,7 @@
           -%}
           {%- if section.settings.video_url.type == 'youtube' -%}
             <iframe
-              src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&{% if section.settings.enable_autoplay %}autoplay=1&{% endif %}{% if section.settings.enable_mute %}mute=1&{% endif %}{{ loop }}"
+              src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay={{ section.settings.enable_autoplay | default: 0 }}&mute={{ section.settings.enable_mute | default: 0 }}{{ loop }}"
               class="js-youtube"
               {% if section.settings.enable_autoplay %}
                 allow="autoplay; encrypted-media"
@@ -99,7 +99,7 @@
             ></iframe>
           {%- else -%}
             <iframe
-              src="https://player.vimeo.com/video/{{ video_id }}?{% if section.settings.enable_autoplay %}autoplay=1&{% endif %}{% if section.settings.enable_mute %}mute=1&{% endif %}{{ loop }}"
+              src="https://player.vimeo.com/video/{{ video_id }}?enablejsapi=1&autoplay={{ section.settings.enable_autoplay | default: 0 }}&mute={{ section.settings.enable_mute | default: 0 }}{{ loop }}"
               class="js-vimeo"
               {% if section.settings.enable_autoplay %}
               allow="autoplay; encrypted-media"
@@ -172,6 +172,30 @@
       ],
       "default": "h1",
       "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "select",
+      "id": "video_media_height",
+      "options": [
+        {
+          "value": "adapt_image",
+          "label": "Adapt"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium",
+      "label": "Video Media height"
     },
     {
       "type": "checkbox",
