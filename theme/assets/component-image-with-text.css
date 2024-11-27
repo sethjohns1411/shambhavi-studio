@@ -477,7 +477,14 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .multirow__inner .image-with-text {
+  .multirow__inner:not(.page-width--narrow) .image-with-text {
     padding-inline: 3rem;
+  }
+}
+
+/* Philosophy & Studio */
+@media screen and (min-width: 1024px) {
+  .multirow .multirow__inner {
+    --grid-desktop-vertical-spacing: 7.5rem;
   }
 }
