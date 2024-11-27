@@ -38,6 +38,11 @@
   line-height: 2.5rem;
 }
 
+.rich-text .rich-text__blocks .rich-text__text:not(.text-lora):is(.h1, .h2, .h3, .h4, .h5, .h6) {
+  font-family: var(--font-body-family);
+  font-weight: var(--font-body-weight);
+}
+
 .rich-text .rich-text__blocks .rich-text__text.h3 p {
   font-size: calc(var(--font-heading-scale)* 2rem);
 }
@@ -80,6 +85,10 @@
 
   .rich-text .rich-text__blocks .rich-text__text p {
     font-size: 1.6rem;
+  }
+
+  .rich-text .rich-text__blocks .rich-text__text.h6 p {
+    font-size: 1.5rem;
   }
 }
 

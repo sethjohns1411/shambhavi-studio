@@ -385,6 +385,11 @@
   margin-top: 2.2rem;
 }
 
+.image-with-text__content .button.button--underline {
+  text-decoration: underline;
+  text-underline-offset: .3rem;
+}
+
 .image-with-text__heading {
   margin-bottom: 0;
 }
@@ -396,6 +401,7 @@
 
 .image-with-text__image-media {
   max-width: var(--image-width);
+  width: 100%;
 }
 
 .image-with-text__image-media img {

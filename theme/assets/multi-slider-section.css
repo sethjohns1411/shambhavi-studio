@@ -4,18 +4,32 @@
 .multi-slider-wrapper .year-wrapper .year-name {
   display: flex;
   justify-content: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: auto;
   width: 100%;
-  gap: 10px;
-}
-.multi-slider-wrapper .year-wrapper .year-name .year.active {
-  text-decoration: underline;
-  text-underline-offset: 5px;
-  color: var(--color-primary)
+  gap: 4.5rem;  
 }
 
 .multi-slider-wrapper .year-wrapper .year-name .year {
-  padding: 5px;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
   cursor: pointer;
+  padding-bottom: 0.2rem;
+}
+
+.multi-slider-wrapper .year-wrapper .year-name .year:first-child {
+  margin-left: 1.5rem;
+}
+
+.multi-slider-wrapper .year-wrapper .year-name .year:last-child {
+  margin-right: 1.5rem;
+}
+
+.multi-slider-wrapper .year-wrapper .year-name .year.active span {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  color: var(--color-primary)
 }
 
 .multi-slider-wrapper .slider-wrapper .slider-wrapper-container .multi-wrappers {
