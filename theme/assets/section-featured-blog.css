@@ -13,6 +13,7 @@
 }
 
 .blog .blog__title {
+  font-family: var(--font-body-family);
   font-weight: 400;
   color: var(--color-black);
 }

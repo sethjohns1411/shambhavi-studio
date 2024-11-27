@@ -130,7 +130,7 @@
                   {% else %}
                     href="{{ block.settings.button_link }}"
                   {% endif %}
-                  class="button button--{{ section.settings.button_style }}"
+                  class="button button--{{ block.settings.button_style }}"
                 >
                   {{ block.settings.button_label | escape }}
                 </a>
@@ -251,22 +251,6 @@
       ],
       "default": "body",
       "label": "t:sections.multirow.settings.text_style.label"
-    },
-    {
-      "type": "select",
-      "id": "button_style",
-      "options": [
-        {
-          "value": "primary",
-          "label": "t:sections.multirow.settings.button_style.options__1.label"
-        },
-        {
-          "value": "secondary",
-          "label": "t:sections.multirow.settings.button_style.options__2.label"
-        }
-      ],
-      "default": "secondary",
-      "label": "t:sections.multirow.settings.button_style.label"
     },
     {
       "type": "select",
@@ -554,6 +538,26 @@
           "type": "url",
           "id": "button_link",
           "label": "t:sections.multirow.blocks.row.settings.button_link.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:sections.all.button_style.label",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:sections.all.button_style.option_1.label"
+            },
+            {
+              "value": "secondary",
+              "label": "t:sections.all.button_style.option_2.label"
+            },
+            {
+              "value": "underline",
+              "label": "t:sections.all.button_style.option_3.label"
+            }
+          ],
+          "default": "primary"
         }
       ]
     }

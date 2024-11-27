@@ -837,6 +837,14 @@ summary::-webkit-details-marker {
   flex-wrap: wrap;
 }
 
+.title-wrapper-with-link .link {
+  color: var(--color-black);
+}
+
+.title-wrapper-with-link .link:hover {
+  color: var(--color-primary);
+}
+
 .title--primary {
   margin: 4rem 0;
 }
