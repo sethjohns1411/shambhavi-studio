@@ -50,7 +50,7 @@
         </div>
       {% endif %}
 
-      {% comment %} {%- paginate item by paginate_by -%} {% endcomment %}
+      {% comment %} {% paginate section.blocks by item_per_page %} {% endcomment %}
         <div class="our-tribe-list contains-content-container grid grid--2-col-tablet grid--{{ section.settings.columns_mobile }}-col grid--{{ section.settings.columns_desktop }}-col-desktop">
           {%- for block in section.blocks -%}
             <div class="our-tribe-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -89,10 +89,12 @@
             </div>
           {%- endfor -%}
         </div>
-        {% comment %} {%- if paginate.pages > 1 -%}
-          {% render 'pagination', paginate: paginate, anchor: '' %}
-        {%- endif -%}
-      {%- endpaginate -%} {% endcomment %}
+        {% if paginate.pages > 1 %}
+          <div class="pagination">
+            {% render 'pagination', paginate: paginate %}
+          </div>
+        {% endif %}
+      {% comment %} {% endpaginate %} {% endcomment %}
     </div>
   </div>
 </div>
@@ -168,6 +170,15 @@
       "step": 1,
       "default": 3,
       "label": "t:sections.our-tribe.settings.columns_desktop.label"
+    },
+    {
+      "type": "range",
+      "id": "item_per_page",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "default": 8,
+      "label": "Items per page"
     },
     {
       "type": "select",

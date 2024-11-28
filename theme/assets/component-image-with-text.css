@@ -456,6 +456,10 @@
   --grid-mobile-vertical-spacing: 0rem;
 }
 
+.multirow__inner[data-blocks-border="false"] {
+  --grid-mobile-vertical-spacing: 4rem;
+}
+
 .multirow__inner[data-blocks-border="true"] .image-with-text:not(:last-child) {
   padding-bottom: 4rem;
   margin-bottom: 4rem;
@@ -466,6 +470,10 @@
   .multirow__inner {
     --grid-desktop-vertical-spacing: 4rem;
     row-gap: var(--grid-desktop-vertical-spacing);
+  }
+
+  .multirow__inner[data-blocks-border="false"] {
+    --grid-desktop-vertical-spacing: 7rem;
   }
 }
 
