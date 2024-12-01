@@ -9,21 +9,21 @@
 {% endcomment %}
 
 <details-modal class="header__search">
-  <details>
-    <summary
+  <div>
+    <div
       class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle"
       aria-haspopup="dialog"
       aria-label="{{ 'general.search.search' | t }}"
     >
       <span>
-        <span class="svg-wrapper">
+        <span class="svg-wrapper header__icon-search">
           {% render 'icon-search' %}
         </span>
         <span class="svg-wrapper header__icon-close">
           {% render 'icon-close' %}
         </span>
       </span>
-    </summary>
+    </div>
     <div
       class="search-modal modal__content gradient"
       role="dialog"
@@ -104,5 +104,5 @@
         </button>
       </div>
     </div>
-  </details>
+  </div>
 </details-modal>

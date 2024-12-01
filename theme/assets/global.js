@@ -1316,3 +1316,25 @@ class BulkAdd extends HTMLElement {
 if (!customElements.get('bulk-add')) {
   customElements.define('bulk-add', BulkAdd);
 }
+
+class headerSearch{
+  constructor(){
+    this.init()
+  }
+  clickEvent = () =>{
+    let searchIcon = document.querySelector('.svg-wrapper.header__icon-search');
+    let searchClose = document.querySelector('.svg-wrapper.header__icon-close');
+    let header = document.querySelector('.header-wrapper');
+    searchIcon.addEventListener('click',(e)=>{
+      header.classList.add('search-open')
+    })
+    searchClose.addEventListener('click',(e)=>{
+      header.classList.remove('search-open')
+    })
+  }
+
+  init = () =>{
+    this.clickEvent();
+  }
+}
+new headerSearch()

@@ -14,8 +14,11 @@
 .content-slider .content-slider-component .slider-counter__link--dots .dot {
   width: 0.8rem;
   height: 0.8rem;
+  background-color: rgba(128,128,128,0.5);
 }
-
+.content-slider .content-slider-component .slider-counter__link--dots.slider-counter__link--active .dot {
+  background-color: #808080;
+}
 @media screen and (max-width: 749px) {
   .content-slider .content-slider-component {
     max-width: 100% !important;

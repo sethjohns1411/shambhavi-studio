@@ -12,6 +12,11 @@
 .multi-image-with-text .multi-image-with-media-blocks {
   flex: 1;
 }
+.comma{
+  /* color: #9F886A;
+  font-size: 60px;
+  font-family: Bodega; */
+}
 
 @media screen and (max-width: 749px) {
   .multi-image-with-text__wrapper {
