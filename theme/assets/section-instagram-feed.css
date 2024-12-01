@@ -5,6 +5,9 @@
 .instagram-feed__title {
   margin-bottom: 2.2rem;
 }
+.instagram-feed__title .link{
+  font-size: 1.6rem;
+}
 
 .instagram-feed__title .title {
   display: flex;

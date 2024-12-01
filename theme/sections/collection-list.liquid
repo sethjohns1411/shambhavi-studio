@@ -29,9 +29,18 @@
     assign show_mobile_slider = true
   endif
 -%}
+{% style %}
+.collection-list-wrapper-{{ section.id }} .collection-list{ 
+    display: flex ;
+    max-width: 941px;
+    margin: 0 auto;
+    gap: 10px;
+}
 
+
+{% endstyle %}
 <div class="color-{{ section.settings.color_scheme }} gradient{% if section.settings.desktop_hide %} medium-hide large-up-hide{% endif %}{% if section.settings.mobile_hide %} small-hide{% endif %}">
-  <div class="collection-list-wrapper page-width isolate{% if show_mobile_slider %} page-width-desktop{% endif %}{% if section.settings.title == blank %} no-heading{% endif %} section-{{ section.id }}-padding">
+  <div class="collection-list-wrapper-{{ section.id }} collection-list-wrapper page-width isolate{% if show_mobile_slider %} page-width-desktop{% endif %}{% if section.settings.title == blank %} no-heading{% endif %} section-{{ section.id }}-padding">
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper text-{{ section.settings.heading_alignment }} title-wrapper--no-top-margin">
         <h2

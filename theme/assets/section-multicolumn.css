@@ -252,7 +252,13 @@
 
 .template-index .multicolumn-card .multicolumn-card__text,
 .template-page-trade-fabrics .multicolumn-card .multicolumn-card__text {
-  margin-bottom: 2rem;
+  margin-bottom: 2.1rem;
+}
+@media(min-width:1025px){
+  .template-index .multicolumn-card .multicolumn-card__text,
+  .template-page-trade-fabrics .multicolumn-card .multicolumn-card__text {
+    max-width: 273px;
+  } 
 }
 
 .template-index .multicolumn-card .button-wrapper,

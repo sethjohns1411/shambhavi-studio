@@ -1,6 +1,9 @@
 .rich-text {
   z-index: 1;
 }
+.rich-text .rich-text__heading {
+  font-family: 'Outfit-Regular';
+}
 
 .rich-text__wrapper {
   display: flex;
