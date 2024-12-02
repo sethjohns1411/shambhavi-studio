@@ -1,4 +1,4 @@
-{{ 'section-services.css' | asset_url | stylesheet_tag }}
+{{ 'section-services-category.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -14,7 +14,7 @@
   }
 {%- endstyle -%}
 
-<div class="section-{{ section.id }} services color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
+<div class="section-{{ section.id }} services-category color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
   <div
     class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     {% if settings.animations_reveal_on_scroll %}
@@ -22,7 +22,7 @@
     {% endif %}
   >
     {%- unless section.settings.title == blank -%}
-      <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin services__title{% if section.settings.title_image %} title-wrapper--no-padding{% endif %}">
+      <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin services-category__title{% if section.settings.title_image %} title-wrapper--no-padding{% endif %}">
         <h2 class="title inline-richtext {{ section.settings.heading_size }}">
           {{ section.settings.title }}
         </h2>
@@ -37,8 +37,8 @@
         {% endif %}
       </div>
     {%- endunless -%}
-    <div class="services-list-wrapper">
-      <div class="services-list contains-content-container">
+    <div class="services-category-list-wrapper">
+      <div class="services-category-list contains-content-container">
         {%- liquid
           assign highest_ratio = 0
           for block in section.blocks
@@ -49,14 +49,14 @@
         -%}
         {%- for block in section.blocks -%}
           
-          <div class="services-list__item grid__item{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          <div class="services-category-list__item grid__item{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {{ block.shopify_attributes }}
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            <div class="services-card content-container color-{{ section.settings.color_scheme_1 }} gradient">
+            <div class="services-category-card content-container color-{{ section.settings.color_scheme_1 }} gradient">
               
             </div>
           </div>
@@ -68,7 +68,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.services.name",
+  "name": "t:sections.services_category.name",
   "class": "section",
   "tag": "section",
   "disabled_on": {
@@ -78,8 +78,8 @@
     {
       "type": "inline_richtext",
       "id": "title",
-      "default": "t:sections.services.settings.title.default",
-      "label": "t:sections.services.settings.title.label"
+      "default": "t:sections.services_category.settings.title.default",
+      "label": "t:sections.services_category.settings.title.label"
     },
     {
       "type": "image_picker",
@@ -124,23 +124,23 @@
       "options": [
         {
           "value": "adapt",
-          "label": "t:sections.services.settings.image_ratio.options__1.label"
+          "label": "t:sections.services_category.settings.image_ratio.options__1.label"
         },
         {
           "value": "portrait",
-          "label": "t:sections.services.settings.image_ratio.options__2.label"
+          "label": "t:sections.services_category.settings.image_ratio.options__2.label"
         },
         {
           "value": "square",
-          "label": "t:sections.services.settings.image_ratio.options__3.label"
+          "label": "t:sections.services_category.settings.image_ratio.options__3.label"
         },
         {
           "value": "circle",
-          "label": "t:sections.services.settings.image_ratio.options__4.label"
+          "label": "t:sections.services_category.settings.image_ratio.options__4.label"
         }
       ],
       "default": "square",
-      "label": "t:sections.services.settings.image_ratio.label"
+      "label": "t:sections.services_category.settings.image_ratio.label"
     },
     {
       "type": "select",
@@ -148,15 +148,15 @@
       "options": [
         {
           "value": "left",
-          "label": "t:sections.services.settings.column_alignment.options__1.label"
+          "label": "t:sections.services_category.settings.column_alignment.options__1.label"
         },
         {
           "value": "center",
-          "label": "t:sections.services.settings.column_alignment.options__2.label"
+          "label": "t:sections.services_category.settings.column_alignment.options__2.label"
         }
       ],
       "default": "left",
-      "label": "t:sections.services.settings.column_alignment.label"
+      "label": "t:sections.services_category.settings.column_alignment.label"
     },
     {
       "type": "select",
@@ -164,15 +164,15 @@
       "options": [
         {
           "value": "none",
-          "label": "t:sections.services.settings.background_style.options__1.label"
+          "label": "t:sections.services_category.settings.background_style.options__1.label"
         },
         {
           "value": "primary",
-          "label": "t:sections.services.settings.background_style.options__2.label"
+          "label": "t:sections.services_category.settings.background_style.options__2.label"
         }
       ],
       "default": "primary",
-      "label": "t:sections.services.settings.background_style.label"
+      "label": "t:sections.services_category.settings.background_style.label"
     },
     {
       "type": "color_scheme",
@@ -238,27 +238,18 @@
   "blocks": [
     {
       "type": "column",
-      "name": "t:sections.services.blocks.column.name",
+      "name": "t:sections.services_category.blocks.column.name",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "t:sections.services.blocks.column.settings.image.label"
+          "label": "t:sections.services_category.blocks.column.settings.image.label"
         },
         {
           "type": "inline_richtext",
           "id": "title",
-          "default": "Shambhavit",
-          "label": "t:sections.services.blocks.column.settings.title.label"
-        },
-        {
-          "type": "inline_richtext",
-          "id": "subtitle",
-          "label": "Subtitle"
-        },
-        {
-          "type": "header",
-          "content": "More info"
+          "default": "BLOCK PRINTING",
+          "label": "t:sections.services_category.blocks.column.settings.title.label"
         },
         {
           "type": "text",
@@ -268,15 +259,15 @@
         {
           "type": "richtext",
           "id": "text",
-          "default": "t:sections.services.blocks.column.settings.text.default",
-          "label": "t:sections.services.blocks.column.settings.text.label"
+          "default": "t:sections.services_category.blocks.column.settings.text.default",
+          "label": "t:sections.services_category.blocks.column.settings.text.label"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "t:sections.services.presets.name",
+      "name": "t:sections.services_category.presets.name",
       "blocks": [
         {
           "type": "column"
