@@ -10,6 +10,10 @@
   margin-top: 0;
 }
 
+.services .title-wrapper-with-link .title-image {
+  max-width: 4.9rem;
+}
+
 @media screen and (max-width: 749px) {
   .services .title-wrapper-with-link {
     margin-bottom: 3rem;
@@ -35,6 +39,10 @@
     padding-bottom: 2.4rem;
     margin-bottom: 5.8rem;
   }
+}
+
+.services .title-wrapper--no-padding {
+  padding-bottom: 0rem;
 }
 
 .services .button {
@@ -95,6 +103,10 @@
   .services .button {
     margin-top: 2rem;
   }
+}
+
+.services .services-list-wrapper {
+  padding-inline: 4rem;
 }
 
 .services-list {
@@ -199,6 +211,31 @@
   opacity: 0;
   visibility: hidden;
   transition: all .3s ease-in-out;
+}
+
+.services .extra-services-card .services-card-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+.services .extra-services-card .services-card-content .services-card-content-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.services .extra-services-card .services-card-content .service-description {
+  max-width: 50%;
+  text-align: center;
+  margin: 0px;
+}
+
+.services .extra-services-card .services-card-content .service-description > p {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  font-weight: 400;
+  color: var(--color-primary);
+  font-family: "Outfit-Regular" !important;
 }
 
 .services .services-card-content .service-name {
