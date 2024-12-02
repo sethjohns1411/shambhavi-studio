@@ -3118,6 +3118,70 @@
         "name": "Services"
       }
     },
+    "services_category": {
+      "name": "Services category",
+      "settings": {
+        "title": {
+          "label": "Heading",
+          "default": "Printing Services"
+        },
+        "image_ratio": {
+          "label": "Image ratio",
+          "options__1": {
+            "label": "Adapt to image"
+          },
+          "options__2": {
+            "label": "Portrait"
+          },
+          "options__3": {
+            "label": "Square"
+          },
+          "options__4": {
+            "label": "Circle"
+          }
+        },
+        "column_alignment": {
+          "label": "Column alignment",
+          "options__1": {
+            "label": "Left"
+          },
+          "options__2": {
+            "label": "Center"
+          }
+        },
+        "background_style": {
+          "label": "Secondary background",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "Show as column background"
+          }
+        }
+        }
+      },
+      "blocks": {
+        "column": {
+          "name": "Column",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "title": {
+              "label": "Heading",
+              "default": "BLOCK PRINTING"
+            },
+            "text": {
+              "label": "Description",
+              "default": "<p>Technical proficiency in translating designs to wooden and metal blocks<\/p>"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Services category"
+      }
+    },
     "contact-us": {
       "name": "Contact us",
       "settings": {},
