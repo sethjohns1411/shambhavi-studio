@@ -54,6 +54,11 @@
   font-weight: 400;
 }
 
+.rich-text .rich-text__blocks .rich-text__text p a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 749px) {
   .rich-text__blocks .rich-text__heading {
     font-size: 2rem;
