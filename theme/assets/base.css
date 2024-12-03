@@ -3023,6 +3023,8 @@ details[open] > .header__menu-item .icon-caret {
 .header__active-menu-item,
 .header__active-menu-item + .icon-caret {
   color: var(--color-primary);
+  font-weight: 500;
+  font-family: Outfit-Medium !important;
 }
 
 span.header__active-menu-item:before {
