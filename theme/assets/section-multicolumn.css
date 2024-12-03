@@ -250,13 +250,12 @@
   box-sizing: border-box;
 }
 
-.template-index .multicolumn-card .multicolumn-card__text,
-.template-page-trade-fabrics .multicolumn-card .multicolumn-card__text {
+.template-index .multicolumn-card .multicolumn-card__text {
   margin-bottom: 2.1rem;
 }
+
 @media(min-width:1025px){
-  .template-index .multicolumn-card .multicolumn-card__text,
-  .template-page-trade-fabrics .multicolumn-card .multicolumn-card__text {
+  .template-index .multicolumn-card .multicolumn-card__text {
     max-width: 273px;
   } 
 }
@@ -316,11 +315,26 @@
   }
 }
 
+/* Trade fabrics */
+.template-page-trade-fabrics .multicolumn-card__info > :nth-child(2) {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
 
 @media screen and (min-width: 1024px) {
-  .template-index .multicolumn-list .multicolumn-list__item .multicolumn-card__info,
-  .template-page-trade-fabrics .multicolumn-list .multicolumn-list__item .multicolumn-card__info {
+  .template-index .multicolumn-list .multicolumn-list__item .multicolumn-card__info {
     padding-left: 0rem;
     padding-right: 3rem;
+  }
+
+  .template-page-trade-fabrics .multicolumn-list.grid {
+    --grid-desktop-horizontal-spacing: 4.8rem;
+    --grid-desktop-vertical-spacing: 4.8rem;
+  }
+
+  .template-page-trade-fabrics .multicolumn-list .multicolumn-list__item .multicolumn-card__info {
+    padding-block: 2.3rem;
+    padding-left: 0rem;
+    padding-right: 4.8rem;
   }
 }
