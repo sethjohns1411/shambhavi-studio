@@ -1,3 +1,7 @@
+.section-our-team .our-team .page-width {
+  --page-width: 109rem;
+}
+
 .our-team .title {
   margin: 0;
 }
@@ -12,7 +16,12 @@
 
 @media screen and (max-width: 749px) {
   .our-team .title-wrapper-with-link {
-    margin-bottom: 3rem;
+    padding-bottom: 2.4rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .our-team .title-wrapper-with-link .title.h5 {
+    font-size: 1.6rem;
   }
 }
 
@@ -24,9 +33,8 @@
 }
 
 @media screen and (max-width: 989px) {
-  .our-team .page-width {
-    padding-left: 0;
-    padding-right: 0;
+  .our-team .title-wrapper--self-padded-mobile {
+    margin-inline: 0rem;
   }
 }
 
@@ -213,7 +221,7 @@
 }
 
 .our-team .our-team-card-content .team-member-description {
-  margin-top: 3rem;
+  margin-top: 2.3rem;
   font-size: 1.5rem;
   line-height: 2.5rem;
   color: rgba(var(--color-foreground), 1);
@@ -245,20 +253,43 @@
   }
 
   .our-team-list:not(.slider) {
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
   }
 
   .our-team .our-team-list.grid--1-col-tablet .grid__item {
     width: 100%;
     max-width: 100%;
   }
+
+  .our-team .our-team-card__info {
+    padding: 2.2rem 2.3rem 2.6rem 2.3rem;
+  }
+
+  .our-team .our-team-list .front-content p {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    margin-top: .3rem;
+    color: rgba(var(--color-foreground), 1);
+  }
+
+  .our-team-card .action-button {
+    color: rgba(var(--color-foreground), 1);
+  }
+
+  .our-team .our-team-card-content .team-member-caption {
+    color: var(--color-black);
+  }
+
+  .our-team .our-team-card-content .team-member-description {
+    margin-top: 3.1rem;
+  }
 }
 
 @media screen and (min-width: 750px) and (max-width: 989px) {
   .our-team-list:not(.slider) {
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
   }
 }
 
