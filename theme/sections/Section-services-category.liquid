@@ -37,6 +37,15 @@
         {% endif %}
       </div>
     {%- endunless -%}
+
+    {% if section.settings.content != blank %}
+      <div class="title-text-wrapper">
+        <div class="text-lora">
+          {{ section.settings.content }}
+        </div>
+      </div>
+    {% endif %}
+    
     <div class="services-category-list-wrapper">
       <div class="services-category-list contains-content-container">
         {%- liquid
@@ -49,15 +58,252 @@
         -%}
         {%- for block in section.blocks -%}
           
-          <div class="services-category-list__item grid__item{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          <div class="services-category-list__item {% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {{ block.shopify_attributes }}
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            <div class="services-category-card content-container color-{{ section.settings.color_scheme_1 }} gradient">
-              
+            <div class="services-category-card content-container color-{{ block.settings.color_scheme_1 }} gradient">
+              <div class="services-category-grid services-category__content--{{ block.settings.desktop_content_position }} grid">
+                <div class="media-grid__item grid__item">
+                  <div class="services-category-media swiper {% if block.settings.image != blank %} media media--transparent{% else %} services__media--placeholder placeholder{% endif %} media--{{ section.settings.image_ratio }}"
+                    {% if section.settings.image_ratio == 'adapt' and block.settings.image != blank or block.settings.image_mobile != blank %}
+                      style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                    {% endif %}
+                  >
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        {%- if block.settings.image != blank or block.settings.image_mobile != blank -%}
+                          {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                            {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                            {%- capture sizes -%}
+                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                          (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                        {%- endcapture -%}
+                          {%- else -%}
+                            {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                            {%- capture sizes -%}
+                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                          (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                        {%- endcapture -%}
+                          {%- endif -%}
+                          {% if block.settings.image != blank %}
+                            {{
+                              block.settings.image
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'small-hide medium-hide'
+                            }}
+                          {% endif %}
+            
+                          {% if block.settings.image_mobile != blank %}
+                            {{
+                              block.settings.image_mobile
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'large-up-hide'
+                            }}
+                          {% else %}
+                            {{
+                              block.settings.image
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'large-up-hide'
+                            }}
+                          {% endif %}
+                        {%- else -%}
+                          {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                        {%- endif -%}
+                      </div>
+                      
+                      {%- if block.settings.image_2 != blank or block.settings.image_mobile_2 != blank -%}
+                        <div class="swiper-slide">
+                          {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                            {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                            {%- capture sizes -%}
+                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                          (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                        {%- endcapture -%}
+                          {%- else -%}
+                            {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                            {%- capture sizes -%}
+                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                          (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                        {%- endcapture -%}
+                          {%- endif -%}
+                          {% if block.settings.image_2 != blank %}
+                            {{
+                              block.settings.image_2
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'small-hide medium-hide'
+                            }}
+                          {% endif %}
+            
+                          {% if block.settings.image_mobile_2 != blank %}
+                            {{
+                              block.settings.image_mobile_2
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'large-up-hide'
+                            }}
+                          {% else %}
+                            {{
+                              block.settings.image_2
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'large-up-hide'
+                            }}
+                          {% endif %}
+                        </div>
+                      {%- endif -%}
+
+                      {%- if block.settings.image_3 != blank or block.settings.image_mobile_3 != blank -%}
+                        <div class="swiper-slide">
+                          {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                            {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                            {%- capture sizes -%}
+                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                          (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                        {%- endcapture -%}
+                          {%- else -%}
+                            {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                            {%- capture sizes -%}
+                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                          (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                        {%- endcapture -%}
+                          {%- endif -%}
+                          {% if block.settings.image_3 != blank %}
+                            {{
+                              block.settings.image_3
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'small-hide medium-hide'
+                            }}
+                          {% endif %}
+            
+                          {% if block.settings.image_mobile_3 != blank %}
+                            {{
+                              block.settings.image_mobile_3
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'large-up-hide'
+                            }}
+                          {% else %}
+                            {{
+                              block.settings.image_3
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'large-up-hide'
+                            }}
+                          {% endif %}
+                        </div>
+                      {%- endif -%}
+
+                      {%- if block.settings.image_4 != blank or block.settings.image_mobile_4 != blank -%}
+                        <div class="swiper-slide">
+                          {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                            {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                            {%- capture sizes -%}
+                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                          (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                            {%- endcapture -%}
+                              {%- else -%}
+                                {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                                {%- capture sizes -%}
+                              (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                              (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                            {%- endcapture -%}
+                          {%- endif -%}
+                          {% if block.settings.image_4 != blank %}
+                            {{
+                              block.settings.image_4
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'small-hide medium-hide'
+                            }}
+                          {% endif %}
+            
+                          {% if block.settings.image_mobile_4 != blank %}
+                            {{
+                              block.settings.image_mobile_4
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'large-up-hide'
+                            }}
+                          {% else %}
+                            {{
+                              block.settings.image_4
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'large-up-hide'
+                            }}
+                          {% endif %}
+                        </div>
+                      {%- endif -%}
+
+                      {%- if block.settings.image_5 != blank or block.settings.image_mobile_5 != blank -%}
+                        <div class="swiper-slide">
+                          {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                            {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                            {%- capture sizes -%}
+                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                          (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                            {%- endcapture -%}
+                              {%- else -%}
+                                {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                                {%- capture sizes -%}
+                              (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                              (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                            {%- endcapture -%}
+                          {%- endif -%}
+                          {% if block.settings.image_5 != blank %}
+                            {{
+                              block.settings.image_5
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'small-hide medium-hide'
+                            }}
+                          {% endif %}
+            
+                          {% if block.settings.image_mobile_5 != blank %}
+                            {{
+                              block.settings.image_mobile_5
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'large-up-hide'
+                            }}
+                          {% else %}
+                            {{
+                              block.settings.image_5
+                              | image_url: width: 1500
+                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                              class: 'large-up-hide'
+                            }}
+                          {% endif %}
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+                <div class="content-grid__item">
+                  <div class="services-category-content">
+                    {%- if block.settings.title != blank -%}
+                      <h3 class="inline-richtext services-category-title">{{ block.settings.title }}</h3>
+                    {%- endif -%}
+    
+                    {%- if block.settings.caption != blank -%}
+                      <p class="rte services-category-caption text-lora">{{ block.settings.caption }}</p>
+                    {%- endif -%}
+    
+                    {%- if block.settings.text != blank -%}
+                      <div class="rte services-category-description">{{ block.settings.text }}</div>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         {%- endfor -%}
@@ -119,6 +365,12 @@
       "label": "t:sections.all.heading_size.label"
     },
     {
+      "type": "richtext",
+      "id": "content",
+      "default": "<p>The studio offers versatile printing solutions tailored for both sampling and large-scale production. We ensure all our designs are print-ready,</p>",
+      "label": "Content"
+    },
+    {
       "type": "select",
       "id": "image_ratio",
       "options": [
@@ -131,6 +383,10 @@
           "label": "t:sections.services_category.settings.image_ratio.options__2.label"
         },
         {
+          "value": "landscape",
+          "label": "Landscape"
+        },
+        {
           "value": "square",
           "label": "t:sections.services_category.settings.image_ratio.options__3.label"
         },
@@ -139,7 +395,7 @@
           "label": "t:sections.services_category.settings.image_ratio.options__4.label"
         }
       ],
-      "default": "square",
+      "default": "landscape",
       "label": "t:sections.services_category.settings.image_ratio.label"
     },
     {
@@ -179,16 +435,6 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
-    },
-    {
-      "type": "header",
-      "content": "Card color"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme_1",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-6"
     },
     {
       "type": "header",
@@ -241,11 +487,6 @@
       "name": "t:sections.services_category.blocks.column.name",
       "settings": [
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "t:sections.services_category.blocks.column.settings.image.label"
-        },
-        {
           "type": "inline_richtext",
           "id": "title",
           "default": "BLOCK PRINTING",
@@ -261,6 +502,103 @@
           "id": "text",
           "default": "t:sections.services_category.blocks.column.settings.text.default",
           "label": "t:sections.services_category.blocks.column.settings.text.label"
+        },
+        {
+          "type": "header",
+          "content": "Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.services_category.blocks.column.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "t:sections.services_category.blocks.column.settings.image.label"
+        },
+        {
+          "type": "header",
+          "content": "Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "t:sections.services_category.blocks.column.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile_1",
+          "label": "t:sections.services_category.blocks.column.settings.image.label"
+        },
+        {
+          "type": "header",
+          "content": "Image 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "t:sections.services_category.blocks.column.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile_2",
+          "label": "t:sections.services_category.blocks.column.settings.image.label"
+        },
+        {
+          "type": "header",
+          "content": "Image 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "t:sections.services_category.blocks.column.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile_3",
+          "label": "t:sections.services_category.blocks.column.settings.image.label"
+        },
+        {
+          "type": "header",
+          "content": "Image 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "t:sections.services_category.blocks.column.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile_4",
+          "label": "t:sections.services_category.blocks.column.settings.image.label"
+        },
+        {
+          "type": "select",
+          "id": "desktop_content_position",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "middle",
+              "label": "Middle"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            }
+          ],
+          "default": "middle",
+          "label": "Desktop content position",
+          "info": "Position is automatically optimized for mobile."
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme_1",
+          "label": "t:sections.all.colors.label",
+          "default": "scheme-6"
         }
       ]
     }
