@@ -16,6 +16,9 @@ class Services {
         let flipCard = ele.closest('.services-card-js');
         if (flipCard) {
           flipCard.classList.toggle('flip-card');
+          if(window.innerWidth < 750 ) {
+            document.body.classList.toggle('service-card-flip');
+          }
         }
       })
     });

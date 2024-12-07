@@ -20,7 +20,7 @@
 }
 
 .accordion {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   margin-bottom: 0;
   border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
@@ -43,7 +43,7 @@
 }
 
 .accordion details[open] > summary .icon-caret {
-  transform: rotate(180deg);
+  transform: rotate(180deg)
 }
 
 .accordion__content {
@@ -55,4 +55,10 @@
 
 .accordion__content img {
   max-width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .accordion summary {
+    padding: 4rem 0rem;
+  }
 }

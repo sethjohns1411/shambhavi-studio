@@ -149,3 +149,12 @@
 .rich-text__blocks.right .rich-text__buttons {
   justify-content: flex-end;
 }
+
+/* Design Printing Service */
+@media screen and (max-width: 749px) {
+  .template-page-design-printing-service .rich-text .rich-text__heading {
+    max-width: 75%;
+    margin: 0 auto;
+    line-height: 3rem;
+  }
+}
