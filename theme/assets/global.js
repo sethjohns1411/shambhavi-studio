@@ -1327,9 +1327,13 @@ class headerSearch{
     let header = document.querySelector('.header-wrapper');
     searchIcon.addEventListener('click',(e)=>{
       header.classList.add('search-open')
+      document.body.classList.add('overflow-hidden')
+      document.body.classList.add('body-search-open')
     })
     searchClose.addEventListener('click',(e)=>{
       header.classList.remove('search-open')
+      document.body.classList.remove('overflow-hidden')
+      document.body.classList.remove('body-search-open')
     })
   }
 
