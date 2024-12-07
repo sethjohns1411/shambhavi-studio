@@ -1,3 +1,7 @@
+.section-our-tribe .our-tribe .page-width {
+  --page-width: 109rem;
+}
+
 .our-tribe .title {
   margin: 0;
 }
@@ -26,11 +30,24 @@
 } 
 
 .our-tribe .our-tribe-wrapper .our-tribe-content-wrap {
-  margin-bottom: 7rem;
+  margin-bottom: 6.6rem;
 }
 
 .our-tribe .our-tribe-wrapper .our-tribe-content-wrap p {
  margin: 0rem;
+}
+
+.our-tribe .our-tribe-wrapper .our-tribe-content-wrap p + p {
+  margin-top: 2rem;
+}
+
+.our-tribe .our-tribe-wrapper .our-tribe-content-wrap p a {
+  text-decoration: underline;
+}
+
+.our-tribe .our-tribe-wrapper .our-tribe-content-wrap p a strong {
+  font-weight: 500;
+  font-family: Outfit-Medium !important;
 }
 
 .our-tribe .our-tribe-card {
@@ -120,8 +137,16 @@
 }
 
 @media screen and (max-width: 749px) {
+  .our-tribe .title-wrapper--no-padding {
+    padding-bottom: 2.4rem;
+  }
+  
+  .our-tribe .title-wrapper-with-link .title.h5 {
+    font-size: 1.6rem;
+  }
+
   .our-tribe .title-wrapper-with-link .title-image {
-    max-width: 3.5rem;
+    display: none;
   }
 
   .our-tribe .our-tribe-wrapper .our-tribe-content-wrap {
@@ -131,7 +156,7 @@
   .our-tribe .our-tribe-list {
     --grid-mobile-horizontal-spacing: 1.5rem;
     --grid-mobile-vertical-spacing: 1.5rem;
-    padding-inline: 4rem;
+    padding-inline: 2.6rem;
   }
 
   .our-tribe .our-tribe-card .our-tribe-card__heading {

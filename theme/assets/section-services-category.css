@@ -1,0 +1,14 @@
+.services-category .title-wrapper--no-padding {
+  padding-bottom: 0rem;
+  margin-inline: 0rem;
+}
+
+.services-category .title {
+  margin: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .services-category .title-wrapper-with-link {
+    margin-bottom: 3rem;
+  }
+}

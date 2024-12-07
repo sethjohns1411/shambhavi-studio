@@ -97,3 +97,14 @@
 .richtext-column__card.right .richtext-column__buttons {
   justify-content: flex-end;
 }
+
+/* Our team page */
+@media screen and (max-width: 749px) {
+  .template-page-our-team .richtext-column-content {
+    margin-top: 2rem;
+  }
+
+  .template-page-our-team .richtext-column__buttons {
+    margin-top: 3rem;
+  }
+}
