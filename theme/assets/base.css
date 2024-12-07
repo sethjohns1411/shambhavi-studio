@@ -701,12 +701,11 @@ summary .icon-caret {
   position: absolute;
   height: 0.6rem;
   right: 1.5rem;
-  top: calc(50% - 0.2rem);
   transition: all 0.3s ease-in-out;
 }
 
 [open] > summary .icon-caret {
-  transform: rotate(180deg);
+  transform: rotate(180deg)
 }
 
 summary::-webkit-details-marker {
@@ -3925,4 +3924,21 @@ details-disclosure > details {
 }
 .search.search-modal__form .reset__button{
   display: none;
+}
+
+.content__position {
+  display: flex;
+  flex-direction: column;
+}
+
+.content__position--top {
+  justify-content: flex-start;
+}
+
+.content__position--middle {
+  justify-content: center;
+}
+
+.content__position--bottom {
+  justify-content: flex-end;
 }

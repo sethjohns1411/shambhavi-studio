@@ -1,3 +1,7 @@
+.services-category {
+  overflow: hidden;
+}
+
 .services-category .title-wrapper--no-padding {
   padding-bottom: 0rem;
   margin-inline: 0rem;
@@ -17,13 +21,13 @@
   margin: 0rem;
 }
 
+.services-category .services-category-card {
+  padding: 3.5rem 4rem;
+}
+
 .services-category .services-category-card .services-category-grid {
   --grid-desktop-horizontal-spacing: 0rem;
   --grid-desktop-vertical-spacing: 0rem;
-}
-
-.services-category .services-category-card {
-  padding: 3.5rem 4rem;
 }
 
 .services-category .services-category-card .services-category-media {
@@ -37,6 +41,20 @@
   overflow: hidden;
 }
 
+.services-category .services-category-card .services-category-media .swiper-pagination {
+  bottom: 0rem;
+}
+
+.services-category .services-category-card .swiper-pagination .swiper-pagination-bullet {
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: 0rem 0.2rem;
+}
+
+.services-category .services-category-card .swiper-pagination .swiper-pagination-bullet-active {
+  background: rgba(var(--color-foreground), 1);
+}
+
 .services-category .services-category-content .services-category-title {
   font-size: 1.6rem;
   line-height: 2rem;
@@ -46,28 +64,69 @@
 
 .services-category .services-category-content .services-category-description ul {
   padding-left: 0rem;
+  list-style: none;
 }
 
-.services-category .services-category-content .services-category-description ul li::marker {
-  margin-right: 1.4rem;
+.services-category .services-category-content .services-category-description ul li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.services-category .services-category-content .services-category-description ul li::before {
+  position: absolute;
+  content: "";
+  top: 1.2rem;
+  left: 0rem;
+  width: .5rem;
+  height: .5rem;
+  background: rgba(var(--color-foreground), 1);
+  border-radius: 50%;
 }
 
 @media screen and (max-width: 749px) {
   .services-category .title-wrapper-with-link {
     margin-bottom: 3rem;
   }
+
+  .services-category .title-text-wrapper {
+    padding-inline: 2.5rem;
+  }
+
+  .services-category .title-text-wrapper p {
+    text-align: center;
+  }
+
+  .services-category .services-category-list {
+    margin-inline: -2.4rem;
+  }
+
+  .services-category .services-category-card {
+    padding: 4rem 2.4rem;
+  }
+
+  .services-category .services-category-card .services-category-media {
+    padding-bottom: 4.5rem;
+  }
+
+  .services-category .services-category-card .services-category-media .swiper-pagination {
+    bottom: 2rem;
+  }
 }
 
 @media screen and (min-width: 750px) {
   .services-category .title-text-wrapper {
-    max-width: 50%;
-    margin-bottom: 5.4rem;
+    max-width: 85%;
+    margin-bottom: 1.9rem;
   }
 }
 
 @media screen and (min-width: 990px) {
   .services-category .page-width {
     padding-inline: 6.4rem;
+  }
+
+  .services-category .title-text-wrapper {
+    max-width: 57%;
   }
 
   .services-category .services-category-card .media-grid__item {

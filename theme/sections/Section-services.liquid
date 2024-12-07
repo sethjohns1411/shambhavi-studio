@@ -39,7 +39,7 @@
       </div>
     {%- endunless -%}
     <div class="services-list-wrapper">
-      <div class="services-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet grid--2-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop"
+      <div class="services-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--3-col-tablet grid--{{ section.settings.columns_desktop }}-col-desktop"
         role="list"
       >
         {%- liquid
@@ -134,9 +134,13 @@
                   {%- if block.settings.text != blank -%}
                     <div class="rte service-description">{{ block.settings.text }}</div>
                   {%- endif -%}
+                  
+                  <button class="action-button services-js large-up-hide">
+                    {% render 'icon-close' %}
+                  </button>
                 </div>
 
-                <button class="action-button services-js">
+                <button class="action-button services-js small-hide">
                   {% render 'icon-minus' %}
                 </button>
               </div>
@@ -145,12 +149,8 @@
         {%- endfor -%}
 
         {% if section.blocks.size > 1 and section.settings.launcing_soon != blank %}
-          <div class="services-list__item grid__item{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-            {{ block.shopify_attributes }}
-            {% if settings.animations_reveal_on_scroll %}
-              data-cascade
-              style="--animation-order: {{ forloop.index }};"
-            {% endif %}
+          <div class="services-list__item services-list__launcing_soon grid__item{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {{ section.shopify_attributes }}
           >
             <div class="services-card extra-services-card content-container color-{{ section.settings.color_scheme_1 }} gradient">
               <div class="services-card-content color-{{ section.settings.color_scheme_1 }} gradient">
