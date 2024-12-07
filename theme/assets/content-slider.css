@@ -15,6 +15,7 @@
   width: 0.8rem;
   height: 0.8rem;
   background-color: rgba(128,128,128,0.5);
+  border: none;
 }
 .content-slider .content-slider-component .slider-counter__link--dots.slider-counter__link--active .dot {
   background-color: #808080;

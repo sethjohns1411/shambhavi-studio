@@ -9,6 +9,7 @@
   font-weight: 500;
   box-shadow: -4px 6px 7px #00000017 !important;
   background: #FFF;
+  left: -12rem;
 }
 
 .list-menu--disclosure:focus {
