@@ -329,6 +329,61 @@
   .services .extra-services-card .services-card-content .service-description {
     max-width: 45%;
   }
+
+  body.service-card-flip {
+    overflow: hidden;
+  }
+
+  .service-card-flip .services-list__item.scroll-trigger.animate--slide-in {
+    transform: unset;
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .service-card-flip .services-list__item.scroll-trigger:not(.scroll-trigger--offscreen).animate--slide-in {
+        animation: none;
+    }
+  }
+
+  .services .services-list__item:not(.services-list__launcing_soon) .services-card-content {
+    position: fixed;
+    bottom: 0rem;
+    width: 100%;
+    padding: 0rem;
+    z-index: 100;
+    background: rgba(var(--color-foreground), 0.8);
+  }
+
+  .services .services-list__item:not(.services-list__launcing_soon) .services-card-content .services-card-content-box {
+    position: absolute;
+    bottom: -100%;
+    left: 0rem;
+    width: 100%;
+    max-height: 75%;
+    height: max-content;
+    overflow: hidden;
+    overflow-y: auto;
+    padding: 5.5rem 3.3rem;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    z-index: 1;
+    background: rgb(var(--color-background));
+    background: var(--gradient-background);
+    transition: all .3s ease-in-out;
+  }
+
+  .services .services-list__item:not(.services-list__launcing_soon) .flip-card .services-card-content .services-card-content-box {
+    bottom: 0rem;
+  }
+
+  .services-card.flip-card .services-card-content .action-button-close {
+    position: absolute;
+    top: 2rem;
+    right: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    color: #707070;
+  }
 }
 
 .background-none .services-card-spacing {
