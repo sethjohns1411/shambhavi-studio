@@ -1,4 +1,5 @@
 {{ 'section-services-category.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-services-category.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -66,229 +67,263 @@
             {% endif %}
           >
             <div class="services-category-card content-container color-{{ block.settings.color_scheme_1 }} gradient">
-              <div class="services-category-grid services-category__content--{{ block.settings.desktop_content_position }} grid">
+              <div class="services-category-grid services-category__content--{{ block.settings.desktop_content_position }} grid grid--1-col">
                 <div class="media-grid__item grid__item">
-                  <div class="services-category-media swiper {% if block.settings.image != blank %} media media--transparent{% else %} services__media--placeholder placeholder{% endif %} media--{{ section.settings.image_ratio }}"
-                    {% if section.settings.image_ratio == 'adapt' and block.settings.image != blank or block.settings.image_mobile != blank %}
-                      style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
-                    {% endif %}
-                  >
+                  <div class="services-category-media services-category-media-js swiper">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide">
-                        {%- if block.settings.image != blank or block.settings.image_mobile != blank -%}
-                          {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
-                            {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
-                            {%- capture sizes -%}
-                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
-                          (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
-                        {%- endcapture -%}
+                        <div class="slider-item-media{% if block.settings.image != blank %} media media--transparent{% else %} services__media--placeholder placeholder{% endif %} media--{{ section.settings.image_ratio }}"
+                          {% if section.settings.image_ratio == 'adapt' and block.settings.image != blank or block.settings.image_mobile != blank %}
+                            style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                          {% endif %}
+                        >
+                          {%- if block.settings.image != blank or block.settings.image_mobile != blank -%}
+                            {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                              {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                              {%- capture sizes -%}
+                            (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                            (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                          {%- endcapture -%}
+                            {%- else -%}
+                              {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                              {%- capture sizes -%}
+                            (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                            (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                          {%- endcapture -%}
+                            {%- endif -%}
+                            {% if block.settings.image != blank %}
+                              {{
+                                block.settings.image
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'small-hide medium-hide'
+                              }}
+                            {% endif %}
+              
+                            {% if block.settings.image_mobile != blank %}
+                              {{
+                                block.settings.image_mobile
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'large-up-hide'
+                              }}
+                            {% else %}
+                              {{
+                                block.settings.image
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'large-up-hide'
+                              }}
+                            {% endif %}
                           {%- else -%}
-                            {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
-                            {%- capture sizes -%}
-                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
-                          (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
-                        {%- endcapture -%}
+                            {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
                           {%- endif -%}
-                          {% if block.settings.image != blank %}
-                            {{
-                              block.settings.image
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'small-hide medium-hide'
-                            }}
-                          {% endif %}
-            
-                          {% if block.settings.image_mobile != blank %}
-                            {{
-                              block.settings.image_mobile
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'large-up-hide'
-                            }}
-                          {% else %}
-                            {{
-                              block.settings.image
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'large-up-hide'
-                            }}
-                          {% endif %}
-                        {%- else -%}
-                          {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                        {%- endif -%}
+                        </div>
                       </div>
                       
                       {%- if block.settings.image_2 != blank or block.settings.image_mobile_2 != blank -%}
                         <div class="swiper-slide">
-                          {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
-                            {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
-                            {%- capture sizes -%}
-                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
-                          (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
-                        {%- endcapture -%}
-                          {%- else -%}
-                            {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
-                            {%- capture sizes -%}
-                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
-                          (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
-                        {%- endcapture -%}
-                          {%- endif -%}
-                          {% if block.settings.image_2 != blank %}
-                            {{
-                              block.settings.image_2
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'small-hide medium-hide'
-                            }}
-                          {% endif %}
-            
-                          {% if block.settings.image_mobile_2 != blank %}
-                            {{
-                              block.settings.image_mobile_2
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'large-up-hide'
-                            }}
-                          {% else %}
-                            {{
-                              block.settings.image_2
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'large-up-hide'
-                            }}
-                          {% endif %}
+                          <div class="slider-item-media{% if block.settings.image != blank %} media media--transparent{% else %} services__media--placeholder placeholder{% endif %} media--{{ section.settings.image_ratio }}"
+                            {% if section.settings.image_ratio == 'adapt' and block.settings.image != blank or block.settings.image_mobile != blank %}
+                              style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                            {% endif %}
+                          >
+                            {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                              {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                              {%- capture sizes -%}
+                                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                                (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                              {%- endcapture -%}
+                            {%- else -%}
+                              {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                              {%- capture sizes -%}
+                                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                                (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                              {%- endcapture -%}
+                            {%- endif -%}
+
+                            {% if block.settings.image_2 != blank %}
+                              {{
+                                block.settings.image_2
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'small-hide medium-hide'
+                              }}
+                            {% endif %}
+              
+                            {% if block.settings.image_mobile_2 != blank %}
+                              {{
+                                block.settings.image_mobile_2
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'large-up-hide'
+                              }}
+                            {% else %}
+                              {{
+                                block.settings.image_2
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'large-up-hide'
+                              }}
+                            {% endif %}
+                          </div>
                         </div>
                       {%- endif -%}
 
                       {%- if block.settings.image_3 != blank or block.settings.image_mobile_3 != blank -%}
                         <div class="swiper-slide">
-                          {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
-                            {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
-                            {%- capture sizes -%}
-                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
-                          (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
-                        {%- endcapture -%}
-                          {%- else -%}
-                            {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
-                            {%- capture sizes -%}
-                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
-                          (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
-                        {%- endcapture -%}
-                          {%- endif -%}
-                          {% if block.settings.image_3 != blank %}
-                            {{
-                              block.settings.image_3
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'small-hide medium-hide'
-                            }}
-                          {% endif %}
-            
-                          {% if block.settings.image_mobile_3 != blank %}
-                            {{
-                              block.settings.image_mobile_3
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'large-up-hide'
-                            }}
-                          {% else %}
-                            {{
-                              block.settings.image_3
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'large-up-hide'
-                            }}
-                          {% endif %}
+                          <div class="slider-item-media{% if block.settings.image != blank %} media media--transparent{% else %} services__media--placeholder placeholder{% endif %} media--{{ section.settings.image_ratio }}"
+                            {% if section.settings.image_ratio == 'adapt' and block.settings.image != blank or block.settings.image_mobile != blank %}
+                              style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                            {% endif %}
+                          >
+                            {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                              {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                              {%- capture sizes -%}
+                                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                                (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                              {%- endcapture -%}
+                            {%- else -%}
+                              {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                              {%- capture sizes -%}
+                                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                                (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                              {%- endcapture -%}
+                            {%- endif -%}
+                            {% if block.settings.image_3 != blank %}
+                              {{
+                                block.settings.image_3
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'small-hide medium-hide'
+                              }}
+                            {% endif %}
+              
+                            {% if block.settings.image_mobile_3 != blank %}
+                              {{
+                                block.settings.image_mobile_3
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'large-up-hide'
+                              }}
+                            {% else %}
+                              {{
+                                block.settings.image_3
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'large-up-hide'
+                              }}
+                            {% endif %}
+                          </div>
                         </div>
                       {%- endif -%}
 
                       {%- if block.settings.image_4 != blank or block.settings.image_mobile_4 != blank -%}
                         <div class="swiper-slide">
-                          {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
-                            {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
-                            {%- capture sizes -%}
-                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
-                          (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
-                            {%- endcapture -%}
-                              {%- else -%}
-                                {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
-                                {%- capture sizes -%}
-                              (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
-                              (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
-                            {%- endcapture -%}
-                          {%- endif -%}
-                          {% if block.settings.image_4 != blank %}
-                            {{
-                              block.settings.image_4
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'small-hide medium-hide'
-                            }}
-                          {% endif %}
-            
-                          {% if block.settings.image_mobile_4 != blank %}
-                            {{
-                              block.settings.image_mobile_4
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'large-up-hide'
-                            }}
-                          {% else %}
-                            {{
-                              block.settings.image_4
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'large-up-hide'
-                            }}
-                          {% endif %}
+                          <div class="slider-item-media{% if block.settings.image != blank %} media media--transparent{% else %} services__media--placeholder placeholder{% endif %} media--{{ section.settings.image_ratio }}"
+                            {% if section.settings.image_ratio == 'adapt' and block.settings.image != blank or block.settings.image_mobile != blank %}
+                              style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                            {% endif %}
+                          >
+                           
+                            {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                              {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                              {%- capture sizes -%}
+                                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                                (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                              {%- endcapture -%}
+                            {%- else -%}
+                              {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                              {%- capture sizes -%}
+                                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                                (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                              {%- endcapture -%}
+                            {%- endif -%}
+  
+                            {% if block.settings.image_4 != blank %}
+                              {{
+                                block.settings.image_4
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'small-hide medium-hide'
+                              }}
+                            {% endif %}
+              
+                            {% if block.settings.image_mobile_4 != blank %}
+                              {{
+                                block.settings.image_mobile_4
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'large-up-hide'
+                              }}
+                            {% else %}
+                              {{
+                                block.settings.image_4
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'large-up-hide'
+                              }}
+                            {% endif %}
+                          </div>
                         </div>
                       {%- endif -%}
 
                       {%- if block.settings.image_5 != blank or block.settings.image_mobile_5 != blank -%}
                         <div class="swiper-slide">
-                          {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
-                            {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
-                            {%- capture sizes -%}
-                          (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
-                          (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
-                            {%- endcapture -%}
-                              {%- else -%}
-                                {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
-                                {%- capture sizes -%}
-                              (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
-                              (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
-                            {%- endcapture -%}
-                          {%- endif -%}
-                          {% if block.settings.image_5 != blank %}
-                            {{
-                              block.settings.image_5
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'small-hide medium-hide'
-                            }}
-                          {% endif %}
-            
-                          {% if block.settings.image_mobile_5 != blank %}
-                            {{
-                              block.settings.image_mobile_5
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'large-up-hide'
-                            }}
-                          {% else %}
-                            {{
-                              block.settings.image_5
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
-                              class: 'large-up-hide'
-                            }}
-                          {% endif %}
+                          <div class="slider-item-media{% if block.settings.image != blank %} media media--transparent{% else %} services__media--placeholder placeholder{% endif %} media--{{ section.settings.image_ratio }}"
+                            {% if section.settings.image_ratio == 'adapt' and block.settings.image != blank or block.settings.image_mobile != blank %}
+                              style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
+                            {% endif %}
+                          >
+                           
+                            {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                              {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                              {%- capture sizes -%}
+                                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                                (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                              {%- endcapture -%}
+                            {%- else -%}
+                              {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                              {%- capture sizes -%}
+                                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                                (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                              {%- endcapture -%}
+                            {%- endif -%}
+  
+                            {% if block.settings.image_5 != blank %}
+                              {{
+                                block.settings.image_5
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'small-hide medium-hide'
+                              }}
+                            {% endif %}
+              
+                            {% if block.settings.image_mobile_5 != blank %}
+                              {{
+                                block.settings.image_mobile_5
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'large-up-hide'
+                              }}
+                            {% else %}
+                              {{
+                                block.settings.image_5
+                                | image_url: width: 1500
+                                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+                                class: 'large-up-hide'
+                              }}
+                            {% endif %}
+                          </div>
                         </div>
                       {%- endif -%}
                     </div>
+                    {%- if block.settings.image_1 != blank and block.settings.image_2 != blank and block.settings.image_3 != blank -%}
+                    <div class="swiper-pagination"></div>
+                    {% endif %}
                   </div>
                 </div>
-                <div class="content-grid__item">
+                <div class="content-grid__item grid__item">
                   <div class="services-category-content">
                     {%- if block.settings.title != blank -%}
                       <h3 class="inline-richtext services-category-title">{{ block.settings.title }}</h3>
@@ -448,7 +483,7 @@
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 88
+      "default": 38
     },
     {
       "type": "range",
@@ -458,7 +493,7 @@
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 88
+      "default": 82
     },
     {
       "type": "range",
@@ -468,7 +503,7 @@
       "step": 2,
       "unit": "px",
       "label": "Mobile padding top",
-      "default": 46
+      "default": 30
     },
     {
       "type": "range",
@@ -478,7 +513,7 @@
       "step": 2,
       "unit": "px",
       "label": "Mobile padding bottom",
-      "default": 46
+      "default": 4
     }
   ],
   "blocks": [
