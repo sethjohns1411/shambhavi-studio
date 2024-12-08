@@ -15,16 +15,49 @@ class PhotoGallery {
     if (menuSwitchDivs.length > 0) {
       menuSwitchDivs.forEach((ele) => {
         ele.addEventListener("click", () => {
-          menuSwitchDivs.forEach((item) => item.classList.remove("active"));
+          const viewBTn = document.querySelector(".photo-gallery-button .view-more");
+          viewBTn.dataset.page = "1";
+
           const collIDMenu = ele.getAttribute("data-handle");
+
+          menuSwitchDivs.forEach((item) => item.classList.remove("active"));
           ele.classList.add("active");
-          console.log("Selected year:", collIDMenu);
-          collectionDivs.forEach((item) => {
-            item.classList.remove("active");
-            if (item.classList.contains(collIDMenu)) {
-              item.classList.add("active");
+
+          let galleryContainers =  document.querySelectorAll('.gallery-photo')
+          let max = parseInt(viewBTn.dataset.max);
+          let page = parseInt(viewBTn.dataset.page);
+          if(collIDMenu == ""){
+            galleryContainers.forEach((item,i)=>{
+                if(i+1 <= (max * page)){
+                  item.classList.remove('hidden')
+                }else{
+                  item.classList.add('hidden')
+                }
+                if((max * page) > galleryContainers.length){
+                  viewBTn.classList.add('hidden')
+                }
+                viewBTn.dataset.page = page
+            })
+            return;
+          }
+          galleryContainers.forEach((item) => item.classList.add('hidden'))
+          const filteredContainers = Array.from(galleryContainers).filter(item => item.dataset.name == collIDMenu);
+debugger;
+          filteredContainers.forEach((item, i) => {
+            if (i + 1 <= max) {
+              item.classList.remove('hidden');
+            } else {
+              item.classList.add('hidden');
             }
           });
+          
+          // Check if the view button should be hidden
+          if (filteredContainers.length > max) {
+            viewBTn.classList.remove('hidden');
+          }else{
+            viewBTn.classList.add('hidden');
+          }
+
         });
       });
     } else {
@@ -72,17 +105,28 @@ class PhotoGallery {
   viewMore() {
     const viewBTn = document.querySelector(".photo-gallery-button .view-more");
     const lessBtn = document.querySelector(".photo-gallery-button .view-less");
-    const galleryContainers = document.querySelectorAll(
+    let  active = document.querySelector('.galleryname .name.active')
+    let galleryContainers = document.querySelectorAll(
       ".photo-gallery .my-Gallery .gallery-photo"
     );
+    if(active.dataset.handle != ""){
+      galleryContainers = document.querySelectorAll(
+        `.photo-gallery .my-Gallery .gallery-photo[data-name="${active.dataset.handle}"]`
+      );
+    }
     if (viewBTn) {
       viewBTn.addEventListener("click", () => {
-        galleryContainers.forEach((ele) => {
-          ele.classList.remove("hide");
+        let max = parseInt(viewBTn.dataset.max);
+        let page = parseInt(viewBTn.dataset.page) + 1;
+        galleryContainers.forEach((ele,i) => {
+          if(i+1 <= (max * page)){
+            ele.classList.remove("hidden");  
+          }
+          if((max * page) > galleryContainers.length){
+            viewBTn.classList.add('hidden')
+          }
+          viewBTn.dataset.page = page
         });
-        
-          lessBtn.classList.remove("d-none");
-          viewBTn.classList.add("d-none");
         
       });
     }

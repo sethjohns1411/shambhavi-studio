@@ -2877,6 +2877,17 @@ details[open] .modal-overlay::after {
     text-indent: 20px;
   }
 }
+  .template-page-aboutus .multi-image-with-text__text.text-lora{
+    margin-top: 3.3rem;
+  }
+
+.image-with-text__content .arrow svg{
+  width: 10px;
+  transform: rotate(-90deg);
+  margin-left: 20px;
+  position: relative;
+  top: -1px;
+}
 .search-modal .search__input::placeholder {
   color: #C7C7C7;
 }

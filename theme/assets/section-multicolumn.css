@@ -253,7 +253,11 @@
 .template-index .multicolumn-card .multicolumn-card__text {
   margin-bottom: 2.1rem;
 }
-
+.image-with-text__text .arrow svg{
+  width: 15px;
+  transform: rotate(-90deg);
+  margin-left: 20px;
+}
 @media(min-width:1025px){
   .template-index .multicolumn-card .multicolumn-card__text {
     max-width: 273px;
