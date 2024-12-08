@@ -1,0 +1,56 @@
+<style>
+   
+</style>
+<div class="blog-header">
+    <h1 class="blog-header-title">
+        WELCOME TO OUR <span class="text-lora">{{ blog.title }}</span>
+    </h1>
+    <div class="blog-header-images">
+        {% if section.settings.image_1 != blank %}
+            <img src="{{section.settings.image_1 | img_url:'master' }}">
+        {% endif %}
+        {% if section.settings.image_2 != blank %}
+            <img src="{{section.settings.image_2 | img_url:'master' }}">
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.slideshow.name",
+  "tag": "section",
+  "class": "section blog-header-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+        "type":"image_picker",
+        "label":"Image 1",
+        "id":"image_1"
+    },
+    {
+        "type":"image_picker",
+        "label":"Image 2",
+        "id":"image_2"
+    },
+    {
+        "type":"text",
+        "label":"Date",
+        "id":"date",
+        "default":"Design, <span>24 March 2024</span>"
+    },
+    {
+        "type":"text",
+        "label":"Title",
+        "id":"title",
+        "default":"Process behind creating Chintz."
+    },
+    {
+        "type":"url",
+        "label":"Link",
+        "id":"link"
+    }
+  ]
+}
+{% endschema %}
