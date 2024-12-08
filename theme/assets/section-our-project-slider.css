@@ -1,0 +1,114 @@
+.our-project-slider {
+  position: relative;
+}
+
+.our-project-slider__title {
+  padding-bottom: 2.2rem;
+  margin-bottom: 6.8rem;
+  margin-inline: 0rem;
+}
+
+.our-project-slider__title .link{
+  font-size: 1.4rem;
+}
+
+.our-project-slider__title .title {
+  font-family: 'Outfit-Regular' !important;
+  font-weight: 400;
+  color: var(--color-black);
+}
+
+.our-project-slider .our-project-slider-card .media {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.our-project-slider__media--placeholder {
+  position: relative;
+  overflow: hidden;
+}
+
+.our-project-slider__media--placeholder:after {
+  content: '';
+  position: absolute;
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.our-project-slider__media--placeholder.our-project-slider__media--adapt {
+  height: 20rem;
+}
+
+@media screen and (min-width: 750px) {
+  .our-project-slider__media--placeholder.our-project-slider__media--adapt {
+    height: 30rem;
+  }
+}
+
+.our-project-slider__media--placeholder > svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.our-project-slider__media--placeholder:is(.animate--ambient, .animate--zoom-in) > .svg-wrapper {
+  top: 0;
+  left: 0;
+  transform: translate(0);
+}
+
+.our-project-slider .our-project-slider-card-body {
+  padding-top: 1.7rem;
+}
+
+.our-project-slider .our-project-slider-card {
+  font-size: 1.6rem;
+  color: rgba(var(--color-foreground), 1);
+  text-decoration: none;
+}
+
+.our-project-slider .our-project-slider-card .our-project-slider-card-body .our-project-title {
+  margin: 0rem;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.our-project-slider .our-project-slider-card .our-project-title .arrow-icon {
+  display: flex;
+  color: var(--color-primary);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.our-project-slider .our-project-slider-card:hover .our-project-title .arrow-icon {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media screen and (max-width: 749px) {
+  .our-project-slider__title {
+    margin-bottom: 3.3rem;
+  }
+  
+  .our-project-slider__title .title {
+    font-size: 1.6rem;
+  }
+
+  .our-project-slider__title.title-wrapper-with-link a {
+    font-size: 1.4rem;
+  }
+
+  .our-project-slider .out-project-slider-wrapper.swiper {
+    padding-left: 2.4rem;
+  }
+
+  .our-project-slider .our-project-slider-list .grid {
+    --grid-mobile-horizontal-spacing: 0.3rem;
+    --grid-mobile-vertical-spacing: 0.3rem;
+  }
+}

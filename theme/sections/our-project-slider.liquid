@@ -1,4 +1,5 @@
-{{ 'section-instagram-feed.css' | asset_url | stylesheet_tag }}
+{{ 'section-our-project-slider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-our-project-slider.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -14,38 +15,28 @@
   }
 {%- endstyle -%}
 
-<div class="section-{{ section.id }} instagram-feed color-{{ section.settings.color_scheme }} gradient{% if section.settings.title == blank %} no-heading{% endif %}">
-  <div
-    class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-    {% if settings.animations_reveal_on_scroll %}
-      data-cascade
-    {% endif %}
-  >
+<div class="section-{{ section.id }} our-project-slider color-{{ section.settings.color_scheme }} gradient{% if section.settings.title == blank %} no-heading{% endif %}">
+  <div class="{% unless section.settings.enable_slider %}page-width {% endunless %}section-{{ section.id }}-padding">
     {%- unless section.settings.title == blank -%}
-      <div class="instagram-feed__title title-wrapper-with-link title-wrapper--no-top-margin">
-        <h2 class="title inline-richtext {{ section.settings.heading_size }}">
-          {% if section.settings.title_icon != blank %}
-            <span class="title-icon">
-              {{
-                section.settings.title_icon
-                | image_url: width: 1500
-                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
-              }}
-            </span>
-          {% endif %}
-          {{ section.settings.title }}
-        </h2>
-        {%- if section.settings.button_label != blank -%}
-          <a href="{{ section.settings.button_link }}" class="link underlined-link">
-            {{- section.settings.button_label | escape -}}
-          </a>
-        {%- endif -%}
+      {% if section.settings.enable_slider %}
+      <div class="page-width">
+      {% endif %}
+        <div class="our-project-slider__title title-wrapper-with-link title-wrapper--no-top-margin title-wrapper--self-padded-mobile">
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}">
+            {{ section.settings.title }}
+          </h2>
+          {%- if section.settings.button_label != blank -%}
+            <a href="{{ section.settings.button_link }}" class="link underlined-link">
+              {{- section.settings.button_label | escape -}}
+            </a>
+          {%- endif -%}
+        </div>
+      {% if section.settings.enable_slider %}
       </div>
+      {% endif %}
     {%- endunless -%}
-    <div class="instagram-feed-list-wrapper">
-      <div class="instagram-feed-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col grid--{{ section.settings.columns_desktop }}-col-desktop"
-        role="list"
-      >
+    <div class="out-project-slider-wrapper{% if section.settings.enable_slider %} swiper out-project-slider-js{% endif %}">
+      <div class="our-project-slider-list contains-content-container{% if section.settings.enable_slider %} swiper-wrapper{% else %} grid grid--{{ section.settings.columns_mobile }}-col grid--{{ section.settings.columns_desktop }}-col-desktop{% endif %}" role="list">
         {%- liquid
           assign highest_ratio = 0
           for block in section.blocks
@@ -55,22 +46,16 @@
           endfor
         -%}
         {%- for block in section.blocks -%}
-          <div class="instagram-feed-list__item grid__item{% if section.settings.column_alignment == 'center' %} center{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-            {{ block.shopify_attributes }}
-            {% if settings.animations_reveal_on_scroll %}
-              data-cascade
-              style="--animation-order: {{ forloop.index }};"
-            {% endif %}
-          >
+          <div class="our-project-slider-list__item{% if section.settings.enable_slider %} swiper-slide{% else %} grid__item{% if section.settings.column_alignment == 'center' %} center{% endif %}{% endif %}">
             {% if block.settings.button_link != blank %}
-              <a href="{{ block.settings.button_link }}" class="instagram-feed-card" target="_blank">
-            {% else %}
-              <div class="instagram-feed-card">
+              <a href="{{ block.settings.button_link }}" class="our-project-slider-card" target="_blank">
+            {% else %}  
+              <div class="our-project-slider-card">
             {% endif %}
               {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                 {% assign spaced_image = true %}
               {% endif %}
-              <div class="{% if block.settings.image != blank %}media media--transparent{% else %}instagram-feed__media--placeholder placeholder{% endif %} media--{{ section.settings.image_ratio }}"
+              <div class="{% if block.settings.image != blank %}media media--transparent{% else %}our-project-slider__media--placeholder placeholder{% endif %} media--{{ section.settings.image_ratio }}"
                 {% if section.settings.image_ratio == 'adapt' %}
                   style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
                 {% endif %}
@@ -96,14 +81,22 @@
                     | image_tag:
                       widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
                       sizes: sizes,
-                      class: 'instagram-feed-card__image'
+                      class: 'our-project-slider-card__image'
                   }}
                 {%- else -%}
                   {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
                 {%- endif -%}
               </div>
+              {% if block.settings.title != blank %}
+                <div class="our-project-slider-card-body">
+                    <p class="our-project-title text-lora">
+                      <span>{{ block.settings.title }}</span>
+                      <span class="arrow-icon">{% render 'icon-right-arrow' %}</span>
+                  </p>
+                </div>
+              {% endif %}  
             {% if block.settings.button_link != blank %}
-            </a>
+              </a>
             {% else %}
             </div>
             {% endif %}
@@ -116,7 +109,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.instagram-feed.name",
+  "name": "t:sections.our-project-slider.name",
   "class": "section",
   "tag": "section",
   "disabled_on": {
@@ -124,15 +117,10 @@
   },
   "settings": [
     {
-      "type": "image_picker",
-      "id": "title_icon",
-      "label": "Title icon"
-    },
-    {
       "type": "inline_richtext",
       "id": "title",
-      "default": "t:sections.instagram-feed.settings.title.default",
-      "label": "t:sections.instagram-feed.settings.title.label"
+      "default": "t:sections.our-project-slider.settings.title.default",
+      "label": "t:sections.our-project-slider.settings.title.label"
     },
     {
       "type": "select",
@@ -172,23 +160,29 @@
       "options": [
         {
           "value": "adapt",
-          "label": "t:sections.instagram-feed.settings.image_ratio.options__1.label"
+          "label": "t:sections.our-project-slider.settings.image_ratio.options__1.label"
         },
         {
           "value": "portrait",
-          "label": "t:sections.instagram-feed.settings.image_ratio.options__2.label"
+          "label": "t:sections.our-project-slider.settings.image_ratio.options__2.label"
         },
         {
           "value": "square",
-          "label": "t:sections.instagram-feed.settings.image_ratio.options__3.label"
+          "label": "t:sections.our-project-slider.settings.image_ratio.options__3.label"
         },
         {
           "value": "circle",
-          "label": "t:sections.instagram-feed.settings.image_ratio.options__4.label"
+          "label": "t:sections.our-project-slider.settings.image_ratio.options__4.label"
         }
       ],
       "default": "square",
-      "label": "t:sections.instagram-feed.settings.image_ratio.label"
+      "label": "t:sections.our-project-slider.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_slider",
+      "label": "Enable slider",
+      "default": true
     },
     {
       "type": "range",
@@ -196,8 +190,8 @@
       "min": 1,
       "max": 4,
       "step": 1,
-      "default": 3,
-      "label": "t:sections.instagram-feed.settings.columns_desktop.label"
+      "default": 4,
+      "label": "t:sections.our-project-slider.settings.columns_desktop.label"
     },
     {
       "type": "select",
@@ -205,36 +199,36 @@
       "options": [
         {
           "value": "left",
-          "label": "t:sections.instagram-feed.settings.column_alignment.options__1.label"
+          "label": "t:sections.our-project-slider.settings.column_alignment.options__1.label"
         },
         {
           "value": "center",
-          "label": "t:sections.instagram-feed.settings.column_alignment.options__2.label"
+          "label": "t:sections.our-project-slider.settings.column_alignment.options__2.label"
         }
       ],
       "default": "left",
-      "label": "t:sections.instagram-feed.settings.column_alignment.label"
+      "label": "t:sections.our-project-slider.settings.column_alignment.label"
     },
     {
       "type": "text",
       "id": "button_label",
-      "default": "@Shambhavit",
-      "label": "t:sections.instagram-feed.settings.button_label.label"
+      "default": "VIEW ALL",
+      "label": "t:sections.our-project-slider.settings.button_label.label"
     },
     {
       "type": "url",
       "id": "button_link",
-      "label": "t:sections.instagram-feed.settings.button_link.label"
+      "label": "t:sections.our-project-slider.settings.button_link.label"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
+      "default": "scheme-3"
     },
     {
       "type": "header",
-      "content": "t:sections.instagram-feed.settings.header_mobile.content"
+      "content": "t:sections.our-project-slider.settings.header_mobile.content"
     },
     {
       "type": "select",
@@ -242,19 +236,19 @@
       "options": [
         {
           "value": "1",
-          "label": "t:sections.instagram-feed.settings.columns_mobile.options__1.label"
+          "label": "t:sections.our-project-slider.settings.columns_mobile.options__1.label"
         },
         {
           "value": "2",
-          "label": "t:sections.instagram-feed.settings.columns_mobile.options__2.label"
+          "label": "t:sections.our-project-slider.settings.columns_mobile.options__2.label"
         },
         {
           "value": "3",
-          "label": "t:sections.instagram-feed.settings.columns_mobile.options__3.label"
+          "label": "t:sections.our-project-slider.settings.columns_mobile.options__3.label"
         }
       ],
       "default": "3",
-      "label": "t:sections.instagram-feed.settings.columns_mobile.label"
+      "label": "t:sections.our-project-slider.settings.columns_mobile.label"
     },
     {
       "type": "header",
@@ -268,7 +262,7 @@
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 68
+      "default": 74
     },
     {
       "type": "range",
@@ -278,7 +272,7 @@
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 116
+      "default": 92
     },
     {
       "type": "range",
@@ -288,7 +282,7 @@
       "step": 2,
       "unit": "px",
       "label": "Mobile padding top",
-      "default": 32
+      "default": 50
     },
     {
       "type": "range",
@@ -298,23 +292,29 @@
       "step": 2,
       "unit": "px",
       "label": "Mobile padding bottom",
-      "default": 60
+      "default": 50
     }
   ],
   "blocks": [
     {
       "type": "column",
-      "name": "t:sections.instagram-feed.blocks.column.name",
+      "name": "t:sections.our-project-slider.blocks.column.name",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "t:sections.instagram-feed.blocks.column.settings.image.label"
+          "label": "t:sections.our-project-slider.blocks.column.settings.image.label"
         },
         {
           "type": "image_picker",
           "id": "image_mobile",
-          "label": "t:sections.instagram-feed.blocks.column.settings.image_mobile.label"
+          "label": "t:sections.our-project-slider.blocks.column.settings.image_mobile.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Title",
+          "default": "Apparel"
         },
         {
           "type": "url",
@@ -326,8 +326,11 @@
   ],
   "presets": [
     {
-      "name": "t:sections.instagram-feed.presets.name",
+      "name": "t:sections.our-project-slider.presets.name",
       "blocks": [
+        {
+          "type": "column"
+        },
         {
           "type": "column"
         },

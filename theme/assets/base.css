@@ -3885,7 +3885,7 @@ details-disclosure > details {
 .blog .title-wrapper--self-padded-tablet-down,
 .title-wrapper--self-padded-mobile {
   padding: 0 0 18px;
-  border-bottom: 1px solid rgba(var(--color-foreground), 0.5);
+  border-bottom: 1px solid #CECECE;
 }
 
 @media screen and (max-width: 990px) {
