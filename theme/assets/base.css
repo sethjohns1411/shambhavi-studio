@@ -4046,3 +4046,36 @@ details-disclosure > details {
   color: #1A1A1A;
   text-decoration: underline;
 }
+
+.blog-tags{
+  background: #FAF8F5;
+  margin: 66px 0 70px;
+  display: flex;
+  justify-content: center;
+  padding: 14px 0 0;
+}
+@media(max-width:767px){
+.blog-tags{
+  margin: 50px 0 0;
+}
+}
+.blog-tags ul{
+  list-style: none;
+  padding: 0;
+  overflow-x: auto;
+  display: flex;
+  column-gap: 50px;
+  margin: 0;
+}
+.blog-tags ul li a{ 
+  color: #808080;
+  font-size: 14px;
+  text-decoration: none;
+  padding-bottom: 14px;
+  display: block;
+}
+.blog-tags ul li a.active{
+  font-weight: bold; 
+  color: #9F886A;
+  border-bottom: 1px solid;
+}
