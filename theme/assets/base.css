@@ -8,7 +8,16 @@
   --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
     0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
-
+@media(max-width:767px){
+  .xs-hide{
+    display: none !important;
+  }
+}
+@media(min-width:768px){
+.xs-show{
+  display: none !important;
+}
+}
 .product-card-wrapper .card,
 .contains-card--product {
   --border-radius: var(--product-card-corner-radius);
@@ -3952,4 +3961,88 @@ details-disclosure > details {
 
 .content__position--bottom {
   justify-content: flex-end;
+}
+
+.blog-header{
+  max-width: 1100px;
+  margin:57px auto 0;
+  padding: 0 15px;
+}
+.blog-header .blog-header-title{
+  font-size: 20px;
+  color: #404040;
+  margin-bottom: 25px;
+}
+.blog-header .blog-header-title span{
+  color: #9F886A;
+}
+.blog-header-images{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.blog-header-images img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media(min-width:768px){
+  .blog-header-images .img-1{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .blog-header-images .img1-container{
+   width: 100%;
+   max-width: 780px;
+  }
+  .blog-header-images .img2-container{
+    width: 100%;
+   max-width: 290px;
+  }  
+  .blog-content.fly-blog-content{
+    position: absolute;
+    left: 35px;
+    bottom: 28px;
+  }
+}
+.blog-content.fly-blog-content{
+  position: absolute;
+  left: 24px;
+  bottom: 28px;
+}
+.blog-header-images .img1-container{
+  width: 100%;
+ }
+ .blog-header-images .img2-container{
+   width: 100%;
+ }  
+.blog-header-images .img2-container{
+  position: relative;
+}
+
+.blog-content .blog-header-date{
+  font-size: 12px;
+  margin-bottom: 14px;
+  color: #9F886A;
+}
+.blog-content .blog-header-title{
+  font-size: 18px;
+  margin-bottom: 14px;
+  margin-top: 0;
+  max-width: 194px;
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: 700;
+  line-height: 23px;
+}
+.blog-content  .blog-header-link{
+  font-size: 14px;
+  margin-top: 0;
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  text-decoration: underline;
 }

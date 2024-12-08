@@ -1,0 +1,113 @@
+<style>
+   
+</style>
+<div class="blog-header">
+    <h1 class="blog-header-title">
+        WELCOME TO OUR <span class="text-lora">{{ blog.title }}</span>
+    </h1>
+    <div class="blog-header-images">
+            <div class="img1-container">
+                {% if section.settings.image_1 != blank %}
+                <img class="img img-1 xs-hide" src="{{section.settings.image_1 | img_url:'master' }}" />
+            {% endif %}
+            {% if section.settings.image_1_xs != blank %}
+                <img class="img img-1 xs-show" src="{{section.settings.image_1_xs | img_url:'master' }}" />
+            {% endif %}
+            </div>
+            <div class="img2-container">
+            {% if section.settings.image_2 != blank %}
+            <img class="img img-2 xs-hide" src="{{section.settings.image_2 | img_url:'master' }}" />
+            <img class="img img-2 xs-show" src="{{section.settings.image_2_xs | img_url:'master' }}" />
+            <div class="blog-content fly-blog-content">
+                {%  if section.settings.date %}
+                <h4 class="blog-header-date">
+                    {{section.settings.date }}
+                </h4>
+            {%  endif %}
+            {%  if section.settings.title %}
+                <h4 class="blog-header-title">
+                    {{section.settings.title }}
+                </h4>
+            {%  endif %}
+            {%  if section.settings.link %}
+                <a class="blog-header-link">
+                    Read more
+                </a>
+            {%  endif %}
+            </div>
+        {% endif %}
+
+            </div>
+
+        {% if section.settings.image_2 == blank %}
+        <div class="blog-content">
+            {%  if section.settings.date %}
+            <h4 class="blog-header-date">
+                {{section.settings.date }}
+            </h4>
+        {%  endif %}
+        {%  if section.settings.title %}
+            <h4 class="blog-header-title">
+                {{section.settings.title }}
+            </h4>
+        {%  endif %}
+        {%  if section.settings.link %}
+            <a class="blog-header-link">
+                Read more
+            </a>
+        {%  endif %}
+        </div>
+    {% endif %}
+
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Blog header",
+  "tag": "section",
+  "class": "section blog-header-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+        "type":"image_picker",
+        "label":"Desktop Image 1",
+        "id":"image_1"
+    },
+    {
+        "type":"image_picker",
+        "label":"Mobile Image 1",
+        "id":"image_1_xs"
+    },
+    {
+        "type":"image_picker",
+        "label":"Image 2",
+        "id":"image_2"
+    },
+    {
+        "type":"image_picker",
+        "label":"Mobile Image 2",
+        "id":"image_2_xs"
+    },
+    {
+        "type":"richtext",
+        "label":"Date",
+        "id":"date",
+        "default":"<p>Design, 24 March 2024</p>"
+    },
+    {
+        "type":"text",
+        "label":"Title",
+        "id":"title",
+        "default":"Process behind creating Chintz."
+    },
+    {
+        "type":"url",
+        "label":"Link",
+        "id":"link"
+    }
+  ]
+}
+{% endschema %}
