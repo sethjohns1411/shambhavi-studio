@@ -1,5 +1,6 @@
 class multiSlider {
   constructor() {
+    this.slider = null;
     this.init();
   }
 
@@ -23,16 +24,14 @@ class multiSlider {
   
           // Log to confirm correct data-year attribute
           console.log("Selected year:", collIDMenu);
-  
-          // Update collection divs based on the selected menu item
-          collectionDivs.forEach((item) => {
-            item.classList.remove("active"); // Remove active class from all items
-  
-            // Add active class if the div matches the selected data-year
-            if (item.classList.contains(collIDMenu)) {
-              item.classList.add("active");
-            }
-          });
+          let value = parseInt(ele.dataset.year) - 1;
+          this.slider.slideToLoop(value)
+          // if(value > (menuSwitchDivs.length - 1)){
+          //   this.slider.slideTo(value - menuSwitchDivs.length)	
+          // }else{
+          //   this.slider.slideTo(value)	
+          // }
+
         });
       });
     } else {
@@ -45,11 +44,11 @@ class multiSlider {
     if(sliderContainers.length > 0){
       sliderContainers.forEach((ele) => {
         const sliderWrapper = ele.querySelector(".myMultiSwiper");
-         new Swiper(sliderWrapper, {
+        this.slider = new Swiper(sliderWrapper, {
             slidesPerView: 1.2,
             spaceBetween: 13,
             centeredSlides: true,
-            initialSlide: 1,
+            initialSlide: 0,
             loop: true, 
             breakpoints: {
               // For screens smaller than 768px (mobile)
@@ -60,6 +59,7 @@ class multiSlider {
             }
           });
       })
+      window.slider = this.slider
     }  
 }
  

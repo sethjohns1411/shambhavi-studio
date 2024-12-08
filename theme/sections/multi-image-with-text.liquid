@@ -85,13 +85,16 @@
                   style="--animation-order: {{ forloop.index }};"
                 {% endif %}
               >
+                <div>
+                <div class="first-heading-multi-col">
                 <span>{{ block.settings.heading }}</span>
-                
+                </div>
                 {% if block.settings.heading_second != blank %}
                   <div class="second-heading-richtext {{ block.settings.second_heading_size }}{% if block.settings.font_lora %} text-lora{% endif %}">
                     <span class="second-heading-text">{{ block.settings.heading_second }}</span>
                   </div>
                 {% endif %}
+              </div>
               </h2>
             {%- when 'caption' -%}
               <p

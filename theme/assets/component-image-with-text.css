@@ -113,6 +113,12 @@
   box-shadow: var(--text-boxes-shadow-horizontal-offset) var(--text-boxes-shadow-vertical-offset)
     var(--text-boxes-shadow-blur-radius) rgba(var(--color-shadow), var(--text-boxes-shadow-opacity));
 }
+.template-page-aboutus .image-with-text__text{
+  max-width: 310px;
+}
+.template-page-aboutus .image-with-text__text a{
+  color: #9F886A;
+}
 
 .image-with-text .image-with-text__media-item > * {
   border-radius: var(--media-radius);
@@ -382,12 +388,13 @@
 }
 
 .image-with-text__content .image-with-text__text + .button {
-  margin-top: 2.2rem;
+  margin-top: 2.5rem;
 }
 
 .image-with-text__content .button.button--underline {
   text-decoration: underline;
   text-underline-offset: .3rem;
+  color: #404040;
 }
 
 .image-with-text__heading {

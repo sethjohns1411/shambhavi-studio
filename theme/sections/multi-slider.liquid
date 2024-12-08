@@ -20,12 +20,12 @@
     <div class="multi-slider-wrapper">
       <div class="year-wrapper">
         <div class="year-name">
-            {% assign is_first_active_set = false %}
-            {% for i in (1..7) %}
-              {% assign year_name = 'year_name_' | append: i %}
-              {% if section.settings[year_name] != blank %}
-                <div class="year{% if is_first_active_set == false %} active{% assign is_first_active_set = true %}{% endif %}" data-year="{{ section.settings[year_name] }}">
-                  <span>{{ section.settings[year_name] }}</span>
+            {% assign count = 0 %}
+            {% for block in section.blocks %}
+              {% if block.settings.year and block.settings.image_1 != blank %}
+                {% assign count = count | plus:1 %}
+                <div class="year{% if count == 1 %} active{% endif %}" data-year="{{ forloop.index }}">
+                  <span>{{ block.settings.year }}</span>
                 </div>
               {% endif %}
             {% endfor %}            
@@ -34,14 +34,13 @@
       <div class="slider-wrapper">
         <div class="slider-wrapper-container">
          {% assign is_first_block_active_set = false %}
-          {% for block in section.blocks %}
+         
             <div class="multi-wrappers {{ block.settings.year }} {% if is_first_block_active_set == false %} active{% assign is_first_block_active_set = true %}{% endif %}">
               <div class="swiper myMultiSwiper">
                 <div class="multi-slider swiper-wrapper">
-                  {% for j in (1..7) %}
-                    {% assign image_field = 'image_' | append: j %}
-                    {% if block.settings[image_field] != blank %}
-                      <div class="swiper-slide">
+                  {% for block in section.blocks %}
+                    {% if block.settings.year and block.settings.image_1 != blank %}
+                      <div class="swiper-slide" data-slide="{{ forloop.index }}">
                         <div class=" image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }}">
                           <div
                             class="
@@ -69,7 +68,7 @@
                           {% endcapture %}
                             {% endif %}
                             {{
-                              block.settings[image_field]
+                              block.settings.image_1
                               | image_url: width: 1500
                               | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
                             }}
@@ -81,7 +80,6 @@
                 </div>
               </div>
             </div>
-          {% endfor %}
         </div>
       </div>
     </div>
@@ -123,13 +121,6 @@
       "label": "t:sections.image-with-text.settings.desktop_image_width.label",
       "info": "t:sections.image-with-text.settings.desktop_image_width.info"
     },
-    { "type": "text", "id": "year_name_1", "label": "Year name 1" },
-    { "type": "text", "id": "year_name_2", "label": "Year name 2" },
-    { "type": "text", "id": "year_name_3", "label": "Year name 3" },
-    { "type": "text", "id": "year_name_4", "label": "Year name 4" },
-    { "type": "text", "id": "year_name_5", "label": "Year name 5" },
-    { "type": "text", "id": "year_name_6", "label": "Year name 6" },
-    { "type": "text", "id": "year_name_7", "label": "Year name 7" },
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
@@ -182,12 +173,6 @@
       "settings": [
         { "type": "text", "id": "year", "label": "Year" },
         { "type": "image_picker", "id": "image_1", "label": "Image 1" },
-        { "type": "image_picker", "id": "image_2", "label": "Image 2" },
-        { "type": "image_picker", "id": "image_3", "label": "Image 3" },
-        { "type": "image_picker", "id": "image_4", "label": "Image 4" },
-        { "type": "image_picker", "id": "image_5", "label": "Image 5" },
-        { "type": "image_picker", "id": "image_6", "label": "Image 6" },
-        { "type": "image_picker", "id": "image_7", "label": "Image 7" }
       ]
     }
   ],

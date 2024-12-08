@@ -133,6 +133,9 @@
                   class="button button--{{ block.settings.button_style }}"
                 >
                   {{ block.settings.button_label | escape }}
+                  {% if block.settings.button_arrow %}
+                    <span class="arrow">                </span>
+                  {% endif %}
                 </a>
               {%- endif -%}
             </div>
@@ -533,6 +536,11 @@
           "id": "button_label",
           "default": "t:sections.multirow.blocks.row.settings.button_label.default",
           "label": "t:sections.multirow.blocks.row.settings.button_label.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_arrow",
+          "label": "Show button arrow"
         },
         {
           "type": "url",
