@@ -1077,7 +1077,9 @@ class SlideshowComponent extends SliderComponent {
 
     const shouldMoveNext = (button === 'next' && !isLastSlide) || (button === 'previous' && isFirstSlide);
     const direction = shouldMoveNext ? 'next' : 'previous';
-
+    if(!currentSlide || !nextSlide){
+      return
+    }
     currentSlide.classList.add(`${animationClassOut}-${direction}`);
     nextSlide.classList.add(`${animationClassIn}-${direction}`);
 
