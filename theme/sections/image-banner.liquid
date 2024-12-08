@@ -116,9 +116,29 @@
     </div>
   {%- endif -%}
   <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-    <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+    <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient"
+      style="--banner-box-width: {{section.settings.box_width }}px;"
+    >
       {%- for block in section.blocks -%}
         {%- case block.type -%}
+        {%- when 'image' -%}
+          {% if block.settings.image != blank %}
+            <div class="banner__media-wrapper" 
+              {{ block.shopify_attributes }}
+              style="--banner-block_media--width: {{ block.settings.image_width }}px; --banner-block_media--width-mobile: {{ block.settings.image_width_mobile }}px;"
+            >
+              {% liquid
+                assign width = block.settings.image_width
+              %}
+              {{
+                block.settings.image
+                | image_url: width: width
+                | image_tag:
+                  widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                  sizes: sizes
+              }}
+            </div>
+          {% endif %}
           {%- when 'heading' -%}
             <h2
               class="banner__heading inline-richtext {{ block.settings.heading_size }}"
@@ -271,6 +291,16 @@
       "label": "t:sections.image-banner.settings.show_text_box.label"
     },
     {
+      "type": "range",
+      "id": "box_width",
+      "min": 0,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "label": "Box width",
+      "default": 890
+    },
+    {
       "type": "select",
       "id": "desktop_content_alignment",
       "options": [
@@ -362,6 +392,38 @@
     }
   ],
   "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 0,
+          "max": 600,
+          "step": 10,
+          "unit": "px",
+          "label": "Image width",
+          "default": 70
+        },
+        {
+          "type": "range",
+          "id": "image_width_mobile",
+          "min": 0,
+          "max": 600,
+          "step": 10,
+          "unit": "px",
+          "label": "Mobile image width",
+          "default": 50
+        }
+      ]
+    },
     {
       "type": "heading",
       "name": "t:sections.image-banner.blocks.heading.name",
