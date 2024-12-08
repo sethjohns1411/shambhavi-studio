@@ -4049,7 +4049,7 @@ details-disclosure > details {
 
 .blog-tags{
   background: #FAF8F5;
-  margin: 66px 0 70px;
+  margin: 66px 0 34px
   display: flex;
   justify-content: center;
   padding: 14px 0 0;
@@ -4073,6 +4073,11 @@ details-disclosure > details {
   text-decoration: none;
   padding-bottom: 14px;
   display: block;
+}
+@media(max-width:767px){
+  .blog-tags ul li a{ 
+  padding-bottom: 10px;
+  }
 }
 .blog-tags ul li a.active{
   font-weight: bold; 
