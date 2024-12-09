@@ -123,7 +123,34 @@
           {% endcase %}
         {%- endfor -%}
       </div>
+
+      {% if section.settings.image != blank %}
+        <div class="gallery-tag-image">
+          {{
+            section.settings.image
+            | image_url: width: 1500
+            | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority,
+            alt: section.settings.image.alt,
+            class: ''
+          }}
+        </div>
+      {% endif %}
     </div>
+    {%- if section.settings.footer_button_label != blank -%}
+      <div class="button-wrapper">
+        <a
+          {% if section.settings.footer_button_link == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ section.settings.footer_button_link }}"
+          {% endif %}
+          class="button button--{{ section.settings.footer_button_style }}"
+          {{ block.shopify_attributes }}
+        >
+          {{ section.settings.footer_button_label | escape }}
+        </a>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -136,11 +163,6 @@
     "groups": ["header", "footer"]
   },
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "title_icon",
-      "label": "Title icon"
-    },
     {
       "type": "inline_richtext",
       "id": "title",
@@ -205,6 +227,46 @@
       "type": "url",
       "id": "button_link",
       "label": "t:sections.gallery.settings.button_link.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Footer button"
+    },
+    {
+      "type": "text",
+      "id": "footer_button_label",
+      "default": "ENQUIRE FOR TRADE ACCOUNT AND SAMPLES",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "footer_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "footer_button_style",
+      "label": "t:sections.all.button_style.label",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button_style.option_1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button_style.option_2.label"
+        },
+        {
+          "value": "underline",
+          "label": "t:sections.all.button_style.option_3.label"
+        }
+      ],
+      "default": "underline"
     },
     {
       "type": "color_scheme",
