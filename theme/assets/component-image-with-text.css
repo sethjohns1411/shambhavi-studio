@@ -114,7 +114,7 @@
     var(--text-boxes-shadow-blur-radius) rgba(var(--color-shadow), var(--text-boxes-shadow-opacity));
 }
 .template-page-aboutus .image-with-text__text{
-  max-width: 310px;
+  /* max-width: 310px; */
 }
 .template-page-aboutus .image-with-text__text a{
   color: #9F886A;
