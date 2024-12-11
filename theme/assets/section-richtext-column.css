@@ -9,7 +9,7 @@
 
 .richtext-column:not(.richtext-column--full-width) .richtext-column__wrapper {
   margin: auto;
-  width: calc(100% - 8rem / var(--font-body-scale));
+  width: 100%;
 }
 
 .richtext-column__heading {
@@ -24,6 +24,10 @@
 @media screen and (max-width: 749px) {
   .richtext-column .richtext-column__card {
     text-align: center;
+  }
+
+  .template-page-residency-program .richtext-column .richtext-column__card {
+    text-align: left;
   }
 
   .richtext-column__heading {
@@ -62,6 +66,31 @@
   .richtext-column__wrapper--right {
     justify-content: flex-end;
   }
+
+  .richtext-column__wrapper--space-between {
+    justify-content: space-between;
+  }
+}
+
+.richtext-column .richtext-column__text ul {
+  padding-left: 0rem;
+  list-style: none;
+}
+
+.richtext-column .richtext-column__text ul li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.richtext-column .richtext-column__text ul li:before {
+  position: absolute;
+  content: "";
+  top: 1.2rem;
+  left: 0rem;
+  width: .5rem;
+  height: .5rem;
+  background: rgba(var(--color-foreground), 1);
+  border-radius: 50%;
 }
 
 .richtext-column * {
@@ -106,5 +135,39 @@
 
   .template-page-our-team .richtext-column__buttons {
     margin-top: 3rem;
+  }
+}
+
+/* Residency program */
+.template-page-residency-program .richtext-column .richtext-column__wrapper--space-between {
+  justify-content: center;
+}
+
+.template-page-residency-program .richtext-column .richtext-column__wrapper--space-between .richtext-column__heading {
+  font-size: 4rem;
+  line-height: 3.2rem;
+  font-family: var(--font-lora-body-family) !important;
+  font-style: var(--font-lora-body-style);
+  font-weight: var(--font-lora-body-weight);
+}
+
+.template-page-residency-program .richtext-column .richtext-column__wrapper--space-between .richtext-column__card {
+  width: 100%;
+}
+
+.richtext-column .richtext-column__text ul li strong {
+  font-family: "Outfit-Medium" !important;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 749px) {
+  .template-page-residency-program .richtext-column .richtext-column__wrapper--space-between .richtext-column__heading {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .template-page-residency-program .richtext-column .richtext-column__wrapper--space-between .richtext-column-content {
+    max-width: 40rem;
   }
 }

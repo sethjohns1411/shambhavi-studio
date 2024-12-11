@@ -1,0 +1,97 @@
+.media-slider {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  z-index: auto;
+  isolation: isolate;
+}
+
+/* Needed for gradient continuity with or without animation, the transform scopes the gradient to its container which happens already when animation are turned on */
+
+.media-slider__media.animate--zoom-in {
+  clip-path: inset(0px);
+}
+
+.media-slider__media.animate--zoom-in > img:not(.zoom):not(.deferred-media__poster-button),
+.media-slider__media.animate--zoom-in > svg:not(.zoom):not(.deferred-media__poster-button) {
+  position: fixed;
+  height: 100vh;
+}
+
+@media screen and (max-width: 749px) {
+  .media-slider--small.media-slider--mobile-bottom:not(.media-slider--adapt) .media-slider__media,
+  .media-slider--small.media-slider--stacked:not(.media-slider--mobile-bottom):not(.media-slider--adapt) > .media-slider__media {
+    height: 28rem;
+  }
+
+  .media-slider--medium.media-slider--mobile-bottom:not(.media-slider--adapt) .media-slider__media,
+  .media-slider--medium.media-slider--stacked:not(.media-slider--mobile-bottom):not(.media-slider--adapt) > .media-slider__media {
+    height: 34rem;
+  }
+
+  .media-slider--large.media-slider--mobile-bottom:not(.media-slider--adapt) .media-slider__media,
+  .media-slider--large.media-slider--stacked:not(.media-slider--mobile-bottom):not(.media-slider--adapt) > .media-slider__media {
+    height: 39rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .media-slider--small:not(.media-slider--adapt) {
+    min-height: 38rem;
+    height: 38rem;
+  }
+
+  .media-slider--medium:not(.media-slider--adapt) {
+    min-height: 50rem;
+    height: 50rem;
+  }
+
+  .media-slider--large:not(.media-slider--adapt) {
+    min-height: 62rem;
+    height: 62rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .media-slider--small:not(.media-slider--adapt) {
+    min-height: 25rem;
+    height: 25rem;
+  }
+
+  .media-slider--medium:not(.media-slider--adapt) {
+    min-height: 27.5rem;
+    height: 27.5rem;
+  }
+
+  .media-slider--large:not(.media-slider--adapt) {
+    min-height: 36.5rem;
+    height: 36.5rem;
+  }
+}
+
+.media-slider__media {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 750px) {
+  .media-slider__media {
+    height: 100%;
+  }
+}
+
+.media-slider--adapt,
+.media-slider--adapt_image.media-slider--mobile-bottom .media-slider__media:not(.placeholder) {
+  height: auto;
+}
+
+@media screen and (min-width: 750px) {
+  .slideshow--placeholder.media-slider--adapt_image {
+    height: 56rem;
+  }
+}
