@@ -1,0 +1,196 @@
+.application-status {
+  z-index: 1;
+}
+
+.application-status__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.application-status:not(.application-status--full-width) .application-status__wrapper {
+  margin: auto;
+  width: 100%;
+}
+
+.application-status__heading {
+  margin: 0rem;
+}
+
+.application-status .application-status__wrapper--space-between {
+  justify-content: center;
+}
+
+.application-status .application-status__wrapper--space-between .application-status__heading {
+  font-size: 4rem;
+  line-height: 3.2rem;
+  font-family: var(--font-lora-body-family) !important;
+  font-style: var(--font-lora-body-style);
+  font-weight: var(--font-lora-body-weight);
+}
+
+.application-status .application-status__wrapper--space-between .application-status__card {
+  width: 100%;
+}
+
+.application-status .application-status__text ul li strong {
+  font-family: "Outfit-Medium" !important;
+  font-weight: 500;
+}
+
+.application-status__caption {
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  margin: 0rem 0rem 1.7rem 0rem;
+}
+
+.application-status .application-status__text {
+  position: relative;
+}
+
+.application-status .application-status__text::before {
+  position: absolute;
+  content: "";
+  top: 10px;
+  left: 6px;
+  width: 1px;
+  height: 70%;
+  border-right: 1px dashed #BF7E66;
+}
+
+.application-status .application-status__text h4 {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  margin: 0rem;
+}
+
+.application-status .application-status__text p {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  margin: 0rem;
+}
+
+.application-status .application-status__text ul + * + ul {
+  padding-top: 4.5rem;
+}
+
+.application-status .application-status__text ul {
+  position: relative;
+  list-style: none;
+  padding-left: 0rem;
+  margin: 0rem;
+}
+
+.application-status .application-status__text ul li {
+  position: relative;
+  padding-left: 2.8rem;
+}
+
+.application-status .application-status__text ul li:not(:last-child):before {
+  position: absolute;
+  content: "";
+  top: 0.4rem;
+  left: 0rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: #BF7E66;
+  border-radius: 50%;
+}
+
+.application-status__buttons .button--primary {
+  background-color: var(--color-primary);
+}
+
+.application-status__buttons .button--primary:after {
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) var(--color-primary),0 0 0 var(--buttons-border-width) var(--color-primary);
+}
+
+@media screen and (max-width: 749px) {
+  .application-status .application-status__wrapper--space-between .application-status__heading {
+    font-size: 2rem;
+    line-height: 2.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .application-status-content {
+    margin-top: 1.5rem;
+  }
+
+  .application-status__card.left .application-status__buttons {
+    gap: 0.5rem;
+  }
+
+  .application-status__card.left .application-status__buttons .button {
+    flex: 1;
+    padding-inline: 1rem;
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .application-status__card {
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+  
+  .application-status[data-row-view="true"] .application-status-heading-wrapper {
+    display: flex;
+    flex: 0 0 25%;
+  }
+
+  .application-status__wrapper {
+    width: 100%;
+  }
+
+  .application-status__wrapper--left {
+    justify-content: flex-start;
+  }
+
+  .application-status__wrapper--right {
+    justify-content: flex-end;
+  }
+
+  .application-status__wrapper--space-between {
+    justify-content: space-between;
+  }
+}
+
+.application-status * {
+  overflow-wrap: break-word;
+}
+
+.application-status > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.application-status > * + * {
+  margin-top: 2rem;
+}
+
+.application-status > * + a {
+  margin-top: 3rem;
+}
+
+.application-status__buttons {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  word-break: break-word;
+  margin-top: 3rem;
+}
+
+.application-status__card.left .application-status__buttons {
+  justify-content: flex-start;
+}
+
+.application-status__card.right .application-status__buttons {
+  justify-content: flex-end;
+}
+
+@media screen and (min-width: 990px) {
+  .application-status .application-status__wrapper--space-between .application-status-content {
+    max-width: 40rem;
+  }
+}
