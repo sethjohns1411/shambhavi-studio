@@ -190,6 +190,20 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   text-align: center;
 }
 
+@media screen and (max-width: 749px) {
+  .text-left-mobile {
+    text-align: left;
+  }
+  
+  .text-right-mobile {
+    text-align: right;
+  }
+  
+  .text-center-mobile {
+    text-align: center;
+  }
+}
+
 .isolate {
   position: relative;
   z-index: 0;

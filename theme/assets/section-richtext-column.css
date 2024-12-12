@@ -166,6 +166,16 @@
   }
 }
 
+@media screen and (min-width: 750px) and (max-width: 990px) {
+  .template-page-residency-program .richtext-column[data-row-view="true"] .richtext-column-heading-wrapper {
+    flex: 0 0 35%;
+  }
+
+  .template-page-residency-program .application-status[data-row-view=true] .application-status-heading-wrapper {
+    flex: 0 0 35%;
+  }
+}
+
 @media screen and (min-width: 990px) {
   .template-page-residency-program .richtext-column .richtext-column__wrapper--space-between .richtext-column-content {
     max-width: 40rem;

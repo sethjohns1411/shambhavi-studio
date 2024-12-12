@@ -523,6 +523,12 @@
   }
 }
 
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .template-page-residency-program .image-with-text .image-with-text__grid.grid--3-col-tablet .grid__item {
+    width: calc(50% - var(--grid-desktop-horizontal-spacing)* 2 / 3);
+    max-width: calc(50% - var(--grid-desktop-horizontal-spacing)* 2 / 3);
+  }
+}
 
 @media screen and (max-width: 749px) {
   .template-page-residency-program .image-with-text .image-with-text__grid--reverse {
