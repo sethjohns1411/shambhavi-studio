@@ -16,10 +16,22 @@
       max-width: {{ section.settings.content_box_width }}px;
     }
   }
+  @media screen and (max-width: 749px) {
+    .section-{{ section.id }}-padding .rich-text[data-bottom-seprator="true"] {
+      padding-bottom: 0rem;
+    }
+
+    .section-{{ section.id }}-padding .rich-text[data-bottom-seprator="true"] .rich-text__wrapper .rich-text__blocks {
+      border-bottom: 1px solid #404040;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
 {%- endstyle -%}
 
 <div class="section-{{ section.id }} isolate{% unless section.settings.full_width %} page-width{% endunless %}">
-  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding"
+    data-bottom-seprator="{% if section.settings.enable_bottom_seprator %}true{% else %}false{% endif %}"
+  >
     <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
         {%- for block in section.blocks -%}
@@ -119,6 +131,12 @@
       "id": "full_width",
       "default": true,
       "label": "t:sections.rich-text.settings.full_width.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_bottom_seprator",
+      "label": "Enable bottom seprator",
+      "default": false
     },
     {
       "type": "select",

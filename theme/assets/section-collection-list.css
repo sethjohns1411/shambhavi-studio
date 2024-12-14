@@ -19,6 +19,10 @@
   margin-top: 6rem;
 }
 
+.section-collection-list .collection-list-wrapper .button-wrapper .button {
+  font-family: "Outfit-Medium" !important;
+}
+
 .section-collection-list .collection-list-wrapper .collection-list .card--media .card__inner.shape--round {
   background: transparent;
 }

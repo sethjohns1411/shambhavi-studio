@@ -134,7 +134,7 @@
                 >
                   {{ block.settings.button_label | escape }}
                   {% if block.settings.button_arrow %}
-                    <span class="arrow">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+                    {% render 'icon-right-arrow' %}
                   {% endif %}
                 </a>
               {%- endif -%}

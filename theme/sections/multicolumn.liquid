@@ -127,7 +127,9 @@
               <div class="multicolumn-card__info">
                 {% if block.settings.image_icon != blank %}
                   <div class="icon-image-wrapper"
-                  style="--icon-image-width: {{ block.settings.icon_image_width }}px;"
+                  style="--icon-image-width: {{ block.settings.icon_image_width }}px;
+                    --icon-image-height: {{ block.settings.icon_image_height }}px;
+                  "
                   >
                     {% liquid
                       assign width = block.settings.icon_image_width

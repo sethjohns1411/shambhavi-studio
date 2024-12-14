@@ -38,7 +38,7 @@
             {{ block.shopify_attributes }}
           >
             {%- if section.blocks.first.settings.text != blank -%}
-              <div class="content-slider__message{% if block.settings.font_lora %} text-lora{% endif %} text-{{ section.settings.text_alignment }} h3">
+              <div class="content-slider__message{% if section.blocks.first.settings.font_lora %} text-lora{% endif %} text-{{ section.settings.text_alignment }} h3">
                 {{ section.blocks.first.settings.text }}
               </div>
             {%- endif -%}

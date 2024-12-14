@@ -130,7 +130,8 @@ slideshow-component:not(.page-width) .slider-buttons {
 }
 
 .slideshow__controls .slider-counter__link--dots .dot {
-  border: 0.1rem solid rgba(var(--color-background), 0.5);
+  background-color: rgb(var(--color-background), .5);
+  border: 0rem;
 }
 
 .slideshow__controls .slider-counter__link--active.slider-counter__link--dots .dot {

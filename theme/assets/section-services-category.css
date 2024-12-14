@@ -84,6 +84,11 @@
 }
 
 @media screen and (max-width: 749px) {
+  .services-category .title.h5 {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    color: #000000;
+  }
   .services-category .title-wrapper-with-link {
     margin-bottom: 3rem;
   }
