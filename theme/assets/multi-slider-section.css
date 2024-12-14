@@ -9,6 +9,11 @@
   overflow-x: auto;
   width: 100%;
   gap: 4.5rem;  
+  padding-inline: 1.5rem;
+}
+
+.multi-slider-wrapper .year-wrapper .year-name::-webkit-scrollbar {
+  display: none;
 }
 
 .multi-slider-wrapper .year-wrapper .year-name .year {
@@ -19,15 +24,9 @@
   color: #1A1A1A;
 }
 
-.multi-slider-wrapper .year-wrapper .year-name .year:first-child {
-  margin-left: 1.5rem;
-}
-
-.multi-slider-wrapper .year-wrapper .year-name .year:last-child {
-  margin-right: 1.5rem;
-}
-
 .multi-slider-wrapper .year-wrapper .year-name .year.active span {
+  font-weight: 600;
+  font-family: 'Outfit-SemiBold' !important;
   text-decoration: underline;
   text-underline-offset: 5px;
   color: var(--color-primary)
@@ -71,5 +70,9 @@
 
   .multi-slider-wrapper  .image-with-text__media--large {
     height: 43.5rem;
+  }
+
+  .multi-slider-wrapper .year-wrapper .year-name {
+    justify-content: flex-start;
   }
 }

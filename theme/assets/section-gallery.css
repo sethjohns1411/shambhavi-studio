@@ -45,7 +45,6 @@
 .gallery .gallery-list-wrapper .gallery-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 20vw;
   gap: 2rem;
 }
 

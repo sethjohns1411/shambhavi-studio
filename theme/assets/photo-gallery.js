@@ -42,7 +42,6 @@ class PhotoGallery {
           }
           galleryContainers.forEach((item) => item.classList.add('hidden'))
           const filteredContainers = Array.from(galleryContainers).filter(item => item.dataset.name == collIDMenu);
-debugger;
           filteredContainers.forEach((item, i) => {
             if (i + 1 <= max) {
               item.classList.remove('hidden');

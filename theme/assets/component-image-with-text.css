@@ -396,11 +396,22 @@
   text-underline-offset: .3rem;
   color: #404040;
 }
-.image-with-text__text .arrow svg{
-  width: 15px;
-  transform: rotate(-90deg);
+
+.image-with-text__content .button .icon-right-arrow {
+  width: 12px;
+  height: auto;
   margin-left: 20px;
+  color: var(--color-black);
 }
+
+.image-with-text__content .button.button--underline:hover {
+  color: var(--color-primary);
+}
+
+.image-with-text__content .button.button--underline:hover .icon-right-arrow {
+  color: var(--color-primary);
+}
+
 .image-with-text__heading {
   margin-bottom: 0;
 }
@@ -427,6 +438,10 @@
 
   .image-with-text__image-media {
     max-width: var(--mobile-image-width);
+  }
+
+  .image-with-text__content .button .icon-right-arrow {
+    margin-left: 1rem;
   }
 }
 

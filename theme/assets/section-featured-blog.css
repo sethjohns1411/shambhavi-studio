@@ -18,6 +18,12 @@
   color: var(--color-black);
 }
 
+.blog .title-wrapper-with-link .blog__title {
+  font-family: "Outfit-Regular" !important;
+  font-weight: 400;
+  color: var(--color-black);
+}
+
 .blog__posts.articles-wrapper {
   margin-bottom: 1rem;
 }
@@ -35,6 +41,12 @@
 @media screen and (max-width: 749px) {
   .blog__post.article {
     width: calc(100% - 3rem - var(--grid-mobile-horizontal-spacing));
+  }
+
+  .blog .title-wrapper-with-link .blog__title.h5 {
+    font-family: "Outfit-Regular" !important;
+    font-size: calc(var(--font-heading-scale)* 1.6rem);
+    line-height: 2rem;
   }
 }
 

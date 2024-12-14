@@ -3,11 +3,18 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
 {%- style -%}
-#Slider-{{ section.id }} .banner__text p{
-  font-size: 18px;
-}
+  #Slider-{{ section.id }} .banner__text p {
+    font-size: 18px;
+    margin-top: 0rem;
+  }
+
+  #Slider-{{ section.id }} .banner__text p:not(:last-child) {
+    margin-bottom: 0.3rem;
+  }
 {%- endstyle -%}
+
 {%- if section.settings.slide_height == 'adapt_image' and section.blocks.first.settings.image != blank or section.blocks.first.settings.image_mobile != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
@@ -229,7 +236,7 @@
             {%- endif -%}
             {%- if block.settings.subheading != blank -%}
               <div class="banner__text rte" {{ block.shopify_attributes }}>
-                <p>{{ block.settings.subheading }}</p>
+                {{ block.settings.subheading }}
               </div>
             {%- endif -%}
             {%- if block.settings.button_label != blank -%}
@@ -500,7 +507,7 @@
           "label": "t:sections.all.heading_size.label"
         },
         {
-          "type": "inline_richtext",
+          "type": "richtext",
           "id": "subheading",
           "default": "t:sections.slideshow.blocks.image.settings.subheading.default",
           "label": "t:sections.slideshow.blocks.image.settings.subheading.label"
@@ -754,7 +761,7 @@
           "label": "t:sections.all.heading_size.label"
         },
         {
-          "type": "inline_richtext",
+          "type": "richtext",
           "id": "subheading",
           "default": "t:sections.slideshow.blocks.image.settings.subheading.default",
           "label": "t:sections.slideshow.blocks.image.settings.subheading.label"

@@ -4645,7 +4645,7 @@
             },
             "subheading": {
               "label": "Subheading",
-              "default": "Tell your brand's story through images"
+              "default": "<p>Caption lorem ipsum</p>"
             },
             "button_label": {
               "label": "Button label",

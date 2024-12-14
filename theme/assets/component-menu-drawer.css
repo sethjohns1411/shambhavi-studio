@@ -113,7 +113,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer summary.menu-drawer__menu-item {
-  padding-right: 5.2rem;
+  padding-right: 6rem;
 }
 
 .menu-drawer__menu-item--active,
@@ -144,9 +144,15 @@ details[open].menu-opening > .menu-drawer__submenu {
 .menu-drawer__menu-item > .svg-wrapper {
   width: 15px;
   position: absolute;
-  right: 3rem;
+  right: 4rem;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.menu-drawer__menu-item > .svg-wrapper .icon-caret {
+  width: 1.5rem;
+  height: 0.9rem;
+  right: auto;
 }
 
 .js .menu-drawer__submenu {

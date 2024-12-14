@@ -24,7 +24,7 @@
 
 .footer .footer-legal-wrapper {
   position: absolute;
-  bottom: 1.3rem;
+  bottom: 1.5rem;
   right: 3.5rem;
 }
 
@@ -38,13 +38,13 @@
 }
 
 .footer .footer-legal-wrapper .footer-legal-item {
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: normal;
 }
 
 .footer .footer-legal-wrapper .footer-legal-item p {
   margin: 0rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: normal;
 }
 
@@ -89,7 +89,7 @@
   }
 
   .footer .footer-legal-wrapper {
-    bottom: 0.6rem;
+    bottom: 0.5rem;
     left: 50%;
     right: auto;
     transform: translateX(-50%);
