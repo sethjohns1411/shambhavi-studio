@@ -77,3 +77,14 @@
     padding-left: 4.2rem;
   }
 }
+.contact-us .contact-us__item .contact-us-card .contact-us__text{
+  margin-bottom: 35px;
+}
+.contact-us .contact-us__item .contact-us-card .button span{
+  display: flex;
+  margin-left: 15px;
+}
+.contact-us .contact-us__item .contact-us-card .button span svg{
+  width: 25px;
+  height: 25px;
+}

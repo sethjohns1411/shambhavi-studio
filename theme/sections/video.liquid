@@ -57,6 +57,10 @@
       {% if poster != null %}
         style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
       {% endif %}
+      data-autoplay= "{{section.settings.enable_autoplay}}"
+      data-loop="{{section.settings.enable_video_looping}}"
+      data-controls="true"
+      data-muted="{{section.settings.enable_mute}}"
     >
       <button
         id="Deferred-Poster-Modal-{{ video_id }}"

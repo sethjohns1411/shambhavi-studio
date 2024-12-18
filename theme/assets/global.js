@@ -743,6 +743,10 @@ class DeferredMedia extends HTMLElement {
     super();
     const poster = this.querySelector('[id^="Deferred-Poster-"]');
     if (!poster) return;
+    if(poster.closest('deferred-media').dataset.autoplay == "true"){
+      // poster.addEventListener('click', this.loadContent.bind(this));
+      this.loadContent(true);
+    }
     poster.addEventListener('click', this.loadContent.bind(this));
   }
 
@@ -915,14 +919,13 @@ class SlideshowComponent extends SliderComponent {
     this.addEventListener('mouseleave', this.focusOutHandling.bind(this));
     this.addEventListener('focusin', this.focusInHandling.bind(this));
     this.addEventListener('focusout', this.focusOutHandling.bind(this));
-
     if (this.querySelector('.slideshow__autoplay')) {
       this.sliderAutoplayButton = this.querySelector('.slideshow__autoplay');
       this.sliderAutoplayButton.addEventListener('click', this.autoPlayToggle.bind(this));
       this.autoplayButtonIsSetToPlay = true;
       this.play();
     } else {
-      this.reducedMotion.matches || this.announcementBarArrowButtonWasClicked ? this.pause() : this.play();
+      this?.reducedMotion?.matches || this?.announcementBarArrowButtonWasClicked ? this.pause() : this.play();
     }
   }
 
@@ -1344,3 +1347,12 @@ class headerSearch{
   }
 }
 new headerSearch()
+
+let btns = document.querySelectorAll('.accordion-items details')
+btns.forEach((item)=>{
+  item.addEventListener('click',(e)=>{
+    btns.forEach((i)=> {
+      i.open = false
+    })
+  })
+})

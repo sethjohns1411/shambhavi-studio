@@ -29,6 +29,9 @@
   <div class="{% if section.settings.full_width %}page-full-width{% else %}page-width{% endif %}">
     <div class="{% if section.settings.full_width %}page-width{% else %}{% endif %}">
       <div class="content-slider__grid{% if text_slider %} content-slider__grid--3-col{% else %} content-slider__grid--2-col{% endif %}">
+       
+     
+       
         {%- if section.blocks.size == 1 -%}
           <div
             class="content-slider-component"
@@ -51,6 +54,21 @@
             aria-label="Content slider"
             style="max-width: {{ section.settings.text_container_width }}%; margin: 0 auto;"
           >
+
+            {%- if section.settings.auto_rotate -%}
+              <button
+                type="button"
+                class="slideshow__autoplay slider-button hidden {% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
+                aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
+              >
+                <span class="svg-wrapper">
+                  {{- 'icon-pause.svg' | inline_asset_content -}}
+                </span>
+                <span class="svg-wrapper">
+                  {{- 'icon-play.svg' | inline_asset_content -}}
+                </span>
+              </button>
+            {%- endif -%}
             <div class="content-slider-slider{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
               {% if settings.animations_reveal_on_scroll %}
                 data-cascade

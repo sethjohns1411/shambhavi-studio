@@ -1,0 +1,215 @@
+<!-- banner-image -->
+<div class="banner-image" id="section-{{section.id}}">
+    <div class="{% unless section.settings.full %}container{% endunless %}">
+      <div class="section-wrap">
+        <div class="img" >
+          <a class="img-link{% if section.settings.overlay  %} overlay{% endif %}" {% unless section.settings.img_link == blank %} href="{{section.settings.img_link}}" {% endunless %}>
+  
+            {%- comment -%}Tablet and Desktop image{%- endcomment -%}
+            <div class="xs-hide {{type}}">
+              {% if section.settings.image == blank %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'icon--placeholder' }}
+              {%-  else -%}
+                {%- render 'srcset',
+                      src_name:section.settings.image,
+                      src_alt:section.settings.image.alt,
+                      load_blur:true
+                      -%}
+              {% endif %}
+            </div>
+            <div class="xs-show {{type}}">
+              {% if section.settings.image_xs == blank %}
+             
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'icon--placeholder' }}
+              {%-  else -%}
+                {%- render 'srcset', 
+                      src_alt:section.settings.image.alt,
+                      src_name:section.settings.image_xs,
+                      load_blur:true -%}
+              {% endif %}
+            </div>
+          </a>
+          <div class="slide-text {{section.settings.text_alignment }}">
+            <div class="text-wrapper">
+              {% unless section.settings.slider_header == blank %}
+                <h3>{{section.settings.slider_header}}</h3>
+              {% endunless %}
+
+              {% unless section.settings.slider_subheader == blank %}
+                <h4>{{section.settings.slider_subheader}}</h4>
+              {% endunless %}
+              {% unless section.settings.slider_text == blank %}
+                <p >{{section.settings.slider_text}}</p>
+              {% endunless %}
+            
+            </div>
+          </div>
+        </div>
+  
+      </div>
+   
+    </div>
+  
+  </div>
+  
+  
+  {% schema %}
+  
+  {
+    "name": "Banner image",
+    "settings": [
+      {
+        "type": "checkbox",
+        "label": "Full-width",
+        "id": "full",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_xs",
+        "label": "Image mobile"
+      },
+      {
+        "type": "url",
+        "id": "img_link",
+        "label": "Image URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "overlay",
+        "label": "Image overlay",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "overlay_color",
+        "label": "Overlay color",
+        "default": "#000000",
+        "info": "Enable overlay first"
+      },
+      {
+        "type": "select",
+        "label": "Text alignment",
+        "id": "text_alignment",
+        "options": [
+          {
+            "label": "Left",
+            "value": "text-left"
+          },
+          {
+            "label": "Right",
+            "value": "text-right"
+          },
+          {
+            "label": "Center",
+            "value": "text-center"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "label": "Header text",
+        "id": "slider_header"
+      },
+      {
+        "type": "text",
+        "label": "SubHeader text",
+        "id": "slider_subheader"
+      },
+      {
+        "type": "textarea",
+        "label": "Text",
+        "id": "slider_text"
+      },
+      {
+        "type": "color",
+        "id": "slider_header_color",
+        "default": "#000",
+        "label": "Header text color"
+      },
+      {
+        "type": "color",
+        "id": "slider_subheader_color",
+        "default": "#000",
+        "label": "SubHeader text color"
+      },
+      {
+        "type": "color",
+        "id": "slider_text_color",
+        "default": "#000",
+        "label": "Paragraph text color"
+      },
+      {
+        "type": "range",
+        "id": "slider_header_size",
+        "label": "Header text size",
+        "unit": "px",
+        "min": 14,
+        "max": 50,
+        "step": 2,
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "slider_subheader_size",
+        "label": "SubHeader text size",
+        "unit": "px",
+        "min": 14,
+        "max": 50,
+        "step": 2,
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "slider_text_size",
+        "label": "Paragraph text size",
+        "unit": "px",
+        "min": 12,
+        "max": 42,
+        "step": 1,
+        "default": 24
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner image",
+        "category": "Image"
+      }
+    ]
+  }
+  
+  {% endschema %}
+  
+  <style>
+  
+    {% if section.settings.overlay %}
+    #section-{{section.id}} .overlay:after {
+        background-color: {{section.settings.overlay_color}};
+      }
+    {% endif %}
+    #section-{{section.id}} .section-wrap h3 {
+      color: {{section.settings.slider_header_color}};
+    }
+    #section-{{section.id}} .section-wrap h4 {
+        color: {{section.settings.slider_subheader_color}};
+      }
+    #section-{{section.id}} .section-wrap p {
+      color: {{section.settings.slider_text_color}};
+    }
+    @media(min-width:768px) {
+      #section-{{section.id}} .section-wrap h3 {
+        font-size: {{section.settings.slider_header_size}}px;
+      }
+      #section-{{section.id}} .section-wrap h4 {
+        font-size: {{section.settings.slider_subheader_size}}px;
+      }
+      #section-{{section.id}} .section-wrap p {
+        font-size: {{section.settings.slider_text_size}}px;
+      }
+    }
+  </style>

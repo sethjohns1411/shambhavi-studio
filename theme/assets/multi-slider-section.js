@@ -40,6 +40,7 @@ class multiSlider {
   }
   
   multiSlider(){
+    const menuSwitchDivs = document.querySelectorAll(".multi-slider-wrapper .year-wrapper .year-name .year");
     const sliderContainers =  document.querySelectorAll(".multi-slider-wrapper .slider-wrapper .slider-wrapper-container .multi-wrappers");
     if(sliderContainers.length > 0){
       sliderContainers.forEach((ele) => {
@@ -50,6 +51,7 @@ class multiSlider {
             centeredSlides: true,
             initialSlide: 0,
             loop: true, 
+            autoplay:true,
             breakpoints: {
               // For screens smaller than 768px (mobile)
               768: {
@@ -59,7 +61,12 @@ class multiSlider {
             }
           });
       })
-      window.slider = this.slider
+      this.slider.on('slideChange', function (e) {
+        menuSwitchDivs.forEach((item) => item.classList.remove("active"));
+        if(menuSwitchDivs[e.realIndex]){
+          menuSwitchDivs[e.realIndex].classList.add('active')
+        }
+      });
     }  
 }
  
