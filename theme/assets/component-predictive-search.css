@@ -1,7 +1,7 @@
 .predictive-search {
   display: none;
   position: absolute;
-  top: calc(100% - 1px);
+  top: calc(100% + 2rem);
   left: -0.1rem;
   border-width: var(--popup-border-width);
   border-style: solid;
@@ -102,6 +102,12 @@ predictive-search[loading] .predictive-search {
   color: rgba(var(--color-foreground), 0.7);
 }
 
+@media screen and (min-width: 750px) {
+  .predictive-search__heading {
+    margin-inline: 10.1rem;
+  }
+}
+
 predictive-search .spinner {
   width: 1.5rem;
   height: 1.5rem;
@@ -151,6 +157,12 @@ predictive-search[loading] .predictive-search__results-groups-wrapper ~ .predict
   text-align: left;
   text-decoration: none;
   width: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .predictive-search__item {
+    padding-inline: 10.1rem;
+  }
 }
 
 .predictive-search__item--link-with-thumbnail {
@@ -212,6 +224,7 @@ predictive-search[loading] .predictive-search__results-groups-wrapper ~ .predict
   .predictive-search__item--term {
     padding-top: 1rem;
     padding-bottom: 1rem;
+    padding-inline: 10.1rem;
   }
 }
 
