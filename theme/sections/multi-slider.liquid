@@ -49,7 +49,7 @@
                               media {% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}
                             "
                             {% if section.settings.height == 'adapt' %}
-                              style="padding-bottom: {{ 1 | divided_by: block.settings[image_field].aspect_ratio | times: 100 }}%;"
+                              style="padding-bottom: {{ 1 | divided_by: block.settings.image_1.aspect_ratio | times: 100 }}%;"
                             {% endif %}
                           >
                             {% if section.settings.image_behavior == 'ambient'

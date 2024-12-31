@@ -1,56 +1,78 @@
 <!-- banner-image -->
-<div class="banner-image" id="section-{{section.id}}">
-    <div class="{% unless section.settings.full %}container{% endunless %}">
-      <div class="section-wrap">
-        <div class="img" >
-          <a class="img-link{% if section.settings.overlay  %} overlay{% endif %}" {% unless section.settings.img_link == blank %} href="{{section.settings.img_link}}" {% endunless %}>
-  
-            {%- comment -%}Tablet and Desktop image{%- endcomment -%}
-            <div class="xs-hide {{type}}">
-              {% if section.settings.image == blank %}
-                {{ 'lifestyle-1' | placeholder_svg_tag: 'icon--placeholder' }}
-              {%-  else -%}
-                {%- render 'srcset',
-                      src_name:section.settings.image,
-                      src_alt:section.settings.image.alt,
-                      load_blur:true
-                      -%}
-              {% endif %}
-            </div>
-            <div class="xs-show {{type}}">
-              {% if section.settings.image_xs == blank %}
-             
-              {{ 'lifestyle-1' | placeholder_svg_tag: 'icon--placeholder' }}
-              {%-  else -%}
-                {%- render 'srcset', 
-                      src_alt:section.settings.image.alt,
-                      src_name:section.settings.image_xs,
-                      load_blur:true -%}
-              {% endif %}
-            </div>
-          </a>
-          <div class="slide-text {{section.settings.text_alignment }}">
-            <div class="text-wrapper">
-              {% unless section.settings.slider_header == blank %}
-                <h3>{{section.settings.slider_header}}</h3>
-              {% endunless %}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
 
-              {% unless section.settings.slider_subheader == blank %}
-                <h4>{{section.settings.slider_subheader}}</h4>
-              {% endunless %}
-              {% unless section.settings.slider_text == blank %}
-                <p >{{section.settings.slider_text}}</p>
-              {% endunless %}
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-{{ section.id }}.banner-image .page-width {
+      max-width: 100%;
+      padding-inline: 8.4rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }} banner-image section-{{ section.id }}-padding" id="section-{{section.id}}">
+  <div class="{% if section.settings.full_width %}page-full-width{% else %}page-width{% endif %}">
+    <div class="section-wrap">
+      <div class="img" >
+        {% if section.settings.img_link != blank %}
+          <a class="img-link{% if section.settings.overlay  %} overlay{% endif %}" href="{{ section.settings.img_link }}">
+        {% endif %}
+
+          {%- comment -%}Tablet and Desktop image{%- endcomment -%}
+          <div class="xs-hide {{type}}">
+            {% if section.settings.image == blank %}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'icon--placeholder' }}
+            {%-  else -%}
+              {%- render 'srcset',
+                    src_name:section.settings.image,
+                    src_alt:section.settings.image.alt,
+                    load_blur:true
+                    -%}
+            {% endif %}
+          </div>
+          <div class="xs-show {{type}}">
+            {% if section.settings.image_xs == blank %}
             
-            </div>
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'icon--placeholder' }}
+            {%-  else -%}
+              {%- render 'srcset', 
+                    src_alt:section.settings.image.alt,
+                    src_name:section.settings.image_xs,
+                    load_blur:true -%}
+            {% endif %}
+          </div>
+        {% if section.settings.img_link != blank %}
+          </a>
+        {% endif %}
+        <div class="slide-text {{section.settings.text_alignment }}">
+          <div class="text-wrapper">
+            {% unless section.settings.slider_header == blank %}
+              <h3>{{section.settings.slider_header}}</h3>
+            {% endunless %}
+
+            {% unless section.settings.slider_subheader == blank %}
+              <h4>{{section.settings.slider_subheader}}</h4>
+            {% endunless %}
+            {% unless section.settings.slider_text == blank %}
+              <p >{{section.settings.slider_text}}</p>
+            {% endunless %}
+          
           </div>
         </div>
-  
       </div>
-   
+
     </div>
   
   </div>
+</div>
   
   
   {% schema %}
@@ -60,9 +82,9 @@
     "settings": [
       {
         "type": "checkbox",
-        "label": "Full-width",
-        "id": "full",
-        "default": true
+        "id": "full_width",
+        "default": false,
+        "label": "t:sections.all.full_width.label"
       },
       {
         "type": "image_picker",
@@ -173,6 +195,50 @@
         "max": 42,
         "step": 1,
         "default": 24
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 56
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 70
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Mobile padding top",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Mobile padding bottom",
+        "default": 36
       }
     ],
     "presets": [

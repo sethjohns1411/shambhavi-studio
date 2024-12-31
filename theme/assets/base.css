@@ -2932,7 +2932,7 @@ details[open] .modal-overlay::after {
   min-height: auto;
   font-size: 20px;
   line-height: 2.5rem;
-  color: #c7c7c7;
+  color: rgb(var(--color-foreground));
   padding: 0rem 1.2rem;
   border: 0rem;
   margin: 0rem;
