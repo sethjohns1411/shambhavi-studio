@@ -554,3 +554,9 @@
     color: var(--color-primary);
   }
 }
+
+
+.template-page-philosophy-studio .banner__box .banner__text.body.h1 {
+  font-weight: normal;
+  font-family: var(--font-body-family);
+}

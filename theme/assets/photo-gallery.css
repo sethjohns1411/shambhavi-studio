@@ -1,8 +1,9 @@
 .photo-gallery .project{
   position: sticky;
-  top: 0;
+  top: var(--sticky-header-height);
   z-index: 1000;
 }
+
 .photo-gallery .project .galleryname {
   display: flex;
   flex-wrap: nowrap;

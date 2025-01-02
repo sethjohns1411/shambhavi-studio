@@ -764,6 +764,14 @@ summary::-webkit-details-marker {
   z-index: 100;
 }
 
+.disclosure-has-popup summary.facets__summary .icon-caret {
+  top: 40%;
+}
+
+.disclosure-has-popup[open]>summary .icon-caret {
+  transform: translateY(0%) rotate(180deg);
+}
+
 @media screen and (min-width: 750px) {
   .disclosure-has-popup[open] > summary + * {
     z-index: 4;
@@ -773,6 +781,10 @@ summary::-webkit-details-marker {
     z-index: 2;
   }
 }
+
+/* .disclosure-has-popup  summary .icon-caret {
+  padding-top: 5px;
+} */
 
 .placeholder-svg {
   height: 100%;

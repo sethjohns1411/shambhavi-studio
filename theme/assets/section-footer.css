@@ -428,8 +428,8 @@
 .footer-block__details-content .list-menu__item--link {
   font-size: 1.2rem;
   line-height: 1.5rem;
-  font-weight: 400;
-  font-family: "Outfit-Regular" !important;
+  /* font-weight: 400;
+  font-family: "Outfit-Regular" !important; */
   padding: 0rem;
 }
 

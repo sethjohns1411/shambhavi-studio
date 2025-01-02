@@ -129,6 +129,12 @@ details[open].menu-opening > .menu-side-drawer__submenu {
   text-transform: capitalize;
 }
 
+.menu-side-drawer__menu-item .green-dot {
+  position: relative;
+  top: -3px;
+  color: #87c192;
+}
+
 .menu-side-drawer summary.menu-side-drawer__menu-item {
   padding-right: 5.2rem;
 }
