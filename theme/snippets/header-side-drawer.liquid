@@ -132,6 +132,9 @@
                       {% endif %}
                     >
                       {{ link.title | escape }}
+                      {% if link.title contains "What’s new" %}
+                        <span class="green-dot">*</span>
+                      {% endif %}
                     </a>
                   {%- endif -%}
                 </li>
