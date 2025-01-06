@@ -48,6 +48,10 @@
   width: 100%;
 }
 
+.collection-list__item .card__heading {
+  display: block !important;
+}
+
 .collection-list__item .card__heading.text-body,
 .collection-list__item .card__heading.text-body .full-unstyled-link {
   font-size: 1.4rem;
