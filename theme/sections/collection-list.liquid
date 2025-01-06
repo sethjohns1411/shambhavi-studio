@@ -76,9 +76,10 @@
           >
             {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
             {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
-            {% render 'card-collection',
+            {% render 'card-collection-1',
               card_collection: block.settings.collection,
               featured_image: block.settings.image,
+              featured_link: block.settings.link,
               media_aspect_ratio: section.settings.image_ratio,
               image_shape: section.settings.image_shape,
               text_alignment: section.settings.text_alignment,
@@ -411,11 +412,6 @@
       "name": "t:sections.collection-list.blocks.featured_collection.name",
       "settings": [
         {
-          "type": "collection",
-          "id": "collection",
-          "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
-        },
-        {
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.all.image.label"
@@ -425,6 +421,11 @@
           "id": "title",
           "label": "t:sections.all.collection.title.label",
           "info": "t:sections.all.collection.title.info"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "URL"
         }
       ]
     }

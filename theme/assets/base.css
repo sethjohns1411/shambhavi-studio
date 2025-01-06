@@ -588,9 +588,9 @@ p a {
   margin-left: 1rem;
 }
 
-a:not([href]) {
+/* a:not([href]) {
   cursor: not-allowed;
-}
+} */
 
 .circle-divider::after {
   content: "\2022";

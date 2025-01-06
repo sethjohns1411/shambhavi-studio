@@ -352,6 +352,26 @@
                     {%- if block.settings.text != blank -%}
                       <div class="rte services-category-description">{{ block.settings.text }}</div>
                     {%- endif -%}
+                    
+                    {%- if block.settings.button_label != blank -%}
+                      <div class="service-category-link">
+                        <a
+                          {% if block.settings.button_link == blank %}
+                            role="link" aria-disabled="true"
+                          {% else %}
+                            href="{{ block.settings.button_link }}"
+                          {% endif %}
+                          class="button button--{{ block.settings.button_style }}"
+                          {{ block.shopify_attributes }}
+                        >
+                          {{ block.settings.button_label | escape }}
+                          {% if block.settings.button_arrow %}
+                            <span class="arrow">{{- 'icon-caret.svg' | inline_asset_content -}}
+                            </span>
+                          {% endif %}
+                        </a>
+                      </div>
+                    {%- endif -%}
                   </div>
                 </div>
               </div>
@@ -559,6 +579,41 @@
           "id": "text",
           "default": "t:sections.services_category.blocks.column.settings.text.default",
           "label": "t:sections.services_category.blocks.column.settings.text.label"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_arrow",
+          "label": "Show button arrow"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:sections.all.button_style.label",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:sections.all.button_style.option_1.label"
+            },
+            {
+              "value": "secondary",
+              "label": "t:sections.all.button_style.option_2.label"
+            },
+            {
+              "value": "underline",
+              "label": "t:sections.all.button_style.option_3.label"
+            }
+          ],
+          "default": "primary"
         },
         {
           "type": "header",
