@@ -30,6 +30,12 @@
   --grid-desktop-vertical-spacing: 0rem;
 }
 
+@media screen and (min-width: 990px) {
+  .services-category .services-category-card .services-category-grid[data-block-order="true"] {
+    flex-direction: row-reverse;
+  }
+}
+
 .services-category .services-category-card .services-category-media {
   width: 100%;
   height: 100%;

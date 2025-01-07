@@ -83,7 +83,7 @@
             {% endif %}
           >
             <div class="services-category-card content-container color-{{ block.settings.color_scheme_1 }} gradient">
-              <div class="services-category-grid grid grid--1-col">
+              <div class="services-category-grid grid grid--1-col" data-block-order="{% if block.settings.enable_order %}true{% else %}false{% endif %}">
                 <div class="media-grid__item grid__item">
                   <div class="services-category-media services-category-media-js swiper">
                     <div class="swiper-wrapper">
@@ -563,6 +563,12 @@
       "type": "column",
       "name": "t:sections.services_category.blocks.column.name",
       "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_order",
+          "label": "Enable block ordering",
+          "default": false
+        },
         {
           "type": "inline_richtext",
           "id": "title",
