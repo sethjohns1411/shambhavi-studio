@@ -1404,3 +1404,23 @@ if(backToTopButton){
   });
 }
 // Listen for scroll events
+let searchBtn = document.querySelector('.header__icon--search');
+if(searchBtn){
+  
+  searchBtn.addEventListener('click',(e)=>{
+    let btn1 =  document.querySelector('.menu-opening')
+    let btn = document.querySelector('.header__icon--summary');;
+    if(btn && btn1){
+      btn.click()
+    }
+  })
+  let btn = document.querySelector('.header__icon--summary');;
+  btn.addEventListener('click',(e)=>{
+    let btn1 =  document.querySelector('.header-wrapper.search-open')
+    let btn2 = document.querySelector('.header__icon-close');;
+    if(btn1 && btn2){
+      btn2.click()
+    }
+  })
+  
+}
