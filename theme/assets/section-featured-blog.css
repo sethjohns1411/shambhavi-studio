@@ -41,6 +41,8 @@
 @media screen and (max-width: 749px) {
   .blog__post.article {
     width: calc(100% - 3rem - var(--grid-mobile-horizontal-spacing));
+    width: 80%;
+
   }
 
   .blog .title-wrapper-with-link .blog__title.h5 {
