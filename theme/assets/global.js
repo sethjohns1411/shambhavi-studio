@@ -758,7 +758,7 @@ class DeferredMedia extends HTMLElement {
 
       this.setAttribute('loaded', true);
       const deferredElement = this.appendChild(content.querySelector('video, model-viewer, iframe'));
-      if (focus) deferredElement.focus();
+      // if (focus) deferredElement.focus();
       if (deferredElement.nodeName == 'VIDEO' && deferredElement.getAttribute('autoplay')) {
         // force autoplay for safari
         deferredElement.play();
@@ -1348,11 +1348,32 @@ class headerSearch{
 }
 new headerSearch()
 
-let btns = document.querySelectorAll('.accordion-items details')
-btns.forEach((item)=>{
-  item.addEventListener('click',(e)=>{
-    btns.forEach((i)=> {
-      i.open = false
-    })
-  })
-})
+// Select all accordion items
+const accordionItems = document.querySelectorAll('.accordion');
+
+// Loop through all accordion items
+accordionItems.forEach(item => {
+  // Select the summary element that controls the opening
+  const summary = item.querySelector('.summary');
+  
+  // Add click event listener to toggle the accordion
+  summary.addEventListener('click', () => {
+    // First, close all other accordions
+    accordionItems.forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.classList.remove('open');
+        otherItem.removeAttribute('open');
+      }
+    });
+    
+    // Toggle the open class and add the open attribute to the clicked item
+    const isOpen = item.classList.contains('open');
+    if (isOpen) {
+      item.classList.remove('open');
+      item.removeAttribute('open');
+    } else {
+      item.classList.add('open');
+      item.setAttribute('open', ''); // Adding open attribute
+    }
+  });
+});

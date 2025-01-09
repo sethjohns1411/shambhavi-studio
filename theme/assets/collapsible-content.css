@@ -8,7 +8,7 @@
   padding-top: 5rem;
 }
 
-.collapsible-content .accordion summary .icon-caret {
+.collapsible-content .accordion .summary .icon-caret {
   margin-top: 0.5rem;
 }
 
@@ -28,31 +28,45 @@
   font-family: 'Outfit-Medium';
 }
 
-.collapsible-content .accordion details[open] .accordion__title {
+.collapsible-content .accordion .details[open] .accordion__title {
   color: var(--color-black);
 }
-
+.accordion__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.accordion.open .accordion__content {
+  max-height: 500px; /* Adjust to your content size or use a larger value */
+  transition: max-height 0.5s ease-in;
+}
 @media screen and (min-width: 990px) { 
-  .collapsible-content .accordion summary {
+  .collapsible-content .accordion .summary {
     padding-top: 3.7rem;
     padding-bottom: 3.7rem;
   }
 
-  .collapsible-content .accordion details[open] summary {
+  .collapsible-content .accordion .details[open] .summary {
     padding-bottom: 1.6rem;
   }
 
-  .collapsible-content .accordion summary {
+  .collapsible-content .accordion .summary {
     padding-inline: 1.6rem;
   }
   
-  .collapsible-content .accordion summary .icon-caret {
+  .collapsible-content .accordion .summary .icon-caret {
     height: 1.1rem;
   }
   
   .collapsible-content .accordion .accordion__content {
-    padding-inline: 1.6rem;
+    padding-inline: 0;
+    margin-bottom: 0;
+  }
+  .collapsible-content .accordion .details[open] .accordion__content{
     margin-bottom: 3rem;
+  }
+  .collapsible-content .accordion .accordion__content p{
+      padding-inline: 1.6rem;
   }
 }
 
@@ -132,7 +146,7 @@
   transform: perspective(0);
 }
 
-.collapsible-row-layout .accordion summary,
+.collapsible-row-layout .accordion .summary,
 .collapsible-row-layout .accordion .accordion__content {
   padding: 1.5rem;
 }

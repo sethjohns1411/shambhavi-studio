@@ -120,7 +120,11 @@
     padding-right: 15.2rem;
   }
 }
-
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  .footer .page-full-width {
+    padding-left: 0;
+  }
+}
 .footer .footer__blocks-wrapper .footer-block.footer-block--menu {
   max-width: max-content;
   flex: 2;
@@ -501,6 +505,14 @@
 
 .footer-block__brand-info {
   text-align: left;
+}
+@media(min-width:1025px){
+  .footer-block__brand-info {
+    text-align: left;
+    position: absolute;
+      top: -46%;
+      left: 5%;
+  } 
 }
 
 .footer-block:only-child .footer-block__brand-info {

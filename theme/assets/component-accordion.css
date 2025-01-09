@@ -58,7 +58,7 @@
 }
 
 @media screen and (max-width: 749px) {
-  .accordion summary {
+  .accordion summary, .accordion .summary {
     padding: 4rem 0rem;
   }
 }
