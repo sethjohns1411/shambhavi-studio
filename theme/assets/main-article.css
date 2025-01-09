@@ -78,6 +78,13 @@
   color: #9F886A;
 }
 
+.article-template .article-tags {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: #9F886A;
+}
+
 .article-template .article-template__social-sharing .footer__list-social {
   justify-content: flex-start !important;
 }
@@ -96,6 +103,26 @@
 .template-article .services-category .services-category-card .swiper-pagination .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
+}
+
+.template-article .back-to-top {
+  position: fixed;
+  top: 50%;
+  right: 2rem;
+  width: 3.7rem;
+  height: 3.7rem;
+  border-radius: 50%;
+  background-color: #F0EDE7;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.template-article .back-to-top svg {
+  width: 1.4rem;
+  height: auto;
 }
 
 @media screen and (min-width: 1024px) {
