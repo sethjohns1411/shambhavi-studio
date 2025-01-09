@@ -126,6 +126,9 @@
   .services-category .services-category-card .services-category-media .swiper-pagination {
     bottom: 2rem;
   }
+  .template-article-what-s-new .services-category .services-category-list{
+      margin: 0;
+  }
 }
 
 @media screen and (min-width: 750px) {

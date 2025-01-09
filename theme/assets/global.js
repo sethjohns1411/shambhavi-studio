@@ -1377,3 +1377,30 @@ accordionItems.forEach(item => {
     }
   });
 });
+const backToTopButton = document.querySelector('.back-to-top');
+
+if(backToTopButton){
+  window.addEventListener('scroll', () => {
+    // Get the scroll position of the page
+    const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    
+    // Get the total height of the document
+    const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+  
+    // Check if the user has scrolled more than 50% of the page
+    if (scrollPosition > documentHeight / 2) {
+      backToTopButton.classList.add('show'); // Show the button
+    } else {
+      backToTopButton.classList.remove('show'); // Hide the button
+    }
+  });
+  
+  // Add click event to scroll to the top
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Smooth scroll
+    });
+  });
+}
+// Listen for scroll events

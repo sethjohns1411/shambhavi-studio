@@ -3,6 +3,24 @@
 <script src="{{ 'section-media-slider.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
+.media-slider-wrapper .slick-list,.media-slider-wrapper .slick-track{
+  height: 100%;
+}
+.media-slider-wrapper .slick-slide{
+  position: relative;
+}
+.media-slider-wrapper .slick-slide img{
+  padding: 0 5px;
+}
+
+  .media-slider-wrapper .swiper-slide {
+    width: 80%;  /* Set the width for the slides */
+    transition: transform 0.3s ease; /* Smooth transition for sliding effect */
+  }
+
+  .media-slider-wrapper .swiper-container .swiper-slide-active {
+    width: 100%;  /* Make the active slide full-width */
+  }
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top_mobile }}px;
     padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
@@ -40,6 +58,9 @@
         display: block;
       }
     }
+
+  
+
   {%- endstyle -%}
 {%- endif -%}
 
@@ -47,17 +68,16 @@
   <div class="{% if section.settings.enable_full_width %}page-full-width{% else %}page-width{% endif %}"
     role="region"
   >
-    <div class="media-slider-wrapper media-slider-js swiper media-slider--{{ section.settings.slide_height }}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+    <div class="media-slider-wrapper  media-slider-js slick-slider media-slider--{{ section.settings.slide_height }}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
       id="Slider-{{ section.id }}"
       aria-live="polite"
       aria-atomic="true"
       data-autoplay="{{ section.settings.auto_rotate }}"
       data-speed="{{ section.settings.change_slides_speed }}"
     >
-      <div class="swiper-wrapper">
         {%- for block in section.blocks -%}
           <div
-            class="swiper-slide"
+            class="slide"
             id="Slide-{{ section.id }}-{{ forloop.index }}"
             {{ block.shopify_attributes }}
             role="group"
@@ -156,7 +176,6 @@
             {%- endcase -%}
           </div>
         {%- endfor -%}
-      </div>
     </div>
   </div>
 </div>

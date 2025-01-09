@@ -105,25 +105,6 @@
   height: 8px;
 }
 
-.template-article .back-to-top {
-  position: fixed;
-  top: 50%;
-  right: 2rem;
-  width: 3.7rem;
-  height: 3.7rem;
-  border-radius: 50%;
-  background-color: #F0EDE7;
-  cursor: pointer;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.template-article .back-to-top svg {
-  width: 1.4rem;
-  height: auto;
-}
 
 @media screen and (min-width: 1024px) {
     .article-template .article-template__social-sharing {
@@ -181,7 +162,7 @@
   .article-template .article-content-box {
     max-width: 95%;
     margin-top: -3rem;
-    padding: 3rem 4rem 0rem;
+    padding: 3rem 2.5rem 0rem;
   }
 
   .article-template .article-template__title {

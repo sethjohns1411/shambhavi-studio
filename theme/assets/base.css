@@ -4247,3 +4247,47 @@ details-disclosure > details {
 .multirow.section-template--18673457955039__multirow_WNpqz9-padding .multirow__inner {
   max-width: 695px;
 }
+
+
+ .back-to-top {
+  position: fixed;
+  top: 50%;
+  right: 2rem;
+  width: 3.7rem;
+  height: 3.7rem;
+  border-radius: 50%;
+  background-color: #F0EDE7;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+.back-to-top.show{
+  display: flex;
+}
+.back-to-top svg {
+  width: 1.4rem;
+  height: auto;
+}
+
+.template-article-what-s-new .instagram-feed-list-wrapper,.template-article-what-s-new .services-category-list-wrapper{
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 0;
+}
+.template-article-what-s-new .services-category .services-category-card{
+  padding: 0;
+}
+@media(min-width: 1025px){
+  .template-article-what-s-new .services-category .services-category-card .media-grid__item{
+    width: 50% !important;
+    max-width: 50% !important;
+    
+  }
+  .template-article-what-s-new .services-category .services-category-card .content-grid__item{
+    width: 50% !important;
+    max-width: 50% !important;
+  }
+}
