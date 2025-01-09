@@ -33,9 +33,41 @@
   <div class="main-blog page-width section-{{ section.id }}-padding">
 
     <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+      
       {%- for article in blog.articles -%}
+        {% if article.metafields.custom.image and article.metafields.custom.text %}
+          <div
+            class="blog-articles__article blog-articles__article-metafiels article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+          >
+            <div class="article-card-wrapper">
+              {% if article.metafields.custom.image %}
+                <div class="image-wrapper">
+                  <img src="{{ article.metafields.custom.image.value | image_url: master }}" alt="{{ article.title }}">
+                </div>
+              {% endif %}
+              {% if article.metafields.custom.text %}
+                <div class="content-wrapper">
+                  <p class="text-lora">
+                    {{ article.metafields.custom.text.value | default: 'No text available' }}
+                  </p>
+                </div>
+              {% endif %}
+              {% if article.metafields.custom.link %}
+                <div class="button-wrapper">
+                  <a href="{{ article.metafields.custom.link.value | default: '#' }}" class="button button--underline">
+                    {{ 'blogs.article.read_more' | t }}
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
         <div
-          class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          class="blog-articles__article{% if article.tags contains 'hidden' %} hidden{% endif %} article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           {% if settings.animations_reveal_on_scroll %}
             data-cascade
             style="--animation-order: {{ forloop.index }};"
