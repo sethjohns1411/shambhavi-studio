@@ -148,7 +148,13 @@
   .multi-image-with-text__blocks .multi-image-with-text__heading {
     font-size: 2rem;
   }
+  .section-template--18673457955039__multi_image_with_text_DtEfBb .multi-image-with-text__blocks .multi-image-with-text__heading {
+    font-size: 2.6rem;
+  }
 
+  .section-template--18673457955039__multi_image_with_text_DtEfBb .multi-image-with-text__blocks .multi-image-with-text__heading .second-heading-richtext{
+    font-size: 3.6rem;
+  }
   .multi-image-with-text__heading + .multi-image-with-text__text {
     margin-top: 2rem;
   }
@@ -260,6 +266,6 @@
   .template-page-aboutus .multi-image-with-text .multi-image-with-media-blocks:last-child .multi-image-with__media {
     max-width: 13.1rem;
     margin: 0 auto;
-    padding-bottom: 13.1rem !important;
+    padding-bottom: 20rem !important;
   }
 }

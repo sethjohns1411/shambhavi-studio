@@ -125,6 +125,12 @@
   height: auto;
 }
 
+@media screen and (min-width: 1024px) {
+    .article-template .article-template__social-sharing {
+    right: -4rem !important;
+  }
+}
+
 @media screen and (min-width: 990px) {
   .template-article .services-category .services-category-card .media-grid__item {
     width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
@@ -155,7 +161,7 @@
   .article-template .article-template__social-sharing {
     position: absolute;
     top: 10rem;
-    right: -5rem;
+    right: 0rem;
     margin: 0rem;
     display: flex;
     flex-direction: column;
