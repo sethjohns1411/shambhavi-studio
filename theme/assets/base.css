@@ -4281,11 +4281,11 @@ details-disclosure > details {
   padding: 0;
 }
 @media(min-width: 1025px){
-  .instagram-feed-list, .services-category-grid{
+  .template-article-what-s-new .instagram-feed-list, .template-article-what-s-new .services-category-grid{
     display: flex;
     justify-content: space-between;
   }
-  .instagram-feed-list .instagram-feed-list__item{
+  .template-article-what-s-new .instagram-feed-list .instagram-feed-list__item{
     width: calc(50% - 25px);
     max-width: calc(50% - 8px);
   }
@@ -4299,9 +4299,13 @@ details-disclosure > details {
     max-width: calc(50% - 8px) !important;
     padding: 0;
   }
+  .footer-block--menu{
+    position: relative;
+    top: -40px;
+  }
 }
 @media(max-width: 1024px){
-  .instagram-feed-list .instagram-feed-list__item{
+  .template-article-what-s-new .instagram-feed-list .instagram-feed-list__item{
     margin-bottom: 15px;
   }
 }
