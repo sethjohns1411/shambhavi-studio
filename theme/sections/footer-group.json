@@ -1,0 +1,75 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+    "name": "t:sections.footer.name",
+    "type": "footer",
+    "sections": {
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "brand_information_Mi4tnw": {
+            "type": "brand_information",
+            "settings": {
+              "brand_logo_footer": "shopify://shop_images/Sanbhavit-white-logo.png",
+              "brand_logo_width": 165,
+              "show_social": false
+            }
+          },
+          "link_list_Uh9Aae": {
+            "type": "link_list",
+            "settings": {
+              "heading": "",
+              "menu": "footer",
+              "show_social": false
+            }
+          },
+          "link_list_dWbVmA": {
+            "type": "link_list",
+            "settings": {
+              "heading": "",
+              "menu": "footer-menu-2",
+              "show_social": true
+            }
+          }
+        },
+        "block_order": [
+          "brand_information_Mi4tnw",
+          "link_list_Uh9Aae",
+          "link_list_dWbVmA"
+        ],
+        "settings": {
+          "full_width": true,
+          "background_image": "shopify://shop_images/footer.png",
+          "background_image_mobile": "shopify://shop_images/Mobile-Footer.png",
+          "background_fit": "cover",
+          "color_scheme": "scheme-4",
+          "footer_legal": "<p>Legal</p>",
+          "design_by": "<p>Design by Studio Twine</p>",
+          "newsletter_enable": false,
+          "newsletter_heading": "Subscribe to our emails",
+          "enable_follow_on_shop": false,
+          "show_social": false,
+          "enable_country_selector": false,
+          "enable_language_selector": false,
+          "payment_enable": false,
+          "show_policy": false,
+          "margin_top": 0,
+          "padding_top": 150,
+          "padding_bottom": 98,
+          "padding_top_mobile": 36,
+          "padding_bottom_mobile": 160
+        }
+      }
+    },
+    "order": [
+      "footer"
+    ]
+  }
+  

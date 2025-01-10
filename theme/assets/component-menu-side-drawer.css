@@ -37,7 +37,7 @@ menu-side-drawer > details[open] > summary::before {
   position: fixed;
   transform: translateX(100%);
   visibility: hidden;
-  z-index: 3;
+  z-index: 3000000;
   right: 0;
   bottom: 0rem;
   width: 100%;

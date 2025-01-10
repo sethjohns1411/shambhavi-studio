@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+    "name": "t:sections.header.name",
+    "type": "header",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_position": "middle-left",
+          "menu": "main-menu",
+          "menu_mobile": "main-menu-2",
+          "menu_type_desktop": "dropdown",
+          "sticky_header_type": "always",
+          "show_line_separator": false,
+          "menu_side_drawer": "menu-drawer",
+          "menu_side_drawer_color_scheme": "scheme-5",
+          "studio_hq_title": "Studio HQ",
+          "studio_hq": "<p>B 12, Chomu House circle, behind Starbucks, Jaipur, Rajasthan 302001</p><p><a href=\"mailto:studio@shambhavit.com\" title=\"mailto:studio@shambhavit.com\">studio@shambhavit.com</a></p><p><a href=\"tel:+ 91 99999 99999\" title=\"tel:+ 91 99999 99999\">+ 91 70734 61869</a></p>",
+          "image": "shopify://shop_images/burger-menu.png",
+          "image_mobile": "shopify://shop_images/burger-menu.png",
+          "height": "adapt",
+          "color_scheme": "scheme-1",
+          "menu_color_scheme": "scheme-5",
+          "enable_country_selector": false,
+          "enable_language_selector": false,
+          "enable_customer_avatar": false,
+          "mobile_logo_position": "center",
+          "margin_bottom": 0,
+          "padding_top": 0,
+          "padding_bottom": 0
+        }
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "settings": {
+              "text": "<p>Upcoming: Visit us at Heimtextil 2025 in Frankfurt from  14-17 January</p>"
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "color_scheme": "scheme-4",
+          "show_line_separator": false,
+          "show_social": false,
+          "auto_rotate": true,
+          "change_slides_speed": 5,
+          "enable_arrow": false,
+          "enable_country_selector": false,
+          "enable_language_selector": false
+        }
+      }
+    },
+    "order": [
+      "header",
+      "announcement-bar"
+    ]
+  }
+  

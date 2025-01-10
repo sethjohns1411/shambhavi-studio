@@ -25,7 +25,7 @@ class mediaSlider {
     $('.media-slider-js').slick({
       centerMode: true,
       arrows: false,
-      centerPadding: '15%',
+      centerPadding: '25%',
       slidesToShow: 1,
     })
   }
