@@ -69,6 +69,9 @@
   color: rgba(var(--color-foreground), 1);
   text-decoration: none;
 }
+.our-project-slider .our-project-slider-card img{
+  border-radius: 10px;
+}
 
 .our-project-slider .our-project-slider-card .our-project-slider-card-body .our-project-title {
   margin: 0rem;
@@ -76,6 +79,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 15px;
 }
 
 .our-project-slider .our-project-slider-card .our-project-title .arrow-icon {

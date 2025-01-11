@@ -52,6 +52,9 @@
   line-height: 2.3rem;
   color: var(--color-black);
 }
+.article-card .card__heading a, .article-card .card__heading a:hover{
+  text-decoration: none;
+}
 
 .blog-articles .article-card .card__information,
 .blog__posts .article-card .card__information {

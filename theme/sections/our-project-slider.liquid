@@ -2,6 +2,16 @@
 <script src="{{ 'section-our-project-slider.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
+  .out-project-slider-js img, .out-project-slider-js .our-project-slider-card-body{
+    padding: 0 6px;
+  }
+  @media(max-width:767px){
+    .out-project-slider-js{
+      padding-left: 10px;
+    }
+  .out-project-slider-js .slick-list{padding:0 20% 0 0 !important;}
+  }
+
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top_mobile }}px;
     padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
@@ -35,8 +45,7 @@
       </div>
       {% endif %}
     {%- endunless -%}
-    <div class="out-project-slider-wrapper{% if section.settings.enable_slider %} swiper out-project-slider-js{% endif %}">
-      <div class="our-project-slider-list contains-content-container{% if section.settings.enable_slider %} swiper-wrapper{% else %} grid grid--{{ section.settings.columns_mobile }}-col grid--{{ section.settings.columns_desktop }}-col-desktop{% endif %}" role="list">
+    <div class="out-project-slider-wrapper{% if section.settings.enable_slider %}  out-project-slider-js{% endif %}">
         {%- liquid
           assign highest_ratio = 0
           for block in section.blocks
@@ -46,7 +55,7 @@
           endfor
         -%}
         {%- for block in section.blocks -%}
-          <div class="our-project-slider-list__item{% if section.settings.enable_slider %} swiper-slide{% else %} grid__item{% if section.settings.column_alignment == 'center' %} center{% endif %}{% endif %}">
+          <div class="our-project-slider-list__item{% if section.settings.enable_slider %} {% else %} grid__item{% if section.settings.column_alignment == 'center' %} center{% endif %}{% endif %}">
             {% if block.settings.button_link != blank %}
               <a href="{{ block.settings.button_link }}" class="our-project-slider-card" target="_blank">
             {% else %}  
@@ -102,7 +111,6 @@
             {% endif %}
           </div>
         {%- endfor -%}
-      </div>
     </div>
   </div>
 </div>

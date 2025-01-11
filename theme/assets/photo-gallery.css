@@ -158,9 +158,15 @@
 .photo-gallery .photo-gallery-button {
   display: flex;
   justify-content: center;
-  margin-top: 29px;
+  margin-top: 60px;    min-width: 168px;
+  margin-bottom: 60px;
 }
-
+@media(max-width:767px){
+.photo-gallery .photo-gallery-button {
+  margin-top: 54px;
+  margin-bottom: 54px;
+}
+}
 .photo-gallery .photo-gallery-button .button {
   font-size: 1.4rem;
   line-height: 1.8rem;

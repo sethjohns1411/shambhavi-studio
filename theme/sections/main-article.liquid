@@ -103,7 +103,7 @@
           >
             {% assign share_url = request.origin | append: article.url %}
             {% comment %} {% render 'share-button', block: block, share_link: share_url %} {% endcomment %}
-            {%- render 'social-icons', class: 'footer__list-social' -%}
+            {%- render 'social-share', class: 'footer__list-social' -%}
           </div>
   
         {%- when 'content' -%}
@@ -121,7 +121,7 @@
           >
             {% assign share_url = request.origin | append: article.url %}
             {% comment %} {% render 'share-button', block: block, share_link: share_url %} {% endcomment %}
-            {%- render 'social-icons', class: 'footer__list-social' -%}
+            {%- render 'social-share', class: 'footer__list-social' -%}
           </div>
       </div>
     {%- endcase -%}

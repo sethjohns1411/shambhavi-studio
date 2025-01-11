@@ -44,11 +44,9 @@
           <div class="article-card__image-wrapper card__media">
             <div
               class="article-card__image media media--hover-effect"
-              {% if section.settings.media_height == 'adapt' %}
-                style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"
-              {% endif %}
             >
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+                <a href="{{ article.url }}">
               <img
                 srcset="
                   {%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
@@ -69,6 +67,7 @@
                 width="{{ article.image.width }}"
                 height="{{ article.image.height }}"
               >
+                </a>
               {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
             </div>
           </div>
@@ -148,7 +147,9 @@
             {%- endif -%}
           </div>
           <p class="card__heading{% if show_excerpt %} h6{% endif %}">
+            <a href="{{ article.url }}" class="full-unstyled-link">
             {{ article.title | escape }}
+            </a>
           </p>
           {%- if show_excerpt -%}
             {%- if article.excerpt.size > 0 or article.content.size > 0 -%}

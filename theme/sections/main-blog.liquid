@@ -29,43 +29,53 @@
 
   </ul>
 </div>
-{%- paginate blog.articles by 6 -%}
+{%- paginate blog.articles by section.settings.article_per_page -%}
   <div class="main-blog page-width section-{{ section.id }}-padding">
 
     <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
-      
+      {% assign current_page = paginate.current_page | minus: 1 %}
       {%- for article in blog.articles -%}
-        {% if article.metafields.custom.image and article.metafields.custom.text %}
-          <div
-            class="blog-articles__article blog-articles__article-metafiels article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-            {% if settings.animations_reveal_on_scroll %}
-              data-cascade
-              style="--animation-order: {{ forloop.index }};"
+        {% assign current_index = current_page | times:section.settings.article_per_page | plus: forloop.index %}
+
+        {% for block in section.blocks %}
+          {% if current_index == block.settings.position %}
+
+            {% if block.settings.image and block.settings.text %}
+              <div
+                class="blog-articles__article blog-articles__article-metafiels article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                <div class="article-card-wrapper">
+                  {% if block.settings.image %}
+                    <div class="image-wrapper">
+                      <img src="{{ block.settings.image | image_url: master }}" alt="{{ article.title }}">
+                    </div>
+                  {% endif %}
+                  {% if block.settings.text %}
+                    <div class="content-wrapper">
+                      <p class="text-lora">
+                        {{ block.settings.text | default: 'No text available' }}
+                      </p>
+                    </div>
+                  {% endif %}
+                  {% if block.settings.link %}
+                    <div class="button-wrapper">
+                      <a href="{{ block.settings.link | default: '#' }}" class="button button--underline">
+                        {{ 'blogs.article.read_more' | t }}
+                      </a>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
             {% endif %}
-          >
-            <div class="article-card-wrapper">
-              {% if article.metafields.custom.image %}
-                <div class="image-wrapper">
-                  <img src="{{ article.metafields.custom.image.value | image_url: master }}" alt="{{ article.title }}">
-                </div>
-              {% endif %}
-              {% if article.metafields.custom.text %}
-                <div class="content-wrapper">
-                  <p class="text-lora">
-                    {{ article.metafields.custom.text.value | default: 'No text available' }}
-                  </p>
-                </div>
-              {% endif %}
-              {% if article.metafields.custom.link %}
-                <div class="button-wrapper">
-                  <a href="{{ article.metafields.custom.link.value | default: '#' }}" class="button button--underline">
-                    {{ 'blogs.article.read_more' | t }}
-                  </a>
-                </div>
-              {% endif %}
-            </div>
-          </div>
-        {% endif %}
+
+
+          {%  endif  %}
+        {% endfor %}
+      
         <div
           class="blog-articles__article{% if article.tags contains 'hidden' %} hidden{% endif %} article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           {% if settings.animations_reveal_on_scroll %}
@@ -222,6 +232,40 @@
       "unit": "px",
       "label": "Mobile padding bottom",
       "default": 36
+    },
+    {
+      "type":"number",
+      "label":"Article per page",
+      "id":"article_per_page",
+      "default":6
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Content",
+      "name": "Content",
+      "settings": [
+        {
+          "type":"image_picker",
+          "label":"Image",
+          "id":"image"
+        },
+        {
+          "type":"richtext",
+          "label":"Text",
+          "id":"text"
+        },
+        {
+          "type":"url",
+          "label":"Link",
+          "id":"link"
+        },
+        {
+          "type":"number",
+          "label":"Position",
+          "id":"position"
+        }
+      ]
     }
   ]
 }

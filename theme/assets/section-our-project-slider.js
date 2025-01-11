@@ -9,24 +9,33 @@ class ourProjectSlider {
   }
 
   slider = () => {
-    let swiper = new Swiper('.out-project-slider-js', {
-      slidesPerView: 1.2,
-      spaceBetween: 12,
-      loop: true,
-      breakpoints: {
-        990: {
-            slidesPerView: 4,
-            centeredSlides: true,
-        },
-        750: {
-            slidesPerView: 3,
-            centeredSlides: true,
-        },
-        480: {
-            slidesPerView: 1.2
-        }
-      }
-    })
+
+    $('.out-project-slider-js').slick({
+      slidesToShow: 3,
+      centerMode: true,
+      arrows: false,
+      centerPadding: '15%',
+      responsive: [
+          {
+              breakpoint: 990,
+              settings: {
+                  slidesToShow: 3,
+                  centerMode: false,
+                  centerPadding: 0
+              }
+          },
+         
+          {
+              breakpoint: 767,
+              settings: {
+                  slidesToShow: 1,
+                  centerMode: false,
+                  centerPadding: '0%'
+              }
+          }
+      ]
+  });
+  
   }
 
   init = () => {

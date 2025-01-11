@@ -89,7 +89,7 @@
   }
 
   .footer .footer-legal-wrapper {
-    bottom: 0.5rem;
+    bottom: 0.3rem;
     left: 50%;
     right: auto;
     transform: translateX(-50%);
@@ -120,11 +120,21 @@
     padding-right: 15.2rem;
   }
 }
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+  .footer .page-full-width {
+    padding-left: 4%;
+  }
+  .footer-block__brand-info{
+    top: -40% !important;
+    left: 5% !important;
+  }
+}
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
   .footer .page-full-width {
     padding-left: 0;
   }
 }
+
 .footer .footer__blocks-wrapper .footer-block.footer-block--menu {
   max-width: max-content;
   flex: 2;

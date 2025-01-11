@@ -15,6 +15,9 @@
             {% endif %}
             </div>
             <div class="img2-container">
+                {% if section.settings.featured_text  %}
+                    <p class="featured-text xs-hide">{{ section.settings.featured_text }}</p>
+                {% endif  %}
             {% if section.settings.image_2 != blank %}
             <img class="img img-2 xs-hide" src="{{section.settings.image_2 | img_url:'master' }}" />
             <img class="img img-2 xs-show" src="{{section.settings.image_2_xs | img_url:'master' }}" />
@@ -22,6 +25,9 @@
                 {%  if section.settings.date %}
                 <h4 class="blog-header-date">
                     {{section.settings.date }}
+                    {% if section.settings.featured_text  %}
+                        <p class="featured-text xs-show">{{ section.settings.featured_text }}</p>
+                    {% endif  %}
                 </h4>
             {%  endif %}
             {%  if section.settings.title %}
@@ -107,6 +113,12 @@
         "type":"url",
         "label":"Link",
         "id":"link"
+    },
+    {
+        "type":"text",
+        "label":"Featured text",
+        "id":"featured_text",
+        "default":"#Featured"
     }
   ]
 }

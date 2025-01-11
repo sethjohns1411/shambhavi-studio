@@ -1,0 +1,53 @@
+{% comment %}
+  Renders social icons with share links for the current article.
+  Accepts:
+  - class: {String} a class to be added to the <ul> element (optional).
+
+  Usage:
+  {% render 'social-icons',
+    class: 'my-class'
+  %}
+{% endcomment %}
+
+<ul class="list-unstyled list-social{% if class %} {{ class }}{% endif %}" role="list">
+
+      <li class="list-social__item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ canonical_url }}" 
+           class="link list-social__link" target="_blank" rel="noopener noreferrer">
+          <span class="svg-wrapper">
+            {% render 'icon-facebook' %}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+        </a>
+      </li>
+  
+      <li class="list-social__item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ canonical_url }}&title={{ article.title | url_encode }}" 
+           class="link list-social__link" target="_blank" rel="noopener noreferrer">
+          <span class="svg-wrapper">
+            {% render 'icon-linkedin' %}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.linkedin' | t }}</span>
+        </a>
+      </li>
+  
+      <li class="list-social__item">
+        <a href="https://twitter.com/intent/tweet?url={{ canonical_url }}&text={{ article.title | url_encode }}" 
+           class="link list-social__link" target="_blank" rel="noopener noreferrer">
+          <span class="svg-wrapper">
+            {{- 'icon-twitter.svg' | inline_asset_content -}}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+        </a>
+      </li>
+      <li class="list-social__item">
+        <a href="https://api.whatsapp.com/send?text={{ article.title | url_encode }}%20{{ canonical_url }}" 
+           class="link list-social__link" target="_blank" rel="noopener noreferrer">
+          <span class="svg-wrapper">
+            {% render 'icon-linkedin' %}
+          </span>
+          <span class="visually-hidden">{{ 'general.social.links.whatsapp' | t }}</span>
+        </a>
+      </li>
+  </ul>
+  

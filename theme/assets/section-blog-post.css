@@ -90,8 +90,17 @@
 .article-template__content {
   margin-top: 3rem;
   margin-bottom: 3rem;
+  white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
-
+.article-template__content *{
+  white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
 .article-template__social-sharing {
   margin-top: 3rem;
 }
