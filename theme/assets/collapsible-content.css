@@ -18,6 +18,11 @@
 .collapsible-content .accordion.open .accordion__content {
 margin-bottom: 3rem;
 }
+@media screen and (max-width: 776px) {
+  .collapsible-content .accordion.open .accordion__content {
+    margin-bottom: 1.5rem;
+    }
+}
 @media screen and (min-width: 750px) {
   .collapsible-section-layout {
     padding-bottom: 7rem;
@@ -41,6 +46,9 @@ margin-bottom: 3rem;
 .accordion.open .accordion__content {
   max-height: 500px; /* Adjust to your content size or use a larger value */
   transition: max-height 0.5s ease-in;
+}
+.collapsible-content .accordion .details[open] .accordion__content{
+  margin-bottom: 1.5rem;
 }
 @media screen and (min-width: 990px) { 
   .collapsible-content .accordion .summary {
