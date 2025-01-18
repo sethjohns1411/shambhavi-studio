@@ -1,0 +1,116 @@
+.section-article-pagination {
+  margin-bottom: 2.3rem;
+}
+
+.article-pagination {
+  position: relative;
+}
+
+.article-pagination .article-pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.article-pagination .article-pagination-item {
+  flex: 1;
+  padding-top: 2.6rem;
+  padding-bottom: 2.6rem;
+}
+
+.article-pagination .article-pagination-next {
+  text-align: right;
+  border-left: 0.1rem dashed var(--color-primary);
+}
+
+.article-pagination .article-pagination-card .article-pagination__link {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  color: var(--color-grey10);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.article-pagination .article-pagination-card .article-pagination__link .svg-wrapper {
+  width: 14px;
+  height: 14px;
+  color: var(--color-primary);
+}
+
+.article-pagination .article-pagination-prev .article-pagination-card .article-pagination__link .svg-wrapper {
+  transform: rotate(180deg);
+}
+
+.article-pagination .article-pagination-card .article-pagination-content {
+  margin-top: 3.5rem;
+}
+
+.article-pagination .article-pagination-card .article-tag-date span {
+  position: relative;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.article-pagination .article-pagination-card .article-tag-date span + span {
+  margin-left: 0.5rem;
+  padding-left: 0.8rem;
+}
+
+.article-pagination .article-pagination-card .article-tag-date span + span:before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 0rem;
+  width: 0.1rem;
+  height: 75%;
+  background: var(--color-drk-grey);
+  transform: translateY(-50%);
+}
+
+.article-pagination .article-pagination-card .article-tag-date .article-date {
+  color: var(--color-drk-grey);
+}
+
+.article-pagination .article-pagination-card .article-title {
+  max-width: 51%;
+}
+
+.article-pagination .article-pagination-next .article-pagination-card .article-title {
+  margin-left: auto;
+}
+
+.article-pagination .article-pagination-card .article-title * {
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  color: var(--color-black) !important;
+  margin: 0rem;
+}
+
+@media (min-width: 750px) {
+  .section-article-pagination {
+    margin-bottom: 3rem;
+  }
+
+  .article-pagination {
+    padding-inline: 3rem;
+  }
+
+  .article-pagination .article-pagination-item {
+    padding-top: 3.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .article-pagination .article-pagination-item .article-pagination-content {
+    display: none;
+  }
+
+  .article-pagination .article-pagination-card .article-pagination__link {
+    gap: 0.8rem;
+  }
+}

@@ -91,8 +91,8 @@
 
 .article-template .article-template__social-sharing .footer__list-social .list-social__link {
   color: #9f886a;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2.8rem;
+  height: 2.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,6 +105,10 @@
   height: 8px;
 }
 
+.article-template .list-social__item.list-social__item-whatsapp .svg-wrapper {
+  width: 1.4rem;
+  height: 1.4rem;
+}
 
 @media screen and (min-width: 1024px) {
     .article-template .article-template__social-sharing {
