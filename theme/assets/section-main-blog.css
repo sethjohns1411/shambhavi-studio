@@ -59,3 +59,15 @@
     padding-bottom: 82.5rem;
   }
 }
+
+.main-blog .pagination__list > li {
+  flex: 1 0 3.5rem;
+  max-width: 3.5rem;
+  margin: 0rem !important;
+}
+
+.main-blog .pagination__list .pagination__item {
+  height: 3.5rem;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+}
