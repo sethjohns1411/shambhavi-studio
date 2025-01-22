@@ -131,8 +131,13 @@ details[open].menu-opening > .menu-side-drawer__submenu {
 
 .menu-side-drawer__menu-item .green-dot {
   position: relative;
-  top: -3px;
+  top: -6px;
   color: #87c192;
+  background: #87C192;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  font-size: 0;
 }
 
 .menu-side-drawer summary.menu-side-drawer__menu-item {

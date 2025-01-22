@@ -107,11 +107,16 @@
 @media screen and (min-width: 750px) and (max-width: 989px) {
   .section-collection-list .collection-list.grid--2-col-tablet-down .grid__item {
     width: calc(25% - var(--grid-mobile-horizontal-spacing) * 3 / 4);
+    max-width: calc(25% - var(--grid-mobile-horizontal-spacing) * 3 / 4);
   }
 }
 
 @media screen and (min-width: 480px) and (max-width: 749px) {
   .section-collection-list .collection-list.grid--2-col-tablet-down .grid__item {
     width: calc(33.33% - var(--grid-mobile-horizontal-spacing) * 2 / 3);
+    max-width: calc(33.33% - var(--grid-mobile-horizontal-spacing) * 2 / 3);
   }
+}
+#shopify-section-template--18599327498463__collection_list_EiedrK.section-collection-list .collection-list:not(.slider){
+  justify-content: center;
 }

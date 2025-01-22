@@ -12,7 +12,20 @@
 .newsletter-card .newsletter-card-body {
   padding: 4rem 2.5rem;
 }
-
+.newsletter-card .newsletter-card-body .newsletter-card-body-heading span{
+  position: relative;
+}
+.newsletter-card .newsletter-card-body .newsletter-card-body-heading span:after{
+  position: absolute;
+    top: 0px;
+    right: -5px;
+    width: 5px;
+    height: 5px;
+    content: "";
+    background: #87c192;
+    border-radius: 100%;
+    border: none;
+}
 .newsletter__wrapper .inline-richtext  {
   margin: 0rem;
   margin-bottom: 2rem;
