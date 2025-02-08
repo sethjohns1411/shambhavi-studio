@@ -19,11 +19,8 @@
   <div class="{% if section.settings.full_width %}page-full-width{% else %}page-width page-width--narrow{% endif %} section-{{ section.id }}-padding">
     {%- if section.settings.button_label != blank -%}
       <a
-        {% if section.settings.button_link == blank %}
-          role="link" aria-disabled="true"
-        {% else %}
-          href="{{ section.settings.button_link }}"
-        {% endif %}
+
+          href="/pages/careers"
         class="btn btn-back"
         {{ section.shopify_attributes }}
       >

@@ -84,8 +84,20 @@
 .article-template__link .icon-wrap {
   display: flex;
   margin-right: 1rem;
-  transform: rotate(180deg);
+  /* transform: rotate(180deg); */
+      align-items: center;
+      justify-content: center;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      color: var(--color-primary);
+      background: var(--color-cultured);
 }
+.article-template__link .icon-wrap svg{
+  width: 15px;
+  height: 15px;
+}
+
 
 .article-template__content {
   margin-top: 3rem;

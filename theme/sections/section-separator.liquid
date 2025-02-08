@@ -33,6 +33,12 @@
 >
   <div class="{% if section.settings.full_width %}page-full-width{% else %}page-width{% endif %}">
     <div class="seprator-media">
+      {% assign desk_img = section.settings.image %}
+      {% assign mob_img = section.settings.image_xs %}
+      {% if  section.settings.image_xs == blank %}
+        {% assign mob_img = section.settings.image %}
+      {% endif  %}
+      <div class="xs-hide">
       {% if section.settings.image != blank %}
         {{
           section.settings.image
@@ -51,6 +57,28 @@
           height="auto"
         >
       {% endif %}
+      </div>
+
+      <div class="xs-show">
+      {% if mob_img != blank %}
+        {{
+          mob_img
+          | image_url: width: 1920
+          | image_tag: class: "seprator-image", sizes: "100%", fetchpriority: fetch_priority
+        }}
+      {% else %}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0726/2057/2895/files/seprator.png?v=1731087928"
+          alt="seprator"
+          class="motion-reduce"
+          {% unless lazy_load == false %}
+            loading="lazy"
+          {% endunless %}
+          width="100%"
+          height="auto"
+        >
+      {% endif %}
+      </div>
     </div>
   </div>
 </div>
@@ -75,6 +103,11 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_xs",
+      "label": "Image for mobile"
     },
     {
       "type": "header",

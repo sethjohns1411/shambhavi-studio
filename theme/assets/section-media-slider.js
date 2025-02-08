@@ -27,6 +27,7 @@ class mediaSlider {
       arrows: false,
       centerPadding: '25%',
       slidesToShow: 1,
+      autoplay: true
     })
   }
 

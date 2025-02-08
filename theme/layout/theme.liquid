@@ -21,6 +21,7 @@
         {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
         {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
       </title>
+     
       <script>
         window.shopUrl = '{{ request.origin }}';
         window.routes = {
@@ -517,7 +518,14 @@
         <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
       </ul>
   
-      
+       <script defer>
+        document.querySelectorAll('a[href]').forEach(link => {
+              if (link.getAttribute('href').trim() !== '' && !link.classList.contains('btn-back') && !link.classList.contains('list-menu__item') && !link.classList.contains('header__heading-link') ) {
+                  link.setAttribute('target', '_blank');
+                  link.setAttribute('rel', 'noopener noreferrer'); // For security
+              }
+          });
+      </script>
   
       {%- if settings.predictive_search_enabled -%}
         <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>

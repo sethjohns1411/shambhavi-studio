@@ -51,7 +51,7 @@ class multiSlider {
             centeredSlides: true,
             initialSlide: 0,
             loop: true, 
-            autoplay:false,
+            autoplay:true,
             breakpoints: {
               // For screens smaller than 768px (mobile)
               768: {

@@ -1448,3 +1448,22 @@ function closeSearch(){
     document.querySelector('.body-search-open')?.classList?.remove('body-search-open')
   }
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Check if the current URL contains the expected query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const title = urlParams.get("title");
+
+  if (window.location.pathname === "/pages/projects" && title) {
+      // Find the matching element based on the query selector
+      const elements = document.querySelector(`.prod-name .galleryname .name[data-handle="${title}"]`);
+      if(elements){
+        elements.click()
+      }
+      const galleryWrapper = document.querySelector(".photo-gallery-wrapper");
+      if (galleryWrapper) {
+          galleryWrapper.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+  }
+});

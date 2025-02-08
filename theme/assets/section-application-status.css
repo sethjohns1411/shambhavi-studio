@@ -53,7 +53,7 @@
   top: 10px;
   left: 6px;
   width: 1px;
-  height: 70%;
+  height: 67%;
   border-right: 1px dashed #BF7E66;
 }
 
@@ -85,7 +85,7 @@
   padding-left: 2.8rem;
 }
 
-.application-status .application-status__text ul li:not(:last-child):before {
+.application-status .application-status__text ul li:nth-child(odd):before {
   position: absolute;
   content: "";
   top: 0.4rem;

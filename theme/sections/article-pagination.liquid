@@ -14,14 +14,31 @@
   }
 {%- endstyle -%}
 
+{% assign prevArticle = blank %}
+{% assign nextArticle = blank %}
+
+{% for tag in article.tags %}
+  
+  {% if tag contains 'prev_' %}
+    
+    {% assign prev = tag | remove:'prev_' %}
+    {% assign prevArticle = articles[prev] %}
+  {% endif %}
+  {% if tag contains 'next_' %}
+    {% assign next = tag | replace:'next_','' %}
+    {% assign nextArticle = articles[next] %}
+  {% endif %}
+{% endfor %}
+
 <div class="section-{{ section.id }} section-article-pagination section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}">
   <div class="{% if section.settings.full_width %}page-full-width{% else %}page-width{% endif %}">
     <div class="article-pagination">
       <div class="article-pagination-wrapper">
+        {% if prevArticle != blank %}
         <div class="article-pagination-item article-pagination-prev">
           <div class="article-pagination-card">
             <div class="article-pagination-body">
-              <a href="{{ blog.url }}" class="article-pagination__link">
+              <a href="{{ prevArticle.url }}" class="article-pagination__link">
                 <span class="svg-wrapper">
                   {% render 'icon-right-arrow' %}
                 </span>
@@ -30,21 +47,29 @@
 
               <div class="article-pagination-content">
                 <div class="article-tag-date">
-                  {% if section.settings.prev_blog_category != blank %}
-                    <span class="article-tag">{{ section.settings.prev_blog_category }}</span>
-                  {% endif %}
-                  {% if section.settings.prev_publish_date != blank %}
-                    <span class="article-date">{{ section.settings.prev_publish_date }}</span>
-                  {% endif %}
+                  
+                    <span class="article-tag">
+                      {% for tag in  prevArticle.tags %}
+                        {% if tag contains 'prev_' or tag contains 'next_' %}
+                          {% else %}
+                          {{ tag }}
+                          {% break %}
+                          {% endif %}
+                      {% endfor %}
+                      </span>
+                  
+                    <span class="article-date">{{ prevArticle.published_at | time_tag: format: 'date' }}</span>
+                  
                 </div>
 
                 <div class="article-title">
-                  {{ section.settings.prev_article_title }}
+                  {{ prevArticle.title }}
                 </div>
               </div>
             </div>
           </div>
         </div>
+        {% endif %}
         <div class="article-pagination-item article-pagination-next">
           <div class="article-pagination-card">
             <div class="article-pagination-body">
@@ -56,17 +81,24 @@
               </a>
 
               <div class="article-pagination-content">
-                <div class="article-tag-date">
-                  {% if section.settings.next_blog_category != blank %}
-                    <span class="article-tag">{{ section.settings.next_blog_category }}</span>
-                  {% endif %}
-                  {% if section.settings.next_publish_date != blank %}
-                    <span class="article-date">{{ section.settings.next_publish_date }}</span>
-                  {% endif %}
+               <div class="article-tag-date">
+                  
+                    <span class="article-tag">
+                      {% for tag in  nextArticle.tags %}
+                        {% if tag contains 'prev_' or tag contains 'next_' %}
+                          {% else %}
+                          {{ tag }}
+                          {% break %}
+                          {% endif %}
+                      {% endfor %}
+                      </span>
+                  
+                    <span class="article-date">{{ nextArticle.published_at | time_tag: format: 'date' }}</span>
+                  
                 </div>
 
                 <div class="article-title">
-                  {{ section.settings.next_article_title }}
+                  {{ nextArticle.title }}
                 </div>
               </div>
             </div>

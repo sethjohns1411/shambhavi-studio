@@ -9,14 +9,23 @@ class servicesCategory {
   }
 
   slider = () => {
-    let swiper = new Swiper('.services-category-media-js', {
-      slidesPerView: 1,
-      spaceBetween: 10,
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      },
+    const slides = document.querySelectorAll('.services-category-media-js');
+    slides.forEach((item)=>{
+      new Swiper(item, {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        loopAdditionalSlides: 2,  
+        pagination: {
+          el: item.querySelector(".swiper-pagination"),
+          clickable: true
+        },
+        on: {
+          slideChange: function () {
+            this.pagination.update();
+          }
+        }
+      })
     })
   }
 

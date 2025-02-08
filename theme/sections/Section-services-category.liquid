@@ -14,7 +14,9 @@
 
   .services-category[data-separator="true"] .page-width .services-category-list-wrapper {
     padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    {% if section.settings.show_border %}
     border-bottom: 0.1rem solid #CECECE;
+    {% endif %}
   }
 
   @media screen and (min-width: 750px) {
@@ -396,6 +398,12 @@
       "type": "checkbox",
       "id": "enable_bottom_separator",
       "label":"Enable bottom separator",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_border",
+      "label":"Show border",
       "default": true
     },
     {

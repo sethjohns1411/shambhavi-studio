@@ -21,10 +21,13 @@
       <a href="{{ blog.url }}" class="{% unless request.path contains 'tagged' %} active{%  endunless %}">All</a>
     </li>
       {%- for tag in blog.all_tags -%}
-    <li>
+        {% unless tag contains 'prev_' or tag contains 'next_' %}
+      <li>
       {% assign tag_handle = tag | handle  %}
         <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="{% if request.path contains tag_handle %} active{%  endif %}">{{ tag }}</a>
-    </li>
+    </li>      
+        {% endunless %}
+    
   {%- endfor -%}
 
   </ul>

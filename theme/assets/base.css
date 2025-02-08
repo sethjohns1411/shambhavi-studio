@@ -4345,3 +4345,12 @@ details-disclosure > details {
   width: 100%;
   height: auto;
 }
+@media(max-width: 1024px){
+.section-template--18599327498463__section_discover_nTTPRX  .discover-wrapper  .discover-items-grid  .discover-block-image .media{
+  padding: 0 !important;
+}
+  .section-template--18599327498463__section_discover_nTTPRX  .discover-wrapper  .discover-items-grid  .discover-block-image .media>*:not(.zoom):not(.deferred-media__poster-button){
+   height: auto;
+  position: static;
+}
+}

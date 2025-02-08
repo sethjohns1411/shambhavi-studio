@@ -131,6 +131,7 @@
                     href="{{ block.settings.button_link }}"
                   {% endif %}
                   class="button button--{{ block.settings.button_style }}"
+                  style="{% if section.settings.btn_color %} color: {{ section.settings.btn_color }}{% endif  %}"
                 >
                   {{ block.settings.button_label | escape }}
                   {% if block.settings.button_arrow %}
@@ -375,6 +376,12 @@
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "color",
+      "label":"Button color",
+      "id":"btn_color",
+      "default":"#000"
     },
     {
       "type": "range",

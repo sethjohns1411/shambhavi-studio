@@ -60,7 +60,7 @@
                 style="--animation-order: {{ forloop.index }};"
               {% endif %}
             >
-              <div class="our-tribe-card content-container text-{{ section.settings.column_alignment }} color-{{ section.settings.color_scheme_1 }} gradient">
+              <div {% if block.settings.page_url != blank %}onclick="window.location.href='{{block.settings.page_url}}';"{% endif %} class="our-tribe-card content-container text-{{ section.settings.column_alignment }} color-{{ section.settings.color_scheme_1 }} gradient">
                 <div class="our-tribe-card__heading">
                   {%- if block.settings.job_title != blank -%}
                     <h3 class="inline-richtext tribe-heading">{{ block.settings.job_title }}</h3>
