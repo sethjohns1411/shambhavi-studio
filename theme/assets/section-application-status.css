@@ -53,8 +53,18 @@
   top: 10px;
   left: 6px;
   width: 1px;
-  height: 67%;
+  height: 100%;
   border-right: 1px dashed #BF7E66;
+}
+.application-status .application-status__text ul:last-child:after{
+  position: absolute;
+    content: "";
+    height: calc(100% - 54px);
+    width: 1px;
+    background: #fff;
+    bottom: -8px;
+    left: 6px;
+    top: auto;
 }
 
 .application-status .application-status__text h4 {
