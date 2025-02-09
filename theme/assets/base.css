@@ -4354,3 +4354,34 @@ details-disclosure > details {
   position: static;
 }
 }
+#shopify-section-template--18599327498463__multicolumn_jhK8B9 .multicolumn slider-component{
+  display: flex;
+  justify-content: center;
+}
+#shopify-section-template--18599327498463__multicolumn_jhK8B9 .multicolumn slider-component .multicolumn-list{
+  max-width: 916px;;
+} 
+@media(min-width:1025px){
+  #shopify-section-template--18599327498463__instagram_feed_BHDMz7 .section-template--18599327498463__instagram_feed_BHDMz7{
+    max-width: 916px;;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+  #shopify-section-template--18599327498463__instagram_feed_BHDMz7 .section-template--18599327498463__instagram_feed_BHDMz7 .page-width{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.instagram-feed__title .title a{
+  text-decoration: none;
+}
+
+#shopify-section-template--18673457955039__multi_slider_mft7Mr .rich-text__text.text-lora{
+  max-width: 470px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.article-card .card__inner .card__content{
+  display: none;
+}

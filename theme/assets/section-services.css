@@ -1,7 +1,10 @@
 .services .title {
   margin: 0;
 }
-
+.title-wrapper-with-link.title-wrapper--no-padding .title{
+  position: relative;
+  top: -12px;
+}
 .services.no-heading .title {
   display: none;
 }
@@ -31,6 +34,10 @@
   .services .services-card .action-button .icon {
     width: 1.5rem;
     height: 1.5rem;
+  }
+  .services .services-card .action-button .icon.icon-close {
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   .services .title-wrapper-with-link .title-image {
@@ -158,6 +165,17 @@
   height: auto;
   position: static;
   min-height: 386px;
+}
+@media (max-width:737px){
+  .services-list-wrapper .services-list__item.grid__item.services-list__launcing_soon .services-card .services-card-content .services-card-content-box{
+    height: auto;
+    min-height: auto;
+  }
+  .services-list-wrapper .services-list__item.grid__item.services-list__launcing_soon .services-card .services-card-content{
+    height: auto;
+    position: static;
+    min-height: auto;
+  } 
 }
 /* ,services-card-content-box */
 .services-card .services-card-content .services-card-content-box {

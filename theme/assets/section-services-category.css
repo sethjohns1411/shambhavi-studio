@@ -10,9 +10,19 @@
 .services-category .title {
   margin: 0;
 }
-
+.services-category .title-wrapper-with-link{
+  position: relative;
+}
 .services-category .title-wrapper-with-link .title-image {
-  max-width: 4.9rem;
+  max-width: 5.5rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+@media(min-width:1025px){
+  .services-category .title-wrapper-with-link .title-image {
+    max-width: 7.5rem;
+  } 
 }
 
 .services-category .title-text-wrapper p {

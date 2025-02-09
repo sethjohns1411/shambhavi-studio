@@ -48,7 +48,8 @@
             endif
           endfor
         -%}
-        {%- for block in section.blocks -%}
+        <div class="section-1 gallery-list-section">
+        {%- for block in section.blocks limit:2 -%}
           {% case block.type %}
             {% when 'image' %}
               <div class="gallery-list__item gallery-list__item-image{% if section.settings.column_alignment == 'center' %} center{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -63,7 +64,79 @@
                     {% assign spaced_image = true %}
                   {% endif %}
     
-                  <div class="gallery-card__media media {% if block.settings.image != blank %}media media--transparent{% else %}gallery__media--placeholder placeholder{% endif %} media--{{ block.settings.image_ratio }}"
+                  <div class="gallery-card__media media {% if block.settings.image != blank %}media media--transparent{% else %}gallery__media--placeholder placeholder{% endif %} "
+                    
+                  >
+                    {%- if block.settings.image != blank -%}
+                      {%- liquid
+                        assign number_of_columns = section.settings.columns_desktop
+                        assign number_of_columns_mobile = section.settings.columns_mobile
+                        assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                        assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                        assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                        assign image_width = 1
+                      -%}
+                      {% capture sizes %}
+                        (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                        (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                        (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                        calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                      {% endcapture %}
+                      {{
+                        block.settings.image
+                        | image_url: width: 3200
+                        | image_tag:
+                          widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                          sizes: sizes,
+                          class: 'gallery-card__image'
+                      }}
+                    {%- else -%}
+                      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            {% when 'video' %}
+              <div class="gallery-list__item gallery-list__item-video{% if section.settings.column_alignment == 'center' %} center{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                <div class="gallery-card">
+                  <div class="gallery-card__media"
+                    
+                  >
+                    {% render 'deferred-media',
+                      video: block.settings.video,
+                      video_url: block.settings.video_url,
+                      cover_image: block.settings.cover_image,
+                      enable_video_loop: block.settings.enable_video_looping
+                    %}
+                  </div>
+                </div>
+              </div>
+          {% endcase %}
+        {%- endfor -%}
+      </div>
+        <div class="section-2 gallery-list-section">
+        {%- for block in section.blocks offset:2 -%}
+          {% case block.type %}
+            {% when 'image' %}
+              <div class="gallery-list__item gallery-list__item-image{% if section.settings.column_alignment == 'center' %} center{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                <div class="gallery-card">
+                  {% if block.settings.image_ratio == 'adapt' or block.settings.image_ratio == 'circle' %}
+                    {% assign spaced_image = true %}
+                  {% endif %}
+    
+                  <div class="gallery-card__media media {% if block.settings.image != blank %}media media--transparent{% else %}gallery__media--placeholder placeholder{% endif %} "
                     {% if block.settings.image_ratio == 'adapt' %}
                       style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
                     {% endif %}
@@ -106,7 +179,7 @@
                 {% endif %}
               >
                 <div class="gallery-card">
-                  <div class="gallery-card__media media--{{ block.settings.image_ratio }}"
+                  <div class="gallery-card__media "
                     {% if block.settings.image_height == 'adapt' and block.settings.cover_image != blank %}
                       style="padding-bottom: {{ 1 | divided_by: block.settings.cover_image.aspect_ratio | times: 100 }}%;"
                     {% endif %}
@@ -122,6 +195,7 @@
               </div>
           {% endcase %}
         {%- endfor -%}
+      </div>
       </div>
 
       {% if section.settings.image != blank %}
@@ -337,30 +411,6 @@
           "type": "image_picker",
           "id": "image_mobile",
           "label": "t:sections.gallery.blocks.column.settings.image_mobile.label"
-        },
-        {
-          "type": "select",
-          "id": "image_ratio",
-          "options": [
-            {
-              "value": "adapt",
-              "label": "t:sections.gallery.settings.image_ratio.options__1.label"
-            },
-            {
-              "value": "portrait",
-              "label": "t:sections.gallery.settings.image_ratio.options__2.label"
-            },
-            {
-              "value": "square",
-              "label": "t:sections.gallery.settings.image_ratio.options__3.label"
-            },
-            {
-              "value": "circle",
-              "label": "t:sections.gallery.settings.image_ratio.options__4.label"
-            }
-          ],
-          "default": "square",
-          "label": "t:sections.gallery.settings.image_ratio.label"
         }
       ]
     },

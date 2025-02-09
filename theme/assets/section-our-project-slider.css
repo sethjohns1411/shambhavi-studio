@@ -88,10 +88,19 @@
   visibility: hidden;
   opacity: 0;
 }
+.our-project-slider .our-project-slider-card .our-project-title .arrow-icon svg{
+  width: 12px;
+}
 
-.our-project-slider .our-project-slider-card:hover .our-project-title .arrow-icon {
+.our-project-slider   .our-project-slider-list__item .our-project-slider-card:hover .arrow-icon {
   visibility: visible;
   opacity: 1;
+}
+.our-project-slider   .our-project-slider-list__item .our-project-slider-card img{
+  transition: .3s all;
+}
+.our-project-slider   .our-project-slider-list__item .our-project-slider-card:hover img{
+  transform: scale(1.1);
 }
 
 @media screen and (max-width: 749px) {
