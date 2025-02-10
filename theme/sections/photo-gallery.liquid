@@ -25,7 +25,7 @@
             <span>All Projects</span>
           </div>
           {% for name in gallery_names %}
-            <div class="name" data-handle="{{ name |  handleize }}" >
+            <div data-name="{{ name }}" class="name" data-handle="{{ name |  handleize }}" >
               <span>{{ name }}</span>
             </div>
           {% endfor %}
@@ -41,67 +41,10 @@
             <div data-max="{{ max_slide }}" class="gallery-wrappers {{ block.settings.gallery_name |  handleize  }} {% if is_first_block_active_set == false %} active{% assign is_first_block_active_set = true %}{% endif %}">
               <div class="my-Gallery">
                 <div class="gallery-slider">
-                  {% for block in section.blocks %}
-                    {% if block.settings.image_1 != blank %}
-                      {% assign count = count | plus: 1 %}
-                      <div data-name="{{ block.settings.gallery_name | handle }}" class="gallery-photo{% if  count > max_slide and section.settings.button_label != blank %} hidden{% endif %}">
-                        <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_content_position }}">
-                          <div
-                            class="image-with-text__media"
-                            {% if section.settings.height == 'adapt' %}
-                              style="padding-bottom: {{ 1 | divided_by: block.settings[image_field].aspect_ratio | times: 100 }}%;"
-                            {% endif %}
-                          >
-                            {% if section.settings.image_behavior == 'ambient'
-                              or section.settings.image_behavior == 'zoom-in'
-                            %}
-                              {% assign widths = '198, 432, 642, 900, 1284, 1800' %}
-                              {% capture sizes %}
-                              (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
-                              (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
-                            {% endcapture %}
-                            {% else %}
-                              {% assign widths = '165, 360, 535, 750, 1070, 1500' %}
-                              {% capture sizes %}
-                              (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
-                              (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
-                            {% endcapture %}
-                            {% endif %}
-                            {{
-                              block.settings.image_1
-                              | image_url: width: 1500
-                              | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
-                            }}
-                          </div>
-
-                          {% if block.settings.gallery_text != blank %}
-                            {% if block.settings.link != blank %}
-                              <a
-                                class="photo-gallery-content"
-                                {% if block.settings.link != blank %}
-                                  href="{{ block.settings.link}}"
-                                {% endif %}
-                              >
-                            {% else %}
-                              <div class="photo-gallery-content">
-                            {% endif %}
-                              <div class="photo-gallery-text">
-                                <p>{{ block.settings.gallery_text }}</p>
-                              </div>
-                            {% if block.settings.link != blank %}
-                              </a>
-                            {% else %}
-                              </div>
-                            {% endif %}
-                          {% endif %}
-                        </div>
-                      </div>
-                    {% endif %}
-                  {% endfor %}
+                  
                 </div>
               </div>
             </div>
-          {%- if section.settings.button_label != blank  -%}
             <div  class="photo-gallery-button {% if count <= max_slide %} hidden{% endif %}">
               <div data-page="1" data-max="{{ max_slide }}" 
                 class="view-more button button--{{ section.settings.button_style }}"
@@ -110,7 +53,6 @@
                 {{ section.settings.button_label | escape }}
               </div>
             </div>
-          {%- endif -%}
           {%- if section.settings.button_label_1 != blank -%}
             <div class="photo-gallery-button">
               <div data-max="{{ max_slide }}" 

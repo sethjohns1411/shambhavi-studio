@@ -120,9 +120,15 @@
             </h1>
 
             <span class="article-tags">
+              {% assign count = 1 %}
             {%- for tag in article.tags -%}
-              <span>#{{ tag }}{% unless forloop.last %}, {% endunless %}</span>
+              {% if tag contains 'prev_' or tag contains 'next_' %}
+              {% else %}
+              <span>#{{ tag }}{% if count == 1 %}, {% endif %}</span>
+                {% assign count = 1 %}
+                {% endif %}
             {%- endfor -%}
+
           </span>
           </header>
 
