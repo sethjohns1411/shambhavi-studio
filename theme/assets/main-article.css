@@ -37,7 +37,8 @@
 
 .template-article .instagram-feed .page-width,
 .template-article .section-slideshow .page-width,
-.template-article .video-section.page-width {
+.template-article .video-section.page-width,
+.template-article .rich-text__wrapper.page-width {
   max-width: 925px;
   margin: 0 auto;
 }
@@ -139,7 +140,8 @@
 
   .template-article .instagram-feed .page-width,
   .template-article .section-slideshow .page-width,
-  .template-article .video-section.page-width {
+  .template-article .video-section.page-width,
+  .template-article .rich-text__wrapper.page-width {
     padding-inline: 8rem;
   }
 
@@ -183,7 +185,8 @@
   }
 
   .template-article .instagram-feed .page-width,
-  .template-article .section-slideshow .page-width {
+  .template-article .section-slideshow .page-width,
+  .template-article .rich-text__wrapper.page-width {
     padding-inline: 2.5rem;
   }
 

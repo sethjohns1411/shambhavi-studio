@@ -4344,6 +4344,7 @@ details-disclosure > details {
 .article-card.card .media a img{
   width: 100%;
   height: auto;
+  border-radius: 5px;
 }
 @media(max-width: 1024px){
 .section-template--18599327498463__section_discover_nTTPRX  .discover-wrapper  .discover-items-grid  .discover-block-image .media{
@@ -4384,4 +4385,33 @@ details-disclosure > details {
 }
 .article-card .card__inner .card__content{
   display: none;
+}
+
+
+.skeleton-image {
+  width: calc(33.333% - 15px);
+  height: 450px;
+  background-color: #e0e0e0;
+  border-radius: 8px; /* Optional: rounds the corners for a more modern look */
+  animation: pulse 1.5s infinite ease-in-out;
+  display: block !important;
+  margin-bottom: 20px;
+}
+@media(max-width:767px){
+  .skeleton-image {
+    height: 350px;
+    width: 100%;
+  }
+}
+/* Pulse animation for skeleton effect */
+@keyframes pulse {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f4f4f4;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
 }

@@ -1,7 +1,6 @@
 <!doctype html>
   <html class="js" lang="{{ request.locale.iso_code }}">
     <head>
-      <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -497,7 +496,7 @@
       </script>
     </head>
   
-    <body class="template-{{ template | replace: '.', '-' | replace: '/', '-' }} gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+    <body class="template-{{ template | replace: '.', '-' | replace: '/', '-' }} gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} {%  if template contains 'article' %} template-article{% endif  %}">
       <a class="skip-to-content-link button visually-hidden" href="#MainContent">
         {{ 'accessibility.skip_to_text' | t }}
       </a>
@@ -521,7 +520,7 @@
   
        <script defer>
         document.querySelectorAll('a[href]').forEach(link => {
-              if (link.getAttribute('href').trim() !== '' && !link.classList.contains('btn-back') && !link.classList.contains('list-menu__item') && !link.classList.contains('header__heading-link') ) {
+              if ( !link.classList.contains('pagination__item') && link.getAttribute('href').trim() !== '' && !link.classList.contains('btn-back') && !link.classList.contains('list-menu__item') && !link.classList.contains('header__heading-link') ) {
                   link.setAttribute('target', '_blank');
                   link.setAttribute('rel', 'noopener noreferrer'); // For security
               }

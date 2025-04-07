@@ -124,12 +124,16 @@
   >
     {%- for block in section.blocks -%}
       <style>
-        #Slide-{{ section.id }}-{{ forloop.index }} .banner__media::after {
-          opacity: {{ block.settings.image_overlay_opacity | divided_by: 100.0 }};
+        {% assign opacity = block.settings.image_overlay_opacity | divided_by: 100.0 %}
+        {% if block.settings.image_overlay_opacity != 0 %}
+        #Slide-{{ section.id }}-{{ forloop.index }} .banner__media::after { 
+          background: {{ block.settings.image_overlay_color | color_modify: 'alpha', opacity  }};
+          opacity:1;
         }
+        {% endif %}
       </style>
       <div
-        class="slideshow__slide grid__item grid--1-col slider__slide"
+        class="11 slideshow__slide grid__item grid--1-col slider__slide"
         id="Slide-{{ section.id }}-{{ forloop.index }}"
         {{ block.shopify_attributes }}
         role="group"
@@ -589,6 +593,12 @@
           "unit": "%",
           "label": "t:sections.slideshow.blocks.image.settings.image_overlay_opacity.label",
           "default": 0
+        },
+        {
+          "type": "color",
+          "id": "image_overlay_color",
+          "label": "Image overlay color",
+          "default": "#000"
         },
         {
           "type": "color_scheme",

@@ -24,9 +24,15 @@
 {%- endif -%}
 
 {%- style -%}
-  #Banner-{{ section.id }}::after {
-    opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
-  }
+
+      {% assign opacity = section.settings.image_overlay_opacity | divided_by: 100.0 %}
+        {% if section.settings.image_overlay_opacity != 0 %}
+        #Banner-{{ section.id }}::after {
+          background: {{ section.settings.image_overlay_color | color_modify: 'alpha', opacity  }};
+          opacity:1;
+        }
+        {% endif %}
+  
 {%- endstyle -%}
 
 {%- liquid
@@ -225,6 +231,12 @@
       "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
       "default": 0
     },
+    {
+          "type": "color",
+          "id": "image_overlay_color",
+          "label": "Image overlay color",
+          "default": "#000"
+        },
     {
       "type": "select",
       "id": "image_height",

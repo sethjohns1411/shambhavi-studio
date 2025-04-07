@@ -25,7 +25,7 @@
         {{ section.shopify_attributes }}
       >
         <span class="icon-wrapper">{% render 'icon-left-arrow' %}</span>
-        <span class="large-up-hide">{{ section.settings.button_label | escape }}</span>
+        {% comment %} <span class="large-up-hide">{{ section.settings.button_label | escape }}</span> {% endcomment %}
       </a>
     {%- endif -%}
 

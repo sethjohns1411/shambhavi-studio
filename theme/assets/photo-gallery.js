@@ -25,6 +25,17 @@ class PhotoGallery {
           this.currentPage = 1;
           this.totalRecords = 0;
           this.data = [];
+
+           const galleryContainer = document.querySelector(".gallery-slider");
+    galleryContainer.innerHTML = `
+     <div class="skeleton-image"></div>
+                  <div class="skeleton-image"></div>
+                  <div class="skeleton-image"></div>
+                  <div class="skeleton-image"></div>
+                  <div class="skeleton-image"></div>
+                  <div class="skeleton-image"></div>  
+    `;
+          
           this.fetchData(ele.dataset.name)
           menuSwitchDivs.forEach((item) => item.classList.remove("active"));
           ele.classList.add("active");
@@ -79,7 +90,7 @@ class PhotoGallery {
 
   displayPage() {
     const galleryContainer = document.querySelector(".gallery-slider");
-    galleryContainer.innerHTML = "";
+    galleryContainer.innerHTML = ``;
     
     this.data.forEach(({ Category, Image, Title }) => {
       const div = document.createElement("div");
@@ -106,9 +117,12 @@ class PhotoGallery {
   }
 
   setupViewMoreButton() {
-    document.querySelector(".view-more").addEventListener("click", () => {
+    let btn = document.querySelector(".view-more");
+    document.querySelector(".view-more").addEventListener("click", async () => {
       this.currentPage++;
-      this.fetchData("", this.currentPage);
+      btn.innerHTML = "LOADING..."
+      await this.fetchData(document.querySelector('.name.active').dataset.name, this.currentPage);
+      btn.innerHTML = "VIEW MORE"
     });
   }
 }
